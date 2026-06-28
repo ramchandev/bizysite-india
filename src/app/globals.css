@@ -1515,6 +1515,8 @@ button, input, select, textarea {
   color: var(--white);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   padding-bottom: 12px;
+  display: block;
+  width: 100%;
 }
 
 .mobile-nav-cta {
@@ -1898,7 +1900,15 @@ button, input, select, textarea {
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mobile-nav-header .nav-logo {
+  color: var(--white);
+}
+
+.mobile-nav-header .hamburger-btn {
+  color: var(--white);
 }
 
 .mobile-nav-body {
@@ -1909,6 +1919,9 @@ button, input, select, textarea {
 
 .mobile-nav-section {
   margin-bottom: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .mobile-section-title {
@@ -1932,12 +1945,16 @@ button, input, select, textarea {
 .mobile-nav-link.sub-link {
   font-size: 14px !important;
   font-weight: 600 !important;
-  color: var(--text-mid) !important;
+  color: rgba(255, 255, 255, 0.78) !important;
   padding: 2px 0 !important;
 }
 
+.mobile-nav-link.sub-link:hover {
+  color: var(--teal) !important;
+}
+
 .mobile-nav-link.sub-link.highlight {
-  color: var(--teal-dark) !important;
+  color: var(--teal) !important;
   font-weight: 700 !important;
   margin-top: 6px;
 }
