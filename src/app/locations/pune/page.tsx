@@ -1,0 +1,346 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { CheckCircle2, ArrowRight } from "lucide-react";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://bizysite.in"),
+  title: "Website Design Company in Pune | SEO & Digital Marketing | Bizy Site",
+  description: "Website design, SEO and digital marketing for Pune businesses, across education, IT, manufacturing and services. Get a free quote today.",
+  keywords: "website design company Pune, web development Pune, SEO Pune, web designers in Pune, digital marketing agency Pune",
+  alternates: {
+    canonical: "/locations/pune",
+  },
+  openGraph: {
+    title: "Website Design Company in Pune | SEO & Digital Marketing | Bizy Site",
+    description: "Website design, SEO and digital marketing for Pune businesses, across education, IT, manufacturing and services. Get a free quote today.",
+    url: "https://bizysite.in/locations/pune",
+    siteName: "Bizy Site India",
+    type: "website",
+    locale: "en_IN",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Website Design Company in Pune | SEO & Digital Marketing | Bizy Site",
+    description: "Website design, SEO and digital marketing for Pune businesses, across education, IT, manufacturing and services. Get a free quote today.",
+  },
+};
+
+export default function PuneLocation() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://bizysite.in/locations/pune/#localbusiness",
+        "name": "Bizy Site Pune Service Area",
+        "url": "https://bizysite.in/locations/pune",
+        "telephone": "+919500728442",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Pune",
+          "addressRegion": "Maharashtra",
+          "addressCountry": "IN"
+        },
+        "areaServed": [
+          {
+            "@type": "AdministrativeArea",
+            "name": "Pune"
+          }
+        ]
+      },
+      {
+        "@type": "Service",
+        "@id": "https://bizysite.in/locations/pune/#service",
+        "name": "Website Design & Digital Marketing Services",
+        "provider": {
+          "@type": "LocalBusiness",
+          "name": "Bizy Site India",
+          "url": "https://bizysite.in"
+        },
+        "description": "Website design, SEO and digital marketing for Pune businesses.",
+        "areaServed": {
+          "@type": "AdministrativeArea",
+          "name": "Pune"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://bizysite.in/locations/pune/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How much does a website cost in Pune?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It depends on your business, pages and features. A coaching centre site differs from a manufacturing or e-commerce site. Share your requirement and we will send a clear, no-obligation quote."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you build websites for coaching centres and institutes in Pune?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Given Pune's strong education scene, we specialise in coaching and education sites that showcase results and make demo bookings and admissions easy."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you work with manufacturers around Chakan and Pimpri-Chinchwad?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. We build B2B and manufacturing sites that showcase capability, certifications and products, and make it easy for serious buyers to request quotes."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can you help my Pune business rank on Google?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Through local SEO and your Google Business Profile, we help you rank for searches across Pune localities and on Google Maps."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you meet clients in person in Pune?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We handle most work smoothly online for speed and convenience. Calls and discussions can be arranged as needed. Location is never a barrier."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I own my website after it is built?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, completely. Your website, content and data are yours from day one, with no lock-in."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://bizysite.in/locations/pune/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://bizysite.in"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Locations",
+            "item": "https://bizysite.in/locations"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Pune",
+            "item": "https://bizysite.in/locations/pune"
+          }
+        ]
+      }
+    ]
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      
+      <Header />
+
+      {/* SECTION 1 — Hero */}
+      <section className="service-hero">
+        <div className="container service-hero-content">
+          <span className="section-tag light" style={{ color: "rgba(255,255,255,0.85)" }}>Pune</span>
+          <h1 className="service-hero-title">Websites for Pune businesses, from classrooms to factories.</h1>
+          <p className="service-hero-sub">
+            Pune blends education, IT, manufacturing and a young, growing population. We build conversion-focused websites that help Pune businesses, across every sector, get found and win customers.
+          </p>
+          <div style={{ display: "flex", gap: "16px", justifyContent: "center", flexWrap: "wrap", marginTop: "24px" }}>
+            <div className="cta-wrapper">
+              <Link href="/contact?type=quote" className="btn btn-primary">
+                Get My Free Quote →
+              </Link>
+              <p style={{ fontSize: "11px", color: "rgba(255,255,255,0.7)", marginTop: "6px" }}>Tell us your Pune business. We reply the same day.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 2 — Understanding Pune Businesses */}
+      <section className="section-padding" style={{ background: "var(--white)" }}>
+        <div className="container" style={{ maxWidth: "800px", textAlign: "center" }}>
+          <span className="section-tag">Market Context</span>
+          <h2 className="section-title">Pune is young, educated and growing fast. Your website should speak to that.</h2>
+          <p style={{ color: "var(--text-mid)", fontSize: "16px", lineHeight: "1.8", marginBottom: "20px" }}>
+            Pune is a city of many strengths: a famous education hub drawing students from across India, a strong IT presence in Hinjewadi and Kharadi, a major automobile and manufacturing belt around Chakan and Pimpri-Chinchwad, and a large, young population fuelling coaching centres, restaurants, retail and services.
+          </p>
+          <p style={{ color: "var(--text-mid)", fontSize: "16px", lineHeight: "1.8" }}>
+            This mix means Pune businesses serve very different customers, from students and young professionals to serious industrial buyers. We build custom solutions such as <Link href="/industries/education" style={{ color: "var(--teal)", fontWeight: "700" }}>Education & Coaching website design</Link> and B2B industrial systems. Whatever yours is, your website needs to reach the right Pune audience clearly.
+          </p>
+        </div>
+      </section>
+
+      {/* SECTION 3 — What We Do */}
+      <section className="section-padding" style={{ background: "var(--off-white)" }}>
+        <div className="container" style={{ maxWidth: "800px" }}>
+          <div className="text-center">
+            <span className="section-tag">Our Services</span>
+            <h2 className="section-title">Everything you need to win customers in Pune.</h2>
+          </div>
+
+          <ul style={{ listStyle: "none", padding: 0, margin: "40px 0 0 0", display: "flex", flexDirection: "column", gap: "20px" }}>
+            <li style={{ display: "flex", gap: "12px", alignItems: "flex-start", fontSize: "15px", color: "var(--text)", lineHeight: "1.6" }}>
+              <CheckCircle2 size={18} style={{ color: "var(--teal)", flexShrink: 0, marginTop: "2px" }} />
+              <div>
+                <strong>Website Design & Development</strong> — Conversion-focused sites for any Pune sector.
+              </div>
+            </li>
+            <li style={{ display: "flex", gap: "12px", alignItems: "flex-start", fontSize: "15px", color: "var(--text)", lineHeight: "1.6" }}>
+              <CheckCircle2 size={18} style={{ color: "var(--teal)", flexShrink: 0, marginTop: "2px" }} />
+              <div>
+                <strong>Education & Coaching Websites</strong> — Show results and fill batches, key for Pune's education scene.
+              </div>
+            </li>
+            <li style={{ display: "flex", gap: "12px", alignItems: "flex-start", fontSize: "15px", color: "var(--text)", lineHeight: "1.6" }}>
+              <CheckCircle2 size={18} style={{ color: "var(--teal)", flexShrink: 0, marginTop: "2px" }} />
+              <div>
+                <strong>B2B & Manufacturing Websites</strong> — Win serious buyers around Chakan and PCMC.
+              </div>
+            </li>
+            <li style={{ display: "flex", gap: "12px", alignItems: "flex-start", fontSize: "15px", color: "var(--text)", lineHeight: "1.6" }}>
+              <CheckCircle2 size={18} style={{ color: "var(--teal)", flexShrink: 0, marginTop: "2px" }} />
+              <div>
+                <strong>Local SEO & Google Business Profile</strong> — Win "near me" searches across Pune.
+              </div>
+            </li>
+            <li style={{ display: "flex", gap: "12px", alignItems: "flex-start", fontSize: "15px", color: "var(--text)", lineHeight: "1.6" }}>
+              <CheckCircle2 size={18} style={{ color: "var(--teal)", flexShrink: 0, marginTop: "2px" }} />
+              <div>
+                <strong>SEO & CRO</strong> — Get found, and turn more visitors into enquiries.
+              </div>
+            </li>
+            <li style={{ display: "flex", gap: "12px", alignItems: "flex-start", fontSize: "15px", color: "var(--text)", lineHeight: "1.6" }}>
+              <CheckCircle2 size={18} style={{ color: "var(--teal)", flexShrink: 0, marginTop: "2px" }} />
+              <div>
+                <strong>Meta & Google Ads</strong> — Reach the right Pune customers fast.
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      {/* SECTION 4 — Why Choose Bizy Site */}
+      <section className="section-padding" style={{ background: "var(--white)" }}>
+        <div className="container" style={{ maxWidth: "800px" }}>
+          <div className="text-center">
+            <span className="section-tag">Why Us</span>
+            <h2 className="section-title">Best-in-class work, for a many-sided city.</h2>
+          </div>
+
+          <ul style={{ listStyle: "none", padding: 0, margin: "32px 0 0 0", display: "flex", flexDirection: "column", gap: "16px" }}>
+            {[
+              "We build for Pune's full range, education, IT, manufacturing and local services.",
+              "We understand how to reach both young consumers and industrial buyers.",
+              "We back every project with 500+ websites of experience.",
+              "We speak in outcomes: more admissions, more enquiries, more orders.",
+              "You own your website and data, from day one."
+            ].map((item, idx) => (
+              <li key={idx} style={{ display: "flex", gap: "12px", alignItems: "center", fontSize: "16px", color: "var(--text)", fontWeight: "600" }}>
+                <CheckCircle2 size={20} style={{ color: "var(--teal)", flexShrink: 0 }} />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* SECTION 5 — FAQ */}
+      <section className="section-padding faq-section" style={{ background: "var(--off-white)", borderTop: "1px solid var(--border)" }}>
+        <div className="container">
+          <div className="text-center">
+            <span className="section-tag">FAQ</span>
+            <h2 className="section-title">Common Questions</h2>
+          </div>
+
+          <div className="faq-grid-custom" style={{ marginTop: "40px" }}>
+            {[
+              {
+                q: "How much does a website cost in Pune?",
+                a: "It depends on your business, pages and features. A coaching centre site differs from a manufacturing or e-commerce site. Share your requirement and we will send a clear, no-obligation quote."
+              },
+              {
+                q: "Do you build websites for coaching centres and institutes in Pune?",
+                a: "Yes. Given Pune's strong education scene, we specialise in coaching and education sites that showcase results and make demo bookings and admissions easy."
+              },
+              {
+                q: "Do you work with manufacturers around Chakan and Pimpri-Chinchwad?",
+                a: "Yes. We build B2B and manufacturing sites that showcase capability, certifications and products, and make it easy for serious buyers to request quotes."
+              },
+              {
+                q: "Can you help my Pune business rank on Google?",
+                a: "Yes. Through local SEO and your Google Business Profile, we help you rank for searches across Pune localities and on Google Maps."
+              },
+              {
+                q: "Do you meet clients in person in Pune?",
+                a: "We handle most work smoothly online for speed and convenience. Calls and discussions can be arranged as needed. Location is never a barrier."
+              },
+              {
+                q: "Do I own my website after it is built?",
+                a: "Yes, completely. Your website, content and data are yours from day one, with no lock-in."
+              }
+            ].map((faq, index) => (
+              <div key={index} className="faq-card-custom" style={{ borderBottom: "1px solid var(--border)" }}>
+                <div className="faq-trigger-custom" style={{ display: "flex", width: "100%", justifyContent: "space-between", alignItems: "center", cursor: "default" }}>
+                  <span style={{ textAlign: "left", paddingRight: "16px", fontWeight: "800" }}>{faq.q}</span>
+                </div>
+                <div className="faq-content-custom" style={{ paddingTop: 0 }}>
+                  <p style={{ margin: 0 }}>{faq.a}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 6 — CTA */}
+      <section className="section-padding final-cta-section" style={{ background: "var(--grad-hero)", color: "var(--white)", textAlign: "center" }}>
+        <div className="container">
+          <h2 className="section-title text-white" style={{ fontSize: "clamp(28px, 4vw, 36px)", marginBottom: "16px" }}>
+            Get more customers from your Pune website.
+          </h2>
+          <p className="section-sub text-white" style={{ opacity: 0.9, marginBottom: "32px", maxWidth: "700px", margin: "0 auto 32px", lineHeight: "1.7" }}>
+            Optimize your site structure to connect with Pune's young demographics and corporate decision-makers.
+          </p>
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+            <div style={{ display: "flex", gap: "20px", flexWrap: "wrap", justifyContent: "center" }}>
+              <div className="cta-wrapper">
+                <Link href="/contact?type=quote" className="btn btn-primary" style={{ padding: "14px 32px" }}>
+                  Get My Free Quote →
+                </Link>
+              </div>
+              <div className="cta-wrapper">
+                <Link href="/contact?type=audit" className="btn btn-outline" style={{ padding: "14px 32px", background: "rgba(255,255,255,0.08)", color: "var(--white)", borderColor: "rgba(255,255,255,0.2)" }}>
+                  Get My Free Website Audit →
+                </Link>
+              </div>
+            </div>
+            
+            <p className="cta-microcopy light" style={{ marginTop: "16px", opacity: 0.8 }}>
+              Same-day reply. Real experts. Zero pressure.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </>
+  );
+}

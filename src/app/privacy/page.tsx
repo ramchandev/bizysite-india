@@ -1,96 +1,98 @@
-import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import type { Metadata } from "next";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://bizysite.in"),
+  title: "Privacy Policy | Bizy Site",
+  description: "How Bizy Site collects, uses and protects your information.",
+  alternates: {
+    canonical: "/privacy",
+  },
+};
 
 export default function PrivacyPolicy() {
-  const currentYear = new Date().getFullYear();
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://bizysite.in/privacy/#webpage",
+    "url": "https://bizysite.in/privacy",
+    "name": "Privacy Policy"
+  };
 
   return (
-    <div style={{ backgroundColor: "var(--off-white)", minHeight: "100vh" }}>
-      {/* Mini Nav Header */}
-      <header className="nav-header">
-        <div className="container nav-container">
-          <Link href="/" className="nav-logo">
-            <span>Bizy Site</span>
-            <span className="market-tag">India</span>
-          </Link>
-          <Link href="/" className="btn btn-navy" style={{ display: "inline-flex", gap: "8px", padding: "10px 20px" }}>
-            <ArrowLeft size={16} /> Back to Home
-          </Link>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      
+      <Header />
+
+      <section className="service-hero" style={{ padding: "100px 0 40px 0" }}>
+        <div className="container service-hero-content">
+          <span className="section-tag light" style={{ color: "rgba(255,255,255,0.85)" }}>Legal</span>
+          <h1 className="service-hero-title">Privacy Policy</h1>
+          <p className="service-hero-sub">
+            At Bizy Site, we respect your privacy and are committed to protecting your personal information. This policy explains what we collect, why, and how we keep it safe.
+          </p>
         </div>
-      </header>
+      </section>
 
-      <main className="container section-padding" style={{ maxWidth: "800px" }}>
-        <article className="pain-card" style={{ padding: "40px", backgroundColor: "var(--white)" }}>
-          <span className="section-tag">LEGAL</span>
-          <h1 style={{ fontSize: "32px", marginBottom: "12px", color: "var(--navy)" }}>Privacy Policy</h1>
-          <p style={{ fontSize: "13px", color: "var(--text-muted)", marginBottom: "30px" }}>Last updated: June 28, 2026</p>
+      <section className="section-padding" style={{ background: "var(--white)" }}>
+        <div className="container" style={{ maxWidth: "800px", color: "var(--text)", fontSize: "15px", lineHeight: "1.8" }}>
+          
+          <h3 style={{ fontSize: "20px", color: "var(--navy)", fontWeight: "800", marginTop: "24px", marginBottom: "12px" }}>1. What Information We Collect</h3>
+          <p style={{ color: "var(--text-mid)", marginBottom: "12px" }}>
+            We collect personal and business information that you voluntarily share with us when requesting a free website audit, filling out our contact form, requesting our guide, or contacting us directly:
+          </p>
+          <ul style={{ color: "var(--text-mid)", paddingLeft: "20px", marginBottom: "20px" }}>
+            <li>Name and contact details (including mobile/WhatsApp number and email address).</li>
+            <li>Information about your business (such as website URL, business goals, and industry).</li>
+            <li>Any custom messages, questions, or project files you share with us.</li>
+            <li>Website usage data through cookies and standard analytics to help us improve your browsing experience.</li>
+          </ul>
 
-          <section style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
-            <div>
-              <h3 style={{ marginBottom: "10px", color: "var(--navy)" }}>1. Introduction</h3>
-              <p style={{ fontSize: "14px", color: "var(--text-mid)", lineHeight: "1.6" }}>
-                At Bizy Site India, we are committed to protecting the privacy of our clients and visitors. 
-                This Privacy Policy explains how we collect, use, disclose, and safeguard your information 
-                when you visit our website, submit website audit requests, or contact our sales team.
-              </p>
-            </div>
+          <h3 style={{ fontSize: "20px", color: "var(--navy)", fontWeight: "800", marginTop: "24px", marginBottom: "12px" }}>2. How We Use Your Information</h3>
+          <p style={{ color: "var(--text-mid)", marginBottom: "12px" }}>
+            We use the information we collect to run our business and deliver services responsibly:
+          </p>
+          <ul style={{ color: "var(--text-mid)", paddingLeft: "20px", marginBottom: "20px" }}>
+            <li>To respond to your inquiries, send you requested guides, or prepare your free website audit reports.</li>
+            <li>To discuss recommendations, answer growth questions, and provide professional services.</li>
+            <li>To manage and improve our website structure, usability, and speed performance.</li>
+          </ul>
 
-            <div>
-              <h3 style={{ marginBottom: "10px", color: "var(--navy)" }}>2. Information We Collect</h3>
-              <p style={{ fontSize: "14px", color: "var(--text-mid)", lineHeight: "1.6", marginBottom: "10px" }}>
-                We collect personal and business information that you voluntarily provide to us when requesting a 
-                free website audit. This includes:
-              </p>
-              <ul style={{ fontSize: "14px", color: "var(--text-mid)", paddingLeft: "20px", display: "flex", flexDirection: "column", gap: "6px" }}>
-                <li><strong>Contact Data:</strong> Full name, WhatsApp/Phone number, and email address.</li>
-                <li><strong>Business Metrics:</strong> Business name, current website URL, and primary business goals.</li>
-                <li><strong>Inquiry Context:</strong> Details about your current marketing campaigns, platforms, or general notes.</li>
-              </ul>
-            </div>
+          <h3 style={{ fontSize: "20px", color: "var(--navy)", fontWeight: "800", marginTop: "24px", marginBottom: "12px" }}>3. Data Protection & Sharing</h3>
+          <p style={{ color: "var(--text-mid)", marginBottom: "20px" }}>
+            We implement strong technical and organizational security measures to prevent unauthorized access or loss of data. **We do not sell, rent, or share your personal details with third parties for marketing purposes.** Your details remain strictly private.
+          </p>
 
-            <div>
-              <h3 style={{ marginBottom: "10px", color: "var(--navy)" }}>3. How We Use Your Information</h3>
-              <p style={{ fontSize: "14px", color: "var(--text-mid)", lineHeight: "1.6", marginBottom: "10px" }}>
-                We use the information we collect to:
-              </p>
-              <ul style={{ fontSize: "14px", color: "var(--text-mid)", paddingLeft: "20px", display: "flex", flexDirection: "column", gap: "6px" }}>
-                <li>Compile and deliver your custom website audit report.</li>
-                <li>Reach out to discuss recommendations and answer growth questions.</li>
-                <li>Connect via WhatsApp or email to provide support.</li>
-                <li>Improve our conversion models, templates, and search methodologies.</li>
-              </ul>
-            </div>
+          <h3 style={{ fontSize: "20px", color: "var(--navy)", fontWeight: "800", marginTop: "24px", marginBottom: "12px" }}>4. Cookies & Analytics</h3>
+          <p style={{ color: "var(--text-mid)", marginBottom: "20px" }}>
+            We use standard cookies and tracking tools (like Google Analytics) to review web traffic, load performance, and user interactions. You can configure your browser to reject cookies if you prefer, though some parts of our site may not load optimally.
+          </p>
 
-            <div>
-              <h3 style={{ marginBottom: "10px", color: "var(--navy)" }}>4. Data Security</h3>
-              <p style={{ fontSize: "14px", color: "var(--text-mid)", lineHeight: "1.6" }}>
-                We implement technical and organizational security measures to protect your personal data from 
-                unauthorized access or loss. We do not sell or rent client details to third-party databases. All lead 
-                transmissions are encrypted via SSL.
-              </p>
-            </div>
+          <h3 style={{ fontSize: "20px", color: "var(--navy)", fontWeight: "800", marginTop: "24px", marginBottom: "12px" }}>5. Your Rights & How to Contact Us</h3>
+          <p style={{ color: "var(--text-mid)", marginBottom: "20px" }}>
+            You have the right to request a copy of the information we hold about your business, ask us to correct details, or request that we delete your audit records and personal data. Please contact us at <a href="mailto:info@bizysite.com" style={{ color: "var(--teal)", fontWeight: "700" }}>info@bizysite.com</a> to submit your request.
+          </p>
 
-            <div>
-              <h3 style={{ marginBottom: "10px", color: "var(--navy)" }}>5. Contact Us</h3>
-              <p style={{ fontSize: "14px", color: "var(--text-mid)", lineHeight: "1.6" }}>
-                If you have questions about this policy or want to request removal of your business audit files 
-                from our records, please contact us at <strong>info@bizysite.com</strong>.
-              </p>
-            </div>
-          </section>
-        </article>
-      </main>
+          <h3 style={{ fontSize: "20px", color: "var(--navy)", fontWeight: "800", marginTop: "24px", marginBottom: "12px" }}>6. Updates to This Policy</h3>
+          <p style={{ color: "var(--text-mid)", marginBottom: "20px" }}>
+            We may update this policy periodically to align with changing data protection practices or Indian regulations. We advise checking this page occasionally to stay updated.
+          </p>
 
-      {/* Footer */}
-      <footer className="footer-section" style={{ padding: "40px 0 30px 0", textAlign: "center" }}>
-        <div className="container" style={{ fontSize: "12px", color: "rgba(255, 255, 255, 0.45)" }}>
-          <p style={{ marginBottom: "10px" }} suppressHydrationWarning>© {currentYear} Bizy Site India. All rights reserved.</p>
-          <div style={{ display: "flex", justifyContent: "center", gap: "20px" }}>
-            <Link href="/privacy" style={{ color: "var(--teal)" }}>Privacy Policy</Link>
-            <Link href="/terms" style={{ color: "rgba(255,255,255,0.6)" }}>Terms of Service</Link>
+          <div style={{ background: "var(--off-white)", border: "1px solid var(--border)", borderRadius: "12px", padding: "24px", marginTop: "40px" }}>
+            <p style={{ margin: 0, fontWeight: "600", color: "var(--navy)", fontStyle: "italic", textAlign: "center" }}>
+              We will never sell your details or send you spam. Your information is used only to help you, and to run our business responsibly.
+            </p>
           </div>
+
         </div>
-      </footer>
-    </div>
+      </section>
+
+      <Footer />
+    </>
   );
 }

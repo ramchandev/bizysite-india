@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  appleWebApp: {
+    title: "BizySite India",
+  },
   openGraph: {
     title: "Bizy Site India | Performance-Driven Digital Agency",
     description: "Website Design, SEO, CRO, Paid Ads, and AI Optimization built into every project to generate more traffic, leads, and revenue.",

@@ -254,7 +254,7 @@ function buildCustomerEmailHtml(data: LeadPayload & { submittedAt: string }) {
                 <p style="margin:0 0 14px;color:#64748b;font-size:13px;">
                   Want to fast-track your audit?
                 </p>
-                <a href="https://wa.me/91950072844222?text=Hi%20Bizy%20Site,%20I%20just%20requested%20an%20audit%20and%20would%20like%20to%20speed%20it%20up." style="display:inline-block;background:#25D366;color:#ffffff;text-decoration:none;font-size:14px;font-weight:700;padding:12px 24px;border-radius:10px;box-shadow:0 4px 12px rgba(37,211,102,0.2);">
+                <a href="https://wa.me/919500728442?text=Hi%20Bizy%20Site,%20I%20just%20requested%20an%20audit%20and%20would%20like%20to%20speed%20it%20up." style="display:inline-block;background:#25D366;color:#ffffff;text-decoration:none;font-size:14px;font-weight:700;padding:12px 24px;border-radius:10px;box-shadow:0 4px 12px rgba(37,211,102,0.2);">
                   Chat on WhatsApp
                 </a>
               </div>

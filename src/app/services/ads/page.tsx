@@ -1,341 +1,399 @@
-"use client";
-
-import { useState } from "react";
+import type { Metadata } from "next";
 import Link from "next/link";
-import { Check, ChevronDown, TrendingDown, Target, Zap, BarChart } from "lucide-react";
+import { Check, CheckCircle2, Award, Search, TrendingUp, Sparkles, HelpCircle } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-export default function Ads() {
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
+export const metadata: Metadata = {
+  metadataBase: new URL("https://bizysite.in"),
+  title: "Google & Meta Ads Management in India | Customers Today | Bizy Site",
+  description: "Get ready-to-buy customers to your website now with Google and Meta Ads that are managed to bring real enquiries, not wasted clicks. Get a free ads review.",
+  keywords: "Google Ads management India, Meta Ads agency India, Facebook advertising India, pay per click marketing, lead generation ads",
+  alternates: {
+    canonical: "/services/ads",
+  },
+  openGraph: {
+    title: "Google & Meta Ads Management in India | Customers Today | Bizy Site",
+    description: "Get ready-to-buy customers to your website now with Google and Meta Ads that are managed to bring real enquiries, not wasted clicks. Get a free ads review.",
+    url: "https://bizysite.in/services/ads",
+    siteName: "Bizy Site India",
+    type: "website",
+    locale: "en_IN",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Google & Meta Ads Management in India | Customers Today | Bizy Site",
+    description: "Get ready-to-buy customers to your website now with Google and Meta Ads that are managed to bring real enquiries, not wasted clicks. Get a free ads review.",
+  },
+};
 
-  const faqs = [
-    {
-      q: "What is the minimum budget required to start?",
-      a: "We recommend a minimum media budget of ₹30,000 to ₹50,000 per month for local campaigns, and ₹1,00,000+ per month for national campaigns to gather enough conversion data for optimization."
-    },
-    {
-      q: "Do you run campaigns on our ad account or a new one?",
-      a: "We prefer taking over and auditing your existing Google and Meta ad accounts. This preserves your historical conversion pixel data, which is highly valuable for audience targeting."
-    },
-    {
-      q: "Do we own the ad accounts and creative assets?",
-      a: "Yes, 100%. You own your ad accounts, billing methods, and creative assets. There is no account lock-in. If you choose to stop working with us, you retain full access."
-    },
-    {
-      q: "Can you handle both Google and Meta Ads together?",
-      a: "Yes. In fact, we recommend it. A full-funnel approach uses Google Search to capture high-intent buyers looking for you, while Meta Ads build awareness, retarget site visitors, and generate cheap WhatsApp leads."
-    }
-  ];
+export default function Ads() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        "@id": "https://bizysite.in/services/ads/#service",
+        "name": "Meta & Google Ads",
+        "provider": {
+          "@type": "LocalBusiness",
+          "name": "Bizy Site India",
+          "url": "https://bizysite.in"
+        },
+        "description": "Run Google and Meta ad campaigns engineered for lead generation.",
+        "areaServed": {
+          "@type": "Country",
+          "name": "IN"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://bizysite.in/services/ads/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How much should I spend on Google or Meta ads in India?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It depends on your industry, city and goals. We help you start with a sensible budget, prove what works, and scale up only once the ads are bringing profitable enquiries. We never push you to overspend."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How soon will I get enquiries from ads?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Often within the first few days of going live. Unlike SEO, ads can bring customers almost immediately, which is why they pair so well with longer-term efforts."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why are my current ads not working?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Usually one of three reasons: the targeting is off, the keywords are wrong, or the landing page does not convert. We review all three and fix the weakest link."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Should I do Google Ads or Meta Ads?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Google Ads is best for people actively searching for your service. Meta Ads is great for reaching the right people and building demand. The right mix depends on your business, and we help you choose."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you manage the ads or just set them up?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We manage them on an ongoing basis: watching performance, cutting waste, and improving results over time. Ads need regular attention to stay profitable."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Will you also improve my landing page?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. There is no point sending paid traffic to a page that loses visitors. We make sure your landing page is built to convert, so your ad spend actually turns into enquiries."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I need a website to run ads?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A strong landing page or website makes ads far more effective. If you do not have one, we can build it. If you do, we make sure it is ready to convert before we spend on ads."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://bizysite.in/services/ads/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://bizysite.in"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Services",
+            "item": "https://bizysite.in/services"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Meta & Google Ads",
+            "item": "https://bizysite.in/services/ads"
+          }
+        ]
+      }
+    ]
+  };
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      
       <Header />
 
-      {/* Hero */}
+      {/* SECTION 1 — Hero */}
       <section className="service-hero">
         <div className="container service-hero-content">
-          <h1 className="service-hero-title">Stop Paying for Clicks. Start Paying for Leads.</h1>
+          <span className="section-tag light" style={{ color: "rgba(255,255,255,0.85)" }}>Meta & Google Ads</span>
+          <h1 className="service-hero-title">Need customers this week, not next year? Ads put you in front of them today.</h1>
           <p className="service-hero-sub">
-            We run Google and Meta ad campaigns engineered for lead generation, with targeting, dedicated landing pages, and CRO baked in from day one.
+            SEO builds over time. Ads work now. We run Google and Meta (Facebook and Instagram) ads that bring ready-to-buy customers to your website, managed carefully so your money brings enquiries, not just clicks.
           </p>
-          <Link href="/contact" className="btn btn-primary">
-            Get My Free Ads Audit →
-          </Link>
+          <div style={{ display: "flex", gap: "16px", justifyContent: "center", flexWrap: "wrap", marginTop: "24px" }}>
+            <div className="cta-wrapper">
+              <Link href="/contact?type=audit" className="btn btn-primary">
+                Get My Free Ads Review →
+              </Link>
+              <p style={{ fontSize: "11px", color: "rgba(255,255,255,0.7)", marginTop: "6px" }}>See where your ad budget could work harder.</p>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Trust bar */}
-      <section className="trust-strip" style={{ background: "var(--off-white)", borderBottom: "1px solid var(--border)", textAlign: "center", padding: "16px 20px" }}>
-        <p style={{ fontWeight: "700", color: "var(--navy)", fontSize: "14px" }}>
-          ₹10+ Cr in ad spend managed · Avg. cost-per-lead reduced by 42% · Google Partner
-        </p>
-      </section>
-
-      {/* Problem / Agitation */}
+      {/* SECTION 2 — Why It Matters */}
       <section className="section-padding" style={{ background: "var(--white)" }}>
-        <div className="container">
-          <div className="text-center">
-            <span className="section-tag">The Budget Leak</span>
-            <h2 className="section-title">Running Ads? Here's Why They're Underperforming.</h2>
-            <p className="section-sub">Most ad campaigns leak money because they ignore post-click design.</p>
-          </div>
-
-          <div className="comparison-matrix-wrapper">
-            <table className="comparison-matrix">
-              <thead>
-                <tr>
-                  <th>Common Issue</th>
-                  <th>Why It Happens</th>
-                  <th>What It Costs You</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>High Cost Per Lead</strong></td>
-                  <td>Broad targeting, bidding on wrong keywords, poor quality scores.</td>
-                  <td>Budget wasted on unqualified clicks from people who will never buy.</td>
-                </tr>
-                <tr>
-                  <td><strong>Clicks but No Conversions</strong></td>
-                  <td>Sending paid traffic to a generic homepage instead of a dedicated landing page.</td>
-                  <td>You pay Google/Meta for the visit, but make zero revenue.</td>
-                </tr>
-                <tr>
-                  <td><strong>No Visibility into ROI</strong></td>
-                  <td>Poor conversion tracking setup, missing GA4 parameters, no CRM loop.</td>
-                  <td>You don't know which keyword or creative is driving actual sales.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      {/* What We Do - Google Ads */}
-      <section className="section-padding" style={{ background: "var(--off-white)" }}>
-        <div className="container">
-          <div className="contact-section-split">
-            <div>
-              <span className="section-tag">Google Ads</span>
-              <h2 className="section-title">Intent-Based Google Campaigns</h2>
-              <p style={{ color: "var(--text-mid)", fontSize: "14px", lineHeight: "1.6", marginBottom: "20px" }}>
-                We capture users actively searching for your service. By targeting high-intent keywords, managing negative lists, and writing benefit-focused copy, we drive buyers ready to purchase.
-              </p>
-              <ul className="outcome-list">
-                <li className="outcome-item"><Check size={14} /> <span>Google Search & Performance Max campaigns</span></li>
-                <li className="outcome-item"><Check size={14} /> <span>Negative keyword pruning to stop budget leaks</span></li>
-                <li className="outcome-item"><Check size={14} /> <span>GTM & GA4 conversion tracking configuration</span></li>
-                <li className="outcome-item"><Check size={14} /> <span>YouTube video and Display remarketing setups</span></li>
-              </ul>
-            </div>
-            
-            <div style={{ background: "var(--white)", border: "1px solid var(--border)", borderRadius: "16px", padding: "32px" }}>
-              <span className="market-tag">Google Partner</span>
-              <h3 style={{ fontSize: "20px", color: "var(--navy)", fontWeight: "800", marginTop: "16px", marginBottom: "8px" }}>Search Capture</h3>
-              <p style={{ fontSize: "13px", color: "var(--text-mid)" }}>We align search query mapping to local and national user intent, ensuring your ads show up when intent is highest.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* What We Do - Meta Ads */}
-      <section className="section-padding" style={{ background: "var(--white)" }}>
-        <div className="container">
-          <div className="contact-section-split">
-            <div style={{ background: "var(--off-white)", border: "1px solid var(--border)", borderRadius: "16px", padding: "32px" }}>
-              <span className="market-tag" style={{ background: "rgba(27,63,122,0.1)", color: "var(--navy)" }}>Social Funnels</span>
-              <h3 style={{ fontSize: "20px", color: "var(--navy)", fontWeight: "800", marginTop: "16px", marginBottom: "8px" }}>WhatsApp Lead Generation</h3>
-              <p style={{ fontSize: "13px", color: "var(--text-mid)" }}>For the Indian market, native lead forms and direct-to-WhatsApp ad triggers generate highly active and immediate conversation leads.</p>
-            </div>
-
-            <div>
-              <span className="section-tag">Meta Ads</span>
-              <h2 className="section-title">Audience-Driven Meta Campaigns</h2>
-              <p style={{ color: "var(--text-mid)", fontSize: "14px", lineHeight: "1.6", marginBottom: "20px" }}>
-                We run campaigns across Facebook and Instagram to build awareness, educate target demographics, retarget website visitors, and drive cheap lead signups.
-              </p>
-              <ul className="outcome-list">
-                <li className="outcome-item"><Check size={14} /> <span>Native Meta Lead Forms & Landing Page setups</span></li>
-                <li className="outcome-item"><Check size={14} /> <span>WhatsApp integration for instant sales chat triggers</span></li>
-                <li className="outcome-item"><Check size={14} /> <span>Creative strategy: Carousels, stat-pills, and video hooks</span></li>
-                <li className="outcome-item"><Check size={14} /> <span>Retargeting stacks and lookalike audience mapping</span></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* The Bizy Site Difference */}
-      <section className="section-padding" style={{ background: "var(--off-white)" }}>
-        <div className="container">
-          <div className="text-center">
-            <span className="section-tag">Full Funnel Integration</span>
-            <h2 className="section-title">We Don't Just Run Ads. We Build the Full Funnel.</h2>
-            <p className="section-sub">Typical agencies link ads to your homepage and blame your product. We optimize the entire path.</p>
-          </div>
-
-          <div style={{ background: "var(--white)", border: "1px solid var(--border)", padding: "32px", borderRadius: "20px", marginTop: "32px" }}>
-            <div className="success-roadmap" style={{ maxWidth: "100%", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", display: "grid", gap: "20px" }}>
-              <div style={{ textAlign: "center", padding: "16px" }}>
-                <span style={{ fontSize: "12px", color: "var(--teal-dark)", fontWeight: "bold" }}>STEP 1</span>
-                <h4 style={{ margin: "10px 0" }}>High-Intent Ads</h4>
-                <p style={{ fontSize: "12px", color: "var(--text-mid)" }}>Google Search & Meta Ads targeted strictly to buyer intent.</p>
-              </div>
-              <div style={{ textAlign: "center", padding: "16px", borderLeft: "1px solid var(--border)" }}>
-                <span style={{ fontSize: "12px", color: "var(--teal-dark)", fontWeight: "bold" }}>STEP 2</span>
-                <h4 style={{ margin: "10px 0" }}>Dedicated Page</h4>
-                <p style={{ fontSize: "12px", color: "var(--text-mid)" }}>Light, mobile-first landing page with clear CTA hierarchies.</p>
-              </div>
-              <div style={{ textAlign: "center", padding: "16px", borderLeft: "1px solid var(--border)" }}>
-                <span style={{ fontSize: "12px", color: "var(--teal-dark)", fontWeight: "bold" }}>STEP 3</span>
-                <h4 style={{ margin: "10px 0" }}>Lead Capture</h4>
-                <p style={{ fontSize: "12px", color: "var(--text-mid)" }}>Low-friction forms and WhatsApp chat hooks routing instantly.</p>
-              </div>
-              <div style={{ textAlign: "center", padding: "16px", borderLeft: "1px solid var(--border)" }}>
-                <span style={{ fontSize: "12px", color: "var(--teal-dark)", fontWeight: "bold" }}>STEP 4</span>
-                <h4 style={{ margin: "10px 0" }}>CRM & Analytics</h4>
-                <p style={{ fontSize: "12px", color: "var(--text-mid)" }}>GA4 tracking loop measuring exact keyword-to-sale attribution.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Ad + CRO Bundle Callout */}
-      <section className="section-padding" style={{ background: "var(--navy-dark)", color: "var(--white)" }}>
         <div className="container" style={{ maxWidth: "800px", textAlign: "center" }}>
-          <span className="section-tag light">Multiplied ROI</span>
-          <h2 className="section-title text-white">Ads Work Better When Your Landing Page Is Built to Convert.</h2>
-          <p style={{ color: "rgba(255, 255, 255, 0.8)", fontSize: "15px", lineHeight: "1.7", marginBottom: "24px" }}>
-            If your landing page is clunky or slow, visitors leave instantly. Combining Ads with CRO ensures that every rupee you spend driving a click has a 3× higher chance of turning into a lead.
+          <span className="section-tag">Instant Reach</span>
+          <h2 className="section-title">Two ways customers find you. One is instant.</h2>
+          <p style={{ color: "var(--text-mid)", fontSize: "16px", lineHeight: "1.8", marginBottom: "24px" }}>
+            When someone in Delhi searches "emergency plumber near me," the businesses at the very top, marked as ads, get the call first. They did not wait months to rank. They paid to be there at the exact moment a customer needed them.
           </p>
-          <Link href="/contact" className="btn btn-primary">
-            Ask us about the Ads + CRO bundle →
-          </Link>
+          <p style={{ color: "var(--text-mid)", fontSize: "16px", lineHeight: "1.8" }}>
+            That is the power of ads: you appear right when someone is ready to buy. Google Ads catches people actively searching. Meta Ads puts you in front of the right people while they scroll Instagram and Facebook. Used well, both bring enquiries fast.
+          </p>
         </div>
       </section>
 
-      {/* Platforms We Work With */}
+      {/* SECTION 3 — Analogy */}
+      <section className="section-padding" style={{ background: "var(--off-white)" }}>
+        <div className="container" style={{ maxWidth: "800px", textAlign: "center" }}>
+          <span className="section-tag">The Analogy</span>
+          <h2 className="section-title">Ads are like a stall at the busiest junction in town.</h2>
+          <p style={{ color: "var(--text-mid)", fontSize: "16px", lineHeight: "1.8", marginBottom: "20px" }}>
+            SEO is like building a reputation so people slowly start coming to your shop. It works, but it takes time. Ads are like setting up a bright stall at the busiest junction in the city, today. The crowd is already there. You just have to show up where they are looking.
+          </p>
+          <p style={{ color: "var(--navy)", fontSize: "16px", fontWeight: "700", lineHeight: "1.8" }}>
+            The catch: a stall in a busy spot costs money for every day you run it. So it must be set up well, or you pay for footfall that never buys. That is where careful management makes all the difference, and it is what we do.
+          </p>
+        </div>
+      </section>
+
+      {/* SECTION 4 — The Problem We Fix */}
       <section className="section-padding" style={{ background: "var(--white)" }}>
-        <div className="container">
-          <div className="text-center">
-            <span className="section-tag">Supported Channels</span>
-            <h2 className="section-title">Platforms We Manage</h2>
-          </div>
-          <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "16px", marginTop: "32px" }}>
-            <span className="filter-tab active">Google Search</span>
-            <span className="filter-tab active">Google Display</span>
-            <span className="filter-tab active">YouTube Ads</span>
-            <span className="filter-tab active">Facebook Ads</span>
-            <span className="filter-tab active">Instagram Ads</span>
-            <span className="filter-tab active">WhatsApp Ads</span>
-          </div>
+        <div className="container" style={{ maxWidth: "800px", textAlign: "center" }}>
+          <span className="section-tag">Wasted Budgets</span>
+          <h2 className="section-title">Most ad budgets in India are quietly wasted.</h2>
+          <p style={{ color: "var(--text-mid)", fontSize: "16px", lineHeight: "1.8", marginBottom: "20px" }}>
+            Many businesses run ads and see little return. The money goes to the wrong audience, the wrong keywords, or a slow landing page that loses the visitor after the click. The ad works, but the website does not convert, so the budget burns.
+          </p>
+          <p style={{ color: "var(--navy)", fontSize: "16px", fontWeight: "700", lineHeight: "1.8" }}>
+            We fix both sides: sharp targeting so the right people click, and a strong landing experience so those clicks become enquiries.
+          </p>
         </div>
       </section>
 
-      {/* Reporting & Transparency */}
+      {/* SECTION 5 — What We Do */}
       <section className="section-padding" style={{ background: "var(--off-white)" }}>
         <div className="container">
           <div className="text-center">
-            <span className="section-tag">Transparency</span>
-            <h2 className="section-title">Clean Reporting. No Hidden Fees.</h2>
-            <p className="section-sub">We believe in absolute transparency and direct account ownership.</p>
+            <span className="section-tag">Capabilities</span>
+            <h2 className="section-title">Ads managed to bring enquiries, not just clicks.</h2>
+            <p className="section-sub" style={{ marginBottom: "40px" }}>
+              Profitable ads need two things working together: smart campaign choices, and the technical setup that makes every rupee measurable and every click land well.
+            </p>
           </div>
 
-          <div className="features-grid">
-            <div className="feature-box">
-              <h3 className="feature-box-title">Account Ownership</h3>
-              <p style={{ fontSize: "13px", color: "var(--text-mid)" }}>You retain full administrative ownership of your ad accounts. We operate as certified partner managers.</p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "30px", marginBottom: "40px" }}>
+            {/* Campaign Work */}
+            <div style={{ background: "var(--white)", border: "1px solid var(--border)", borderRadius: "var(--radius-lg)", padding: "32px", boxShadow: "var(--shadow-sm)" }} className="pain-card">
+              <h3 style={{ fontSize: "20px", fontWeight: "800", color: "var(--navy)", marginBottom: "20px" }}>The campaign work you see</h3>
+              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "16px" }}>
+                <li style={{ display: "flex", gap: "10px", fontSize: "14px", color: "var(--text)", lineHeight: "1.5" }}>
+                  <CheckCircle2 size={16} style={{ color: "var(--teal)", flexShrink: 0, marginTop: "2px" }} />
+                  <div>
+                    <strong>Google Search Ads</strong> — Appear right when people search for what you offer.
+                  </div>
+                </li>
+                <li style={{ display: "flex", gap: "10px", fontSize: "14px", color: "var(--text)", lineHeight: "1.5" }}>
+                  <CheckCircle2 size={16} style={{ color: "var(--teal)", flexShrink: 0, marginTop: "2px" }} />
+                  <div>
+                    <strong>Meta Ads (Facebook & Instagram)</strong> — Reach the right people as they scroll.
+                  </div>
+                </li>
+                <li style={{ display: "flex", gap: "10px", fontSize: "14px", color: "var(--text)", lineHeight: "1.5" }}>
+                  <CheckCircle2 size={16} style={{ color: "var(--teal)", flexShrink: 0, marginTop: "2px" }} />
+                  <div>
+                    <strong>Sharp targeting</strong> — Your city, your audience, your ideal customer. No wasted spend.
+                  </div>
+                </li>
+                <li style={{ display: "flex", gap: "10px", fontSize: "14px", color: "var(--text)", lineHeight: "1.5" }}>
+                  <CheckCircle2 size={16} style={{ color: "var(--teal)", flexShrink: 0, marginTop: "2px" }} />
+                  <div>
+                    <strong>Ongoing optimisation</strong> — We cut what does not work and double down on what does.
+                  </div>
+                </li>
+              </ul>
             </div>
-            <div className="feature-box">
-              <h3 className="feature-box-title">Weekly Performance Reports</h3>
-              <p style={{ fontSize: "13px", color: "var(--text-mid)" }}>No convoluted jargon. We send weekly video briefings detailing spend, lead counts, and cost-per-lead.</p>
+
+            {/* Technical Setup */}
+            <div style={{ background: "var(--white)", border: "1px solid var(--border)", borderRadius: "var(--radius-lg)", padding: "32px", boxShadow: "var(--shadow-sm)" }} className="pain-card">
+              <h3 style={{ fontSize: "20px", fontWeight: "800", color: "var(--navy)", marginBottom: "20px" }}>The technical setup we handle behind the scenes</h3>
+              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "16px" }}>
+                <li style={{ display: "flex", gap: "10px", fontSize: "14px", color: "var(--text)", lineHeight: "1.5" }}>
+                  <CheckCircle2 size={16} style={{ color: "var(--teal)", flexShrink: 0, marginTop: "2px" }} />
+                  <div>
+                    <strong>Conversion tracking and pixels</strong> — Google and Meta tracking set up correctly, so you see real leads and cost per enquiry, not vanity clicks.
+                  </div>
+                </li>
+                <li style={{ display: "flex", gap: "10px", fontSize: "14px", color: "var(--text)", lineHeight: "1.5" }}>
+                  <CheckCircle2 size={16} style={{ color: "var(--teal)", flexShrink: 0, marginTop: "2px" }} />
+                  <div>
+                    <strong>Strong, fast landing pages</strong> — Where the click turns into a call or form, built to load quickly and convert.
+                  </div>
+                </li>
+                <li style={{ display: "flex", gap: "10px", fontSize: "14px", color: "var(--text)", lineHeight: "1.5" }}>
+                  <CheckCircle2 size={16} style={{ color: "var(--teal)", flexShrink: 0, marginTop: "2px" }} />
+                  <div>
+                    <strong>Audience and retargeting setup</strong> — Reaching people who showed interest but did not enquire yet.
+                  </div>
+                </li>
+                <li style={{ display: "flex", gap: "10px", fontSize: "14px", color: "var(--text)", lineHeight: "1.5" }}>
+                  <CheckCircle2 size={16} style={{ color: "var(--teal)", flexShrink: 0, marginTop: "2px" }} />
+                  <div>
+                    <strong>Clean measurement</strong> — Analytics connected properly, so every rupee is accounted for.
+                  </div>
+                </li>
+              </ul>
             </div>
-            <div className="feature-box">
-              <h3 className="feature-box-title">Live Looker Studio Dashboard</h3>
-              <p style={{ fontSize: "13px", color: "var(--text-mid)" }}>Access a live data link showing impressions, clicks, lead attributions, and campaign spent metrics in real-time.</p>
-            </div>
+          </div>
+
+          <div style={{ textAlign: "center", marginTop: "32px", maxWidth: "700px", margin: "32px auto 0" }}>
+            <p style={{ fontSize: "13px", color: "var(--text-muted)", lineHeight: "1.6" }}>
+              You do not need to touch the technical side. You just need to know your budget is spent on the right people and fully tracked, so you always know what you are getting back.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Case Study */}
+      {/* SECTION 6 — What You Get */}
       <section className="section-padding" style={{ background: "var(--white)" }}>
-        <div className="container">
-          <div className="text-center">
-            <span className="section-tag">Ad Performance Case</span>
-            <h2 className="section-title">Real Lead Generation Results</h2>
-          </div>
-
-          <div style={{ background: "var(--off-white)", padding: "40px", borderRadius: "20px", border: "1px solid var(--border)", marginTop: "32px" }}>
-            <div className="contact-section-split">
-              <div>
-                <span className="market-tag" style={{ marginLeft: 0 }}>EdTech Brand</span>
-                <h3 style={{ fontSize: "28px", color: "var(--navy)", fontWeight: "800", margin: "16px 0" }}>
-                  EdTech: Lead Volume Multiplied via Ads + CRO Redesign
-                </h3>
-                <p style={{ color: "var(--text-mid)", fontSize: "14px", lineHeight: "1.6", marginBottom: "20px" }}>
-                  By implementing custom landing pages, optimizing Google Search match terms, and setting up instant WhatsApp conversions, we scaled their inquiry pipeline.
-                </p>
-                <div style={{ display: "flex", gap: "24px" }}>
-                  <div>
-                    <span style={{ fontSize: "11px", color: "var(--text-muted)", fontWeight: "bold" }}>BUDGET / MONTH</span>
-                    <p style={{ fontSize: "24px", color: "var(--navy)", fontWeight: "800" }}>₹2,00,000</p>
-                  </div>
-                  <div>
-                    <span style={{ fontSize: "11px", color: "var(--text-muted)", fontWeight: "bold" }}>LEAD INCREASE</span>
-                    <p style={{ fontSize: "24px", color: "var(--green)", fontWeight: "800" }}>3.4× More Leads</p>
-                  </div>
-                </div>
-              </div>
-              
-              <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", background: "var(--white)", border: "1px solid var(--border)", borderRadius: "12px", padding: "24px" }}>
-                <div style={{ display: "flex", justifyContent: "space-between", borderBottom: "1px solid var(--border)", paddingBottom: "12px", marginBottom: "12px" }}>
-                  <span style={{ color: "var(--text-muted)", fontSize: "13px" }}>Before Cost-Per-Lead</span>
-                  <span style={{ fontWeight: "bold", color: "#EF4444" }}>₹1,200</span>
-                </div>
-                <div style={{ display: "flex", justifyContent: "space-between", color: "var(--green)", fontWeight: "bold" }}>
-                  <span style={{ fontSize: "14px" }}>After Cost-Per-Lead</span>
-                  <span style={{ fontWeight: "900", fontSize: "18px" }}>₹380</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonial */}
-      <section className="section-padding" style={{ background: "var(--off-white)", textAlign: "center" }}>
         <div className="container" style={{ maxWidth: "800px" }}>
-          <span className="section-tag">Client Feedback</span>
-          <p style={{ fontSize: "18px", fontStyle: "italic", fontWeight: "600", color: "var(--navy)", marginBottom: "20px" }}>
-            "Bizy Site rebuilt our search ad campaign and pointed it to optimized landing pages. Our monthly lead counts grew from 40 to 145 within two months, and lead quality is the highest we've seen."
-          </p>
-          <h4 style={{ color: "var(--navy)", fontWeight: "800" }}>Mohit Chawla, CEO</h4>
-          <p style={{ fontSize: "12px", color: "var(--text-muted)", fontWeight: "600" }}>Industrial Supply Brand (Gurugram)</p>
+          <div className="text-center">
+            <span className="section-tag">Ads Outcomes</span>
+            <h2 className="section-title">The result.</h2>
+          </div>
+
+          <ul style={{ listStyle: "none", padding: 0, margin: "32px 0 0 0", display: "flex", flexDirection: "column", gap: "16px" }}>
+            {[
+              "Enquiries coming in within days, not months",
+              "Your budget spent on people likely to buy, not random clicks",
+              "Clear numbers, so you know exactly what you are getting back",
+              "A trusted team watching your spend like it is their own money"
+            ].map((item, idx) => (
+              <li key={idx} style={{ display: "flex", gap: "12px", alignItems: "center", fontSize: "16px", color: "var(--text)", fontWeight: "600" }}>
+                <CheckCircle2 size={20} style={{ color: "var(--teal)", flexShrink: 0 }} />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
-      {/* FAQs */}
-      <section className="section-padding" style={{ background: "var(--white)" }}>
+      {/* SECTION 7 — FAQ */}
+      <section className="section-padding faq-section" style={{ background: "var(--off-white)", borderTop: "1px solid var(--border)" }}>
         <div className="container">
           <div className="text-center">
             <span className="section-tag">FAQ</span>
-            <h2 className="section-title">Common Questions</h2>
+            <h2 className="section-title">Questions people ask us before getting started</h2>
           </div>
 
-          <div className="faq-grid-custom" style={{ marginTop: "32px" }}>
-            {faqs.map((faq, idx) => (
-              <div key={idx} className="faq-card-custom">
-                <button 
-                  className="faq-trigger-custom"
-                  onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
+          <div className="faq-grid-custom" style={{ marginTop: "40px" }}>
+            {[
+              {
+                q: "How much should I spend on Google or Meta ads in India?",
+                a: "It depends on your industry, city and goals. We help you start with a sensible budget, prove what works, and scale up only once the ads are bringing profitable enquiries. We never push you to overspend."
+              },
+              {
+                q: "How soon will I get enquiries from ads?",
+                a: "Often within the first few days of going live. Unlike SEO, ads can bring customers almost immediately, which is why they pair so well with longer-term efforts."
+              },
+              {
+                q: "Why are my current ads not working?",
+                a: "Usually one of three reasons: the targeting is off, the keywords are wrong, or the landing page does not convert. We review all three and fix the weakest link."
+              },
+              {
+                q: "Should I do Google Ads or Meta Ads?",
+                a: "Google Ads is best for people actively searching for your service. Meta Ads is great for reaching the right people and building demand. The right mix depends on your business, and we help you choose."
+              },
+              {
+                q: "Do you manage the ads or just set them up?",
+                a: "We manage them on an ongoing basis: watching performance, cutting waste, and improving results over time. Ads need regular attention to stay profitable."
+              },
+              {
+                q: "Will you also improve my landing page?",
+                a: "Yes. There is no point sending paid traffic to a page that loses visitors. We make sure your landing page is built to convert, so your ad spend actually turns into enquiries."
+              },
+              {
+                q: "Do I need a website to run ads?",
+                a: "A strong landing page or website makes ads far more effective. If you do not have one, we can build it. If you do, we make sure it is ready to convert before we spend on ads."
+              }
+            ].map((faq, index) => (
+              <div key={index} className="faq-card-custom" style={{ borderBottom: "1px solid var(--border)" }}>
+                <div 
+                  className="faq-trigger-custom" 
+                  style={{ display: "flex", width: "100%", justifyContent: "space-between", alignItems: "center", cursor: "default" }}
                 >
-                  <span>{faq.q}</span>
-                  <ChevronDown size={18} style={{ transform: openFaq === idx ? "rotate(180deg)" : "none", transition: "transform 0.2s" }} />
-                </button>
-                {openFaq === idx && (
-                  <div className="faq-content-custom">
-                    <p>{faq.a}</p>
-                  </div>
-                )}
+                  <span style={{ textAlign: "left", paddingRight: "16px", fontWeight: "800" }}>{faq.q}</span>
+                </div>
+                <div className="faq-content-custom" style={{ paddingTop: 0 }}>
+                  <p style={{ margin: 0 }}>{faq.a}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Block */}
-      <section className="section-padding" style={{ background: "var(--grad-hero)", color: "var(--white)", textAlign: "center" }}>
+      {/* SECTION 8 — CTA */}
+      <section className="section-padding final-cta-section" style={{ background: "var(--grad-hero)", color: "var(--white)", textAlign: "center" }}>
         <div className="container">
-          <h2 className="section-title text-white">Let's Make Your Ad Budget Work Harder.</h2>
-          <p className="section-sub text-white" style={{ opacity: 0.9 }}>
-            Get a free audit of your current Google or Meta campaigns. We'll show you exactly where the leaks are.
+          <h2 className="section-title text-white" style={{ fontSize: "clamp(28px, 4vw, 36px)", marginBottom: "16px" }}>
+            Get customers knocking this week.
+          </h2>
+          <p className="section-sub text-white" style={{ opacity: 0.9, marginBottom: "32px", maxWidth: "700px", margin: "0 auto 32px", lineHeight: "1.7" }}>
+            Whether you are starting fresh or fixing what you have, the first step is the same: a quick, honest conversation.
           </p>
-          <Link href="/contact" className="btn btn-primary" style={{ padding: "16px 36px" }}>
-            Get My Free Ads Audit →
-          </Link>
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+            <div style={{ display: "flex", gap: "20px", flexWrap: "wrap", justifyContent: "center" }}>
+              <div className="cta-wrapper">
+                <Link href="/contact?type=audit" className="btn btn-primary" style={{ padding: "14px 32px" }}>
+                  Get My Free Ads Review →
+                </Link>
+              </div>
+              <div className="cta-wrapper">
+                <Link href="/contact?type=quote" className="btn btn-outline" style={{ padding: "14px 32px", background: "rgba(255,255,255,0.08)", color: "var(--white)", borderColor: "rgba(255,255,255,0.2)" }}>
+                  Get My Free Quote →
+                </Link>
+              </div>
+            </div>
+            
+            <p className="cta-microcopy light" style={{ marginTop: "16px", opacity: 0.8 }}>
+              Same-day reply. Real experts. Zero pressure.
+            </p>
+          </div>
         </div>
       </section>
 

@@ -1,90 +1,91 @@
-import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import type { Metadata } from "next";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://bizysite.in"),
+  title: "Terms & Conditions | Bizy Site",
+  description: "The terms that govern the use of the Bizy Site website and services.",
+  alternates: {
+    canonical: "/terms",
+  },
+};
 
 export default function TermsOfService() {
-  const currentYear = new Date().getFullYear();
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://bizysite.in/terms/#webpage",
+    "url": "https://bizysite.in/terms",
+    "name": "Terms & Conditions"
+  };
 
   return (
-    <div style={{ backgroundColor: "var(--off-white)", minHeight: "100vh" }}>
-      {/* Mini Nav Header */}
-      <header className="nav-header">
-        <div className="container nav-container">
-          <Link href="/" className="nav-logo">
-            <span>Bizy Site</span>
-            <span className="market-tag">India</span>
-          </Link>
-          <Link href="/" className="btn btn-navy" style={{ display: "inline-flex", gap: "8px", padding: "10px 20px" }}>
-            <ArrowLeft size={16} /> Back to Home
-          </Link>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      
+      <Header />
+
+      <section className="service-hero" style={{ padding: "100px 0 40px 0" }}>
+        <div className="container service-hero-content">
+          <span className="section-tag light" style={{ color: "rgba(255,255,255,0.85)" }}>Legal</span>
+          <h1 className="service-hero-title">Terms & Conditions</h1>
+          <p className="service-hero-sub">
+            These terms govern your use of the Bizy Site website and the services we provide. By using our site or engaging our services, you agree to these terms.
+          </p>
         </div>
-      </header>
+      </section>
 
-      <main className="container section-padding" style={{ maxWidth: "800px" }}>
-        <article className="pain-card" style={{ padding: "40px", backgroundColor: "var(--white)" }}>
-          <span className="section-tag">LEGAL</span>
-          <h1 style={{ fontSize: "32px", marginBottom: "12px", color: "var(--navy)" }}>Terms of Service</h1>
-          <p style={{ fontSize: "13px", color: "var(--text-muted)", marginBottom: "30px" }}>Last updated: June 28, 2026</p>
+      <section className="section-padding" style={{ background: "var(--white)" }}>
+        <div className="container" style={{ maxWidth: "800px", color: "var(--text)", fontSize: "15px", lineHeight: "1.8" }}>
+          
+          <h3 style={{ fontSize: "20px", color: "var(--navy)", fontWeight: "800", marginTop: "24px", marginBottom: "12px" }}>1. Use of Our Website</h3>
+          <p style={{ color: "var(--text-mid)", marginBottom: "20px" }}>
+            You agree to use this website solely for legitimate inquiries, requests for information, and reading educational content. Any unauthorized crawling, framing, or scraping of content is prohibited.
+          </p>
 
-          <section style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
-            <div>
-              <h3 style={{ marginBottom: "10px", color: "var(--navy)" }}>1. Agreement to Terms</h3>
-              <p style={{ fontSize: "14px", color: "var(--text-mid)", lineHeight: "1.6" }}>
-                By accessing our website, requesting a free website audit, or engaging Bizy Site India for 
-                digital marketing, design, or search optimization services, you agree to be bound by these 
-                Terms of Service.
-              </p>
-            </div>
+          <h3 style={{ fontSize: "20px", color: "var(--navy)", fontWeight: "800", marginTop: "24px", marginBottom: "12px" }}>2. Our Services & Scope</h3>
+          <p style={{ color: "var(--text-mid)", marginBottom: "20px" }}>
+            We provide performance-driven website design, search engine optimization (SEO), answer/generative search visibility (AEO/GEO), paid ads management, and social media management. Specific deliverables, pricing, and timelines are governed by separate project proposals or Service Level Agreements (SLAs).
+          </p>
 
-            <div>
-              <h3 style={{ marginBottom: "10px", color: "var(--navy)" }}>2. Service Engagements</h3>
-              <p style={{ fontSize: "14px", color: "var(--text-mid)", lineHeight: "1.6" }}>
-                Bizy Site India provides performance-driven website design, Conversion Rate Optimization (CRO), 
-                Search Engine Optimization (SEO), Answer Engine Optimization (AEO), Generative Engine Optimization (GEO), 
-                and paid Google & Meta ad management. Service details, timelines, deliverables, and fees are defined 
-                separately in custom Service Level Agreements (SLAs) or project proposals.
-              </p>
-            </div>
+          <h3 style={{ fontSize: "20px", color: "var(--navy)", fontWeight: "800", marginTop: "24px", marginBottom: "12px" }}>3. Quotes, Payments & Invoicing (GST)</h3>
+          <p style={{ color: "var(--text-mid)", marginBottom: "20px" }}>
+            All quotes are provided on an individual project basis. Invoices will be raised electronically and will carry applicable Goods and Services Tax (GST). Our registered GST number is **33AAPCM5658N1ZP**. Payments must be made via bank transfer or approved digital corporate channels as specified on invoices.
+          </p>
 
-            <div>
-              <h3 style={{ marginBottom: "10px", color: "var(--navy)" }}>3. Free Audits</h3>
-              <p style={{ fontSize: "14px", color: "var(--text-mid)", lineHeight: "1.6" }}>
-                Our website audit report is a free analysis provided for educational and sales purposes. While we strive for 
-                highest accuracy, audits are based on external crawl diagnostics and represent our professional opinion 
-                at the time of review. We guarantee no specific conversion lifts or ranking heights based solely on the audit report.
-              </p>
-            </div>
+          <h3 style={{ fontSize: "20px", color: "var(--navy)", fontWeight: "800", marginTop: "24px", marginBottom: "12px" }}>4. Project Timelines & Client Responsibilities</h3>
+          <p style={{ color: "var(--text-mid)", marginBottom: "20px" }}>
+            We aim to deliver all projects within the agreed-upon schedules. Timely delivery is dependent on the client providing necessary content assets, access coordinates, and feedback. Delays in supplying these assets may result in adjustment of final completion dates.
+          </p>
 
-            <div>
-              <h3 style={{ marginBottom: "10px", color: "var(--navy)" }}>4. Intellectual Property</h3>
-              <p style={{ fontSize: "14px", color: "var(--text-mid)", lineHeight: "1.6" }}>
-                Upon complete payment of project invoices, the client owns full intellectual property of custom code, copy layouts, 
-                and design graphics developed for their website. Bizy Site India retains ownership of standard base templates, 
-                underlying software libraries, and optimization patterns used in the delivery of services.
-              </p>
-            </div>
+          <h3 style={{ fontSize: "20px", color: "var(--navy)", fontWeight: "800", marginTop: "24px", marginBottom: "12px" }}>5. Website Ownership</h3>
+          <p style={{ color: "var(--text-mid)", marginBottom: "20px" }}>
+            Clients own their custom website designs, written copy layouts, and custom database integrations completely upon full payment of the project invoice. Bizy Site retains rights to pre-existing base templates, libraries, and frameworks.
+          </p>
 
-            <div>
-              <h3 style={{ marginBottom: "10px", color: "var(--navy)" }}>5. Governing Law</h3>
-              <p style={{ fontSize: "14px", color: "var(--text-mid)", lineHeight: "1.6" }}>
-                These Terms of Service and any project dispute shall be governed by and construed in accordance with the laws of 
-                India. Any legal proceedings shall be subject to the exclusive jurisdiction of the courts located in Bengaluru, 
-                Karnataka, India.
-              </p>
-            </div>
-          </section>
-        </article>
-      </main>
+          <h3 style={{ fontSize: "20px", color: "var(--navy)", fontWeight: "800", marginTop: "24px", marginBottom: "12px" }}>6. Limitation of Liability</h3>
+          <p style={{ color: "var(--text-mid)", marginBottom: "20px" }}>
+            While we build high-performing websites and search campaigns, we do not guarantee specific lead volumes, conversion ratios, or search ranking heights, as these are dependent on external search engines, market competition, and customer behaviors.
+          </p>
 
-      {/* Footer */}
-      <footer className="footer-section" style={{ padding: "40px 0 30px 0", textAlign: "center" }}>
-        <div className="container" style={{ fontSize: "12px", color: "rgba(255, 255, 255, 0.45)" }}>
-          <p style={{ marginBottom: "10px" }} suppressHydrationWarning>© {currentYear} Bizy Site India. All rights reserved.</p>
-          <div style={{ display: "flex", justifyContent: "center", gap: "20px" }}>
-            <Link href="/privacy" style={{ color: "rgba(255,255,255,0.6)" }}>Privacy Policy</Link>
-            <Link href="/terms" style={{ color: "var(--teal)" }}>Terms of Service</Link>
-          </div>
+          <h3 style={{ fontSize: "20px", color: "var(--navy)", fontWeight: "800", marginTop: "24px", marginBottom: "12px" }}>7. Governing Law</h3>
+          <p style={{ color: "var(--text-mid)", marginBottom: "20px" }}>
+            These terms and any commercial dispute shall be governed by and construed in accordance with the laws of India. Any legal actions shall be subject to the exclusive jurisdiction of the courts located in Chennai, Tamil Nadu, India.
+          </p>
+
+          <h3 style={{ fontSize: "20px", color: "var(--navy)", fontWeight: "800", marginTop: "24px", marginBottom: "12px" }}>8. Contact Information</h3>
+          <p style={{ color: "var(--text-mid)", marginBottom: "20px" }}>
+            If you have questions about these terms, please contact us at <a href="mailto:info@bizysite.com" style={{ color: "var(--teal)", fontWeight: "700" }}>info@bizysite.com</a>.
+          </p>
+
         </div>
-      </footer>
-    </div>
+      </section>
+
+      <Footer />
+    </>
   );
 }

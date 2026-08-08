@@ -1,0 +1,30 @@
+# Bizy Site India
+
+India's first performance-driven AEO + GEO and Web Growth Agency. We build high-converting websites and optimize them for the future of AI search.
+
+## Core Info
+- **Contact:** info@bizysite.com
+- **Phone / WhatsApp:** +91 95007 28442
+- **Address:** 404 Jasmine A wing, Eden Park Phase 2, OMR, Siruseri, Chennai 603103
+- **GST:** 33AAPCM5658N1ZP
+
+## Services
+- Website Design & Development: Blazing fast, custom websites built to convert.
+- Conversion Rate Optimization (CRO): Audits and layout adjustments to lift leads.
+- Search Engine Optimization (SEO): Rank high on standard Google organic search.
+- Google Business Profile: Win local Map searches.
+- Answer Engine Optimization (AEO): Format for voice search and answer snippets.
+- AI Optimization (AIO): Visibility in ChatGPT, Gemini, and Claude search models.
+- Generative Engine Optimization (GEO): Citations in AI search summaries.
+- Social Media Management: Active profiles on Instagram, Facebook, and LinkedIn.
+- Google & Meta Ads: Targeted paid traffic campaigns.
+
+## Key URLs
+- Home: https://bizysite.in
+- Services: https://bizysite.in/services
+- Work: https://bizysite.in/work
+- About: https://bizysite.in/about
+- Blog: https://bizysite.in/blog
+- Contact: https://bizysite.in/contact
+- Sitemap: https://bizysite.in/sitemap
+- AI Policy: https://bizysite.in/ai-policy

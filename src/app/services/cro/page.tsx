@@ -1,241 +1,538 @@
-"use client";
-
-import { useState } from "react";
+import type { Metadata } from "next";
 import Link from "next/link";
-import { Check, ChevronDown, Percent, ArrowUpRight } from "lucide-react";
+import { Check, CheckCircle2, Award, Percent, TrendingUp, Sparkles, AlertCircle, BarChart3, HelpCircle } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-export default function CRO() {
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
+export const metadata: Metadata = {
+  metadataBase: new URL("https://bizysite.in"),
+  title: "Conversion Rate Optimization (CRO) in India | More Leads, Same Traffic | Bizy Site",
+  description: "Turn more website visitors into calls and enquiries, without spending more on ads. CRO for new and existing sites. Get a free conversion review.",
+  keywords: "conversion rate optimization India, increase website conversions, CRO services India, improve website leads, lead conversion rate optimization",
+  alternates: {
+    canonical: "/services/cro",
+  },
+  openGraph: {
+    title: "Conversion Rate Optimization (CRO) in India | More Leads, Same Traffic | Bizy Site",
+    description: "Turn more website visitors into calls and enquiries, without spending more on ads. CRO for new and existing sites. Get a free conversion review.",
+    url: "https://bizysite.in/services/cro",
+    siteName: "Bizy Site India",
+    type: "website",
+    locale: "en_IN",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Conversion Rate Optimization (CRO) in India | More Leads, Same Traffic | Bizy Site",
+    description: "Turn more website visitors into calls and enquiries, without spending more on ads. CRO for new and existing sites. Get a free conversion review.",
+  },
+};
 
-  const faqs = [
-    {
-      q: "Do I need to redesign my entire website to do CRO?",
-      a: "No. In fact, many of our biggest wins come from making small, strategic adjustments to form designs, CTA positioning, hero text, and mobile navigations on the current site. We only recommend redesigns if the core layout code is slow or outdated."
-    },
-    {
-      q: "How long before we see improvements in conversion rate?",
-      a: "Initial conversion optimizations (such as fixing obvious checkout blockers, adding trust hooks, and fixing broken layouts) can show data improvements in 7 to 14 days. Major A/B testing patterns typically require 30 to 45 days to reach statistical certainty."
-    },
-    {
-      q: "Do you supply the code adjustments, or do we?",
-      a: "We do both. We have senior front-end developers who deploy changes directly, or we can package the design layouts and code changes as spec sheets for your in-house team to implement."
-    }
-  ];
+export default function CRO() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        "@id": "https://bizysite.in/services/cro/#service",
+        "name": "Conversion Rate Optimization (CRO)",
+        "provider": {
+          "@type": "LocalBusiness",
+          "name": "Bizy Site India",
+          "url": "https://bizysite.in"
+        },
+        "description": "Turn more website visitors into calls and enquiries, without spending more on ads.",
+        "areaServed": {
+          "@type": "Country",
+          "name": "IN"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://bizysite.in/services/cro/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is conversion rate optimization in simple words?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Conversion rate optimization, or CRO, means improving your website so that more of your visitors take action, like calling you or filling a form, instead of leaving. You get more business from the same number of visitors."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is CRO different from SEO?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "SEO brings more people to your website. CRO makes more of those people actually contact you. SEO fills the shop with visitors. CRO makes sure they reach the billing counter. They work best together."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Will CRO work if my website traffic is low?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, and it is often the smartest first step. If you are paying for ads or SEO to bring visitors, it makes no sense to lose most of them on the page. CRO helps you get more from every visitor you already have."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I need to rebuild my website for CRO?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Usually not. We start with an audit and fix what is hurting conversions on your current site. We only suggest a rebuild if the site is genuinely beyond repair, and we will explain why."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How soon will I see more enquiries after CRO?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Some fixes, like a faster page or a clearer call-to-action, can show results within days. Bigger improvements build up over a few weeks. We track the numbers so you can see the difference."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do you know what to fix on my site?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We combine proven conversion principles with a close look at how visitors actually behave on your pages: where they stop scrolling, where they hesitate, and where they leave. Then we fix the biggest leaks first."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does CRO cost more than running more ads?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "CRO often saves you money. Instead of paying for more and more traffic, you make better use of the traffic you already get. Many businesses find this is the cheapest way to grow enquiries."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://bizysite.in/services/cro/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://bizysite.in"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Services",
+            "item": "https://bizysite.in/services"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Conversion Rate Optimization",
+            "item": "https://bizysite.in/services/cro"
+          }
+        ]
+      }
+    ]
+  };
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      
       <Header />
 
-      {/* Hero */}
+      {/* SECTION 1 — Hero */}
       <section className="service-hero">
         <div className="container service-hero-content">
-          <h1 className="service-hero-title">More Conversions. Same Traffic. More Revenue.</h1>
+          <span className="section-tag light" style={{ color: "rgba(255,255,255,0.85)" }}>Conversion Rate Optimization (CRO)</span>
+          <h1 className="service-hero-title">You are already getting visitors. Let us turn more of them into customers.</h1>
           <p className="service-hero-sub">
-            Stop paying Google and Meta to drive traffic that exits without buying. We optimize your website code, copy, and layout to turn more clicks into leads.
+            Most websites lose customers they already attracted. CRO is the work of fixing the leaks, so the same traffic brings you more calls, enquiries and sales, without spending a rupee more on ads.
           </p>
-          <Link href="/contact" className="btn btn-primary">
-            Get My Free CRO Audit →
-          </Link>
-        </div>
-      </section>
-
-      {/* Stat Hook */}
-      <section className="section-padding" style={{ background: "var(--navy-dark)", color: "var(--white)", textAlign: "center" }}>
-        <div className="container" style={{ maxWidth: "700px" }}>
-          <div style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: "64px", height: "64px", borderRadius: "50%", background: "rgba(43,191,191,0.15)", color: "var(--teal)", marginBottom: "20px" }}>
-            <Percent size={28} />
+          <div style={{ display: "flex", gap: "16px", justifyContent: "center", flexWrap: "wrap", marginTop: "24px" }}>
+            <div className="cta-wrapper">
+              <Link href="/contact?type=audit" className="btn btn-primary">
+                Get My Free Conversion Review →
+              </Link>
+              <p style={{ fontSize: "11px", color: "rgba(255,255,255,0.7)", marginTop: "6px" }}>We show you exactly where you are losing leads.</p>
+            </div>
           </div>
-          <h2 className="section-title text-white" style={{ fontSize: "clamp(24px, 4vw, 32px)", lineHeight: "1.25" }}>
-            The average business website converts at 1.5% - 2.5%. <br />
-            Our optimized campaigns average <span>5.4%</span>.
-          </h2>
-          <p style={{ color: "rgba(255, 255, 255, 0.75)", fontSize: "14px", marginTop: "16px" }}>
-            That means you double your sales from the exact same ad spend or organic traffic.
-          </p>
         </div>
       </section>
 
-      {/* What We Optimize */}
+      {/* SECTION 2 — The Problem */}
       <section className="section-padding" style={{ background: "var(--white)" }}>
-        <div className="container">
-          <div className="text-center">
-            <span className="section-tag">Optimization Areas</span>
-            <h2 className="section-title">Where We Find Conversion Leaks</h2>
-            <p className="section-sub">We dissect every interaction on your site to remove friction points.</p>
-          </div>
-
-          <div className="features-grid">
-            <div className="feature-box">
-              <h3 className="feature-box-title">Above-the-Fold Layouts</h3>
-              <p style={{ fontSize: "13px", color: "var(--text-mid)" }}>The first 3 seconds are critical. We clarify your value proposition and make sure the action button is instantly visible.</p>
-            </div>
-            <div className="feature-box">
-              <h3 className="feature-box-title">Inquiry Form Redesign</h3>
-              <p style={{ fontSize: "13px", color: "var(--text-mid)" }}>Long forms drop conversions. We design multi-step, low-friction forms that capture information without annoying users.</p>
-            </div>
-            <div className="feature-box">
-              <h3 className="feature-box-title">Mobile Checkout Flows</h3>
-              <p style={{ fontSize: "13px", color: "var(--text-mid)" }}>We optimize payment portals, remove fields, and add autofills to stop cart abandonment on mobile networks.</p>
-            </div>
-            <div className="feature-box">
-              <h3 className="feature-box-title">Call-to-Action Hierarchy</h3>
-              <p style={{ fontSize: "13px", color: "var(--text-mid)" }}>We align primary and secondary CTAs so they guide users naturally instead of competing for attention.</p>
-            </div>
-            <div className="feature-box">
-              <h3 className="feature-box-title">Trust Signals & Proof</h3>
-              <p style={{ fontSize: "13px", color: "var(--text-mid)" }}>We strategically place client reviews, case metrics, certifications, and guarantees at high-anxiety choice points.</p>
-            </div>
-            <div className="feature-box">
-              <h3 className="feature-box-title">Technical Friction</h3>
-              <p style={{ fontSize: "13px", color: "var(--text-mid)" }}>We fix layout shifts, rendering bugs on specific mobile browsers, slow page weights, and broken links.</p>
-            </div>
-          </div>
+        <div className="container" style={{ maxWidth: "800px", textAlign: "center" }}>
+          <span className="section-tag">The Hidden Cost</span>
+          <h2 className="section-title">Here is what is quietly costing you business.</h2>
+          <p style={{ color: "var(--text-mid)", fontSize: "16px", lineHeight: "1.8", marginBottom: "24px" }}>
+            Picture 100 people walking into your shop today. 95 of them look around and walk out without buying. You would be alarmed. You would want to know why.
+          </p>
+          <p style={{ color: "var(--text-mid)", fontSize: "16px", lineHeight: "1.8" }}>
+            That is exactly what happens on most websites, but you never see it. The visitors come, glance, and leave. The average website turns only 1 to 3 out of every 100 visitors into an enquiry. Worse, half your visitors never even scroll past the first screen. CRO is how we find out where people are dropping off, and fix it, so more of those 100 visitors actually contact you.
+          </p>
         </div>
       </section>
 
-      {/* Methodology */}
+      {/* SECTION 3 — What This Means In Real Life (Analogy) */}
       <section className="section-padding" style={{ background: "var(--off-white)" }}>
         <div className="container">
           <div className="text-center">
-            <span className="section-tag">Our Framework</span>
-            <h2 className="section-title">The Scientific CRO Process</h2>
+            <span className="section-tag">The Analogy</span>
+            <h2 className="section-title">CRO is like rearranging a shop so people actually reach the counter.</h2>
           </div>
 
-          <div className="success-roadmap" style={{ marginTop: "32px" }}>
-            <div className="roadmap-step">
-              <div className="roadmap-num">1</div>
-              <div className="roadmap-details">
-                <h4>Heuristic Audit</h4>
-                <p>We review your website interface against established UX patterns, accessibility rules, and cognitive behavior guidelines.</p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "30px", marginTop: "40px", marginBottom: "40px" }}>
+            <div className="pain-card" style={{ background: "var(--white)", border: "1px solid var(--border)", borderRadius: "var(--radius-lg)", padding: "32px" }}>
+              <div style={{ fontSize: "12px", fontWeight: "800", color: "var(--red)", background: "rgba(239, 68, 68, 0.08)", padding: "6px 14px", borderRadius: "30px", width: "fit-content", marginBottom: "20px" }}>
+                THE CONFUSING LAYOUT
               </div>
+              <p style={{ fontSize: "15px", color: "var(--text-mid)", lineHeight: "1.8" }}>
+                Imagine a shop where the products are great but the aisles are confusing, the prices are hidden, and the billing counter is tucked away in a dark corner. People wander in, get lost, and leave.
+              </p>
             </div>
-            <div className="roadmap-step">
-              <div className="roadmap-num">2</div>
-              <div className="roadmap-details">
-                <h4>Behavioral Analytics</h4>
-                <p>We analyze scrollmaps, click heatmaps, and watch session recordings to pinpoint exactly where users get confused or exit.</p>
+
+            <div className="pain-card" style={{ background: "rgba(43, 191, 191, 0.03)", border: "1px solid rgba(43, 191, 191, 0.2)", borderRadius: "var(--radius-lg)", padding: "32px" }}>
+              <div style={{ fontSize: "12px", fontWeight: "800", color: "var(--teal)", background: "rgba(43, 191, 191, 0.12)", padding: "6px 14px", borderRadius: "30px", width: "fit-content", marginBottom: "20px" }}>
+                THE OPTIMIZED SHOP
               </div>
-            </div>
-            <div className="roadmap-step">
-              <div className="roadmap-num">3</div>
-              <div className="roadmap-details">
-                <h4>A/B Testing</h4>
-                <p>We deploy design variations of headlines, button labels, and form flows to split traffic and measure which one generates more sales.</p>
-              </div>
-            </div>
-            <div className="roadmap-step">
-              <div className="roadmap-num">4</div>
-              <div className="roadmap-details">
-                <h4>Iterate & Deploy</h4>
-                <p>Once a test reaches statistical certainty, we make the winner permanent, learn from the data, and start the next optimization cycle.</p>
-              </div>
+              <p style={{ fontSize: "15px", color: "var(--text-mid)", lineHeight: "1.8" }}>
+                Now imagine the same shop with clear signs, products in easy reach, and a clear path to the counter. Same products, same footfall, far more sales. CRO does that to your website. We do not change what you sell. We change how easily a visitor can say yes.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Case Study */}
+      {/* SECTION 4 — The Two-Audience Split */}
       <section className="section-padding" style={{ background: "var(--white)" }}>
         <div className="container">
           <div className="text-center">
-            <span className="section-tag">Case Study</span>
-            <h2 className="section-title">CRO in Action</h2>
+            <span className="section-tag">Paths</span>
+            <h2 className="section-title">Whether your site is new or already live, we make it convert.</h2>
           </div>
 
-          <div style={{ background: "var(--off-white)", padding: "40px", borderRadius: "20px", border: "1px solid var(--border)", marginTop: "32px" }}>
-            <div className="contact-section-split">
+          <div className="pain-grid" style={{ marginTop: "40px" }}>
+            {/* Path A */}
+            <div className="pain-card" style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
               <div>
-                <span className="market-tag" style={{ marginLeft: 0 }}>EdTech Client</span>
-                <h3 style={{ fontSize: "28px", color: "var(--navy)", fontWeight: "800", margin: "16px 0" }}>
-                  EdTech Platform: Conversion Rates Raised From 1.4% to 3.8%
-                </h3>
-                <p style={{ color: "var(--text-mid)", fontSize: "14px", lineHeight: "1.6", marginBottom: "20px" }}>
-                  By redesigning their lead capture forms to be multi-step and optimizing the mobile checkout flow, we reduced their marketing acquisition cost per lead and unlocked massive volume.
+                <div className="pain-top-border" style={{ background: "var(--teal)" }}></div>
+                <h3 className="pain-title" style={{ fontSize: "20px", marginBottom: "12px", color: "var(--navy)", fontWeight: "800" }}>I am building a new website</h3>
+                <p className="pain-body" style={{ marginBottom: "24px", fontSize: "14px", color: "var(--text-mid)", lineHeight: "1.6" }}>
+                  Good news: we build conversion in from the very first line of code. You do not have to fix anything later, because it is designed to sell from day one.
                 </p>
-                <div style={{ display: "flex", gap: "24px" }}>
-                  <div>
-                    <span style={{ fontSize: "11px", color: "var(--text-muted)", fontWeight: "bold", textTransform: "uppercase" }}>CPL REDUCTION</span>
-                    <p style={{ fontSize: "24px", color: "var(--green)", fontWeight: "800" }}>-68%</p>
-                  </div>
-                  <div>
-                    <span style={{ fontSize: "11px", color: "var(--text-muted)", fontWeight: "bold", textTransform: "uppercase" }}>LEAD VOLUME</span>
-                    <p style={{ fontSize: "24px", color: "var(--teal-dark)", fontWeight: "800" }}>2.7× More</p>
-                  </div>
-                </div>
+                <ul style={{ listStyle: "none", padding: 0, margin: "0 0 24px 0", display: "flex", flexDirection: "column", gap: "12px" }}>
+                  <li style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "14px", color: "var(--text)", fontWeight: "600" }}>
+                    <CheckCircle2 size={16} style={{ color: "var(--teal)", flexShrink: 0 }} />
+                    <span>Every page built around a clear next step</span>
+                  </li>
+                  <li style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "14px", color: "var(--text)", fontWeight: "600" }}>
+                    <CheckCircle2 size={16} style={{ color: "var(--teal)", flexShrink: 0 }} />
+                    <span>Fast loading and mobile-first, so visitors stay</span>
+                  </li>
+                  <li style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "14px", color: "var(--text)", fontWeight: "600" }}>
+                    <CheckCircle2 size={16} style={{ color: "var(--teal)", flexShrink: 0 }} />
+                    <span>Trust signals, strong CTAs and simple forms, baked in</span>
+                  </li>
+                </ul>
               </div>
-              
-              <div style={{ background: "var(--white)", border: "1px solid var(--border)", borderRadius: "12px", padding: "24px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-                <div style={{ display: "flex", justifyContent: "space-between", borderBottom: "1px solid var(--border)", paddingBottom: "12px", marginBottom: "12px" }}>
-                  <span style={{ color: "var(--text-muted)", fontSize: "13px" }}>Traffic / month</span>
-                  <span style={{ fontWeight: "bold", color: "var(--navy)" }}>1,20,000</span>
-                </div>
-                <div style={{ display: "flex", justifyContent: "space-between", borderBottom: "1px solid var(--border)", paddingBottom: "12px", marginBottom: "12px" }}>
-                  <span style={{ color: "var(--text-muted)", fontSize: "13px" }}>Old Leads (at 1.4%)</span>
-                  <span style={{ fontWeight: "bold", color: "#EF4444" }}>1,680</span>
-                </div>
-                <div style={{ display: "flex", justifyContent: "space-between", color: "var(--green)" }}>
-                  <span style={{ fontSize: "14px", fontWeight: "bold" }}>New Leads (at 3.8%)</span>
-                  <span style={{ fontWeight: "900", fontSize: "18px" }}>4,560</span>
-                </div>
+              <div style={{ marginTop: "auto", paddingTop: "12px" }}>
+                <Link href="/contact?type=quote" className="btn btn-primary" style={{ width: "100%", justifyContent: "center" }}>
+                  Build me a conversion-first site →
+                </Link>
+                <p style={{ fontSize: "11px", color: "var(--text-muted)", marginTop: "8px", textAlign: "center" }}>
+                  Designed to bring enquiries from launch.
+                </p>
+              </div>
+            </div>
+
+            {/* Path B */}
+            <div className="pain-card" style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+              <div>
+                <div className="pain-top-border" style={{ background: "var(--teal)" }}></div>
+                <h3 className="pain-title" style={{ fontSize: "20px", marginBottom: "12px", color: "var(--navy)", fontWeight: "800" }}>I already have a website</h3>
+                <p className="pain-body" style={{ marginBottom: "24px", fontSize: "14px", color: "var(--text-mid)", lineHeight: "1.6" }}>
+                  You do not need a full rebuild to get more leads. We audit your current site, find what is stopping visitors from contacting you, and fix it, often with changes you would never have guessed mattered.
+                </p>
+                <ul style={{ listStyle: "none", padding: 0, margin: "0 0 24px 0", display: "flex", flexDirection: "column", gap: "12px" }}>
+                  <li style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "14px", color: "var(--text)", fontWeight: "600" }}>
+                    <CheckCircle2 size={16} style={{ color: "var(--teal)", flexShrink: 0 }} />
+                    <span>A clear, honest conversion audit of your current site</span>
+                  </li>
+                  <li style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "14px", color: "var(--text)", fontWeight: "600" }}>
+                    <CheckCircle2 size={16} style={{ color: "var(--teal)", flexShrink: 0 }} />
+                    <span>Practical fixes to headlines, layout, speed, forms and CTAs</span>
+                  </li>
+                  <li style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "14px", color: "var(--text)", fontWeight: "600" }}>
+                    <CheckCircle2 size={16} style={{ color: "var(--teal)", flexShrink: 0 }} />
+                    <span>More enquiries without changing your traffic or ad spend</span>
+                  </li>
+                </ul>
+              </div>
+              <div style={{ marginTop: "auto", paddingTop: "12px" }}>
+                <Link href="/contact?type=audit" className="btn btn-outline" style={{ width: "100%", justifyContent: "center" }}>
+                  Get My Free Conversion Review →
+                </Link>
+                <p style={{ fontSize: "11px", color: "var(--text-muted)", marginTop: "8px", textAlign: "center" }}>
+                  We tell you exactly what to fix, and why.
+                </p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Testimonial */}
-      <section className="section-padding" style={{ background: "var(--off-white)", textAlign: "center" }}>
-        <div className="container" style={{ maxWidth: "800px" }}>
-          <span className="section-tag">Client Story</span>
-          <p style={{ fontSize: "18px", fontStyle: "italic", fontWeight: "600", color: "var(--navy)", marginBottom: "20px" }}>
-            "We were driving high traffic to our products but getting low checkout completions. Bizy Site optimized our mobile forms and simplified the payment fields. Our sales increased 50% in the first month."
-          </p>
-          <h4 style={{ color: "var(--navy)", fontWeight: "800" }}>Ritu Malhotra, D2C Apparel Founder</h4>
-          <p style={{ fontSize: "12px", color: "var(--text-muted)", fontWeight: "600" }}>Mumbai</p>
+      {/* SECTION 5 — What We Do */}
+      <section className="section-padding" style={{ background: "var(--off-white)" }}>
+        <div className="container">
+          <div className="text-center">
+            <span className="section-tag">Our Scope</span>
+            <h2 className="section-title">The leaks we find, and the work that fixes them.</h2>
+            <p className="section-sub" style={{ marginBottom: "40px" }}>
+              Fixing conversions has two sides: the problems we hunt for, and the technical work that quietly powers the fix.
+            </p>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "30px", marginBottom: "40px" }}>
+            {/* The leaks we look for */}
+            <div style={{ background: "var(--white)", border: "1px solid var(--border)", borderRadius: "var(--radius-lg)", padding: "32px", boxShadow: "var(--shadow-sm)" }} className="pain-card">
+              <h3 style={{ fontSize: "20px", fontWeight: "800", color: "var(--navy)", marginBottom: "20px" }}>The leaks we look for</h3>
+              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "16px" }}>
+                <li style={{ display: "flex", gap: "10px", fontSize: "14px", color: "var(--text)", lineHeight: "1.5" }}>
+                  <CheckCircle2 size={16} style={{ color: "var(--teal)", flexShrink: 0, marginTop: "2px" }} />
+                  <div>
+                    <strong>Weak first impression</strong> — Your headline and first screen must make the visitor stay in 5 seconds.
+                  </div>
+                </li>
+                <li style={{ display: "flex", gap: "10px", fontSize: "14px", color: "var(--text)", lineHeight: "1.5" }}>
+                  <CheckCircle2 size={16} style={{ color: "var(--teal)", flexShrink: 0, marginTop: "2px" }} />
+                  <div>
+                    <strong>Slow pages</strong> — Every extra second of load time loses you enquiries.
+                  </div>
+                </li>
+                <li style={{ display: "flex", gap: "10px", fontSize: "14px", color: "var(--text)", lineHeight: "1.5" }}>
+                  <CheckCircle2 size={16} style={{ color: "var(--teal)", flexShrink: 0, marginTop: "2px" }} />
+                  <div>
+                    <strong>Unclear next step</strong> — Visitors should never wonder what to do next.
+                  </div>
+                </li>
+                <li style={{ display: "flex", gap: "10px", fontSize: "14px", color: "var(--text)", lineHeight: "1.5" }}>
+                  <CheckCircle2 size={16} style={{ color: "var(--teal)", flexShrink: 0, marginTop: "2px" }} />
+                  <div>
+                    <strong>Forms that scare people off</strong> — Too many fields, or no trust, kill submissions.
+                  </div>
+                </li>
+                <li style={{ display: "flex", gap: "10px", fontSize: "14px", color: "var(--text)", lineHeight: "1.5" }}>
+                  <CheckCircle2 size={16} style={{ color: "var(--teal)", flexShrink: 0, marginTop: "2px" }} />
+                  <div>
+                    <strong>No proof</strong> — Reviews and results placed where doubt is highest.
+                  </div>
+                </li>
+                <li style={{ display: "flex", gap: "10px", fontSize: "14px", color: "var(--text)", lineHeight: "1.5" }}>
+                  <CheckCircle2 size={16} style={{ color: "var(--teal)", flexShrink: 0, marginTop: "2px" }} />
+                  <div>
+                    <strong>Mobile problems</strong> — Since most of your visitors are on a phone, the mobile experience must be flawless.
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            {/* What we handle behind the scenes */}
+            <div style={{ background: "var(--white)", border: "1px solid var(--border)", borderRadius: "var(--radius-lg)", padding: "32px", boxShadow: "var(--shadow-sm)" }} className="pain-card">
+              <h3 style={{ fontSize: "20px", fontWeight: "800", color: "var(--navy)", marginBottom: "20px" }}>What we handle behind the scenes</h3>
+              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "16px" }}>
+                <li style={{ display: "flex", gap: "10px", fontSize: "14px", color: "var(--text)", lineHeight: "1.5" }}>
+                  <CheckCircle2 size={16} style={{ color: "var(--teal)", flexShrink: 0, marginTop: "2px" }} />
+                  <div>
+                    <strong>Speed and Core Web Vitals</strong> — We improve loading speed and page stability, which lift both conversions and Google rankings.
+                  </div>
+                </li>
+                <li style={{ display: "flex", gap: "10px", fontSize: "14px", color: "var(--text)", lineHeight: "1.5" }}>
+                  <CheckCircle2 size={16} style={{ color: "var(--teal)", flexShrink: 0, marginTop: "2px" }} />
+                  <div>
+                    <strong>Conversion tracking and analytics</strong> — Set up so we can see exactly where visitors drop off, and prove the improvement.
+                  </div>
+                </li>
+                <li style={{ display: "flex", gap: "10px", fontSize: "14px", color: "var(--text)", lineHeight: "1.5" }}>
+                  <CheckCircle2 size={16} style={{ color: "var(--teal)", flexShrink: 0, marginTop: "2px" }} />
+                  <div>
+                    <strong>A/B testing where it helps</strong> — Comparing versions of a page to find what genuinely brings more enquiries, instead of guessing.
+                  </div>
+                </li>
+                <li style={{ display: "flex", gap: "10px", fontSize: "14px", color: "var(--text)", lineHeight: "1.5" }}>
+                  <CheckCircle2 size={16} style={{ color: "var(--teal)", flexShrink: 0, marginTop: "2px" }} />
+                  <div>
+                    <strong>Clean, mobile-first code</strong> — So the experience is smooth on every phone and screen size.
+                  </div>
+                </li>
+                <li style={{ display: "flex", gap: "10px", fontSize: "14px", color: "var(--text)", lineHeight: "1.5" }}>
+                  <CheckCircle2 size={16} style={{ color: "var(--teal)", flexShrink: 0, marginTop: "2px" }} />
+                  <div>
+                    <strong>Form and CTA optimisation</strong> — The right fields, trust signals and button copy, built and tested to lift submissions.
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div style={{ textAlign: "center", marginTop: "32px", maxWidth: "700px", margin: "32px auto 0" }}>
+            <p style={{ fontSize: "13px", color: "var(--text-muted)", lineHeight: "1.6" }}>
+              You do not need to follow the technical side. You just need to know the leaks are being found and sealed, so more of your visitors turn into customers.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* FAQs */}
+      {/* SECTION 6 — What You Get */}
       <section className="section-padding" style={{ background: "var(--white)" }}>
+        <div className="container" style={{ maxWidth: "800px" }}>
+          <div className="text-center">
+            <span className="section-tag">Measurable Outcomes</span>
+            <h2 className="section-title">The outcome you can measure.</h2>
+          </div>
+
+          <ul style={{ listStyle: "none", padding: 0, margin: "32px 0 0 0", display: "flex", flexDirection: "column", gap: "16px" }}>
+            {[
+              "More calls and enquiries from the visitors you already have",
+              "A clear before-and-after, so you see the improvement",
+              "Lower cost per lead, because you waste less traffic",
+              "A website that keeps earning, not just existing"
+            ].map((item, idx) => (
+              <li key={idx} style={{ display: "flex", gap: "12px", alignItems: "center", fontSize: "16px", color: "var(--text)", fontWeight: "600" }}>
+                <CheckCircle2 size={20} style={{ color: "var(--teal)", flexShrink: 0 }} />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* SECTION 7 — Mini Result */}
+      <section className="section-padding" style={{ background: "var(--navy-dark)", color: "var(--white)", borderRadius: "var(--radius-lg)" }}>
+        <div className="container" style={{ maxWidth: "800px", textAlign: "center" }}>
+          <span className="section-tag light">Success Story</span>
+          <h2 className="section-title text-white">Same traffic. Same ad spend. 38% more enquiries.</h2>
+          <p style={{ fontSize: "18px", fontStyle: "italic", fontWeight: "600", color: "var(--teal)", marginBottom: "20px", lineHeight: "1.7" }}>
+            "We optimised a clinic website that was slow and hard to use. By speeding it up and making the booking step clearer, appointment enquiries rose 38% in a single month, with no increase in visitors or ad budget."
+          </p>
+          <p style={{ fontSize: "13px", color: "rgba(255,255,255,0.7)", fontWeight: "600" }}>
+            That is the power of fixing the leaks instead of pouring in more traffic.
+          </p>
+        </div>
+      </section>
+
+      {/* SECTION 8 — Free Resource (Lead Magnet) */}
+      <section className="section-padding lead-magnet-section" style={{ background: "var(--off-white)" }}>
+        <div className="container" style={{ maxWidth: "800px" }}>
+          <div style={{ background: "var(--white)", border: "1px solid var(--border)", borderRadius: "var(--radius-lg)", padding: "40px", boxShadow: "var(--shadow-md)", position: "relative", overflow: "hidden" }} className="pain-card">
+            {/* Decorative gradient corner */}
+            <div style={{ position: "absolute", top: 0, right: 0, width: "180px", height: "180px", background: "radial-gradient(circle, rgba(43, 191, 191, 0.1) 0%, transparent 70%)", pointerEvents: "none" }}></div>
+            
+            <div style={{ textAlign: "center", position: "relative", zIndex: 2 }}>
+              <span className="section-tag" style={{ margin: "0 auto 12px" }}>Free Resource</span>
+              <h2 style={{ fontSize: "28px", color: "var(--navy)", fontWeight: "800", marginBottom: "16px" }}>Want to start fixing your site today, for free?</h2>
+              <p style={{ fontSize: "15px", color: "var(--text-mid)", lineHeight: "1.7", marginBottom: "28px" }}>
+                Download our Website Conversion Cheat Sheet: 10 proven tips to turn more visitors into leads, without spending more on ads.
+              </p>
+              
+              <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                <Link href="/contact?download=cheatsheet" className="btn btn-primary" style={{ padding: "14px 32px" }}>
+                  Download the Free Guide →
+                </Link>
+                <p style={{ fontSize: "11px", color: "var(--text-muted)", marginTop: "8px" }}>
+                  10 fixes you can start using today. No cost.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 9 — FAQ (CRO) */}
+      <section className="section-padding faq-section" style={{ background: "var(--white)", borderTop: "1px solid var(--border)" }}>
         <div className="container">
           <div className="text-center">
             <span className="section-tag">FAQ</span>
-            <h2 className="section-title">Common Questions</h2>
+            <h2 className="section-title">Questions people ask us before getting started</h2>
           </div>
 
-          <div className="faq-grid-custom" style={{ marginTop: "32px" }}>
-            {faqs.map((faq, idx) => (
-              <div key={idx} className="faq-card-custom">
-                <button 
-                  className="faq-trigger-custom"
-                  onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
+          <div className="faq-grid-custom" style={{ marginTop: "40px" }}>
+            {[
+              {
+                q: "What is conversion rate optimization in simple words?",
+                a: "Conversion rate optimization, or CRO, means improving your website so that more of your visitors take action, like calling you or filling a form, instead of leaving. You get more business from the same number of visitors."
+              },
+              {
+                q: "How is CRO different from SEO?",
+                a: "SEO brings more people to your website. CRO makes more of those people actually contact you. SEO fills the shop with visitors. CRO makes sure they reach the billing counter. They work best together."
+              },
+              {
+                q: "Will CRO work if my website traffic is low?",
+                a: "Yes, and it is often the smartest first step. If you are paying for ads or SEO to bring visitors, it makes no sense to lose most of them on the page. CRO helps you get more from every visitor you already have."
+              },
+              {
+                q: "Do I need to rebuild my website for CRO?",
+                a: "Usually not. We start with an audit and fix what is hurting conversions on your current site. We only suggest a rebuild if the site is genuinely beyond repair, and we will explain why."
+              },
+              {
+                q: "How soon will I see more enquiries after CRO?",
+                a: "Some fixes, like a faster page or a clearer call-to-action, can show results within days. Bigger improvements build up over a few weeks. We track the numbers so you can see the difference."
+              },
+              {
+                q: "How do you know what to fix on my site?",
+                a: "We combine proven conversion principles with a close look at how visitors actually behave on your pages: where they stop scrolling, where they hesitate, and where they leave. Then we fix the biggest leaks first."
+              },
+              {
+                q: "Does CRO cost more than running more ads?",
+                a: "CRO often saves you money. Instead of paying for more and more traffic, you make better use of the traffic you already get. Many businesses find this is the cheapest way to grow enquiries."
+              }
+            ].map((faq, index) => (
+              <div key={index} className="faq-card-custom" style={{ borderBottom: "1px solid var(--border)" }}>
+                <div 
+                  className="faq-trigger-custom" 
+                  style={{ display: "flex", width: "100%", justifyContent: "space-between", alignItems: "center", cursor: "default" }}
                 >
-                  <span>{faq.q}</span>
-                  <ChevronDown size={18} style={{ transform: openFaq === idx ? "rotate(180deg)" : "none", transition: "transform 0.2s" }} />
-                </button>
-                {openFaq === idx && (
-                  <div className="faq-content-custom">
-                    <p>{faq.a}</p>
-                  </div>
-                )}
+                  <span style={{ textAlign: "left", paddingRight: "16px", fontWeight: "800" }}>{faq.q}</span>
+                </div>
+                <div className="faq-content-custom" style={{ paddingTop: 0 }}>
+                  <p style={{ margin: 0 }}>{faq.a}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Block */}
-      <section className="section-padding" style={{ background: "var(--grad-hero)", color: "var(--white)", textAlign: "center" }}>
+      {/* SECTION 10 — CTA */}
+      <section className="section-padding final-cta-section" style={{ background: "var(--grad-hero)", color: "var(--white)", textAlign: "center" }}>
         <div className="container">
-          <h2 className="section-title text-white">Stop leaking leads. Let's optimize.</h2>
-          <p className="section-sub text-white" style={{ opacity: 0.9 }}>
-            Claim your free website audit and see where your conversion friction points are.
+          <h2 className="section-title text-white" style={{ fontSize: "clamp(28px, 4vw, 36px)", marginBottom: "16px" }}>
+            Stop losing leads you already paid to attract.
+          </h2>
+          <p className="section-sub text-white" style={{ opacity: 0.9, marginBottom: "32px", maxWidth: "700px", margin: "0 auto 32px", lineHeight: "1.7" }}>
+            Whether you are starting fresh or fixing what you have, the first step is the same: a quick, honest conversation.
           </p>
-          <Link href="/contact" className="btn btn-primary" style={{ padding: "16px 36px" }}>
-            Get My Free CRO Audit →
-          </Link>
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+            <div style={{ display: "flex", gap: "20px", flexWrap: "wrap", justifyContent: "center" }}>
+              <div className="cta-wrapper">
+                <Link href="/contact?type=audit" className="btn btn-primary" style={{ padding: "14px 32px" }}>
+                  Get My Free Conversion Review →
+                </Link>
+              </div>
+              <div className="cta-wrapper">
+                <Link href="/contact?download=cheatsheet" className="btn btn-outline" style={{ padding: "14px 32px", background: "rgba(255,255,255,0.08)", color: "var(--white)", borderColor: "rgba(255,255,255,0.2)" }}>
+                  Download the Free Guide →
+                </Link>
+              </div>
+            </div>
+            
+            <p className="cta-microcopy light" style={{ marginTop: "16px", opacity: 0.8 }}>
+              Same-day reply. Real experts. Zero pressure.
+            </p>
+          </div>
         </div>
       </section>
 

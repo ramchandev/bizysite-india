@@ -1307,15 +1307,15 @@ button, input, select, textarea {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.5fr 2fr;
-  gap: 40px;
-  margin-bottom: 40px;
+  grid-template-columns: 1fr 3fr;
+  gap: 60px;
+  margin-bottom: 48px;
 }
 
 .footer-about {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
 }
 
 .footer-logo {
@@ -1333,22 +1333,22 @@ button, input, select, textarea {
 }
 
 .footer-desc {
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.6);
-  line-height: 1.6;
+  font-size: 13.5px;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.7;
   max-width: 320px;
 }
 
 .footer-links-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 40px;
 }
 
 .footer-col {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 }
 
 .footer-col-title {
@@ -1363,7 +1363,7 @@ button, input, select, textarea {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
 .footer-list a, .contact-item {
@@ -1829,15 +1829,14 @@ button, input, select, textarea {
   transform: rotate(180deg);
 }
 
-.services-dropdown {
+.services-dropdown,
+.industries-dropdown {
   position: absolute;
   top: 100%;
-  left: -20px;
   background: var(--white);
   box-shadow: var(--shadow-lg);
-  border-radius: var(--radius-md);
-  padding: 16px;
-  min-width: 320px;
+  border-radius: var(--radius-lg);
+  padding: 24px;
   opacity: 0;
   visibility: hidden;
   transform: translateY(10px);
@@ -1847,51 +1846,113 @@ button, input, select, textarea {
   border: 1px solid var(--border);
 }
 
-.dropdown-trigger:hover .services-dropdown {
+.services-dropdown {
+  left: -280px;
+  width: 780px;
+}
+
+.industries-dropdown {
+  left: -180px;
+  width: 580px;
+}
+
+.dropdown-trigger:hover .services-dropdown,
+.dropdown-trigger:hover .industries-dropdown,
+.services-dropdown.active,
+.industries-dropdown.active {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
 }
 
-.dropdown-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+.mega-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
 }
 
-.dropdown-item {
-  padding: 8px 12px;
-  font-size: 13px;
-  color: var(--text-mid);
-  font-weight: 600;
+.mega-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.mega-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.mega-col-title {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--teal-dark);
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 8px;
+}
+
+.mega-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mega-item {
+  display: block;
   border-radius: var(--radius-sm);
+  padding: 6px 10px;
   transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.mega-item:hover {
+  background: var(--off-white);
+  padding-left: 14px;
+}
+
+.mega-item-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--navy);
   display: block;
 }
 
-.dropdown-item:hover {
-  background: var(--off-white);
-  color: var(--teal-dark);
-  padding-left: 16px;
+.mega-item-desc {
+  font-size: 11px;
+  color: var(--text-mid);
+  display: block;
+  margin-top: 2px;
+  font-weight: 500;
 }
 
-.dropdown-divider {
+.mega-divider {
   height: 1px;
   background: var(--border);
-  margin: 8px 0;
+  margin: 16px 0;
 }
 
-.dropdown-item.help-link {
+.mega-help-link {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 10px 16px;
+  font-size: 13px;
   font-weight: 700;
   color: var(--teal-dark);
   background: var(--teal-light);
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+  text-decoration: none;
 }
 
-.dropdown-item.help-link:hover {
+.mega-help-link:hover {
   background: rgba(43, 191, 191, 0.2);
+  padding-left: 20px;
 }
 
 /* MOBILE NAV OVERLAY SERVICES */
@@ -2520,5 +2581,10 @@ button, input, select, textarea {
   .floating-whatsapp-btn {
     display: none !important;
   }
+}
+
+.sitemap-link-hover:hover {
+  color: var(--teal) !important;
+  text-decoration: underline !important;
 }
 

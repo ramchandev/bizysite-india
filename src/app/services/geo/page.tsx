@@ -1,219 +1,373 @@
-"use client";
-
-import { useState } from "react";
+import type { Metadata } from "next";
 import Link from "next/link";
-import { Check, ChevronDown, Table } from "lucide-react";
+import { Check, CheckCircle2, Award, Search, TrendingUp, Sparkles, HelpCircle } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-export default function GEO() {
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
+export const metadata: Metadata = {
+  metadataBase: new URL("https://bizysite.in"),
+  title: "Generative Engine Optimization (GEO) in India | Get Recommended by ChatGPT | Bizy Site",
+  description: "When customers ask ChatGPT and other AI tools for a recommendation, GEO helps your business be the one they suggest. Get a free GEO visibility review.",
+  keywords: "generative engine optimization India, get recommended by ChatGPT, GEO marketing services, AI search recommendation engine, Perplexity SEO India",
+  alternates: {
+    canonical: "/services/geo",
+  },
+  openGraph: {
+    title: "Generative Engine Optimization (GEO) in India | Get Recommended by ChatGPT | Bizy Site",
+    description: "When customers ask ChatGPT and other AI tools for a recommendation, GEO helps your business be the one they suggest. Get a free GEO visibility review.",
+    url: "https://bizysite.in/services/geo",
+    siteName: "Bizy Site India",
+    type: "website",
+    locale: "en_IN",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Generative Engine Optimization (GEO) in India | Get Recommended by ChatGPT | Bizy Site",
+    description: "When customers ask ChatGPT and other AI tools for a recommendation, GEO helps your business be the one they suggest. Get a free GEO visibility review.",
+  },
+};
 
-  const faqs = [
-    {
-      q: "What is the difference between GEO and traditional SEO?",
-      a: "Traditional SEO targets index algorithms to list your page in a set of ten blue links. GEO (Generative Engine Optimization) optimizes content explicitly for generative summarizers (like Google AI Overviews and Perplexity). It ensures your content is selected as a cited source, and your product is actively named inside the AI-written summary paragraph."
-    },
-    {
-      q: "How does Perplexity pull source information?",
-      a: "Perplexity performs real-time queries using web crawlers, retrieves high-ranking documents, synthesizes them using LLMs, and embeds inline citation links to the source. GEO makes sure your content matches their retrieval format, offering concise facts, structured tables, and deep entity coverage."
-    },
-    {
-      q: "Are the citations in Google AI Overviews valuable?",
-      a: "Yes. Google AI Overviews sit above standard organic links. Users read the AI summary first, and the cited cards next to or inside the text receive the highest click-through rates (CTR) on the page. Capturing these citations is the new standard for organic search traffic."
-    }
-  ];
+export default function GEO() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        "@id": "https://bizysite.in/services/geo/#service",
+        "name": "Generative Engine Optimization (GEO)",
+        "provider": {
+          "@type": "LocalBusiness",
+          "name": "Bizy Site India",
+          "url": "https://bizysite.in"
+        },
+        "description": "Helps your business be the one ChatGPT and other AI engines suggest.",
+        "areaServed": {
+          "@type": "Country",
+          "name": "IN"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://bizysite.in/services/geo/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is generative engine optimization in simple words?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Generative engine optimization, or GEO, means improving how your business appears to AI tools like ChatGPT, so that when someone asks them for a recommendation, your business is one they suggest."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can you control what ChatGPT says about my business?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No one can directly control an AI's answer. But these tools build their recommendations from information and reputation found online. By improving that, we strongly increase the chance your business is recommended."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is GEO different from SEO?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "SEO helps you rank in search results. GEO helps you get mentioned and recommended inside AI answers. The skills overlap, but GEO focuses on reputation and trust signals that AI tools rely on."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is GEO useful for a small business in India?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Because few businesses are paying attention to this yet, getting ahead now can make your business one of the first the AI recommends in your city and industry."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How long does GEO take to work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Like reputation in real life, it builds over time. As your online presence, reviews and authority grow, AI tools become more likely to mention you. It is an ongoing effort, not a one-time fix."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I need AEO, AIO and GEO separately?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "They are closely linked and often done together. We assess where your business stands and focus on what gives you the most visibility for your goals and budget."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://bizysite.in/services/geo/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://bizysite.in"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Services",
+            "item": "https://bizysite.in/services"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Generative Engine Optimization",
+            "item": "https://bizysite.in/services/geo"
+          }
+        ]
+      }
+    ]
+  };
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      
       <Header />
 
-      {/* Hero */}
+      {/* SECTION 1 — Hero */}
       <section className="service-hero">
         <div className="container service-hero-content">
-          <h1 className="service-hero-title">Appear in the AI Search Results That Are Replacing Google Ads</h1>
+          <span className="section-tag light" style={{ color: "rgba(255,255,255,0.85)" }}>Generative Engine Optimization (GEO)</span>
+          <h1 className="service-hero-title">When AI recommends a business, it should be recommending yours.</h1>
           <p className="service-hero-sub">
-            GEO optimizes your brand, content, and structured data to appear as the cited source inside generated responses from Perplexity, Google AI Overviews, and Bing Copilot.
+            Tools like ChatGPT now answer "who should I hire?" for millions of people. GEO is the work of making your business the one these AI tools mention and recommend.
           </p>
-          <Link href="/contact" className="btn btn-primary">
-            Get My Free GEO Strategy Call →
-          </Link>
+          <div style={{ display: "flex", gap: "16px", justifyContent: "center", flexWrap: "wrap", marginTop: "24px" }}>
+            <div className="cta-wrapper">
+              <Link href="/contact?type=audit" className="btn btn-primary">
+                Get My Free GEO Review →
+              </Link>
+              <p style={{ fontSize: "11px", color: "rgba(255,255,255,0.7)", marginTop: "6px" }}>See if AI is recommending you or your rivals.</p>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* What is GEO? */}
+      {/* SECTION 2 — Why It Matters */}
+      <section className="section-padding" style={{ background: "var(--white)" }}>
+        <div className="container" style={{ maxWidth: "800px", textAlign: "center" }}>
+          <span className="section-tag">AI Recommendations</span>
+          <h2 className="section-title">Someone in Hyderabad just asked ChatGPT to pick for them.</h2>
+          <p style={{ color: "var(--text-mid)", fontSize: "16px", lineHeight: "1.8", marginBottom: "24px" }}>
+            A startup founder in Hyderabad needs a website. Instead of searching and comparing, he simply asks ChatGPT, "Recommend a reliable web design company in Hyderabad for a small business."
+          </p>
+          <p style={{ color: "var(--text-mid)", fontSize: "16px", lineHeight: "1.8" }}>
+            ChatGPT gives him a short, confident list. He reaches out to those names first. Every other agency in the city is now competing for second place, if they get a chance at all. GEO decides whether your business makes that shortlist. Being recommended by AI is becoming the new word-of-mouth.
+          </p>
+        </div>
+      </section>
+
+      {/* SECTION 3 — Analogy */}
+      <section className="section-padding" style={{ background: "var(--off-white)" }}>
+        <div className="container" style={{ maxWidth: "800px", textAlign: "center" }}>
+          <span className="section-tag">The Analogy</span>
+          <h2 className="section-title">GEO is like becoming the brand a trusted expert keeps recommending.</h2>
+          <p style={{ color: "var(--text-mid)", fontSize: "16px", lineHeight: "1.8", marginBottom: "20px" }}>
+            Imagine a respected expert that thousands of people listen to. Every time someone asks them for a recommendation, they suggest a few trusted names. If your business is one of those names, customers come to you already trusting you.
+          </p>
+          <p style={{ color: "var(--navy)", fontSize: "16px", fontWeight: "700", lineHeight: "1.8" }}>
+            AI tools are becoming that expert for a huge number of people. GEO is how we earn your business a place on the list the AI confidently recommends.
+          </p>
+        </div>
+      </section>
+
+      {/* SECTION 4 — What We Do */}
       <section className="section-padding" style={{ background: "var(--white)" }}>
         <div className="container" style={{ maxWidth: "800px" }}>
           <div className="text-center">
-            <span className="section-tag">First-Mover Advantage</span>
-            <h2 className="section-title">What is Generative Engine Optimization (GEO)?</h2>
+            <span className="section-tag">Capabilities</span>
+            <h2 className="section-title">How we earn you the recommendation.</h2>
           </div>
-          
-          <div style={{ background: "var(--off-white)", border: "1px solid var(--border)", borderRadius: "20px", padding: "32px", marginTop: "32px" }}>
-            <p style={{ color: "var(--text)", fontSize: "15px", lineHeight: "1.7", fontWeight: "600", marginBottom: "16px" }}>
-              GEO is the engineering practice of structuring web copy, citations, and data to rank inside generative summaries produced by real-time AI search bots.
-            </p>
-            <p style={{ color: "var(--text-mid)", fontSize: "14px", lineHeight: "1.6" }}>
-              When Perplexity searches the web to answer: "What are the compliance requirements for hiring remote developers in India?", it reads the top results and writes a custom summary. GEO ensures your website is the source Perplexity references, quotes, and links to.
-            </p>
-          </div>
+
+          <ul style={{ listStyle: "none", padding: 0, margin: "40px 0 0 0", display: "flex", flexDirection: "column", gap: "20px" }}>
+            <li style={{ display: "flex", gap: "12px", alignItems: "flex-start", fontSize: "15px", color: "var(--text)", lineHeight: "1.6" }}>
+              <CheckCircle2 size={18} style={{ color: "var(--teal)", flexShrink: 0, marginTop: "2px" }} />
+              <div>
+                <strong>Build your reputation online.</strong> Reviews, mentions and credible references AI tools learn from.
+              </div>
+            </li>
+            <li style={{ display: "flex", gap: "12px", alignItems: "flex-start", fontSize: "15px", color: "var(--text)", lineHeight: "1.6" }}>
+              <CheckCircle2 size={18} style={{ color: "var(--teal)", flexShrink: 0, marginTop: "2px" }} />
+              <div>
+                <strong>Create authoritative content.</strong> Helpful, expert content that positions you as a trusted choice.
+              </div>
+            </li>
+            <li style={{ display: "flex", gap: "12px", alignItems: "flex-start", fontSize: "15px", color: "var(--text)", lineHeight: "1.6" }}>
+              <CheckCircle2 size={18} style={{ color: "var(--teal)", flexShrink: 0, marginTop: "2px" }} />
+              <div>
+                <strong>Ensure consistency.</strong> Accurate, matching information everywhere, so AI trusts your details.
+              </div>
+            </li>
+            <li style={{ display: "flex", gap: "12px", alignItems: "flex-start", fontSize: "15px", color: "var(--text)", lineHeight: "1.6" }}>
+              <CheckCircle2 size={18} style={{ color: "var(--teal)", flexShrink: 0, marginTop: "2px" }} />
+              <div>
+                <strong>Answer buying questions.</strong> Content addressing exactly what customers ask before choosing.
+              </div>
+            </li>
+            <li style={{ display: "flex", gap: "12px", alignItems: "flex-start", fontSize: "15px", color: "var(--text)", lineHeight: "1.6" }}>
+              <CheckCircle2 size={18} style={{ color: "var(--teal)", flexShrink: 0, marginTop: "2px" }} />
+              <div>
+                <strong>Strengthen trust signals.</strong> Proof, results and credibility that make you recommendation-worthy.
+              </div>
+            </li>
+          </ul>
         </div>
       </section>
 
-      {/* Why Now */}
-      <section className="section-padding" style={{ background: "var(--navy-dark)", color: "var(--white)" }}>
-        <div className="container" style={{ maxWidth: "800px", textAlign: "center" }}>
-          <span className="section-tag light">The Shift is Already Here</span>
-          <h2 className="section-title text-white" style={{ fontSize: "clamp(24px, 4vw, 32px)", marginTop: "12px" }}>
-            Google AI Overviews Now Appear in 30%+ of All Search Queries.
-          </h2>
-          <p style={{ color: "rgba(255, 255, 255, 0.8)", fontSize: "16px", lineHeight: "1.7", marginTop: "20px" }}>
-            Perplexity is growing 3× year-over-year, conducting millions of direct research searches daily. Standard search traffic is declining because users prefer synthesized AI summaries. Early movers who optimize for generative citations are capturing the market share before competitors catch on.
+      {/* SECTION 5 — What You Get */}
+      <section className="section-padding" style={{ background: "var(--off-white)" }}>
+        <div className="container" style={{ maxWidth: "800px" }}>
+          <div className="text-center">
+            <span className="section-tag">GEO Outcomes</span>
+            <h2 className="section-title">The result.</h2>
+          </div>
+
+          <ul style={{ listStyle: "none", padding: 0, margin: "32px 0 0 0", display: "flex", flexDirection: "column", gap: "16px" }}>
+            {[
+              "Your business suggested when people ask AI for a recommendation",
+              "A place on the shortlist before competitors are even considered",
+              "Trust transferred from the AI to your brand",
+              "An advantage in a space most businesses have not noticed yet"
+            ].map((item, idx) => (
+              <li key={idx} style={{ display: "flex", gap: "12px", alignItems: "center", fontSize: "16px", color: "var(--text)", fontWeight: "600" }}>
+                <CheckCircle2 size={20} style={{ color: "var(--teal)", flexShrink: 0 }} />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* SECTION 6 — How AEO, AIO and GEO Differ */}
+      <section className="section-padding" style={{ background: "var(--white)" }}>
+        <div className="container" style={{ maxWidth: "800px" }}>
+          <div className="text-center">
+            <span className="section-tag">Frameworks</span>
+            <h2 className="section-title">Three similar terms, one simple way to remember them.</h2>
+            <p className="section-sub" style={{ marginBottom: "32px" }}>
+              People mix these up. Here is the easy version.
+            </p>
+          </div>
+
+          <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+            <div className="pain-card" style={{ padding: "28px" }}>
+              <h3 style={{ fontSize: "18px", fontWeight: "800", color: "var(--navy)", marginBottom: "8px" }}>AEO is about being the answer</h3>
+              <p style={{ fontSize: "14px", color: "var(--text-mid)", lineHeight: "1.6", margin: 0 }}>
+                Being the answer to a question (often by voice or in Google's answer box).
+              </p>
+            </div>
+            
+            <div className="pain-card" style={{ padding: "28px" }}>
+              <h3 style={{ fontSize: "18px", fontWeight: "800", color: "var(--navy)", marginBottom: "8px" }}>AIO is about AI knowing your business</h3>
+              <p style={{ fontSize: "14px", color: "var(--text-mid)", lineHeight: "1.6", margin: 0 }}>
+                Making sure AI tools know your business exists and understanding it correctly.
+              </p>
+            </div>
+
+            <div className="pain-card" style={{ padding: "28px" }}>
+              <h3 style={{ fontSize: "18px", fontWeight: "800", color: "var(--navy)", marginBottom: "8px" }}>GEO is about AI recommending your business</h3>
+              <p style={{ fontSize: "14px", color: "var(--text-mid)", lineHeight: "1.6", margin: 0 }}>
+                Getting AI to suggest you when someone asks who to choose.
+              </p>
+            </div>
+          </div>
+
+          <p style={{ textAlign: "center", marginTop: "32px", fontSize: "15px", fontWeight: "700", color: "var(--teal-dark)" }}>
+            Think of it as a chain: AI must know you (AIO), trust you enough to answer with you (AEO), and like you enough to recommend you (GEO). We handle all three.
           </p>
         </div>
       </section>
 
-      {/* What We Do */}
-      <section className="section-padding" style={{ background: "var(--white)" }}>
-        <div className="container">
-          <div className="text-center">
-            <span className="section-tag">GEO Strategy</span>
-            <h2 className="section-title">How We Optimize for Generative Search</h2>
-            <p className="section-sub">Techniques designed to match AI information-retrieval patterns.</p>
-          </div>
-
-          <div className="features-grid">
-            <div className="feature-box">
-              <h3 className="feature-box-title">Source Authority Building</h3>
-              <p style={{ fontSize: "13px", color: "var(--text-mid)" }}>We secure brand placements in publications, indexes, and reference databases queried by generative retrieval models.</p>
-            </div>
-            <div className="feature-box">
-              <h3 className="feature-box-title">Structured Data Systems</h3>
-              <p style={{ fontSize: "13px", color: "var(--text-mid)" }}>We format specifications, lists, and numbers in tables and bullet matrices, formats heavily preferred by AI summarizers.</p>
-            </div>
-            <div className="feature-box">
-              <h3 className="feature-box-title">Topical Depth Content</h3>
-              <p style={{ fontSize: "13px", color: "var(--text-mid)" }}>We write pages with deep semantic coverage of industry entities, answering primary, secondary, and tertiary search questions.</p>
-            </div>
-            <div className="feature-box">
-              <h3 className="feature-box-title">AI Citation Optimization</h3>
-              <p style={{ fontSize: "13px", color: "var(--text-mid)" }}>We write clear, quote-style definition blocks that bot scrapers can easily lift and paste into summarizing loops.</p>
-            </div>
-            <div className="feature-box">
-              <h3 className="feature-box-title">Real-Time Search Audits</h3>
-              <p style={{ fontSize: "13px", color: "var(--text-mid)" }}>We run test queries across Perplexity and AI Overviews, mapping where your brand is cited and identifying keyword gap leaks.</p>
-            </div>
-            <div className="feature-box">
-              <h3 className="feature-box-title">Local Entity Mapping</h3>
-              <p style={{ fontSize: "13px", color: "var(--text-mid)" }}>We verify address schemas and local business structures so AI map search models suggest your branch coordinates.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* AEO vs AIO vs GEO Comparison Table */}
-      <section className="section-padding" style={{ background: "var(--off-white)" }}>
-        <div className="container">
-          <div className="text-center">
-            <span className="section-tag">Comparison</span>
-            <h2 className="section-title">SEO vs AEO vs AIO vs GEO</h2>
-            <p className="section-sub">Understanding the different stages of the search revolution.</p>
-          </div>
-
-          <div className="comparison-matrix-wrapper">
-            <table className="comparison-matrix">
-              <thead>
-                <tr>
-                  <th>Methodology</th>
-                  <th>Target Interface</th>
-                  <th>Core Optimization Focus</th>
-                  <th>Value Proposition</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Traditional SEO</strong></td>
-                  <td>List of Ten Blue Links</td>
-                  <td>Keyword matching, link building, domain authority rankings</td>
-                  <td>Drives standard click traffic to website pages.</td>
-                </tr>
-                <tr>
-                  <td><strong>AEO (Answer Engine)</strong></td>
-                  <td>Featured Snippets, Voice Assistants</td>
-                  <td>Direct Q&A structuring, JSON FAQ schemas, voice intent</td>
-                  <td>Secures top-of-page zero-click text answers.</td>
-                </tr>
-                <tr>
-                  <td><strong>AIO (AI Optimization)</strong></td>
-                  <td>ChatGPT, Gemini, Claude (Static Models)</td>
-                  <td>Wikidata seeding, G2 reviews, topical database mention</td>
-                  <td>Ensures brand recognition inside LLM training weights.</td>
-                </tr>
-                <tr>
-                  <td><strong>GEO (Generative Engine)</strong></td>
-                  <td>Perplexity, Google AI Overviews (Hybrid Models)</td>
-                  <td>Structured tables, citation network mentions, clear definitions</td>
-                  <td>Secures source citation cards inside AI summary blocks.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      {/* Case Study / Early Wins */}
-      <section className="section-padding" style={{ background: "var(--white)" }}>
-        <div className="container" style={{ maxWidth: "800px", textAlign: "center" }}>
-          <span className="section-tag">Early Wins</span>
-          <div style={{ background: "var(--teal-light)", color: "var(--teal-dark)", padding: "32px", borderRadius: "16px", border: "1px solid rgba(43,191,191,0.2)" }}>
-            <h3 style={{ fontSize: "20px", fontWeight: "800", marginBottom: "8px" }}>Perplexity Citation Domination</h3>
-            <p style={{ fontSize: "14px", lineHeight: "1.6", color: "var(--text-mid)", marginBottom: "16px" }}>
-              "By structuring our B2B client's industry benchmark data into comparison tables and optimization schemas, we secured primary citations on Perplexity and Google AI Overviews for 18 high-intent queries, driving direct demo signups."
-            </p>
-            <span style={{ fontSize: "12px", color: "var(--navy)", fontWeight: "bold" }}>Result: 42% lift in direct demo attribution from AI engines</span>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQs */}
-      <section className="section-padding" style={{ background: "var(--off-white)" }}>
+      {/* SECTION 7 — FAQ (GEO) */}
+      <section className="section-padding faq-section" style={{ background: "var(--off-white)", borderTop: "1px solid var(--border)" }}>
         <div className="container">
           <div className="text-center">
             <span className="section-tag">FAQ</span>
-            <h2 className="section-title">Common Questions</h2>
+            <h2 className="section-title">Questions people ask us before getting started</h2>
           </div>
 
-          <div className="faq-grid-custom" style={{ marginTop: "32px" }}>
-            {faqs.map((faq, idx) => (
-              <div key={idx} className="faq-card-custom">
-                <button 
-                  className="faq-trigger-custom"
-                  onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
+          <div className="faq-grid-custom" style={{ marginTop: "40px" }}>
+            {[
+              {
+                q: "What is generative engine optimization in simple words?",
+                a: "Generative engine optimization, or GEO, means improving how your business appears to AI tools like ChatGPT, so that when someone asks them for a recommendation, your business is one they suggest."
+              },
+              {
+                q: "Can you control what ChatGPT says about my business?",
+                a: "No one can directly control an AI's answer. But these tools build their recommendations from information and reputation found online. By improving that, we strongly increase the chance your business is recommended."
+              },
+              {
+                q: "How is GEO different from SEO?",
+                a: "SEO helps you rank in search results. GEO helps you get mentioned and recommended inside AI answers. The skills overlap, but GEO focuses on reputation and trust signals that AI tools rely on."
+              },
+              {
+                q: "Is GEO useful for a small business in India?",
+                a: "Yes. Because few businesses are paying attention to this yet, getting ahead now can make your business one of the first the AI recommends in your city and industry."
+              },
+              {
+                q: "How long does GEO take to work?",
+                a: "Like reputation in real life, it builds over time. As your online presence, reviews and authority grow, AI tools become more likely to mention you. It is an ongoing effort, not a one-time fix."
+              },
+              {
+                q: "Do I need AEO, AIO and GEO separately?",
+                a: "They are closely linked and often done together. We assess where your business stands and focus on what gives you the most visibility for your goals and budget."
+              }
+            ].map((faq, index) => (
+              <div key={index} className="faq-card-custom" style={{ borderBottom: "1px solid var(--border)" }}>
+                <div 
+                  className="faq-trigger-custom" 
+                  style={{ display: "flex", width: "100%", justifyContent: "space-between", alignItems: "center", cursor: "default" }}
                 >
-                  <span>{faq.q}</span>
-                  <ChevronDown size={18} style={{ transform: openFaq === idx ? "rotate(180deg)" : "none", transition: "transform 0.2s" }} />
-                </button>
-                {openFaq === idx && (
-                  <div className="faq-content-custom">
-                    <p>{faq.a}</p>
-                  </div>
-                )}
+                  <span style={{ textAlign: "left", paddingRight: "16px", fontWeight: "800" }}>{faq.q}</span>
+                </div>
+                <div className="faq-content-custom" style={{ paddingTop: 0 }}>
+                  <p style={{ margin: 0 }}>{faq.a}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Block */}
-      <section className="section-padding" style={{ background: "var(--grad-hero)", color: "var(--white)", textAlign: "center" }}>
+      {/* SECTION 8 — CTA */}
+      <section className="section-padding final-cta-section" style={{ background: "var(--grad-hero)", color: "var(--white)", textAlign: "center" }}>
         <div className="container">
-          <h2 className="section-title text-white">Dominate the AI search results.</h2>
-          <p className="section-sub text-white" style={{ opacity: 0.9 }}>
-            Claim your free audit and review your website's visibility on generative search engines.
+          <h2 className="section-title text-white" style={{ fontSize: "clamp(28px, 4vw, 36px)", marginBottom: "16px" }}>
+            Be the business AI recommends.
+          </h2>
+          <p className="section-sub text-white" style={{ opacity: 0.9, marginBottom: "32px", maxWidth: "700px", margin: "0 auto 32px", lineHeight: "1.7" }}>
+            Whether you are starting fresh or fixing what you have, the first step is the same: a quick, honest conversation.
           </p>
-          <Link href="/contact" className="btn btn-primary" style={{ padding: "16px 36px" }}>
-            Get My Free GEO Strategy Call →
-          </Link>
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+            <div style={{ display: "flex", gap: "20px", flexWrap: "wrap", justifyContent: "center" }}>
+              <div className="cta-wrapper">
+                <Link href="/contact?type=audit" className="btn btn-primary" style={{ padding: "14px 32px" }}>
+                  Get My Free GEO Review →
+                </Link>
+              </div>
+              <div className="cta-wrapper">
+                <Link href="/contact?type=quote" className="btn btn-outline" style={{ padding: "14px 32px", background: "rgba(255,255,255,0.08)", color: "var(--white)", borderColor: "rgba(255,255,255,0.2)" }}>
+                  Get My Free Quote →
+                </Link>
+              </div>
+            </div>
+            
+            <p className="cta-microcopy light" style={{ marginTop: "16px", opacity: 0.8 }}>
+              Same-day reply. Real experts. Zero pressure.
+            </p>
+          </div>
         </div>
       </section>
 

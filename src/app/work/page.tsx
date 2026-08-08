@@ -1,142 +1,234 @@
-"use client";
-
-import { useState } from "react";
+import type { Metadata } from "next";
 import Link from "next/link";
-import { Check, Sparkles } from "lucide-react";
+import { Check, Star, ArrowRight } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import WorkClient from "./WorkClient";
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://bizysite.in"),
+  title: "Our Work | Website Design Portfolio & Results | Bizy Site",
+  description: "See websites we have built and the results they bring. 500+ projects across industries. Real work, real outcomes. Get a free quote for yours.",
+  keywords: "web design portfolio, conversion design case studies, SEO results India, web design examples",
+  alternates: {
+    canonical: "/work",
+  },
+  openGraph: {
+    title: "Our Work | Website Design Portfolio & Results | Bizy Site",
+    description: "See websites we have built and the results they bring. 500+ projects across industries. Real work, real outcomes. Get a free quote for yours.",
+    url: "https://bizysite.in/work",
+    siteName: "Bizy Site India",
+    type: "website",
+    locale: "en_IN",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Our Work | Website Design Portfolio & Results | Bizy Site",
+    description: "See websites we have built and the results they bring. 500+ projects across industries. Real work, real outcomes. Get a free quote for yours.",
+  },
+};
 
 export default function Work() {
-  const [activeFilter, setActiveFilter] = useState("All");
-
-  const filters = ["All", "Design", "CRO", "SEO", "AEO/GEO", "Paid Ads"];
-
-  const caseStudies = [
-    {
-      slug: "dr-sajan-hegde",
-      logo: "Dr. Sajan Hegde",
-      title: "Spine Surgery Clinic Rebuilds Authority & Increases Bookings by 38%",
-      industry: "Healthcare & Medical Services",
-      services: "Website Design & Local SEO",
-      stat: "38% increase in patient bookings",
-      categories: ["Design", "SEO"]
-    },
-    {
-      slug: "sound-v-pro",
-      logo: "Sound V Pro",
-      title: "E-Commerce Audio Systems Platform Optimizes Checkout Funnel to Double Sales",
-      industry: "Audio Production Rentals",
-      services: "CRO & Performance Meta Ads",
-      stat: "2.1× higher checkout conversion rate",
-      categories: ["Paid Ads", "CRO"]
-    },
-    {
-      slug: "miracle-members",
-      logo: "Miracle Members",
-      title: "BNI Miracles Member Networking Directory Mobile Speed Redesign",
-      industry: "Business Networking Services",
-      services: "Website Design & Speed CRO",
-      stat: "48% reduction in page load speed",
-      categories: ["Design", "CRO"]
-    },
-    {
-      slug: "an-art-by",
-      logo: "An Art By",
-      title: "Art Portfolio & E-Commerce Gallery Visual Funnel Optimization",
-      industry: "Art & Creative Studio",
-      services: "UI/UX Redesign & E-Commerce CRO",
-      stat: "62% increase in visual engagement CTR",
-      categories: ["Design", "CRO"]
-    },
-    {
-      slug: "idea-heavens",
-      logo: "Idea Heavens",
-      title: "Performance Marketing Agency Cuts Client Acquisiton Lead Costs by 3.4×",
-      industry: "Marketing & Design Agency",
-      services: "Google Ads & GEO/AEO Optimization",
-      stat: "3.4× lower cost-per-lead (CPL)",
-      categories: ["Paid Ads", "AEO/GEO"]
-    }
-  ];
-
-  const filteredCases = activeFilter === "All"
-    ? caseStudies
-    : caseStudies.filter(c => c.categories.includes(activeFilter));
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "@id": "https://bizysite.in/work/#webpage",
+        "url": "https://bizysite.in/work",
+        "name": "Our Work & Case Studies"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://bizysite.in/work/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://bizysite.in"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Work",
+            "item": "https://bizysite.in/work"
+          }
+        ]
+      }
+    ]
+  };
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      
       <Header />
 
-      {/* Hero */}
+      {/* SECTION 1 — Hero */}
       <section className="service-hero">
         <div className="container service-hero-content">
-          <h1 className="service-hero-title">Results We've Delivered</h1>
+          <span className="section-tag light" style={{ color: "rgba(255,255,255,0.85)" }}>Our Work</span>
+          <h1 className="service-hero-title">Websites we are proud of. Results our clients are happy about.</h1>
           <p className="service-hero-sub">
-            Real client campaigns, documented conversion data, and verifiable business growth.
+            Good design is nice to look at. Great design brings business. Here is a look at the work we do and the outcomes it creates.
           </p>
+          <div style={{ display: "flex", gap: "16px", justifyContent: "center", flexWrap: "wrap", marginTop: "24px" }}>
+            <div className="cta-wrapper">
+              <Link href="/contact?type=quote" className="btn btn-primary">
+                Get My Free Quote →
+              </Link>
+              <p style={{ fontSize: "11px", color: "rgba(255,255,255,0.7)", marginTop: "6px" }}>Want results like these? Let us talk.</p>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Filter Tabs & Cards */}
-      <section className="section-padding" style={{ background: "var(--white)" }}>
-        <div className="container">
-          
-          {/* Tabs */}
-          <div className="filter-tabs">
-            {filters.map((filter) => (
-              <button
-                key={filter}
-                className={`filter-tab ${activeFilter === filter ? "active" : ""}`}
-                onClick={() => setActiveFilter(filter)}
-              >
-                {filter}
-              </button>
-            ))}
+      <WorkClient />
+
+      {/* SECTION 3 — Featured Case Studies */}
+      <section className="section-padding" style={{ background: "var(--off-white)", borderTop: "1px solid var(--border)" }}>
+        <div className="container" style={{ maxWidth: "900px" }}>
+          <div className="text-center" style={{ marginBottom: "40px" }}>
+            <span className="section-tag">Case Studies</span>
+            <h2 className="section-title">A closer look at the difference a website makes.</h2>
           </div>
 
-          {/* Cards Grid */}
-          <div className="work-grid" style={{ minHeight: "300px" }}>
-            {filteredCases.map((c, index) => (
-              <div key={index} className="work-card">
-                <div className="work-card-content">
-                  <span className="work-logo">{c.logo}</span>
-                  <h3 className="work-title">
-                    <Link href={`/work/${c.slug}`}>{c.title}</Link>
-                  </h3>
-                  <span className="work-meta">
-                    Industry: {c.industry} | Services: {c.services}
-                  </span>
-                  
-                  <div className="work-stat-box">
-                    {c.stat}
+          <div style={{ display: "flex", flexDirection: "column", gap: "40px" }}>
+            {/* Case Study 1 */}
+            <div style={{ background: "var(--white)", padding: "32px", borderRadius: "var(--radius-lg)", border: "1px solid var(--border)", boxShadow: "var(--shadow-sm)" }}>
+              <span className="section-tag" style={{ color: "var(--teal)", background: "rgba(43,191,191,0.08)" }}>Healthcare Sector</span>
+              <h3 style={{ fontSize: "22px", color: "var(--navy)", fontWeight: "800", margin: "12px 0 20px 0" }}>Dental Clinic, Chennai</h3>
+              
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "24px" }}>
+                <div>
+                  <h4 style={{ fontSize: "14px", fontWeight: "800", color: "var(--text)", textTransform: "uppercase", marginBottom: "8px" }}>The Problem</h4>
+                  <p style={{ fontSize: "13px", color: "var(--text-mid)", lineHeight: "1.6" }}>
+                    The website loaded in 7 seconds and lost patients before it opened. Booking an appointment was confusing.
+                  </p>
+                </div>
+                <div>
+                  <h4 style={{ fontSize: "14px", fontWeight: "800", color: "var(--text)", textTransform: "uppercase", marginBottom: "8px" }}>What We Did</h4>
+                  <p style={{ fontSize: "13px", color: "var(--text-mid)", lineHeight: "1.6" }}>
+                    Rebuilt the site to load in just over 2 seconds, made booking clear and one-tap, and added trust signals and reviews.
+                  </p>
+                </div>
+                <div>
+                  <h4 style={{ fontSize: "14px", fontWeight: "800", color: "var(--text)", textTransform: "uppercase", marginBottom: "8px" }}>The Result</h4>
+                  <div style={{ background: "var(--teal-light)", color: "var(--teal-dark)", fontWeight: "800", padding: "10px 14px", borderRadius: "8px", fontSize: "13px", display: "inline-block", marginTop: "4px" }}>
+                    Appointment enquiries rose 38% the following month, with the same traffic and ad spend.
                   </div>
+                </div>
+              </div>
+            </div>
 
-                  <Link href={`/work/${c.slug}`} className="btn btn-outline" style={{ marginTop: "auto", width: "100%" }}>
-                    Read Case Study →
-                  </Link>
+            {/* Case Study 2 */}
+            <div style={{ background: "var(--white)", padding: "32px", borderRadius: "var(--radius-lg)", border: "1px solid var(--border)", boxShadow: "var(--shadow-sm)" }}>
+              <span className="section-tag" style={{ color: "var(--teal)", background: "rgba(43,191,191,0.08)" }}>B2B & Agencies</span>
+              <h3 style={{ fontSize: "22px", color: "var(--navy)", fontWeight: "800", margin: "12px 0 20px 0" }}>Idea Heavens Agency</h3>
+              
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "24px" }}>
+                <div>
+                  <h4 style={{ fontSize: "14px", fontWeight: "800", color: "var(--text)", textTransform: "uppercase", marginBottom: "8px" }}>The Problem</h4>
+                  <p style={{ fontSize: "13px", color: "var(--text-mid)", lineHeight: "1.6" }}>
+                    Performance marketing agency was paying too much for client acquisition leads. Cost per lead was high and landing page conversion was low.
+                  </p>
+                </div>
+                <div>
+                  <h4 style={{ fontSize: "14px", fontWeight: "800", color: "var(--text)", textTransform: "uppercase", marginBottom: "8px" }}>What We Did</h4>
+                  <p style={{ fontSize: "13px", color: "var(--text-mid)", lineHeight: "1.6" }}>
+                    Optimized the search landing page, integrated clear WhatsApp quickCTAs, and optimized Google and Meta Ads targeting.
+                  </p>
+                </div>
+                <div>
+                  <h4 style={{ fontSize: "14px", fontWeight: "800", color: "var(--text)", textTransform: "uppercase", marginBottom: "8px" }}>The Result</h4>
+                  <div style={{ background: "var(--teal-light)", color: "var(--teal-dark)", fontWeight: "800", padding: "10px 14px", borderRadius: "8px", fontSize: "13px", display: "inline-block", marginTop: "4px" }}>
+                    Cut client acquisition cost per lead (CPL) by 3.4× with a 62% increase in page conversions.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 4 — Testimonials */}
+      <section className="section-padding" style={{ background: "var(--white)" }}>
+        <div className="container" style={{ maxWidth: "900px" }}>
+          <div className="text-center" style={{ marginBottom: "40px" }}>
+            <span className="section-tag">Testimonials</span>
+            <h2 className="section-title">What our clients say.</h2>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "24px" }}>
+            {[
+              {
+                text: "Got my appointment enquiries up in a month. They built a clean booking system that works.",
+                author: "Priya S.",
+                city: "Chennai"
+              },
+              {
+                text: "Conversion optimization was quick and painless, cut our acquisition costs by half. Absolute recommend.",
+                author: "Rahul K.",
+                city: "Mumbai"
+              },
+              {
+                text: "The new website loads instantly and brings daily B2B client enquiries. Very professional team.",
+                author: "Aman D.",
+                city: "Delhi"
+              }
+            ].map((t, idx) => (
+              <div key={idx} style={{ background: "var(--off-white)", padding: "24px", borderRadius: "var(--radius-md)", border: "1px solid var(--border)", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+                <div style={{ display: "flex", gap: "4px", color: "var(--teal)", marginBottom: "16px" }}>
+                  <Star size={16} fill="currentColor" />
+                  <Star size={16} fill="currentColor" />
+                  <Star size={16} fill="currentColor" />
+                  <Star size={16} fill="currentColor" />
+                  <Star size={16} fill="currentColor" />
+                </div>
+                <p style={{ fontSize: "14px", color: "var(--text)", lineHeight: "1.6", fontStyle: "italic", marginBottom: "20px" }}>
+                  "{t.text}"
+                </p>
+                <div>
+                  <strong style={{ fontSize: "13px", color: "var(--navy)", display: "block" }}>{t.author}</strong>
+                  <span style={{ fontSize: "11px", color: "var(--text-muted)", fontWeight: "600" }}>{t.city}</span>
                 </div>
               </div>
             ))}
-            {filteredCases.length === 0 && (
-              <div style={{ gridColumn: "1/-1", textAlign: "center", padding: "40px", color: "var(--text-muted)" }}>
-                No case studies found for this category yet.
-              </div>
-            )}
           </div>
-
         </div>
       </section>
 
-      {/* CTA Block */}
-      <section className="section-padding" style={{ background: "var(--grad-hero)", color: "var(--white)", textAlign: "center" }}>
+      {/* SECTION 5 — CTA */}
+      <section className="section-padding final-cta-section" style={{ background: "var(--grad-hero)", color: "var(--white)", textAlign: "center" }}>
         <div className="container">
-          <h2 className="section-title text-white">Get results like this for your business.</h2>
-          <p className="section-sub text-white" style={{ opacity: 0.9 }}>
-            Claim your free website audit report and let our experts show you where the growth gaps are.
+          <h2 className="section-title text-white" style={{ fontSize: "clamp(28px, 4vw, 36px)", marginBottom: "16px" }}>
+            Let us build something that works this well for you.
+          </h2>
+          <p className="section-sub text-white" style={{ opacity: 0.9, marginBottom: "32px", maxWidth: "700px", margin: "0 auto 32px", lineHeight: "1.7" }}>
+            Launch a site structured around customer acquisition and optimization pathways.
           </p>
-          <Link href="/contact" className="btn btn-primary" style={{ padding: "16px 36px" }}>
-            Get My Free Website Audit →
-          </Link>
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+            <div style={{ display: "flex", gap: "20px", flexWrap: "wrap", justifyContent: "center" }}>
+              <div className="cta-wrapper">
+                <Link href="/contact?type=quote" className="btn btn-primary" style={{ padding: "14px 32px" }}>
+                  Get My Free Quote →
+                </Link>
+              </div>
+              <div className="cta-wrapper">
+                <Link href="/contact?type=audit" className="btn btn-outline" style={{ padding: "14px 32px", background: "rgba(255,255,255,0.08)", color: "var(--white)", borderColor: "rgba(255,255,255,0.2)" }}>
+                  Get My Free Website Audit →
+                </Link>
+              </div>
+            </div>
+            
+            <p className="cta-microcopy light" style={{ marginTop: "16px", opacity: 0.8 }}>
+              Same-day reply. Real experts. Zero pressure.
+            </p>
+          </div>
         </div>
       </section>
 

@@ -7,7 +7,7 @@ export default function FloatingCTA() {
   return (
     <div className="floating-mobile-cta">
       <a 
-        href="https://wa.me/91950072844222?text=Hi%20Bizy%20Site,%20I'd%20like%20to%20request%20a%20free%20website%20audit." 
+        href="https://wa.me/919500728442?text=Hi%20Bizy%20Site,%20I'd%20like%20to%20request%20a%20free%20website%20audit." 
         target="_blank" 
         rel="noopener noreferrer"
         className="mobile-cta-btn whatsapp-cta"

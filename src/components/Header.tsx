@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Menu, X, ChevronDown, MessageCircle, ArrowRight } from "lucide-react";
+import { Menu, X, ChevronDown, ArrowRight } from "lucide-react";
 
 interface HeaderProps {
   currentPage?: string;
@@ -11,7 +11,8 @@ interface HeaderProps {
 export default function Header({ currentPage }: HeaderProps) {
   const [isCondensed, setIsCondensed] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isIndustriesOpen, setIsIndustriesOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,14 +29,51 @@ export default function Header({ currentPage }: HeaderProps) {
     };
   }, []);
 
-  const services = [
-    { name: "Website Design & Dev", href: "/services/web-design" },
-    { name: "Conversion Rate Optimization (CRO)", href: "/services/cro" },
-    { name: "SEO", href: "/services/seo" },
-    { name: "Answer Engine Optimization (AEO)", href: "/services/aeo" },
-    { name: "AI Optimization (AIO)", href: "/services/aio" },
-    { name: "Generative Engine Optimization (GEO)", href: "/services/geo" },
-    { name: "Google & Meta Ads", href: "/services/ads" },
+  const servicesData = [
+    {
+      category: "Get Chosen",
+      items: [
+        { name: "Website Design & Dev", href: "/services/web-design", desc: "Blazing fast, custom websites" },
+        { name: "Conversion Rate Optimization (CRO)", href: "/services/cro", desc: "Turn more traffic into leads" },
+        { name: "Social Media Management", href: "/services/social-media-management", desc: "Keep your pages active" }
+      ]
+    },
+    {
+      category: "Get Found",
+      items: [
+        { name: "SEO", href: "/services/seo", desc: "Rank high on Google search" },
+        { name: "Google Business Profile", href: "/services/google-business-profile", desc: "Win local map searches" },
+        { name: "Answer Engine Optimization (AEO)", href: "/services/aeo", desc: "Voice & snippet answers" }
+      ]
+    },
+    {
+      category: "AI & Paid Traffic",
+      items: [
+        { name: "AI Optimization (AIO)", href: "/services/aio", desc: "Be visible in AI search" },
+        { name: "Generative Engine Optimization (GEO)", href: "/services/geo", desc: "ChatGPT recommendations" },
+        { name: "Google & Meta Ads", href: "/services/ads", desc: "Get customers today" }
+      ]
+    }
+  ];
+
+  const industriesData = [
+    {
+      category: "Commercial & Retail",
+      items: [
+        { name: "Real Estate & Builders", href: "/industries/real-estate", desc: "Showcase properties cleanly" },
+        { name: "Manufacturing & B2B", href: "/industries/manufacturing", desc: "Win B2B quote requests" },
+        { name: "Retail & D2C / E-commerce", href: "/industries/retail", desc: "Turn browsers into buyers" },
+        { name: "Hospitality & Restaurants", href: "/industries/hospitality", desc: "Drive footfall and bookings" }
+      ]
+    },
+    {
+      category: "Services & Care",
+      items: [
+        { name: "Healthcare & Clinics", href: "/industries/healthcare", desc: "Fill appointment slots" },
+        { name: "Education & Coaching", href: "/industries/education", desc: "Fill batches & demo classes" },
+        { name: "Professional Services", href: "/industries/professional-services", desc: "Signal trust & win clients" }
+      ]
+    }
   ];
 
   return (
@@ -44,6 +82,7 @@ export default function Header({ currentPage }: HeaderProps) {
         <div className="container nav-container">
           {/* Left: Logo */}
           <Link href="/" className="nav-logo">
+            <img src="/Bizy_Site_Logo.png" alt="Bizy Site Logo" className="nav-logo-img" />
             <span>Bizy Site</span>
           </Link>
 
@@ -51,29 +90,38 @@ export default function Header({ currentPage }: HeaderProps) {
           <ul className="nav-links">
             <li 
               className="nav-link-item dropdown-trigger"
-              onMouseEnter={() => setIsDropdownOpen(true)}
-              onMouseLeave={() => setIsDropdownOpen(false)}
+              onMouseEnter={() => setIsServicesOpen(true)}
+              onMouseLeave={() => setIsServicesOpen(false)}
             >
               <Link href="/services" className="nav-link-anchor">
-                Services <ChevronDown size={14} className={`dropdown-icon ${isDropdownOpen ? "open" : ""}`} />
+                Services <ChevronDown size={14} className={`dropdown-icon ${isServicesOpen ? "open" : ""}`} />
               </Link>
               
-              {/* Dropdown Menu */}
-              <div className={`services-dropdown ${isDropdownOpen ? "active" : ""}`}>
-                <div className="dropdown-grid">
-                  {services.map((svc) => (
-                    <Link key={svc.href} href={svc.href} className="dropdown-item">
-                      {svc.name}
-                    </Link>
+              {/* Services Mega Dropdown Menu */}
+              <div className={`services-dropdown ${isServicesOpen ? "active" : ""}`}>
+                <div className="mega-grid-3">
+                  {servicesData.map((col) => (
+                    <div key={col.category} className="mega-col">
+                      <span className="mega-col-title">{col.category}</span>
+                      <div className="mega-list">
+                        {col.items.map((item) => (
+                          <Link key={item.href} href={item.href} className="mega-item">
+                            <span className="mega-item-title">{item.name}</span>
+                            <span className="mega-item-desc">{item.desc}</span>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
                   ))}
-                  <div className="dropdown-divider"></div>
-                  <Link href="/contact" className="dropdown-item help-link">
-                    <span>Not sure? Get a Free Audit</span>
-                    <ArrowRight size={14} />
-                  </Link>
                 </div>
+                <div className="mega-divider"></div>
+                <Link href="/contact" className="mega-help-link">
+                  <span>Not sure? Get a Free Audit</span>
+                  <ArrowRight size={14} />
+                </Link>
               </div>
             </li>
+
             <li className="nav-link-item">
               <Link href="/work">Work</Link>
             </li>
@@ -103,6 +151,7 @@ export default function Header({ currentPage }: HeaderProps) {
       <div className={`mobile-nav-overlay ${isMobileMenuOpen ? "open" : ""}`}>
         <div className="mobile-nav-header">
           <Link href="/" className="nav-logo" onClick={() => setIsMobileMenuOpen(false)}>
+            <img src="/Bizy_Site_Logo.png" alt="Bizy Site Logo" className="nav-logo-img" />
             <span>Bizy Site</span>
           </Link>
           <button className="hamburger-btn" onClick={() => setIsMobileMenuOpen(false)}>
@@ -114,7 +163,7 @@ export default function Header({ currentPage }: HeaderProps) {
           <div className="mobile-nav-section">
             <span className="mobile-section-title">Services</span>
             <div className="mobile-services-grid">
-              {services.map((svc) => (
+              {servicesData.flatMap(c => c.items).map((svc) => (
                 <Link 
                   key={svc.href} 
                   href={svc.href} 
@@ -134,7 +183,7 @@ export default function Header({ currentPage }: HeaderProps) {
             </div>
           </div>
           
-          <div className="mobile-nav-section">
+          <div className="mobile-nav-section" style={{ marginTop: "24px" }}>
             <Link href="/work" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>
               Work / Case Studies
             </Link>
