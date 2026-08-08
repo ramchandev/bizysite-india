@@ -151,6 +151,7 @@ export default function Footer() {
                 <li><Link href="/ai-policy">AI Policy</Link></li>
                 <li><Link href="/terms">Terms of Service</Link></li>
                 <li><Link href="/refund">Refund & Cancellation</Link></li>
+                <li><Link href="/sitemap">Site Map</Link></li>
               </ul>
             </div>
           </div>
