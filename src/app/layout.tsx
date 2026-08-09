@@ -61,8 +61,15 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const googleSiteVerification = process.env.GOOGLE_SITE_VERIFICATION || "";
+
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        {googleSiteVerification && (
+          <meta name="google-site-verification" content={googleSiteVerification} />
+        )}
+      </head>
       <body suppressHydrationWarning>
         {children}
         <FloatingCTA />
