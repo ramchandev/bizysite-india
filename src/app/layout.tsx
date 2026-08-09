@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import Script from "next/script";
 import FloatingCTA from "@/components/FloatingCTA";
 import BackToTop from "@/components/BackToTop";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
@@ -62,6 +63,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const googleSiteVerification = process.env.GOOGLE_SITE_VERIFICATION || "";
+  const gaTrackingId = process.env.NEXT_PUBLIC_GA_TRACKING_ID || "";
 
   return (
     <html lang="en" suppressHydrationWarning>
@@ -71,6 +73,23 @@ export default function RootLayout({
         )}
       </head>
       <body suppressHydrationWarning>
+        {gaTrackingId && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaTrackingId}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+
+                gtag('config', '${gaTrackingId}');
+              `}
+            </Script>
+          </>
+        )}
         {children}
         <FloatingCTA />
         <BackToTop />
