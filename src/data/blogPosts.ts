@@ -28,6 +28,7 @@ export const blogPosts: BlogPost[] = [
         <strong style="color: var(--navy); display: block; margin-bottom: 6px; font-size: 15px; text-transform: uppercase; letter-spacing: 0.5px;">TL;DR:</strong>
         <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--text);">If your website gets traffic but no inquiries, it is a conversion issue, not a traffic one. Common culprits include hidden contact details, confusing layouts, slow loading speeds, and scary forms. Fix this by placing clear calls-to-action above the fold and offering quick WhatsApp buttons.</p>
       </div>
+
       <p>Your website is getting visitors. You can see the numbers. But your phone is not ringing and your enquiry form stays quiet. It is one of the most frustrating things a business owner can face: people are coming, but nobody is contacting you.</p>
       
       <p>Here is the good news. This is not bad luck, and it is usually not a traffic problem. It is a <a href="/services/cro">conversion problem</a>, and <a href="/services/cro">conversion</a> problems are fixable. In most cases, a handful of small issues are quietly turning interested visitors away at the last moment.</p>
@@ -182,6 +183,7 @@ export const blogPosts: BlogPost[] = [
         <strong style="color: var(--navy); display: block; margin-bottom: 6px; font-size: 15px; text-transform: uppercase; letter-spacing: 0.5px;">TL;DR:</strong>
         <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--text);">Generative Engine Optimization (GEO) ensures your brand gets cited in AI-synthesized search engines like Google's AI Overviews and ChatGPT Search. Rank in AI citations by organizing data into structured tables, quoting precise statistics, and establishing expert topical authority.</p>
       </div>
+
       <p>Google AI Overviews now appear at the top of organic search results, and Perplexity is growing 3× year-over-year. Traditional Google search traffic is declining because users prefer conversational answers synthesized by AI search engines.</p>
       <p>To defend your market share, you must optimize for Generative Engine Optimization (GEO). This means structuring your website data so AI crawlers index your product, cite your sentences, and link back to your pages.</p>
       

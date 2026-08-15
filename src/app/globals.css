@@ -2663,4 +2663,17 @@ article li {
   transform: scale(1.04);
 }
 
+.blog-card:hover .blog-card-img {
+  transform: scale(1.05);
+}
+
+/* Hover-teal interaction for linked elements */
+.hover-teal:hover {
+  border-color: var(--teal) !important;
+}
+
+.hover-teal:hover span {
+  color: var(--teal-dark) !important;
+}
+
 

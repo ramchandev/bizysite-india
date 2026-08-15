@@ -18,7 +18,14 @@ import {
   ChevronRight,
   MousePointerClick,
   Smartphone,
-  ChevronDown
+  ChevronDown,
+  Stethoscope,
+  Building2,
+  Factory,
+  GraduationCap,
+  Hotel,
+  Briefcase,
+  ShoppingBag
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -505,24 +512,69 @@ export default function HomeClient() {
             </p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "20px", marginBottom: "48px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "20px", marginBottom: "48px" }}>
             {[
-              "Healthcare & Clinics",
-              "Real Estate & Builders",
-              "Manufacturing & B2B",
-              "Education & Coaching",
-              "Hospitality & Restaurants",
-              "Professional Services (CA, Legal, Consultants)",
-              "Retail & D2C / E-commerce"
-            ].map((industry, index) => (
-              <div key={index} style={{ background: "var(--off-white)", border: "1px solid var(--border)", borderRadius: "var(--radius-md)", padding: "20px 24px", display: "flex", alignItems: "center", gap: "12px", transition: "transform 0.2s ease" }}
-                   className="pain-card">
-                <div style={{ color: "var(--teal)", display: "flex", alignItems: "center" }}>
-                  <Award size={18} />
-                </div>
-                <span style={{ fontSize: "14px", fontWeight: "700", color: "var(--navy)" }}>{industry}</span>
-              </div>
-            ))}
+              {
+                name: "Healthcare & Clinics",
+                href: "/industries/healthcare",
+                icon: Stethoscope
+              },
+              {
+                name: "Real Estate & Builders",
+                href: "/industries/real-estate",
+                icon: Building2
+              },
+              {
+                name: "Manufacturing & B2B",
+                href: "/industries/manufacturing",
+                icon: Factory
+              },
+              {
+                name: "Education & Coaching",
+                href: "/industries/education",
+                icon: GraduationCap
+              },
+              {
+                name: "Hospitality & Restaurants",
+                href: "/industries/hospitality",
+                icon: Hotel
+              },
+              {
+                name: "Professional Services (CA, Legal, Consultants)",
+                href: "/industries/professional-services",
+                icon: Briefcase
+              },
+              {
+                name: "Retail & D2C / E-commerce",
+                href: "/industries/retail",
+                icon: ShoppingBag
+              }
+            ].map((ind, index) => {
+              const Icon = ind.icon;
+              return (
+                <Link 
+                  key={index} 
+                  href={ind.href}
+                  style={{ 
+                    background: "var(--off-white)", 
+                    border: "1px solid var(--border)", 
+                    borderRadius: "var(--radius-md)", 
+                    padding: "20px 24px", 
+                    display: "flex", 
+                    alignItems: "center", 
+                    gap: "12px", 
+                    transition: "all 0.2s ease",
+                    textDecoration: "none"
+                  }}
+                  className="pain-card hover-teal"
+                >
+                  <div style={{ color: "var(--teal)", display: "flex", alignItems: "center" }}>
+                    <Icon size={18} />
+                  </div>
+                  <span style={{ fontSize: "14px", fontWeight: "700", color: "var(--navy)", transition: "color 0.2s" }}>{ind.name}</span>
+                </Link>
+              );
+            })}
           </div>
 
           <div style={{ textAlign: "center" }}>

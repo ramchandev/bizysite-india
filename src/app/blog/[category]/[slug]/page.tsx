@@ -30,6 +30,24 @@ function getAuthorForPost(slug: string) {
   return { name: "Kantha", title: "Chief Technology Officer" };
 }
 
+function getThumbnailForPost(slug: string): string {
+  const mapping: Record<string, string> = {
+    "website-visitors-but-no-enquiries": "/blog_conversion_illustrative.jpg",
+    "aeo-guide": "/blog_aeo_guide.jpg",
+    "website-conversion-secrets": "/blog_conversion_secrets.jpg",
+    "generative-engine-optimization-india": "/blog_aeo_illustrative.jpg",
+    "rank-on-google-maps-india": "/blog_maps_india.jpg",
+    "do-i-own-my-website": "/blog_website_ownership.jpg",
+    "seo-vs-google-ads-india": "/blog_seo_vs_ads.jpg",
+    "how-long-does-seo-take-india": "/blog_seo_time.jpg",
+    "customers-asking-ai-not-google": "/blog_ai_search_future.jpg",
+    "why-your-website-is-slow": "/blog_website_slow.jpg",
+    "get-more-google-reviews": "/blog_maps_india.jpg",
+    "small-business-website-checklist-india": "/blog_checklist_india.jpg",
+  };
+  return mapping[slug] || "/blog_hero.jpg";
+}
+
 export async function generateStaticParams() {
   return blogPosts.map((post) => ({
     category: post.category.toLowerCase().replace(/ /g, "-"),
@@ -96,6 +114,12 @@ export default async function BlogDetail({ params }: PageProps) {
   if (postCategorySlug !== category) {
     notFound();
   }
+
+  // Split content at the end of the first closing </div> tag to insert the illustration below the TL;DR: card
+  const contentParts = post.content.split("</div>");
+  const hasTldr = contentParts.length > 1;
+  const tldrPart = hasTldr ? contentParts[0] + "</div>" : "";
+  const restPart = hasTldr ? contentParts.slice(1).join("</div>") : post.content;
 
   // Schema: BlogPosting
   const blogPostingJsonLd = {
@@ -245,10 +269,23 @@ export default async function BlogDetail({ params }: PageProps) {
             
             {/* Left Column: Article & FAQs */}
             <div className="blog-main-content">
-              <article 
-                style={{ color: "var(--text-mid)", fontSize: "16px", lineHeight: "1.8", display: "flex", flexDirection: "column", gap: "20px" }}
-                dangerouslySetInnerHTML={{ __html: post.content }}
-              />
+              <article style={{ color: "var(--text-mid)", fontSize: "16px", lineHeight: "1.8", display: "flex", flexDirection: "column", gap: "20px" }}>
+                {hasTldr ? (
+                  <>
+                    <div dangerouslySetInnerHTML={{ __html: tldrPart }} />
+                    <div style={{ margin: "12px 0 32px 0", borderRadius: "16px", overflow: "hidden", border: "1px solid var(--border)", boxShadow: "var(--shadow-sm)" }}>
+                      <img 
+                        src={getThumbnailForPost(post.slug)} 
+                        alt={post.title}
+                        style={{ width: "100%", height: "auto", display: "block" }}
+                      />
+                    </div>
+                    <div dangerouslySetInnerHTML={{ __html: restPart }} />
+                  </>
+                ) : (
+                  <div dangerouslySetInnerHTML={{ __html: post.content }} />
+                )}
+              </article>
 
               {/* Render FAQs at the end of the post if present */}
               {post.faqs && (
