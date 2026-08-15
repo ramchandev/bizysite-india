@@ -36,9 +36,43 @@ function formatLeadTimestamp(date = new Date()) {
   }).format(date);
 }
 
+function getRequestType(plan: string): "new_site" | "generic" {
+  const normalized = plan.toLowerCase();
+  if (normalized.includes("new website")) {
+    return "new_site";
+  }
+  return "generic";
+}
+
 // 1. Admin Email Notification Template
 function buildAdminEmailHtml(data: LeadPayload & { submittedAt: string }) {
   const { name, email, phone, plan, notes, submittedAt } = data;
+
+  let adminTitle = "New Lead Request";
+  let adminDesc = "Someone just submitted details on the Bizy Site website.";
+
+  if (plan.includes("Need: New website")) {
+    adminTitle = "New Website Request";
+    adminDesc = "Client requested a quote for a new website design.";
+  } else if (plan.includes("Need: Fix my website")) {
+    adminTitle = "Fix Website Inquiry";
+    adminDesc = "Client requested help fixing or improving their current site.";
+  } else if (plan.includes("Need: SEO")) {
+    adminTitle = "SEO & Local Search Inquiry";
+    adminDesc = "Client requested SEO/AEO/GEO optimization help.";
+  } else if (plan.includes("Need: Ads")) {
+    adminTitle = "Ads Campaign Inquiry";
+    adminDesc = "Client requested Google/Meta Ads management.";
+  } else if (plan.includes("Need: Social media")) {
+    adminTitle = "Social Media Inquiry";
+    adminDesc = "Client requested social media page management.";
+  } else if (plan.includes("Need: Not sure yet")) {
+    adminTitle = "General Consultation Inquiry";
+    adminDesc = "Client is not sure what they need and requested a call.";
+  } else if (plan.includes("Free Guide")) {
+    adminTitle = "Free Guide Download";
+    adminDesc = "Client downloaded the free conversion rate guide.";
+  }
 
   const row = (label: string, value: string, href?: string) => `
     <tr>
@@ -70,10 +104,10 @@ function buildAdminEmailHtml(data: LeadPayload & { submittedAt: string }) {
                 Bizy Site Admin
               </div>
               <h1 style="margin:0;color:#ffffff;font-size:24px;line-height:1.3;font-weight:700;">
-                New Website Audit Request
+                ${adminTitle}
               </h1>
               <p style="margin:10px 0 0;color:rgba(255,255,255,0.78);font-size:14px;line-height:1.5;">
-                Someone just submitted their details for a free audit report.
+                ${adminDesc}
               </p>
             </td>
           </tr>
@@ -92,7 +126,7 @@ function buildAdminEmailHtml(data: LeadPayload & { submittedAt: string }) {
                   </td>
                   <td align="right" style="padding:16px 18px;vertical-align:top;">
                     <div style="display:inline-block;background:#e0f2fe;color:#0369a1;font-size:11px;font-weight:700;padding:6px 10px;border-radius:999px;text-transform:uppercase;letter-spacing:0.04em;">
-                      Audit Lead
+                      Inquiry Lead
                     </div>
                   </td>
                 </tr>
@@ -129,8 +163,8 @@ function buildAdminEmailHtml(data: LeadPayload & { submittedAt: string }) {
           }
 
           <tr>
-            <td style="padding:0 32px 28px;">
-              <table role="presentation" cellpadding="0" cellspacing="0">
+            <td style="padding:0 32px 28px;" align="center">
+              <table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 auto;text-align:center;">
                 <tr>
                   <td style="padding-right:10px;">
                     <a href="mailto:${encodeURIComponent(email)}" style="display:inline-block;background:#0d1f3c;color:#ffffff;text-decoration:none;font-size:14px;font-weight:700;padding:12px 18px;border-radius:10px;">
@@ -148,7 +182,7 @@ function buildAdminEmailHtml(data: LeadPayload & { submittedAt: string }) {
           </tr>
 
           <tr>
-            <td style="padding:18px 32px;background:#f8fafc;border-top:1px solid #e2e8f0;color:#94a3b8;font-size:11px;line-height:1.5;">
+            <td style="padding:18px 32px;background:#f8fafc;border-top:1px solid #e2e8f0;color:#94a3b8;font-size:11px;line-height:1.5;text-align:center;">
               This notification was sent from the Bizy Site lead form at bizysite.in.
             </td>
           </tr>
@@ -165,7 +199,6 @@ function buildAdminEmailHtml(data: LeadPayload & { submittedAt: string }) {
 function buildCustomerEmailHtml(data: LeadPayload & { submittedAt: string }) {
   const { name, plan, notes } = data;
 
-  // Extract business metrics safely
   let businessName = "Your Business";
   let websiteUrl = "Your Website";
   if (notes) {
@@ -175,7 +208,47 @@ function buildCustomerEmailHtml(data: LeadPayload & { submittedAt: string }) {
     if (webMatch) websiteUrl = webMatch[1];
   }
 
-  const cleanGoal = plan.replace("Free Audit - Goal: ", "");
+  const reqType = getRequestType(plan);
+  const isNewSite = reqType === "new_site";
+
+  const headerTitle = isNewSite ? "Let's build your new website! 🚀" : "Request Confirmed! 🚀";
+  const headerSubtitle = isNewSite 
+    ? "We've received your request for a custom website quote." 
+    : "We've received your details and are on it.";
+  
+  const introText = isNewSite 
+    ? `Thank you for reaching out to Bizy Site. We're excited to help you design and build a high-performance website that actually brings you calls and customers. Here's a summary of your request:`
+    : `Thank you for contacting Bizy Site. Our team is currently reviewing your inquiry details and will get back to you with tailored recommendations. Here is a summary of what you submitted:`;
+
+  const cleanGoal = plan.replace("Contact Form - Need: ", "").replace("Free Audit - Goal: ", "");
+
+  const nextStepsHtml = isNewSite 
+    ? `
+      <ol style="margin:0;padding-left:20px;color:#475569;line-height:1.6;font-size:14px;">
+        <li style="margin-bottom:8px;">
+          <strong>Concept & Discovery Call:</strong> We will schedule a quick 10-15 minute discovery call to understand your business goals, target audience, and features.
+        </li>
+        <li style="margin-bottom:8px;">
+          <strong>Custom Proposal:</strong> We'll compile a tailored plan and fixed-price quote outlining the design structure and timeline.
+        </li>
+        <li style="margin-bottom:8px;">
+          <strong>Design & Launch:</strong> Once approved, our senior copywriters and conversion designers will get to work building your custom site.
+        </li>
+      </ol>
+    `
+    : `
+      <ol style="margin:0;padding-left:20px;color:#475569;line-height:1.6;font-size:14px;">
+        <li style="margin-bottom:8px;">
+          <strong>Information Review:</strong> Our team will look at your goals and message details.
+        </li>
+        <li style="margin-bottom:8px;">
+          <strong>Tailored Response:</strong> We'll write back to you via email or WhatsApp within 24 hours with custom recommendations.
+        </li>
+        <li style="margin-bottom:8px;">
+          <strong>WhatsApp Sync:</strong> We will also follow up on WhatsApp to ensure you have a direct point of contact.
+        </li>
+      </ol>
+    `;
 
   return `
 <!DOCTYPE html>
@@ -183,7 +256,7 @@ function buildCustomerEmailHtml(data: LeadPayload & { submittedAt: string }) {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Website Audit is Confirmed</title>
+  <title>Your Request is Confirmed</title>
 </head>
 <body style="margin:0;padding:0;background:#f1f5f9;font-family:ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f1f5f9;padding:32px 16px;">
@@ -196,10 +269,10 @@ function buildCustomerEmailHtml(data: LeadPayload & { submittedAt: string }) {
                 Bizy Site
               </div>
               <h1 style="margin:0;color:#ffffff;font-size:24px;line-height:1.3;font-weight:700;">
-                We're on it! 🚀
+                ${headerTitle}
               </h1>
               <p style="margin:10px 0 0;color:rgba(255,255,255,0.78);font-size:14px;line-height:1.5;">
-                Your Free Website Audit Report is being generated.
+                ${headerSubtitle}
               </p>
             </td>
           </tr>
@@ -209,28 +282,30 @@ function buildCustomerEmailHtml(data: LeadPayload & { submittedAt: string }) {
               <h2 style="color:#0d1f3c;font-size:18px;margin-top:0;margin-bottom:12px;font-weight:700;">
                 Hi ${escapeHtml(name.split(" ")[0] || name)},
               </h2>
-              <p style="margin:0 0 16px;">
-                Thank you for requesting a free audit from Bizy Site. We're excited to help you optimize your website for maximum conversions and visibility in modern search engines and AI databases.
+              <p style="margin:0 0 16px;font-size:14.5px;">
+                ${introText}
               </p>
               
               <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:20px;margin-bottom:24px;">
                 <h3 style="color:#0d1f3c;font-size:12px;margin-top:0;margin-bottom:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;">
-                  Audit Request Summary
+                  Request Summary
                 </h3>
                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="font-size:14px;line-height:1.6;">
                   <tr>
                     <td style="padding:4px 0;color:#64748b;font-weight:600;width:120px;vertical-align:top;">Business:</td>
                     <td style="padding:4px 0;color:#0f172a;font-weight:600;">${escapeHtml(businessName)}</td>
                   </tr>
+                  ${websiteUrl && websiteUrl !== "Your Website" ? `
                   <tr>
                     <td style="padding:4px 0;color:#64748b;font-weight:600;vertical-align:top;">Website:</td>
                     <td style="padding:4px 0;color:#0f172a;font-weight:600;">
                       <a href="${websiteUrl.startsWith("http") ? websiteUrl : `https://${websiteUrl}`}" style="color:#2BBFBF;text-decoration:underline;">${escapeHtml(websiteUrl)}</a>
                     </td>
                   </tr>
+                  ` : ""}
                   <tr>
-                    <td style="padding:4px 0;color:#64748b;font-weight:600;vertical-align:top;">Primary Goal:</td>
-                    <td style="padding:4px 0;color:#0d1f3c;">${escapeHtml(cleanGoal)}</td>
+                    <td style="padding:4px 0;color:#64748b;font-weight:600;vertical-align:top;">Inquiry:</td>
+                    <td style="padding:4px 0;color:#0d1f3c;font-weight:600;">${escapeHtml(cleanGoal)}</td>
                   </tr>
                 </table>
               </div>
@@ -238,23 +313,13 @@ function buildCustomerEmailHtml(data: LeadPayload & { submittedAt: string }) {
               <h3 style="color:#0d1f3c;font-size:15px;margin-top:0;margin-bottom:12px;font-weight:700;">
                 What happens next?
               </h3>
-              <ol style="margin:0;padding-left:20px;color:#475569;line-height:1.6;">
-                <li style="margin-bottom:8px;">
-                  <strong>Manual & Tech Analysis:</strong> Our engineers will run performance, SEO, mobile compatibility, and AI citation checks on your site.
-                </li>
-                <li style="margin-bottom:8px;">
-                  <strong>PDF Audit Delivery:</strong> We'll compile the results into an actionable recommendations document and send it to you within 48 hours.
-                </li>
-                <li style="margin-bottom:8px;">
-                  <strong>WhatsApp Sync:</strong> We will also message you on WhatsApp to ensure you receive the file directly.
-                </li>
-              </ol>
+              ${nextStepsHtml}
 
               <div style="margin-top:32px;padding-top:24px;border-top:1px solid #e2e8f0;text-align:center;">
                 <p style="margin:0 0 14px;color:#64748b;font-size:13px;">
-                  Want to fast-track your audit?
+                  Need immediate help?
                 </p>
-                <a href="https://wa.me/919500728442?text=Hi%20Bizy%20Site,%20I%20just%20requested%20an%20audit%20and%20would%20like%20to%20speed%20it%20up." style="display:inline-block;background:#25D366;color:#ffffff;text-decoration:none;font-size:14px;font-weight:700;padding:12px 24px;border-radius:10px;box-shadow:0 4px 12px rgba(37,211,102,0.2);">
+                <a href="https://wa.me/919500728442?text=Hi%20Bizy%20Site,%20I%20just%20submitted%20a%20request%20for%20${encodeURIComponent(cleanGoal)}." style="display:inline-block;background:#25D366;color:#ffffff;text-decoration:none;font-size:14px;font-weight:700;padding:12px 24px;border-radius:10px;box-shadow:0 4px 12px rgba(37,211,102,0.2);">
                   Chat on WhatsApp
                 </a>
               </div>
@@ -328,11 +393,28 @@ export async function POST(req: Request) {
   const { name, email, phone, plan, notes } = validated.data;
   const submittedAt = formatLeadTimestamp();
 
+  // Determine dynamic admin subject line based on choice
+  let adminSubject = `New Lead: ${name} - ${submittedAt}`;
+  if (plan.includes("Need: New website")) {
+    adminSubject = `New Website Request: ${name} - ${submittedAt}`;
+  } else if (plan.includes("Need: Fix my website")) {
+    adminSubject = `Fix Website Request: ${name} - ${submittedAt}`;
+  } else if (plan.includes("Need: SEO")) {
+    adminSubject = `SEO Optimization Lead: ${name} - ${submittedAt}`;
+  } else if (plan.includes("Need: Ads")) {
+    adminSubject = `Ads Campaign Lead: ${name} - ${submittedAt}`;
+  } else if (plan.includes("Need: Social")) {
+    adminSubject = `Social Media Lead: ${name} - ${submittedAt}`;
+  } else if (plan.includes("Need: Not sure")) {
+    adminSubject = `General Inquiry Lead: ${name} - ${submittedAt}`;
+  } else if (plan.includes("Free Guide")) {
+    adminSubject = `Guide Download: ${name} - ${submittedAt}`;
+  }
+
   const resend = new Resend(apiKey);
 
   try {
     // 1. Send Lead Notification to Admin
-    const adminSubject = `New Audit Request: ${name} - ${submittedAt}`;
     const adminHtml = buildAdminEmailHtml({ name, email, phone, plan, notes, submittedAt });
 
     const adminResult = await resend.emails.send({
@@ -351,9 +433,12 @@ export async function POST(req: Request) {
       );
     }
 
-    // 2. Send Welcome Confirmation to Customer (gracefully ignore error if it fails so we don't break page redirection)
+    // 2. Send Welcome Confirmation to Customer
     try {
-      const customerSubject = "Website Audit Request Received - Bizy Site";
+      const customerSubject = plan.includes("Need: New website") 
+        ? "We've received your website request - Bizy Site" 
+        : "We've received your request - Bizy Site";
+
       const customerHtml = buildCustomerEmailHtml({ name, email, phone, plan, notes, submittedAt });
 
       const customerResult = await resend.emails.send({
