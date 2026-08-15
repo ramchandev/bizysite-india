@@ -24,6 +24,10 @@ export const blogPosts: BlogPost[] = [
     metaTitle: "Website Getting Visitors but No Leads? Here's Why (and How to Fix It) | Bizy Site",
     metaDescription: "Your website gets traffic but no calls or enquiries? Here are the real reasons visitors leave without contacting you, and simple fixes to turn them into leads.",
     content: `
+      <div style="background: var(--off-white); border-left: 4px solid var(--teal); padding: 16px 20px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-bottom: 28px;">
+        <strong style="color: var(--navy); display: block; margin-bottom: 6px; font-size: 15px; text-transform: uppercase; letter-spacing: 0.5px;">TL;DR:</strong>
+        <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--text);">If your website gets traffic but no inquiries, it is a conversion issue, not a traffic one. Common culprits include hidden contact details, confusing layouts, slow loading speeds, and scary forms. Fix this by placing clear calls-to-action above the fold and offering quick WhatsApp buttons.</p>
+      </div>
       <p>Your website is getting visitors. You can see the numbers. But your phone is not ringing and your enquiry form stays quiet. It is one of the most frustrating things a business owner can face: people are coming, but nobody is contacting you.</p>
       
       <p>Here is the good news. This is not bad luck, and it is usually not a traffic problem. It is a <a href="/services/cro">conversion problem</a>, and <a href="/services/cro">conversion</a> problems are fixable. In most cases, a handful of small issues are quietly turning interested visitors away at the last moment.</p>
@@ -110,6 +114,10 @@ export const blogPosts: BlogPost[] = [
     metaTitle: "The Complete Guide to AEO: Why Ten Blue Links Are Dying | Bizy Site",
     metaDescription: "Traditional search engines are transitioning into answer engines. Here is how to format your site so Siri, Alexa, and Google cite your brand.",
     content: `
+      <div style="background: var(--off-white); border-left: 4px solid var(--teal); padding: 16px 20px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-bottom: 28px;">
+        <strong style="color: var(--navy); display: block; margin-bottom: 6px; font-size: 15px; text-transform: uppercase; letter-spacing: 0.5px;">TL;DR:</strong>
+        <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--text);">Search engines are evolving into AI-powered answer engines that resolve queries without sending link traffic (zero-click searches). To stay visible, adapt via Answer Engine Optimization (AEO)—writing in direct Q&A formats, utilizing structured schema markup, and building trust credentials.</p>
+      </div>
       <p>Search behaviour is shifting. Historically, search engines functioned as directories, listing a page of links (the "Ten Blue Links") in response to a keyword query. Users had to open multiple sites, scan content, and synthesize their own answers.</p>
       <p>Today, search platforms are answer engines. Users ask questions conversational in nature (e.g. "How do I audit my website's technical health?"), and algorithms read or display a single definitive answer, bypassing listing links entirely. This transition is called Answer Engine Optimization (AEO).</p>
       
@@ -136,6 +144,10 @@ export const blogPosts: BlogPost[] = [
     metaTitle: "5 Design Elements That Are Leaking Leads on Your Website | Bizy Site",
     metaDescription: "Is your website pretty but quiet? We analyze five common user interface mistakes that cause buyers to exit without leaving inquiries.",
     content: `
+      <div style="background: var(--off-white); border-left: 4px solid var(--teal); padding: 16px 20px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-bottom: 28px;">
+        <strong style="color: var(--navy); display: block; margin-bottom: 6px; font-size: 15px; text-transform: uppercase; letter-spacing: 0.5px;">TL;DR:</strong>
+        <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--text);">Many websites leak leads due to layout friction. The top five design mistakes driving visitors away are cluttered hero layouts, stock images without local context, complex inquiry forms with too many fields, cluttered menus, and trust reviews placed too low on the page.</p>
+      </div>
       <p>Many business owners spend large amounts of money driving Google search and Meta social traffic to their websites, only to watch visitors exit without submitting inquiries. The issue isn't the traffic quality; it's the post-click friction built into the website layout.</p>
       <p>A pretty design that doesn't direct user attention is a liability. Here are the five layout mistakes that are causing you to lose leads:</p>
       
@@ -166,6 +178,10 @@ export const blogPosts: BlogPost[] = [
     metaTitle: "GEO in India: How to Rank in ChatGPT Search and Google AI Overviews | Bizy Site",
     metaDescription: "Generative search is replacing standard ads. Here is how Indian brands can optimize content structures to dominate Perplexity citations.",
     content: `
+      <div style="background: var(--off-white); border-left: 4px solid var(--teal); padding: 16px 20px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-bottom: 28px;">
+        <strong style="color: var(--navy); display: block; margin-bottom: 6px; font-size: 15px; text-transform: uppercase; letter-spacing: 0.5px;">TL;DR:</strong>
+        <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--text);">Generative Engine Optimization (GEO) ensures your brand gets cited in AI-synthesized search engines like Google's AI Overviews and ChatGPT Search. Rank in AI citations by organizing data into structured tables, quoting precise statistics, and establishing expert topical authority.</p>
+      </div>
       <p>Google AI Overviews now appear at the top of organic search results, and Perplexity is growing 3× year-over-year. Traditional Google search traffic is declining because users prefer conversational answers synthesized by AI search engines.</p>
       <p>To defend your market share, you must optimize for Generative Engine Optimization (GEO). This means structuring your website data so AI crawlers index your product, cite your sentences, and link back to your pages.</p>
       
@@ -190,6 +206,10 @@ export const blogPosts: BlogPost[] = [
     metaTitle: "How to Rank Your Business on Google Maps in India (2026 Guide) | Bizy Site",
     metaDescription: "A simple, step-by-step guide to rank higher on Google Maps in India. Learn what decides the map ranking, and the exact actions to appear in the local top 3.",
     content: `
+      <div style="background: var(--off-white); border-left: 4px solid var(--teal); padding: 16px 20px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-bottom: 28px;">
+        <strong style="color: var(--navy); display: block; margin-bottom: 6px; font-size: 15px; text-transform: uppercase; letter-spacing: 0.5px;">TL;DR:</strong>
+        <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--text);">Appearing in the top 3 Google Maps listings is the fastest way to win local buyers in India. Dominate map packs by completing your Google Business Profile, ensuring consistent Name/Address/Phone (NAP) details, earning genuine reviews, and updating profiles with local photos.</p>
+      </div>
       <p>When someone nearby searches for what you offer, Google shows a map with the top 3 businesses first, complete with ratings, photos and a call button. Most people call one of those three. They rarely scroll further.</p>
       
       <p>That top 3 spot, often called the "local pack" or "map pack", is the most valuable position in local search. This guide shows you, in simple steps, how to get there.</p>
@@ -374,6 +394,10 @@ export const blogPosts: BlogPost[] = [
     metaTitle: "Do I Own My Website? What to Ask Before Building One in India | Bizy Site",
     metaDescription: "Many businesses do not truly own their website and only find out when they try to move it. Here is what website ownership means and what to ask before you build.",
     content: `
+      <div style="background: var(--off-white); border-left: 4px solid var(--teal); padding: 16px 20px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-bottom: 28px;">
+        <strong style="color: var(--navy); display: block; margin-bottom: 6px; font-size: 15px; text-transform: uppercase; letter-spacing: 0.5px;">TL;DR:</strong>
+        <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--text);">Many businesses do not own their websites because registration accounts are held under agency names. Ensure domain ownership, choose flexible platforms, keep raw design assets, and host platforms in your own name to avoid vendor lock-in.</p>
+      </div>
       <p>Most business owners assume that if they paid for a website, they own it. Often, that is not true. And the painful part is that many only discover this later, when they try to switch providers, redesign, or move their site, and find they cannot.</p>
       
       <p>This short guide explains what website ownership really means, and the exact questions to ask before you build, so you are never held hostage by your own website.</p>
@@ -458,6 +482,10 @@ export const blogPosts: BlogPost[] = [
     metaTitle: "SEO vs Google Ads in India: Which Is Better for Your Business? | Bizy Site",
     metaDescription: "SEO or Google Ads? A clear, honest comparison for Indian businesses. Costs, speed, results and which to choose based on your goals and budget.",
     content: `
+      <div style="background: var(--off-white); border-left: 4px solid var(--teal); padding: 16px 20px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-bottom: 28px;">
+        <strong style="color: var(--navy); display: block; margin-bottom: 6px; font-size: 15px; text-transform: uppercase; letter-spacing: 0.5px;">TL;DR:</strong>
+        <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--text);">Google Ads gets you leads immediately but charges per click, stopping the moment your budget runs dry. SEO is a long-term asset that takes months to rank but compounds to bring free organic traffic. The ideal model combines both in parallel.</p>
+      </div>
       <p>It is one of the most common questions Indian business owners ask: should I invest in <a href="/services/seo">SEO</a>, or run <a href="/services/ads">Google Ads</a>? Both get you customers from Google. Both cost money. But they work very differently, and picking the wrong one for your situation wastes time and budget.</p>
       
       <p>This guide gives you a clear, honest comparison, with no bias toward one or the other, so you can choose what fits your business.</p>
@@ -600,6 +628,10 @@ export const blogPosts: BlogPost[] = [
     metaTitle: "How Long Does SEO Take to Show Results in India? (Honest Answer) | Bizy Site",
     metaDescription: "An honest look at how long SEO takes in India, why it takes that long, and what to expect month by month. Set the right expectations before you invest.",
     content: `
+      <div style="background: var(--off-white); border-left: 4px solid var(--teal); padding: 16px 20px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-bottom: 28px;">
+        <strong style="color: var(--navy); display: block; margin-bottom: 6px; font-size: 15px; text-transform: uppercase; letter-spacing: 0.5px;">TL;DR:</strong>
+        <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--text);">SEO is a compounding marketing investment rather than an instant traffic hack. Expect initial movement in 2–3 months, noticeable lead generation by 4–6 months, and strong authority rankings by 6–12 months depending on competition and site performance.</p>
+      </div>
       <p>If you have started <a href="/services/seo">SEO</a>, or are thinking about it, you want to know one thing: when will I see results? It is a fair question, and you deserve an honest answer, not a vague "it depends."</p>
       
       <p>Here is the truth, clearly explained, along with what to realistically expect at each stage.</p>
@@ -709,6 +741,10 @@ export const blogPosts: BlogPost[] = [
     metaTitle: "Your Customers Are Asking AI, Not Google: What It Means for Your Business | Bizy Site",
     metaDescription: "More people now ask AI tools like ChatGPT for recommendations instead of searching Google. Here is what that means for your business, and how to stay visible.",
     content: `
+      <div style="background: var(--off-white); border-left: 4px solid var(--teal); padding: 16px 20px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-bottom: 28px;">
+        <strong style="color: var(--navy); display: block; margin-bottom: 6px; font-size: 15px; text-transform: uppercase; letter-spacing: 0.5px;">TL;DR:</strong>
+        <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--text);">More users now query conversational AI (ChatGPT, Claude, Gemini) for direct recommendations instead of searching list links on Google. Stay visible by publishing structured, comparison-friendly data, building reviews, and citing objective third-party listings.</p>
+      </div>
       <p>For twenty years, getting found meant one thing: showing up on Google. That is now changing, fast. A growing number of people are skipping the search results entirely and simply asking an AI tool, "Which is the best option for me?"</p>
       
       <p>If your business is invisible to these AI tools, you are missing customers you never even knew you lost. This guide explains what is happening, why it matters, and what you can do about it, in plain language.</p>
@@ -804,6 +840,10 @@ export const blogPosts: BlogPost[] = [
     metaTitle: "7 Reasons Your Website Is Slow (And How to Fix It) | Bizy Site",
     metaDescription: "A slow website quietly loses you customers and Google rankings. Here are 7 common reasons Indian websites load slowly, and simple fixes for each one.",
     content: `
+      <div style="background: var(--off-white); border-left: 4px solid var(--teal); padding: 16px 20px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-bottom: 28px;">
+        <strong style="color: var(--navy); display: block; margin-bottom: 6px; font-size: 15px; text-transform: uppercase; letter-spacing: 0.5px;">TL;DR:</strong>
+        <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--text);">Slow loading speeds destroy conversions and rankings. Fix page lag by compressing images, migrating from cheap hosting, removing useless analytics scripts, utilizing browser caching, and implementing CDN networks.</p>
+      </div>
       <p>A slow website is not just annoying. It is expensive. Every extra second your site takes to load, more visitors give up and leave, before they ever see what you offer. And Google notices too, quietly pushing slow sites down in rankings.</p>
       
       <p>Here are the 7 most common reasons Indian business websites load slowly, and the simple fix for each.</p>
@@ -916,6 +956,10 @@ export const blogPosts: BlogPost[] = [
     metaTitle: "How to Get More Google Reviews Without Being Pushy | Bizy Site",
     metaDescription: "More Google reviews mean more trust and better local ranking. Here is how to get more genuine reviews from Indian customers, politely and consistently.",
     content: `
+      <div style="background: var(--off-white); border-left: 4px solid var(--teal); padding: 16px 20px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-bottom: 28px;">
+        <strong style="color: var(--navy); display: block; margin-bottom: 6px; font-size: 15px; text-transform: uppercase; letter-spacing: 0.5px;">TL;DR:</strong>
+        <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--text);">Google reviews build direct local credibility and rank you higher on maps search. Avoid risky fake reviews. Increase review generation by sending direct WhatsApp links, using checkout counter QR codes, and answering every review.</p>
+      </div>
       <p>Google reviews do two powerful things: they build instant trust with new customers, and they help you <a href="/services/google-business-profile">rank higher on Google Maps</a>. Yet many good businesses have very few reviews, simply because they feel awkward asking.</p>
       
       <p>Here is how to get more genuine reviews, politely and consistently, without ever feeling pushy.</p>
@@ -1012,6 +1056,10 @@ export const blogPosts: BlogPost[] = [
     metaTitle: "Website Checklist: 10 Things Every Small Business Website in India Needs | Bizy Site",
     metaDescription: "A simple checklist of the 10 essentials every small business website in India must have to look professional, get found, and turn visitors into customers.",
     content: `
+      <div style="background: var(--off-white); border-left: 4px solid var(--teal); padding: 16px 20px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-bottom: 28px;">
+        <strong style="color: var(--navy); display: block; margin-bottom: 6px; font-size: 15px; text-transform: uppercase; letter-spacing: 0.5px;">TL;DR:</strong>
+        <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--text);">Ensure your small business site is configured correctly. Essential checklist elements include mobile layout optimization, clear above-the-fold value propositions, visible contact buttons, quick loading speeds, SSL security, and Google Analytics tracking setup.</p>
+      </div>
       <p>Whether you are building a new website or checking your current one, this simple checklist covers the 10 essentials every small business website in India needs. Miss these, and you lose customers. Get them right, and your website works like your best salesperson.</p>
       
       <p>Go through each point and tick off what your website already has.</p>

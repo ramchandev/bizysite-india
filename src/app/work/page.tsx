@@ -100,26 +100,26 @@ export default function Work() {
           <div style={{ display: "flex", flexDirection: "column", gap: "40px" }}>
             {/* Case Study 1 */}
             <div style={{ background: "var(--white)", padding: "32px", borderRadius: "var(--radius-lg)", border: "1px solid var(--border)", boxShadow: "var(--shadow-sm)" }}>
-              <span className="section-tag" style={{ color: "var(--teal)", background: "rgba(43,191,191,0.08)" }}>Healthcare Sector</span>
-              <h3 style={{ fontSize: "22px", color: "var(--navy)", fontWeight: "800", margin: "12px 0 20px 0" }}>Dental Clinic, Chennai</h3>
+              <span className="section-tag" style={{ color: "var(--teal)", background: "rgba(43,191,191,0.08)" }}>E-commerce & Retail</span>
+              <h3 style={{ fontSize: "22px", color: "var(--navy)", fontWeight: "800", margin: "12px 0 20px 0" }}>Sound V Pro Store</h3>
               
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "24px" }}>
                 <div>
                   <h4 style={{ fontSize: "14px", fontWeight: "800", color: "var(--text)", textTransform: "uppercase", marginBottom: "8px" }}>The Problem</h4>
                   <p style={{ fontSize: "13px", color: "var(--text-mid)", lineHeight: "1.6" }}>
-                    The website loaded in 7 seconds and lost patients before it opened. Booking an appointment was confusing.
+                    Renting high-end audio setups online was too friction-heavy on their old store, leading to high cart abandonment rates.
                   </p>
                 </div>
                 <div>
                   <h4 style={{ fontSize: "14px", fontWeight: "800", color: "var(--text)", textTransform: "uppercase", marginBottom: "8px" }}>What We Did</h4>
                   <p style={{ fontSize: "13px", color: "var(--text-mid)", lineHeight: "1.6" }}>
-                    Rebuilt the site to load in just over 2 seconds, made booking clear and one-tap, and added trust signals and reviews.
+                    Redesigned the checkout funnel into a streamlined single-page process, compressed product galleries, and fixed mobile checkout drop-offs.
                   </p>
                 </div>
                 <div>
                   <h4 style={{ fontSize: "14px", fontWeight: "800", color: "var(--text)", textTransform: "uppercase", marginBottom: "8px" }}>The Result</h4>
                   <div style={{ background: "var(--teal-light)", color: "var(--teal-dark)", fontWeight: "800", padding: "10px 14px", borderRadius: "8px", fontSize: "13px", display: "inline-block", marginTop: "4px" }}>
-                    Appointment enquiries rose 38% the following month, with the same traffic and ad spend.
+                    Checkout conversion rates rose by 2.1× and online rentals doubled in 30 days.
                   </div>
                 </div>
               </div>
@@ -166,19 +166,28 @@ export default function Work() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "24px" }}>
             {[
               {
-                text: "Got my appointment enquiries up in a month. They built a clean booking system that works.",
-                author: "Priya S.",
+                text: "Bizy Site rebuilt our clinic's website. They optimized the local search queries and simplified our appointment booking flow. Our online bookings grew by 38%, and patients keep commenting on how fast the website is.",
+                author: "Ragil",
+                title: "Manager, Dr. Sajan Hegde's Website",
                 city: "Chennai"
               },
               {
-                text: "Conversion optimization was quick and painless, cut our acquisition costs by half. Absolute recommend.",
-                author: "Rahul K.",
-                city: "Mumbai"
+                text: "Renting high-end audio setups online was too friction-heavy on our old store. Bizy Site redesigned the checkout funnel into a single-page checkout and fixed our mobile cart abandonment. Our online rentals doubled in 30 days.",
+                author: "Jacob",
+                title: "Founder, Sound V Pro",
+                city: "Chennai"
               },
               {
-                text: "The new website loads instantly and brings daily B2B client enquiries. Very professional team.",
-                author: "Aman D.",
-                city: "Delhi"
+                text: "Our membership directory was slow on mobile, preventing business owners from referencing members during networking sessions. Bizy Site rebuilt the index, resulting in a 48% reduction in page load speed.",
+                author: "Ram",
+                title: "VP of Miracle Chapter, Miracle Members",
+                city: "Chennai"
+              },
+              {
+                text: "We were spending heavily on marketing campaigns with very poor lead volumes. Bizy Site rebuilt our landing pages and optimized our ad campaigns. Our cost-per-lead dropped by 3.4×, with highly qualified sales inquiries.",
+                author: "Praveen",
+                title: "Founder, Idea Heavens",
+                city: "Chennai"
               }
             ].map((t, idx) => (
               <div key={idx} style={{ background: "var(--off-white)", padding: "24px", borderRadius: "var(--radius-md)", border: "1px solid var(--border)", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
@@ -189,12 +198,12 @@ export default function Work() {
                   <Star size={16} fill="currentColor" />
                   <Star size={16} fill="currentColor" />
                 </div>
-                <p style={{ fontSize: "14px", color: "var(--text)", lineHeight: "1.6", fontStyle: "italic", marginBottom: "20px" }}>
+                <p style={{ fontSize: "13.5px", color: "var(--text)", lineHeight: "1.6", fontStyle: "italic", marginBottom: "20px" }}>
                   "{t.text}"
                 </p>
                 <div>
-                  <strong style={{ fontSize: "13px", color: "var(--navy)", display: "block" }}>{t.author}</strong>
-                  <span style={{ fontSize: "11px", color: "var(--text-muted)", fontWeight: "600" }}>{t.city}</span>
+                  <strong style={{ fontSize: "13.5px", color: "var(--navy)", display: "block" }}>{t.author}</strong>
+                  <span style={{ fontSize: "11px", color: "var(--text-muted)", fontWeight: "600" }}>{t.title} ({t.city})</span>
                 </div>
               </div>
             ))}
