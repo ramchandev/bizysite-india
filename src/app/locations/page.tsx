@@ -63,7 +63,8 @@ export default function LocationsHub() {
     {
       city: "Chennai",
       desc: "Websites for Chennai businesses that get found and get customers.",
-      href: "/locations/chennai"
+      href: "/locations/chennai",
+      img: "/chennai_realistic.jpg"
     },
     {
       city: "Coimbatore",
@@ -93,7 +94,8 @@ export default function LocationsHub() {
     {
       city: "Hyderabad",
       desc: "Websites for Hyderabad businesses ready to grow online.",
-      href: "/locations/hyderabad"
+      href: "/locations/hyderabad",
+      img: "/hyderabad_realistic.jpg"
     }
   ];
 
@@ -135,17 +137,46 @@ export default function LocationsHub() {
 
           <div className="services-grid-hub" style={{ marginTop: "40px" }}>
             {locationsList.map((loc, index) => (
-              <div key={index} className="service-card-hub" style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+              <div key={index} className="service-card-hub" style={{ 
+                display: "flex", 
+                flexDirection: "column", 
+                justifyContent: "space-between",
+                padding: "0",
+                overflow: "hidden"
+              }}>
                 <div>
-                  <div style={{ width: "40px", height: "40px", borderRadius: "50%", background: "rgba(43, 191, 191, 0.1)", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--teal)", marginBottom: "16px" }}>
-                    <MapPin size={22} />
+                  {loc.img ? (
+                    <div style={{ width: "100%", height: "160px", position: "relative", overflow: "hidden" }}>
+                      <img 
+                        src={loc.img} 
+                        alt={loc.city} 
+                        style={{ width: "100%", height: "100%", objectFit: "cover" }} 
+                      />
+                      <div style={{ position: "absolute", left: "16px", bottom: "16px", background: "rgba(13, 31, 60, 0.8)", backdropFilter: "blur(4px)", padding: "4px 12px", borderRadius: "20px", display: "flex", alignItems: "center", gap: "6px", color: "var(--white)" }}>
+                        <MapPin size={14} style={{ color: "var(--teal)" }} />
+                        <span style={{ fontSize: "12px", fontWeight: "600" }}>Active</span>
+                      </div>
+                    </div>
+                  ) : (
+                    <div style={{ width: "100%", height: "160px", background: "linear-gradient(135deg, #0D1F3C 0%, #1B3B6F 100%)", display: "flex", alignItems: "center", justifyContent: "center", position: "relative" }}>
+                      <MapPin size={48} style={{ color: "rgba(43, 191, 191, 0.2)" }} />
+                      <div style={{ position: "absolute", left: "16px", bottom: "16px", background: "rgba(43, 191, 191, 0.15)", padding: "4px 12px", borderRadius: "20px", display: "flex", alignItems: "center", gap: "6px", color: "var(--teal)" }}>
+                        <MapPin size={14} />
+                        <span style={{ fontSize: "12px", fontWeight: "600" }}>Support Available</span>
+                      </div>
+                    </div>
+                  )}
+
+                  <div style={{ padding: "24px 24px 12px 24px" }}>
+                    <h3 className="service-card-title" style={{ marginTop: "0", marginBottom: "8px" }}>{loc.city}</h3>
+                    <p className="service-card-desc" style={{ marginBottom: "0" }}>{loc.desc}</p>
                   </div>
-                  <h3 className="service-card-title">{loc.city}</h3>
-                  <p className="service-card-desc" style={{ marginBottom: "20px" }}>{loc.desc}</p>
                 </div>
-                <Link href={loc.href} className="btn btn-outline" style={{ width: "100%", justifyContent: "center" }}>
-                  Explore {loc.city} Services →
-                </Link>
+                <div style={{ padding: "0 24px 24px 24px" }}>
+                  <Link href={loc.href} className="btn btn-outline" style={{ width: "100%", justifyContent: "center" }}>
+                    Explore {loc.city} Services →
+                  </Link>
+                </div>
               </div>
             ))}
           </div>

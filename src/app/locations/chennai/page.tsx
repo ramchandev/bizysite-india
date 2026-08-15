@@ -156,8 +156,17 @@ export default function ChennaiLocation() {
       <Header />
 
       {/* SECTION 1 — Hero */}
-      <section className="service-hero">
-        <div className="container service-hero-content">
+      <section className="service-hero" style={{ 
+        position: "relative", 
+        overflow: "hidden", 
+        paddingTop: "120px",
+        paddingBottom: "120px",
+        backgroundImage: "linear-gradient(to bottom, rgba(13, 31, 60, 0.94), rgba(13, 31, 60, 0.82)), url('/chennai_realistic.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat"
+      }}>
+        <div className="container service-hero-content" style={{ position: "relative", zIndex: 2 }}>
           <span className="section-tag light" style={{ color: "rgba(255,255,255,0.85)" }}>Chennai</span>
           <h1 className="service-hero-title">Websites for Chennai businesses that bring real customers.</h1>
           <p className="service-hero-sub">

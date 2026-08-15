@@ -156,8 +156,8 @@ export default function CoimbatoreLocation() {
       <Header />
 
       {/* SECTION 1 — Hero */}
-      <section className="service-hero">
-        <div className="container service-hero-content">
+      <section className="service-hero" style={{ position: "relative", overflow: "hidden", paddingBottom: "120px" }}>
+        <div className="container service-hero-content" style={{ position: "relative", zIndex: 2 }}>
           <span className="section-tag light" style={{ color: "rgba(255,255,255,0.85)" }}>Coimbatore</span>
           <h1 className="service-hero-title">Websites for Kovai businesses that win customers, near and far.</h1>
           <p className="service-hero-sub">
@@ -171,6 +171,120 @@ export default function CoimbatoreLocation() {
               <p style={{ fontSize: "11px", color: "rgba(255,255,255,0.7)", marginTop: "6px" }}>Tell us your Coimbatore business. We reply the same day.</p>
             </div>
           </div>
+        </div>
+
+        {/* Coimbatore Skyline Background Silhouette */}
+        <div className="hero-skyline-silhouette" style={{ position: "absolute", left: 0, right: 0, bottom: 0, width: "100%", zIndex: 1, pointerEvents: "none", opacity: 0.15 }}>
+          <svg viewBox="0 0 1440 250" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto", display: "block" }}>
+            {/* Defs for gradients & clip-arts */}
+            <defs>
+              <linearGradient id="sky-glow-kovai" x1="720" y1="250" x2="720" y2="0" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stopColor="var(--teal)" stopOpacity="0.15" />
+                <stop offset="1" stopColor="var(--teal)" stopOpacity="0" />
+              </linearGradient>
+              <linearGradient id="hills-grad" x1="720" y1="220" x2="720" y2="100" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stopColor="var(--navy)" stopOpacity="0.3" />
+                <stop offset="1" stopColor="var(--teal)" stopOpacity="0.05" />
+              </linearGradient>
+              <linearGradient id="factory-grad" x1="150" y1="220" x2="150" y2="80" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stopColor="#0D1F3C" stopOpacity="0.9" />
+                <stop offset="1" stopColor="#2BBFBF" stopOpacity="0.6" />
+              </linearGradient>
+              <linearGradient id="gopuram-grad" x1="365" y1="220" x2="365" y2="90" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stopColor="#0D1F3C" stopOpacity="0.95" />
+                <stop offset="0.7" stopColor="#1B3B6F" stopOpacity="0.8" />
+                <stop offset="1" stopColor="#2BBFBF" stopOpacity="0.9" />
+              </linearGradient>
+            </defs>
+
+            {/* Ambient Background Sky Glow */}
+            <rect width="1440" height="250" fill="url(#sky-glow-kovai)" />
+
+            {/* Western Ghats Hills (Far Background) */}
+            <path d="M 0,220 Q 150,150 350,190 Q 550,130 800,180 Q 1050,140 1250,170 Q 1380,130 1440,160 L 1440,250 L 0,250 Z" fill="url(#hills-grad)" stroke="var(--teal)" strokeWidth="1" opacity="0.3" />
+            <path d="M 0,230 Q 200,180 450,210 Q 700,170 950,200 Q 1200,165 1440,190 L 1440,250 L 0,250 Z" fill="url(#hills-grad)" opacity="0.4" />
+
+            {/* Textile Mills / Pumps Engineering Chimneys & Factories (Detailed Clipart Style) */}
+            <g opacity="0.9">
+              <rect x="60" y="150" width="80" height="70" fill="url(#factory-grad)" stroke="#2BBFBF" strokeWidth="1" />
+              <polygon points="55,150 95,120 105,150" fill="#0D1F3C" stroke="#2BBFBF" strokeWidth="1" />
+              {/* Factory Sawtooth Roofs */}
+              <polygon points="140,220 140,170 170,190 170,220" fill="var(--navy)" stroke="#2BBFBF" strokeWidth="1" />
+              <polygon points="170,220 170,170 200,190 200,220" fill="var(--navy)" stroke="#2BBFBF" strokeWidth="1" />
+              <polygon points="200,220 200,170 230,190 230,220" fill="var(--navy)" stroke="#2BBFBF" strokeWidth="1" />
+              {/* Chimney Stack */}
+              <polygon points="105,150 110,80 120,80 125,150" fill="#0D1F3C" stroke="#2BBFBF" strokeWidth="1" />
+              <line x1="110" y1="95" x2="120" y2="95" stroke="#FFFFFF" strokeWidth="1.5" opacity="0.5" />
+              <line x1="108" y1="115" x2="122" y2="115" stroke="#FFFFFF" strokeWidth="1.5" opacity="0.5" />
+              {/* Smoke clouds */}
+              <circle cx="115" cy="65" r="8" fill="#FFFFFF" opacity="0.25" />
+              <circle cx="125" cy="53" r="11" fill="#FFFFFF" opacity="0.15" />
+            </g>
+
+            {/* Marudhamalai Temple Gopuram (Detailed Center Left) */}
+            <g opacity="0.95">
+              {/* Stepped Gopuram Pyramid */}
+              <rect x="320" y="200" width="90" height="20" fill="url(#gopuram-grad)" rx="1" stroke="#2BBFBF" strokeWidth="1" />
+              <rect x="330" y="180" width="70" height="20" fill="url(#gopuram-grad)" rx="1" stroke="#2BBFBF" strokeWidth="1" />
+              <rect x="340" y="160" width="50" height="20" fill="url(#gopuram-grad)" rx="1" stroke="#2BBFBF" strokeWidth="1" />
+              <rect x="348" y="140" width="34" height="20" fill="url(#gopuram-grad)" rx="1" stroke="#2BBFBF" strokeWidth="1" />
+              <rect x="354" y="120" width="22" height="20" fill="url(#gopuram-grad)" rx="1" stroke="#2BBFBF" strokeWidth="1" />
+              {/* Top dome crown */}
+              <path d="M 352,120 Q 365,100 378,120 Z" fill="var(--teal)" stroke="#FFFFFF" strokeWidth="1" />
+              
+              {/* Stepped lines and spires highlighted in White */}
+              <line x1="330" y1="180" x2="400" y2="180" stroke="#FFFFFF" strokeWidth="1.5" opacity="0.4" />
+              <line x1="340" y1="160" x2="390" y2="160" stroke="#FFFFFF" strokeWidth="1.5" opacity="0.4" />
+              <line x1="348" y1="140" x2="382" y2="140" stroke="#FFFFFF" strokeWidth="1.5" opacity="0.4" />
+              <line x1="354" y1="120" x2="376" y2="120" stroke="#FFFFFF" strokeWidth="1.5" opacity="0.4" />
+              
+              {/* Kalasams (Spires) */}
+              <circle cx="365" cy="94" r="3.5" fill="#FFFFFF" />
+              <circle cx="359" cy="96" r="2.5" fill="#FFFFFF" />
+              <circle cx="371" cy="96" r="2.5" fill="#FFFFFF" />
+            </g>
+
+            {/* Adiyogi Shiva Statue (Detailed Silhouette Center Right) */}
+            <g opacity="0.95">
+              {/* Pedestal base */}
+              <path d="M 520,220 Q 640,215 760,220 L 740,210 Q 640,205 540,210 Z" fill="#0D1F3C" stroke="#2BBFBF" strokeWidth="1" />
+              {/* Chest outline */}
+              <path d="M 530,220 Q 640,160 750,220" fill="none" stroke="#2BBFBF" strokeWidth="2" />
+              {/* Hair/Jata spreading outwards */}
+              <path d="M 545,185 Q 520,160 480,185 Q 530,150 560,165" fill="#0D1F3C" stroke="#2BBFBF" strokeWidth="1" />
+              <path d="M 735,185 Q 760,160 800,185 Q 750,150 720,165" fill="#0D1F3C" stroke="#2BBFBF" strokeWidth="1" />
+              {/* Shoulders and Neck */}
+              <path d="M 580,220 Q 640,130 700,220" fill="#0D1F3C" stroke="#2BBFBF" strokeWidth="1.5" />
+              {/* Face/Head outline */}
+              <path d="M 610,135 Q 610,65 640,65 Q 670,65 670,135 Z" fill="#1B3B6F" stroke="#2BBFBF" strokeWidth="1.5" />
+              {/* Cobra snake around neck */}
+              <path d="M 625,145 Q 640,135 655,145 Q 665,135 670,140 Q 660,155 625,145 Z" fill="#0D1F3C" stroke="#2BBFBF" strokeWidth="1" />
+              <circle cx="667" cy="136" r="2.5" fill="#FFFFFF" />
+              {/* Crescent Moon on Hair (White Highlight) */}
+              <path d="M 664,75 Q 675,70 670,85 Q 662,80 664,75 Z" fill="#FFFFFF" />
+              {/* Third eye dot */}
+              <ellipse cx="640" cy="95" rx="2" ry="4.5" fill="var(--teal)" stroke="#FFFFFF" strokeWidth="1" />
+            </g>
+
+            {/* IT Parks & Glass Tidel Buildings (Silhouette Right) */}
+            <g opacity="0.25">
+              {/* Tidel Building 1 */}
+              <rect x="940" y="80" width="130" height="140" fill="#1B3B6F" rx="2" stroke="#2BBFBF" strokeWidth="1" />
+              <line x1="940" y1="110" x2="1070" y2="110" stroke="#FFFFFF" strokeWidth="1.5" opacity="0.3" />
+              <line x1="940" y1="140" x2="1070" y2="140" stroke="#FFFFFF" strokeWidth="1.5" opacity="0.3" />
+              <line x1="940" y1="170" x2="1070" y2="170" stroke="#FFFFFF" strokeWidth="1.5" opacity="0.3" />
+              {/* Window lines */}
+              <line x1="970" y1="80" x2="970" y2="220" stroke="#2BBFBF" strokeWidth="1" />
+              <line x1="1010" y1="80" x2="1010" y2="220" stroke="#2BBFBF" strokeWidth="1" />
+              <line x1="1040" y1="80" x2="1040" y2="220" stroke="#2BBFBF" strokeWidth="1" />
+              {/* Building 2 */}
+              <rect x="1100" y="60" width="70" height="160" fill="#0D1F3C" rx="2" stroke="#2BBFBF" strokeWidth="1" />
+              <rect x="1115" y="75" width="40" height="130" fill="#2BBFBF" opacity="0.3" />
+            </g>
+
+            {/* Horizon line */}
+            <line x1="0" y1="219" x2="1440" y2="219" stroke="#2BBFBF" strokeWidth="2" opacity="0.5" />
+          </svg>
         </div>
       </section>
 

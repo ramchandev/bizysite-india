@@ -70,6 +70,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return {};
   }
 
+  const imageUrl = getThumbnailForPost(post.slug);
+
   return {
     metadataBase: new URL("https://bizysite.in"),
     title: post.metaTitle || `${post.title} | Bizy Site`,
@@ -86,9 +88,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       locale: "en_IN",
       images: [
         {
-          url: "/opengraph-image.png",
+          url: imageUrl,
           width: 1200,
-          height: 1200,
+          height: 675,
           alt: post.title,
         }
       ]
@@ -97,7 +99,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       card: "summary_large_image",
       title: post.metaTitle || post.title,
       description: post.metaDescription || post.excerpt,
-      images: ["/opengraph-image.png"],
+      images: [imageUrl],
     }
   };
 }
