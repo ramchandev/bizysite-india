@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { User, Mail, Phone } from "lucide-react";
+import Script from "next/script";
 
 export default function FreeGuideClient() {
   const router = useRouter();
@@ -28,12 +29,26 @@ export default function FreeGuideClient() {
     setIsSubmitting(true);
     setFormError(null);
 
+    let gRecaptchaToken: string | undefined = undefined;
+    const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+    const isProd = process.env.NODE_ENV === "production";
+    
+    if (isProd && siteKey) {
+      gRecaptchaToken = (window as any).grecaptcha?.getResponse();
+      if (!gRecaptchaToken) {
+        setFormError("Please complete the reCAPTCHA verification.");
+        setIsSubmitting(false);
+        return;
+      }
+    }
+
     const payload = {
       name: formData.name,
       email: formData.email,
       phone: formData.phone || "not-provided",
       plan: "Free Guide Download",
-      notes: "Requested Website Conversion Cheat Sheet."
+      notes: "Requested Website Conversion Cheat Sheet.",
+      gRecaptchaToken
     };
 
     try {
@@ -61,8 +76,9 @@ export default function FreeGuideClient() {
   };
 
   return (
-    <section className="section-padding" style={{ background: "var(--off-white)", borderTop: "1px solid var(--border)" }}>
-      <div className="container" style={{ maxWidth: "540px" }}>
+    <>
+      <section className="section-padding" style={{ background: "var(--off-white)", borderTop: "1px solid var(--border)" }}>
+        <div className="container" style={{ maxWidth: "540px" }}>
         <div className="audit-form-card" style={{ background: "var(--white)", padding: "40px", borderRadius: "var(--radius-lg)", boxShadow: "var(--shadow-lg)", border: "1px solid var(--border)" }}>
           <h3 style={{ color: "var(--navy)", fontWeight: "800", fontSize: "22px", marginBottom: "6px", textAlign: "center" }}>Where should we send it?</h3>
           <p style={{ color: "var(--text-muted)", fontSize: "13px", marginBottom: "32px", textAlign: "center" }}>
@@ -129,6 +145,15 @@ export default function FreeGuideClient() {
               </div>
             )}
 
+            {process.env.NODE_ENV === "production" && process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && (
+              <div style={{ marginBottom: "20px", display: "flex", justifyContent: "center" }}>
+                <div 
+                  className="g-recaptcha" 
+                  data-sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+                />
+              </div>
+            )}
+
             <button 
               type="submit" 
               className="btn btn-primary" 
@@ -144,6 +169,13 @@ export default function FreeGuideClient() {
           </form>
         </div>
       </div>
-    </section>
+      </section>
+      {process.env.NODE_ENV === "production" && process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && (
+        <Script 
+          src={`https://www.google.com/recaptcha/api.js`} 
+          strategy="lazyOnload" 
+        />
+      )}
+    </>
   );
 }

@@ -101,7 +101,7 @@ function ThankYouContent() {
             <p style={{ color: "var(--text-mid)", fontSize: "16px", lineHeight: "1.8", marginBottom: "24px" }}>
               Download our free Website Conversion Cheat Sheet, 10 proven tips to turn more visitors into leads. A good use of the next five minutes.
             </p>
-            <div className="cta-wrapper">
+            <div className="cta-wrapper" style={{ margin: "0 auto" }}>
               <Link href="/free-guide" className="btn btn-primary" style={{ padding: "14px 32px" }}>
                 Download the Free Guide →
               </Link>

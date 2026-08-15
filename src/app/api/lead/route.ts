@@ -342,9 +342,9 @@ function buildCustomerEmailHtml(data: LeadPayload & { submittedAt: string }) {
   `.trim();
 }
 
-function validate(payload: unknown): { ok: true; data: LeadPayload } | { ok: false; message: string } {
+function validate(payload: unknown): { ok: true; data: LeadPayload & { gRecaptchaToken?: string } } | { ok: false; message: string } {
   if (!payload || typeof payload !== "object") return { ok: false, message: "Invalid payload" };
-  const p = payload as Partial<LeadPayload>;
+  const p = payload as Partial<LeadPayload & { gRecaptchaToken?: string }>;
 
   if (!isNonEmptyString(p.name)) return { ok: false, message: "Name is required" };
   if (!isNonEmptyString(p.email)) return { ok: false, message: "Email is required" };
@@ -359,6 +359,7 @@ function validate(payload: unknown): { ok: true; data: LeadPayload } | { ok: fal
       phone: p.phone.trim(),
       plan: p.plan.trim(),
       notes: typeof p.notes === "string" ? p.notes.trim() : "",
+      gRecaptchaToken: typeof p.gRecaptchaToken === "string" ? p.gRecaptchaToken.trim() : undefined,
     },
   };
 }
@@ -390,7 +391,38 @@ export async function POST(req: Request) {
     return Response.json({ ok: false, error: validated.message }, { status: 400 });
   }
 
-  const { name, email, phone, plan, notes } = validated.data;
+  const { name, email, phone, plan, notes, gRecaptchaToken } = validated.data;
+
+  // reCAPTCHA verification in production
+  const secretKey = sanitizeEnv(process.env.RECAPTCHA_SECRET_KEY, "");
+  const isProd = process.env.NODE_ENV === "production";
+
+  if (isProd && secretKey) {
+    if (!gRecaptchaToken) {
+      return Response.json({ ok: false, error: "reCAPTCHA verification is required." }, { status: 400 });
+    }
+
+    try {
+      const verifyUrl = `https://www.google.com/recaptcha/api.js?secret=${secretKey}&response=${gRecaptchaToken}`; // siteverify endpoint
+      const verifyRes = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({
+          secret: secretKey,
+          response: gRecaptchaToken
+        })
+      });
+      const verifyData = await verifyRes.json();
+
+      if (!verifyData.success) {
+        console.error("[lead] reCAPTCHA verification failed:", verifyData);
+        return Response.json({ ok: false, error: "reCAPTCHA verification failed. Please try again." }, { status: 400 });
+      }
+    } catch (err) {
+      console.error("[lead] reCAPTCHA verify request failed:", err);
+    }
+  }
+
   const submittedAt = formatLeadTimestamp();
 
   // Determine dynamic admin subject line based on choice

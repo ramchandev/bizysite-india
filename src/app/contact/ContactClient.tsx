@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Phone, MessageCircle, Mail, MapPin, CheckCircle2, User, Briefcase, FileText } from "lucide-react";
 import Link from "next/link";
+import Script from "next/script";
 
 export default function ContactClient() {
   const router = useRouter();
@@ -42,12 +43,26 @@ export default function ContactClient() {
     setIsSubmitting(true);
     setFormError(null);
 
+    let gRecaptchaToken: string | undefined = undefined;
+    const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+    const isProd = process.env.NODE_ENV === "production";
+    
+    if (isProd && siteKey) {
+      gRecaptchaToken = (window as any).grecaptcha?.getResponse();
+      if (!gRecaptchaToken) {
+        setFormError("Please complete the reCAPTCHA verification.");
+        setIsSubmitting(false);
+        return;
+      }
+    }
+
     const payload = {
       name: formData.name,
       email: formData.email || "not-provided@bizysite.com",
       phone: formData.phone,
       plan: `Contact Form - Need: ${formData.need}`,
-      notes: formData.message ? `Message: ${formData.message}` : "No message provided."
+      notes: formData.message ? `Message: ${formData.message}` : "No message provided.",
+      gRecaptchaToken
     };
 
     try {
@@ -226,6 +241,15 @@ export default function ContactClient() {
                 </div>
               )}
 
+              {process.env.NODE_ENV === "production" && process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && (
+                <div style={{ marginBottom: "20px", display: "flex", justifyContent: "center" }}>
+                  <div 
+                    className="g-recaptcha" 
+                    data-sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+                  />
+                </div>
+              )}
+
               <button 
                 type="submit" 
                 className="btn btn-primary" 
@@ -335,6 +359,12 @@ export default function ContactClient() {
           </p>
         </div>
       </section>
+      {process.env.NODE_ENV === "production" && process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && (
+        <Script 
+          src={`https://www.google.com/recaptcha/api.js`} 
+          strategy="lazyOnload" 
+        />
+      )}
     </>
   );
 }
