@@ -1,4 +1,5 @@
 import { MetadataRoute } from "next";
+import { blogPosts } from "@/data/blogPosts";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://bizysite.in";
@@ -49,11 +50,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/locations/hyderabad"
   ];
 
-  const blogRoutes = [
-    "/blog/aeo-guide",
-    "/blog/website-conversion-secrets",
-    "/blog/generative-engine-optimization-india"
-  ];
+  const blogRoutes = blogPosts.map((post) => `/blog/${post.category.toLowerCase().replace(/ /g, "-")}/${post.slug}`);
 
   const legalRoutes = [
     "/privacy",

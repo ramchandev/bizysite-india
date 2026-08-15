@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { blogPosts } from "@/data/blogPosts";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://bizysite.in"),
@@ -19,6 +20,14 @@ export default function SitemapHtml() {
     "@id": "https://bizysite.in/sitemap/#webpage",
     "url": "https://bizysite.in/sitemap",
     "name": "HTML Sitemap"
+  };
+
+  const blogSection = {
+    title: "Blog & Guides",
+    links: blogPosts.map(post => ({
+      name: post.title,
+      href: `/blog/${post.category.toLowerCase().replace(/ /g, "-")}/${post.slug}`
+    }))
   };
 
   const sections = [
@@ -71,7 +80,8 @@ export default function SitemapHtml() {
         { name: "Refund & Cancellation Policy", href: "/refund" },
         { name: "Service Index", href: "/service-index" }
       ]
-    }
+    },
+    blogSection
   ];
 
   return (

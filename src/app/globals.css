@@ -2588,3 +2588,75 @@ button, input, select, textarea {
   text-decoration: underline !important;
 }
 
+/* Blog article lists styling to fix bullet alignment */
+article ul, article ol {
+  padding-left: 24px;
+  margin-bottom: 12px;
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+article li {
+  list-style-position: outside;
+  color: var(--text-mid);
+  font-size: clamp(14px, 1.8vw, 15.5px);
+  line-height: 1.65;
+}
+
+/* Blog dynamic template layout & sidebar widget styles */
+.blog-layout-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+}
+
+@media (min-width: 992px) {
+  .blog-layout-grid {
+    grid-template-columns: 8fr 3.5fr;
+  }
+  .blog-sidebar {
+    position: sticky;
+    top: 100px;
+    align-self: start;
+  }
+}
+
+.blog-sidebar .sidebar-widget {
+  transition: all 0.3s ease;
+}
+
+.blog-sidebar .sidebar-widget:hover {
+  border-color: var(--teal) !important;
+  box-shadow: var(--shadow-md);
+}
+
+.share-icon-btn {
+  transition: transform 0.2s ease, filter 0.2s ease !important;
+}
+
+.share-icon-btn:hover {
+  transform: scale(1.1) translateY(-2px);
+  filter: brightness(1.05);
+}
+
+.category-pill:hover {
+  background: var(--navy) !important;
+  color: var(--white) !important;
+  border-color: var(--navy) !important;
+}
+
+.category-pill:hover span {
+  color: var(--white) !important;
+}
+
+.hover-white {
+  transition: color 0.2s ease;
+}
+
+.hover-white:hover {
+  color: var(--white) !important;
+}
+
+

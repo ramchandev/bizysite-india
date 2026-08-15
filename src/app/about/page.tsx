@@ -51,6 +51,8 @@ export default function About() {
     }
   ];
 
+
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
