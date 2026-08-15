@@ -244,12 +244,12 @@ export const blogPosts: BlogPost[] = [
         <li><strong>Fill in every single field.</strong> Name, address, phone, website, hours, everything.</li>
         <li><strong>Keep your details accurate.</strong> Wrong hours or an old phone number quietly hurt you.</li>
       </ul>
-      <p><strong>Why it matters:</strong></p>
-      <ul>
-        <li>A fully complete profile can get several times more clicks than an incomplete one.</li>
-        <li>Every field you fill gives Google more reasons to show you.</li>
-      </ul>
-      <p><strong>Analogy:</strong> An incomplete profile is like a shop with half the signboard missing. People are not sure what you sell or if you are even open, so they walk past.</p>
+      <div style="background: var(--off-white); border-left: 4px solid var(--teal); padding: 16px 20px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin: 20px 0 28px 0;">
+        <strong style="color: var(--navy); display: block; margin-bottom: 6px; font-size: 14.5px;">Why it matters:</strong>
+        <p style="margin: 0 0 12px; font-size: 14px; line-height: 1.6; color: var(--text-mid);">A fully complete profile can get several times more clicks than an incomplete one. Every field you fill gives Google more reasons to show you.</p>
+        <strong style="color: var(--navy); display: block; margin-bottom: 6px; font-size: 14.5px;">Analogy:</strong>
+        <p style="margin: 0; font-size: 14px; line-height: 1.6; color: var(--text-mid);">An incomplete profile is like a shop with half the signboard missing. People are not sure what you sell or if you are even open, so they walk past.</p>
+      </div>
       
       <h3>Step 2: Choose the right business categories</h3>
       <p>Your category is one of the strongest signals Google uses to decide what searches you show up for.</p>
@@ -258,11 +258,10 @@ export const blogPosts: BlogPost[] = [
         <li><strong>Add relevant secondary categories</strong> for your other services.</li>
         <li><strong>Do not stuff unrelated categories.</strong> It confuses Google and can backfire.</li>
       </ul>
-      <p><strong>Why it matters:</strong></p>
-      <ul>
-        <li>Local SEO experts rank the primary category as the single most important factor for map ranking.</li>
-        <li>The right category puts you in front of the exact customers searching for your service.</li>
-      </ul>
+      <div style="background: var(--off-white); border-left: 4px solid var(--teal); padding: 16px 20px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin: 20px 0 28px 0;">
+        <strong style="color: var(--navy); display: block; margin-bottom: 6px; font-size: 14.5px;">Why it matters:</strong>
+        <p style="margin: 0; font-size: 14px; line-height: 1.6; color: var(--text-mid);">Local SEO experts rank the primary category as the single most important factor for map ranking. The right category puts you in front of the exact customers searching for your service.</p>
+      </div>
       
       <h3>Step 3: Get more reviews, steadily</h3>
       <p>Reviews are one of the biggest trust signals for both Google and your customers.</p>
@@ -272,13 +271,13 @@ export const blogPosts: BlogPost[] = [
         <li><strong>Keep them steady.</strong> A regular flow of new reviews beats a sudden burst, then silence.</li>
         <li><strong>Reply to every review</strong>, good or bad. It signals an active, caring business.</li>
       </ul>
-      <p><strong>Why it matters:</strong></p>
-      <ul>
-        <li>More reviews and higher ratings improve your ranking and your trust.</li>
-        <li>In 2026, <em>recent</em> reviews matter more than ever. Consistency wins.</li>
-      </ul>
+      <div style="background: var(--off-white); border-left: 4px solid var(--teal); padding: 16px 20px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin: 20px 0 28px 0;">
+        <strong style="color: var(--navy); display: block; margin-bottom: 6px; font-size: 14.5px;">Why it matters:</strong>
+        <p style="margin: 0 0 12px; font-size: 14px; line-height: 1.6; color: var(--text-mid);">More reviews and higher ratings improve your ranking and your trust. In 2026, <em>recent</em> reviews matter more than ever. Consistency wins.</p>
+        <strong style="color: var(--navy); display: block; margin-bottom: 6px; font-size: 14.5px;">Analogy:</strong>
+        <p style="margin: 0; font-size: 14px; line-height: 1.6; color: var(--text-mid);">Reviews are word-of-mouth, made visible. A steady stream of recent, genuine praise is the modern version of a shop everyone in the area recommends.</p>
+      </div>
       <p><strong>Important:</strong> Never buy fake reviews. Google detects this and can penalise or suspend you. Genuine reviews are the only ones that help.</p>
-      <p><strong>Analogy:</strong> Reviews are word-of-mouth, made visible. A steady stream of recent, genuine praise is the modern version of a shop everyone in the area recommends.</p>
       
       <h3>Step 4: Add real photos, regularly</h3>
       <p>Photos make your profile look alive and trustworthy, and they influence ranking.</p>
@@ -287,11 +286,10 @@ export const blogPosts: BlogPost[] = [
         <li><strong>Set a clear cover photo and logo.</strong></li>
         <li><strong>Add new photos regularly</strong>, at least once a month.</li>
       </ul>
-      <p><strong>Why it matters:</strong></p>
-      <ul>
-        <li>Businesses with more photos get more clicks and more direction requests.</li>
-        <li>Fresh photos signal to Google that your business is active.</li>
-      </ul>
+      <div style="background: var(--off-white); border-left: 4px solid var(--teal); padding: 16px 20px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin: 20px 0 28px 0;">
+        <strong style="color: var(--navy); display: block; margin-bottom: 6px; font-size: 14.5px;">Why it matters:</strong>
+        <p style="margin: 0; font-size: 14px; line-height: 1.6; color: var(--text-mid);">Businesses with more photos get more clicks and more direction requests. Fresh photos signal to Google that your business is active.</p>
+      </div>
       
       <h3>Step 5: Post updates on your profile</h3>
       <p>Most businesses ignore this, which makes it an easy way to get ahead.</p>
@@ -299,11 +297,10 @@ export const blogPosts: BlogPost[] = [
         <li><strong>Share short posts:</strong> offers, news, updates, events.</li>
         <li><strong>Post regularly</strong> to show Google your profile is active.</li>
       </ul>
-      <p><strong>Why it matters:</strong></p>
-      <ul>
-        <li>Regular posting signals freshness and engagement.</li>
-        <li>Active profiles tend to rank better than stagnant ones.</li>
-      </ul>
+      <div style="background: var(--off-white); border-left: 4px solid var(--teal); padding: 16px 20px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin: 20px 0 28px 0;">
+        <strong style="color: var(--navy); display: block; margin-bottom: 6px; font-size: 14.5px;">Why it matters:</strong>
+        <p style="margin: 0; font-size: 14px; line-height: 1.6; color: var(--text-mid);">Regular posting signals freshness and engagement. Active profiles tend to rank better than stagnant ones.</p>
+      </div>
       
       <h3>Step 6: Keep your details identical everywhere (NAP)</h3>
       <p>NAP means Name, Address, Phone number. Google checks whether these match across the internet.</p>
@@ -312,12 +309,12 @@ export const blogPosts: BlogPost[] = [
         <li><strong>Fix old listings</strong> with wrong or outdated details.</li>
         <li><strong>Match your website</strong> to your Google profile exactly.</li>
       </ul>
-      <p><strong>Why it matters:</strong></p>
-      <ul>
-        <li>Inconsistent details make Google unsure you are legitimate, which caps your ranking.</li>
-        <li>Many businesses have mismatched details in at least one place without realising.</li>
-      </ul>
-      <p><strong>Analogy:</strong> If your address on different signboards around town all said something slightly different, people would get confused and doubt you. Google feels the same way.</p>
+      <div style="background: var(--off-white); border-left: 4px solid var(--teal); padding: 16px 20px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin: 20px 0 28px 0;">
+        <strong style="color: var(--navy); display: block; margin-bottom: 6px; font-size: 14.5px;">Why it matters:</strong>
+        <p style="margin: 0 0 12px; font-size: 14px; line-height: 1.6; color: var(--text-mid);">Inconsistent details make Google unsure you are legitimate, which caps your ranking. Many businesses have mismatched details in at least one place without realising.</p>
+        <strong style="color: var(--navy); display: block; margin-bottom: 6px; font-size: 14.5px;">Analogy:</strong>
+        <p style="margin: 0; font-size: 14px; line-height: 1.6; color: var(--text-mid);">If your address on different signboards around town all said something slightly different, people would get confused and doubt you. Google feels the same way.</p>
+      </div>
       
       <h3>Step 7: Strengthen your website behind the profile</h3>
       <p>Your website and your Google profile work as a team.</p>
@@ -326,11 +323,10 @@ export const blogPosts: BlogPost[] = [
         <li><strong>Mention your city and areas</strong> you serve in your website content.</li>
         <li><strong>Create <a href="/locations">service and location pages</a></strong> that match what people search.</li>
       </ul>
-      <p><strong>Why it matters:</strong></p>
-      <ul>
-        <li>A fast, mobile-friendly website boosts the prominence and relevance Google sees.</li>
-        <li>It helps you rank in the normal results too, not just the map.</li>
-      </ul>
+      <div style="background: var(--off-white); border-left: 4px solid var(--teal); padding: 16px 20px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin: 20px 0 28px 0;">
+        <strong style="color: var(--navy); display: block; margin-bottom: 6px; font-size: 14.5px;">Why it matters:</strong>
+        <p style="margin: 0; font-size: 14px; line-height: 1.6; color: var(--text-mid);">A fast, mobile-friendly website boosts the prominence and relevance Google sees. It helps you rank in the normal results too, not just the map.</p>
+      </div>
       
       <h3>How long does it take to rank on Google Maps?</h3>
       <p>Honest expectations matter. Here is a realistic picture:</p>
@@ -339,7 +335,10 @@ export const blogPosts: BlogPost[] = [
         <li><strong>In moderately competitive areas</strong>, a fully optimised profile with consistent reviews can reach the top 3 in roughly <strong>1 to 3 months.</strong></li>
         <li><strong>In highly competitive cities and categories</strong>, it takes longer and needs ongoing effort.</li>
       </ul>
-      <p><strong>Analogy:</strong> Ranking on Maps is like building a reputation in your neighbourhood. It grows steadily with consistent good work, not overnight.</p>
+      <div style="background: var(--off-white); border-left: 4px solid var(--teal); padding: 16px 20px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin: 20px 0 28px 0;">
+        <strong style="color: var(--navy); display: block; margin-bottom: 6px; font-size: 14.5px;">Analogy:</strong>
+        <p style="margin: 0; font-size: 14px; line-height: 1.6; color: var(--text-mid);">Ranking on Maps is like building a reputation in your neighbourhood. It grows steadily with consistent good work, not overnight.</p>
+      </div>
       
       <h3>Quick checklist: your Google Maps ranking</h3>
       <ul>

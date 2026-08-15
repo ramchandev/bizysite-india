@@ -269,17 +269,14 @@ export default async function BlogDetail({ params }: PageProps) {
             
             {/* Left Column: Article & FAQs */}
             <div className="blog-main-content">
-              <article style={{ color: "var(--text-mid)", fontSize: "16px", lineHeight: "1.8", display: "flex", flexDirection: "column", gap: "20px" }}>
+              <article className="blog-post-article">
                 {hasTldr ? (
                   <>
                     <div dangerouslySetInnerHTML={{ __html: tldrPart }} />
-                    <div style={{ margin: "12px 0 32px 0", borderRadius: "16px", overflow: "hidden", border: "1px solid var(--border)", boxShadow: "var(--shadow-sm)" }}>
-                      <img 
-                        src={getThumbnailForPost(post.slug)} 
-                        alt={post.title}
-                        style={{ width: "100%", height: "auto", display: "block" }}
-                      />
-                    </div>
+                    <img 
+                      src={getThumbnailForPost(post.slug)} 
+                      alt={post.title}
+                    />
                     <div dangerouslySetInnerHTML={{ __html: restPart }} />
                   </>
                 ) : (
