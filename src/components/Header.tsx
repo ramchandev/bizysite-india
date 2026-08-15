@@ -149,11 +149,7 @@ export default function Header({ currentPage }: HeaderProps) {
 
       {/* Mobile navigation overlay */}
       <div className={`mobile-nav-overlay ${isMobileMenuOpen ? "open" : ""}`}>
-        <div className="mobile-nav-header">
-          <Link href="/" className="nav-logo" onClick={() => setIsMobileMenuOpen(false)}>
-            <img src="/Bizy_Site_Logo.png" alt="Bizy Site Logo" className="nav-logo-img" />
-            <span>Bizy Site</span>
-          </Link>
+        <div className="mobile-nav-header" style={{ justifyContent: "flex-end" }}>
           <button className="hamburger-btn" onClick={() => setIsMobileMenuOpen(false)}>
             <X size={24} />
           </button>
