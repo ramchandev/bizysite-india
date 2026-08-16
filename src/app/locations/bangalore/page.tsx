@@ -156,7 +156,16 @@ export default function BangaloreLocation() {
       <Header />
 
       {/* SECTION 1 — Hero */}
-      <section className="service-hero" style={{ position: "relative", overflow: "hidden", paddingBottom: "120px" }}>
+      <section className="service-hero" style={{ 
+        position: "relative", 
+        overflow: "hidden", 
+        paddingTop: "120px",
+        paddingBottom: "120px",
+        backgroundImage: "linear-gradient(to bottom, rgba(13, 31, 60, 0.94), rgba(13, 31, 60, 0.82)), url('/bangalore_realistic.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat"
+      }}>
         <div className="container service-hero-content" style={{ position: "relative", zIndex: 2 }}>
           <span className="section-tag light" style={{ color: "rgba(255,255,255,0.85)" }}>Bangalore</span>
           <h1 className="service-hero-title">Websites for Bengaluru businesses, from startups to your local shop.</h1>
@@ -171,125 +180,6 @@ export default function BangaloreLocation() {
               <p style={{ fontSize: "11px", color: "rgba(255,255,255,0.7)", marginTop: "6px" }}>Tell us your Bengaluru business. We reply the same day.</p>
             </div>
           </div>
-        </div>
-
-        {/* Bangalore Skyline Background Silhouette */}
-        {/* Bangalore Skyline Background Silhouette */}
-        <div className="hero-skyline-silhouette" style={{ position: "absolute", left: 0, right: 0, bottom: 0, width: "100%", zIndex: 1, pointerEvents: "none", opacity: 0.15 }}>
-          <svg viewBox="0 0 1440 250" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto", display: "block" }}>
-            {/* Defs for gradients & clip-arts */}
-            <defs>
-              <linearGradient id="sky-glow-blr" x1="720" y1="250" x2="720" y2="0" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stopColor="var(--teal)" stopOpacity="0.15" />
-                <stop offset="1" stopColor="var(--teal)" stopOpacity="0" />
-              </linearGradient>
-              <linearGradient id="office-grad" x1="100" y1="220" x2="100" y2="40" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stopColor="var(--navy)" stopOpacity="0.5" />
-                <stop offset="1" stopColor="var(--teal)" stopOpacity="0.15" />
-              </linearGradient>
-              <linearGradient id="soudha-grad" x1="340" y1="220" x2="340" y2="50" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stopColor="#0D1F3C" stopOpacity="0.95" />
-                <stop offset="0.7" stopColor="#1B3B6F" stopOpacity="0.8" />
-                <stop offset="1" stopColor="#2BBFBF" stopOpacity="0.9" />
-              </linearGradient>
-              <linearGradient id="palace-grad" x1="600" y1="220" x2="600" y2="70" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stopColor="#0D1F3C" stopOpacity="0.9" />
-                <stop offset="1" stopColor="#2BBFBF" stopOpacity="0.75" />
-              </linearGradient>
-            </defs>
-
-            {/* Ambient Background Sky Glow */}
-            <rect width="1440" height="250" fill="url(#sky-glow-blr)" />
-
-            {/* Background Tech office skyscrapers (ORR / Electronic City) */}
-            <g opacity="0.25">
-              <rect x="70" y="50" width="80" height="170" fill="url(#office-grad)" rx="2" />
-              <rect x="160" y="80" width="60" height="140" fill="url(#office-grad)" rx="2" />
-              <rect x="1100" y="40" width="90" height="180" fill="url(#office-grad)" rx="2" />
-              <rect x="1200" y="70" width="70" height="150" fill="url(#office-grad)" rx="2" />
-            </g>
-
-            {/* Vidhana Soudha (Detailed Silhouette in Center Left) */}
-            <g opacity="0.95">
-              {/* Grand pillars base and steps */}
-              <rect x="240" y="195" width="200" height="25" fill="url(#soudha-grad)" rx="1" stroke="#2BBFBF" strokeWidth="1" />
-              <rect x="220" y="215" width="240" height="10" fill="#0D1F3C" rx="1" stroke="#2BBFBF" strokeWidth="1" />
-              <line x1="220" y1="218" x2="460" y2="218" stroke="#FFFFFF" strokeWidth="1" opacity="0.4" />
-              
-              {/* Columns grid */}
-              <rect x="250" y="150" width="10" height="48" fill="#2BBFBF" rx="1" />
-              <rect x="270" y="150" width="10" height="48" fill="#2BBFBF" rx="1" />
-              <rect x="290" y="150" width="10" height="48" fill="#2BBFBF" rx="1" />
-              <rect x="310" y="150" width="10" height="48" fill="#2BBFBF" rx="1" />
-              <rect x="330" y="150" width="10" height="48" fill="#2BBFBF" rx="1" />
-              <rect x="350" y="150" width="10" height="48" fill="#2BBFBF" rx="1" />
-              <rect x="370" y="150" width="10" height="48" fill="#2BBFBF" rx="1" />
-              <rect x="390" y="150" width="10" height="48" fill="#2BBFBF" rx="1" />
-              <rect x="410" y="150" width="10" height="48" fill="#2BBFBF" rx="1" />
-              <rect x="430" y="150" width="10" height="48" fill="#2BBFBF" rx="1" />
-              
-              {/* Main roof deck */}
-              <rect x="235" y="142" width="210" height="10" fill="#0D1F3C" stroke="#2BBFBF" strokeWidth="1" />
-              
-              {/* Central Dome Tower */}
-              <rect x="315" y="115" width="50" height="30" fill="#0D1F3C" stroke="#2BBFBF" strokeWidth="1" />
-              <path d="M 310,115 Q 340,65 370,115 Z" fill="url(#soudha-grad)" stroke="#FFFFFF" strokeWidth="1.5" />
-              {/* Lion capital emblem spire */}
-              <line x1="340" y1="75" x2="340" y2="52" stroke="#FFFFFF" strokeWidth="2" />
-              <circle cx="340" cy="50" r="3" fill="#FFFFFF" />
-              
-              {/* Side dome structures */}
-              <rect x="240" y="125" width="20" height="20" fill="#0D1F3C" stroke="#2BBFBF" strokeWidth="1" />
-              <path d="M 238,125 Q 250,105 262,125 Z" fill="var(--teal)" stroke="#FFFFFF" strokeWidth="1" />
-              <rect x="420" y="125" width="20" height="20" fill="#0D1F3C" stroke="#2BBFBF" strokeWidth="1" />
-              <path d="M 418,125 Q 430,105 442,125 Z" fill="var(--teal)" stroke="#FFFFFF" strokeWidth="1" />
-            </g>
-
-            {/* Bangalore Palace (Detailed Tudor Castle right center) */}
-            <g opacity="0.95">
-              {/* Fortress block base */}
-              <rect x="520" y="140" width="170" height="80" fill="url(#palace-grad)" stroke="#2BBFBF" strokeWidth="1" />
-              {/* Crenellated top battlements */}
-              <rect x="515" y="132" width="180" height="8" fill="#0D1F3C" rx="1" stroke="#2BBFBF" strokeWidth="1" />
-              <line x1="515" y1="136" x2="695" y2="136" stroke="#FFFFFF" strokeWidth="1.5" opacity="0.5" />
-              
-              {/* Castle towers */}
-              <rect x="530" y="90" width="30" height="50" fill="#0D1F3C" stroke="#2BBFBF" strokeWidth="1" />
-              <polygon points="525,90 545,70 565,90" fill="var(--teal)" stroke="#FFFFFF" strokeWidth="1" />
-              <rect x="640" y="90" width="30" height="50" fill="#0D1F3C" stroke="#2BBFBF" strokeWidth="1" />
-              <polygon points="635,90 655,70 675,90" fill="var(--teal)" stroke="#FFFFFF" strokeWidth="1" />
-              
-              {/* Taller central octagonal watchtower */}
-              <polygon points="585,140 590,60 610,60 615,140" fill="#0D1F3C" stroke="#2BBFBF" strokeWidth="1.5" />
-              <line x1="590" y1="60" x2="610" y2="60" stroke="#FFFFFF" strokeWidth="2" />
-              {/* Arch window slits */}
-              <rect x="596" y="80" width="8" height="18" rx="4" fill="#FFFFFF" opacity="0.8" />
-              <rect x="596" y="105" width="8" height="18" rx="4" fill="var(--teal)" />
-              
-              {/* Palace arched entryways */}
-              <g fill="#FFFFFF" opacity="0.6">
-                <rect x="550" y="165" width="14" height="22" rx="7" />
-                <rect x="635" y="165" width="14" height="22" rx="7" />
-              </g>
-            </g>
-
-            {/* ISCKON Gopuram (Silhouette far right detailed) */}
-            <g opacity="0.9">
-              <rect x="850" y="180" width="80" height="40" fill="#0D1F3C" stroke="#2BBFBF" strokeWidth="1" />
-              <rect x="860" y="140" width="60" height="40" fill="#0D1F3C" stroke="#2BBFBF" strokeWidth="1" />
-              <rect x="870" y="100" width="40" height="40" fill="#0D1F3C" stroke="#2BBFBF" strokeWidth="1" />
-              <polygon points="865,100 890,60 915,100" fill="var(--teal)" stroke="#FFFFFF" strokeWidth="1" />
-              <line x1="890" y1="60" x2="890" y2="40" stroke="#FFFFFF" strokeWidth="2" />
-              <circle cx="890" cy="38" r="3" fill="#FFFFFF" />
-              
-              {/* Stepped horizontal highlights */}
-              <line x1="860" y1="140" x2="920" y2="140" stroke="#FFFFFF" strokeWidth="1" opacity="0.4" />
-              <line x1="870" y1="100" x2="910" y2="100" stroke="#FFFFFF" strokeWidth="1" opacity="0.4" />
-            </g>
-
-            {/* Horizon line */}
-            <line x1="0" y1="219" x2="1440" y2="219" stroke="#2BBFBF" strokeWidth="2" opacity="0.5" />
-          </svg>
         </div>
       </section>
 

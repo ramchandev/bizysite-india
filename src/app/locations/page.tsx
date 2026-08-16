@@ -69,27 +69,32 @@ export default function LocationsHub() {
     {
       city: "Coimbatore",
       desc: "Websites for Kovai businesses, from manufacturing to services.",
-      href: "/locations/coimbatore"
+      href: "/locations/coimbatore",
+      img: "/coimbatore_realistic.jpg"
     },
     {
       city: "Mumbai",
       desc: "Websites for Mumbai businesses that move as fast as the city does.",
-      href: "/locations/mumbai"
+      href: "/locations/mumbai",
+      img: "/mumbai_realistic.jpg"
     },
     {
       city: "Bangalore",
       desc: "Websites for Bengaluru businesses, from startups to local services.",
-      href: "/locations/bangalore"
+      href: "/locations/bangalore",
+      img: "/bangalore_realistic.jpg"
     },
     {
       city: "Pune",
       desc: "Websites for Pune businesses, education to IT to manufacturing.",
-      href: "/locations/pune"
+      href: "/locations/pune",
+      img: "/pune_realistic.jpg"
     },
     {
       city: "Delhi",
       desc: "Websites for Delhi NCR businesses that stand out in a crowded market.",
-      href: "/locations/delhi"
+      href: "/locations/delhi",
+      img: "/delhi_realistic.jpg"
     },
     {
       city: "Hyderabad",
@@ -145,27 +150,17 @@ export default function LocationsHub() {
                 overflow: "hidden"
               }}>
                 <div>
-                  {loc.img ? (
-                    <div style={{ width: "100%", height: "160px", position: "relative", overflow: "hidden" }}>
-                      <img 
-                        src={loc.img} 
-                        alt={loc.city} 
-                        style={{ width: "100%", height: "100%", objectFit: "cover" }} 
-                      />
-                      <div style={{ position: "absolute", left: "16px", bottom: "16px", background: "rgba(13, 31, 60, 0.8)", backdropFilter: "blur(4px)", padding: "4px 12px", borderRadius: "20px", display: "flex", alignItems: "center", gap: "6px", color: "var(--white)" }}>
-                        <MapPin size={14} style={{ color: "var(--teal)" }} />
-                        <span style={{ fontSize: "12px", fontWeight: "600" }}>Active</span>
-                      </div>
+                  <div style={{ width: "100%", height: "160px", position: "relative", overflow: "hidden" }}>
+                    <img 
+                      src={loc.img} 
+                      alt={loc.city} 
+                      style={{ width: "100%", height: "100%", objectFit: "cover" }} 
+                    />
+                    <div style={{ position: "absolute", left: "16px", bottom: "16px", background: "rgba(13, 31, 60, 0.8)", backdropFilter: "blur(4px)", padding: "4px 12px", borderRadius: "20px", display: "flex", alignItems: "center", gap: "6px", color: "var(--white)" }}>
+                      <MapPin size={14} style={{ color: "var(--teal)" }} />
+                      <span style={{ fontSize: "12px", fontWeight: "600" }}>Active</span>
                     </div>
-                  ) : (
-                    <div style={{ width: "100%", height: "160px", background: "linear-gradient(135deg, #0D1F3C 0%, #1B3B6F 100%)", display: "flex", alignItems: "center", justifyContent: "center", position: "relative" }}>
-                      <MapPin size={48} style={{ color: "rgba(43, 191, 191, 0.2)" }} />
-                      <div style={{ position: "absolute", left: "16px", bottom: "16px", background: "rgba(43, 191, 191, 0.15)", padding: "4px 12px", borderRadius: "20px", display: "flex", alignItems: "center", gap: "6px", color: "var(--teal)" }}>
-                        <MapPin size={14} />
-                        <span style={{ fontSize: "12px", fontWeight: "600" }}>Support Available</span>
-                      </div>
-                    </div>
-                  )}
+                  </div>
 
                   <div style={{ padding: "24px 24px 12px 24px" }}>
                     <h3 className="service-card-title" style={{ marginTop: "0", marginBottom: "8px" }}>{loc.city}</h3>

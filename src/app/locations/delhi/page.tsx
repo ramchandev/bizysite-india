@@ -164,7 +164,16 @@ export default function DelhiLocation() {
       <Header />
 
       {/* SECTION 1 — Hero */}
-      <section className="service-hero" style={{ position: "relative", overflow: "hidden", paddingBottom: "120px" }}>
+      <section className="service-hero" style={{ 
+        position: "relative", 
+        overflow: "hidden", 
+        paddingTop: "120px",
+        paddingBottom: "120px",
+        backgroundImage: "linear-gradient(to bottom, rgba(13, 31, 60, 0.94), rgba(13, 31, 60, 0.82)), url('/delhi_realistic.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat"
+      }}>
         <div className="container service-hero-content" style={{ position: "relative", zIndex: 2 }}>
           <span className="section-tag light" style={{ color: "rgba(255,255,255,0.85)" }}>Delhi NCR</span>
           <h1 className="service-hero-title">Websites for Delhi NCR businesses that stand out in a crowded market.</h1>
@@ -179,121 +188,6 @@ export default function DelhiLocation() {
               <p style={{ fontSize: "11px", color: "rgba(255,255,255,0.7)", marginTop: "6px" }}>Tell us your Delhi business. We reply the same day.</p>
             </div>
           </div>
-        </div>
-
-        {/* Delhi Skyline Background Silhouette */}
-        <div className="hero-skyline-silhouette" style={{ position: "absolute", left: 0, right: 0, bottom: 0, width: "100%", zIndex: 1, pointerEvents: "none", opacity: 0.15 }}>
-          <svg viewBox="0 0 1440 250" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto", display: "block" }}>
-            {/* Defs for gradients & clip-arts */}
-            <defs>
-              <linearGradient id="sky-glow-delhi" x1="720" y1="250" x2="720" y2="0" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stopColor="var(--teal)" stopOpacity="0.15" />
-                <stop offset="1" stopColor="var(--teal)" stopOpacity="0" />
-              </linearGradient>
-              <linearGradient id="qutub-grad" x1="280" y1="220" x2="280" y2="30" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stopColor="#0D1F3C" stopOpacity="0.95" />
-                <stop offset="0.75" stopColor="#1B3B6F" stopOpacity="0.85" />
-                <stop offset="1" stopColor="#2BBFBF" stopOpacity="0.9" />
-              </linearGradient>
-              <linearGradient id="indiagate-grad" x1="495" y1="220" x2="495" y2="70" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stopColor="#0D1F3C" stopOpacity="0.95" />
-                <stop offset="0.7" stopColor="#1B3B6F" stopOpacity="0.8" />
-                <stop offset="1" stopColor="#2BBFBF" stopOpacity="0.9" />
-              </linearGradient>
-              <linearGradient id="lotus-grad" x1="740" y1="210" x2="740" y2="60" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stopColor="#0D1F3C" stopOpacity="0.9" />
-                <stop offset="0.8" stopColor="#2BBFBF" stopOpacity="0.65" />
-                <stop offset="1" stopColor="#FFFFFF" stopOpacity="0.8" />
-              </linearGradient>
-            </defs>
-
-            {/* Ambient Background Sky Glow */}
-            <rect width="1440" height="250" fill="url(#sky-glow-delhi)" />
-
-            {/* Background High-rises (Noida/Gurugram) */}
-            <g fill="rgba(43, 191, 191, 0.04)">
-              <rect x="60" y="40" width="55" height="180" />
-              <rect x="125" y="70" width="45" height="150" />
-              <rect x="1100" y="50" width="70" height="170" />
-              <rect x="1180" y="30" width="60" height="190" />
-            </g>
-
-            {/* Qutub Minar (Detailed Silhouette Left Center) */}
-            <g opacity="0.95">
-              {/* Tapering Minar Body */}
-              <polygon points="260,220 270,30 290,30 300,220" fill="url(#qutub-grad)" stroke="#2BBFBF" strokeWidth="1" />
-              {/* Balconies divisions with white outline/glow */}
-              <rect x="274" y="65" width="12" height="5" fill="#0D1F3C" stroke="#FFFFFF" strokeWidth="1" />
-              <rect x="271" y="105" width="18" height="5" fill="#0D1F3C" stroke="#FFFFFF" strokeWidth="1" />
-              <rect x="268" y="145" width="24" height="6" fill="#0D1F3C" stroke="#FFFFFF" strokeWidth="1" />
-              <rect x="264" y="185" width="32" height="6" fill="#0D1F3C" stroke="#FFFFFF" strokeWidth="1" />
-              
-              {/* Fluting vertical detailed lines */}
-              <line x1="277" y1="30" x2="277" y2="220" stroke="#FFFFFF" strokeWidth="1" opacity="0.4" />
-              <line x1="283" y1="30" x2="283" y2="220" stroke="#FFFFFF" strokeWidth="1" opacity="0.4" />
-              <line x1="270" y1="30" x2="270" y2="220" stroke="#2BBFBF" strokeWidth="1" opacity="0.5" />
-              <line x1="290" y1="30" x2="290" y2="220" stroke="#2BBFBF" strokeWidth="1" opacity="0.5" />
-              
-              {/* Dome tip structure at the top */}
-              <polygon points="274,30 280,10 286,30" fill="var(--teal)" stroke="#FFFFFF" strokeWidth="1" />
-              <line x1="280" y1="10" x2="280" y2="2" stroke="#FFFFFF" strokeWidth="1.5" />
-              <circle cx="280" cy="1" r="1.5" fill="#FFFFFF" />
-            </g>
-
-            {/* India Gate (Detailed Center Archway) */}
-            <g opacity="0.95">
-              {/* Main arch block structure */}
-              <rect x="420" y="110" width="150" height="110" rx="2" fill="url(#indiagate-grad)" stroke="#2BBFBF" strokeWidth="1" />
-              {/* Large Central Arched Vault */}
-              <rect x="470" y="135" width="50" height="85" rx="25" fill="#0D1F3C" stroke="#2BBFBF" strokeWidth="1.5" />
-              
-              {/* Multi-tiered decorative horizontal bands */}
-              <rect x="410" y="102" width="170" height="8" fill="var(--teal)" rx="1" stroke="#FFFFFF" strokeWidth="0.5" />
-              <rect x="430" y="90" width="130" height="12" fill="#0D1F3C" stroke="#2BBFBF" strokeWidth="1" />
-              <rect x="440" y="80" width="110" height="10" fill="var(--teal)" stroke="#FFFFFF" strokeWidth="0.5" />
-              <rect x="465" y="70" width="60" height="10" fill="#0D1F3C" rx="4" stroke="#2BBFBF" strokeWidth="1" />
-              
-              {/* Side moldings/columns detail lines */}
-              <rect x="442" y="110" width="10" height="110" fill="#2BBFBF" opacity="0.3" />
-              <rect x="538" y="110" width="10" height="110" fill="#2BBFBF" opacity="0.3" />
-            </g>
-
-            {/* Lotus Temple (Detailed Silhouette Right Center) */}
-            <g opacity="0.95">
-              {/* Base Platform */}
-              <rect x="630" y="210" width="220" height="10" fill="#0D1F3C" rx="1" stroke="#2BBFBF" strokeWidth="1" />
-              <rect x="610" y="218" width="260" height="6" fill="#1B3B6F" rx="1" />
-              
-              {/* Outer Petals (Highlighted curves) */}
-              <path d="M 640,210 Q 670,120 740,210" fill="none" stroke="#2BBFBF" strokeWidth="2" />
-              <path d="M 840,210 Q 810,120 740,210" fill="none" stroke="#2BBFBF" strokeWidth="2" />
-              
-              {/* Inner Petals (Detailed Gradients) */}
-              <path d="M 670,210 Q 700,90 740,210" fill="url(#lotus-grad)" stroke="#FFFFFF" strokeWidth="1" />
-              <path d="M 810,210 Q 780,90 740,210" fill="url(#lotus-grad)" stroke="#FFFFFF" strokeWidth="1" />
-              
-              {/* Center Tallest Petals (Bud) */}
-              <path d="M 700,210 Q 740,60 740,210 Z" fill="url(#lotus-grad)" stroke="#FFFFFF" strokeWidth="1.5" />
-              <path d="M 780,210 Q 740,60 740,210 Z" fill="url(#lotus-grad)" stroke="#FFFFFF" strokeWidth="1.5" />
-            </g>
-
-            {/* Red Fort Dome (Silhouette Right detailed) */}
-            <g opacity="0.9">
-              <rect x="940" y="150" width="120" height="70" fill="#0D1F3C" stroke="#2BBFBF" strokeWidth="1" />
-              {/* Sandstone battlement crown */}
-              <rect x="935" y="142" width="130" height="8" fill="var(--teal)" rx="1" stroke="#FFFFFF" strokeWidth="0.5" />
-              <line x1="935" y1="146" x2="1065" y2="146" stroke="#FFFFFF" strokeWidth="1" opacity="0.5" />
-              
-              {/* Small Chhatri Dome Pavilions */}
-              <rect x="955" y="125" width="20" height="18" fill="#0D1F3C" stroke="#2BBFBF" strokeWidth="1" />
-              <path d="M 952,125 Q 965,105 978,125 Z" fill="var(--teal)" stroke="#FFFFFF" strokeWidth="1" />
-              <rect x="1025" y="125" width="20" height="18" fill="#0D1F3C" stroke="#2BBFBF" strokeWidth="1" />
-              <path d="M 1022,125 Q 1035,105 1048,125 Z" fill="var(--teal)" stroke="#FFFFFF" strokeWidth="1" />
-            </g>
-
-            {/* Horizon line */}
-            <line x1="0" y1="219" x2="1440" y2="219" stroke="#2BBFBF" strokeWidth="2" opacity="0.5" />
-          </svg>
         </div>
       </section>
 

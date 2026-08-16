@@ -156,7 +156,16 @@ export default function PuneLocation() {
       <Header />
 
       {/* SECTION 1 — Hero */}
-      <section className="service-hero" style={{ position: "relative", overflow: "hidden", paddingBottom: "120px" }}>
+      <section className="service-hero" style={{ 
+        position: "relative", 
+        overflow: "hidden", 
+        paddingTop: "120px",
+        paddingBottom: "120px",
+        backgroundImage: "linear-gradient(to bottom, rgba(13, 31, 60, 0.94), rgba(13, 31, 60, 0.82)), url('/pune_realistic.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat"
+      }}>
         <div className="container service-hero-content" style={{ position: "relative", zIndex: 2 }}>
           <span className="section-tag light" style={{ color: "rgba(255,255,255,0.85)" }}>Pune</span>
           <h1 className="service-hero-title">Websites for Pune businesses, from classrooms to factories.</h1>
@@ -171,111 +180,6 @@ export default function PuneLocation() {
               <p style={{ fontSize: "11px", color: "rgba(255,255,255,0.7)", marginTop: "6px" }}>Tell us your Pune business. We reply the same day.</p>
             </div>
           </div>
-        </div>
-
-        {/* Pune Skyline Background Silhouette */}
-        <div className="hero-skyline-silhouette" style={{ position: "absolute", left: 0, right: 0, bottom: 0, width: "100%", zIndex: 1, pointerEvents: "none", opacity: 0.15 }}>
-          <svg viewBox="0 0 1440 250" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto", display: "block" }}>
-            {/* Defs for gradients & clip-arts */}
-            <defs>
-              <linearGradient id="sky-glow-pune" x1="720" y1="250" x2="720" y2="0" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stopColor="var(--teal)" stopOpacity="0.15" />
-                <stop offset="1" stopColor="var(--teal)" stopOpacity="0" />
-              </linearGradient>
-              <linearGradient id="hills-grad-pune" x1="720" y1="220" x2="720" y2="120" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stopColor="var(--navy)" stopOpacity="0.25" />
-                <stop offset="1" stopColor="var(--teal)" stopOpacity="0.05" />
-              </linearGradient>
-              <linearGradient id="wada-grad" x1="320" y1="210" x2="320" y2="110" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stopColor="#0D1F3C" stopOpacity="0.95" />
-                <stop offset="0.75" stopColor="#1B3B6F" stopOpacity="0.85" />
-                <stop offset="1" stopColor="#2BBFBF" stopOpacity="0.9" />
-              </linearGradient>
-              <linearGradient id="mahal-grad" x1="580" y1="210" x2="580" y2="100" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stopColor="#0D1F3C" stopOpacity="0.9" />
-                <stop offset="1" stopColor="#2BBFBF" stopOpacity="0.75" />
-              </linearGradient>
-            </defs>
-
-            {/* Ambient Background Sky Glow */}
-            <rect width="1440" height="250" fill="url(#sky-glow-pune)" />
-
-            {/* Sinhagad Hills (Background Outline) */}
-            <path d="M 0,210 Q 200,160 400,185 Q 600,150 850,195 Q 1100,155 1300,180 Q 1380,150 1440,165 L 1440,250 L 0,250 Z" fill="url(#hills-grad-pune)" stroke="var(--teal)" strokeWidth="1" opacity="0.3" />
-
-            {/* Shaniwar Wada Fortress Gate (Detailed Silhouette Center Left) */}
-            <g opacity="0.95">
-              {/* Main heavy stone wall and bastions */}
-              <rect x="240" y="140" width="160" height="70" fill="url(#wada-grad)" stroke="#2BBFBF" strokeWidth="1" />
-              <rect x="230" y="200" width="180" height="12" fill="#0D1F3C" rx="2" stroke="#2BBFBF" strokeWidth="1" />
-              
-              {/* Rounded left and right bastions */}
-              <rect x="220" y="110" width="30" height="90" fill="url(#wada-grad)" rx="15" stroke="#2BBFBF" strokeWidth="1" />
-              <rect x="390" y="110" width="30" height="90" fill="url(#wada-grad)" rx="15" stroke="#2BBFBF" strokeWidth="1" />
-              
-              {/* Bastion arrow slits & window details in White */}
-              <g fill="#FFFFFF" opacity="0.6">
-                <rect x="231" y="130" width="8" height="15" rx="4" />
-                <rect x="231" y="160" width="8" height="15" rx="4" fill="var(--teal)" />
-                <rect x="401" y="130" width="8" height="15" rx="4" />
-                <rect x="401" y="160" width="8" height="15" rx="4" fill="var(--teal)" />
-              </g>
-
-              {/* Main Center Wooden Gate Arch */}
-              <path d="M 300,210 L 300,165 Q 320,150 340,165 L 340,210 Z" fill="#0D1F3C" stroke="#2BBFBF" strokeWidth="1.5" />
-              
-              {/* Spikes on doors (White details) */}
-              <line x1="305" y1="175" x2="308" y2="175" stroke="#FFFFFF" strokeWidth="1.5" />
-              <line x1="305" y1="185" x2="308" y2="185" stroke="#FFFFFF" strokeWidth="1.5" />
-              <line x1="305" y1="195" x2="308" y2="195" stroke="#FFFFFF" strokeWidth="1.5" />
-              <line x1="335" y1="175" x2="332" y2="175" stroke="#FFFFFF" strokeWidth="1.5" />
-              <line x1="335" y1="185" x2="332" y2="185" stroke="#FFFFFF" strokeWidth="1.5" />
-              <line x1="335" y1="195" x2="332" y2="195" stroke="#FFFFFF" strokeWidth="1.5" />
-
-              {/* Top parapet slots */}
-              <rect x="255" y="132" width="130" height="8" fill="#0D1F3C" stroke="#2BBFBF" strokeWidth="1" />
-              <line x1="255" y1="136" x2="385" y2="136" stroke="#FFFFFF" strokeWidth="1.5" opacity="0.4" />
-            </g>
-
-            {/* Lal Mahal (Detailed Red Canopy Silhouette Center Right) */}
-            <g opacity="0.95">
-              {/* Main canopy columns */}
-              <rect x="540" y="120" width="80" height="90" fill="url(#mahal-grad)" stroke="#2BBFBF" strokeWidth="1" />
-              {/* Tiered canopy roofs */}
-              <polygon points="530,120 580,90 630,120" fill="var(--teal)" stroke="#FFFFFF" strokeWidth="1" />
-              <polygon points="545,95 580,75 615,95" fill="#0D1F3C" stroke="#2BBFBF" strokeWidth="1" />
-              {/* Top spire */}
-              <line x1="580" y1="75" x2="580" y2="55" stroke="#FFFFFF" strokeWidth="2.5" />
-              <circle cx="580" cy="53" r="3" fill="#FFFFFF" />
-              
-              {/* Arched windows and columns */}
-              <g fill="#FFFFFF" opacity="0.6">
-                <rect x="560" y="170" width="10" height="20" rx="5" />
-                <rect x="575" y="170" width="10" height="20" rx="5" />
-                <rect x="590" y="170" width="10" height="20" rx="5" />
-                
-                <rect x="565" y="140" width="8" height="12" rx="4" fill="var(--teal)" />
-                <rect x="587" y="140" width="8" height="12" rx="4" fill="var(--teal)" />
-              </g>
-            </g>
-
-            {/* IT Parks & Hinjawadi glass tech buildings (Silhouette Right) */}
-            <g opacity="0.25">
-              {/* Tech Tower 1 */}
-              <rect x="920" y="70" width="80" height="150" fill="url(#wada-grad)" rx="2" stroke="#2BBFBF" strokeWidth="1" />
-              <line x1="920" y1="100" x2="1000" y2="100" stroke="#FFFFFF" strokeWidth="1.5" opacity="0.3" />
-              <line x1="920" y1="130" x2="1000" y2="130" stroke="#FFFFFF" strokeWidth="1.5" opacity="0.3" />
-              <line x1="920" y1="160" x2="1000" y2="160" stroke="#FFFFFF" strokeWidth="1.5" opacity="0.3" />
-              {/* Tech Tower 2 */}
-              <rect x="1030" y="50" width="90" height="170" fill="url(#wada-grad)" rx="2" stroke="#2BBFBF" strokeWidth="1" />
-              <rect x="1045" y="65" width="60" height="140" fill="#2BBFBF" opacity="0.35" />
-              {/* Tech Tower 3 */}
-              <rect x="1150" y="90" width="80" height="130" fill="url(#wada-grad)" rx="2" stroke="#2BBFBF" strokeWidth="1" />
-            </g>
-
-            {/* Horizon line */}
-            <line x1="0" y1="219" x2="1440" y2="219" stroke="#2BBFBF" strokeWidth="2" opacity="0.5" />
-          </svg>
         </div>
       </section>
 
