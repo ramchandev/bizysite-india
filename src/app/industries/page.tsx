@@ -70,46 +70,53 @@ export default function IndustriesHub() {
 
   const industriesList = [
     {
-      icon: <Heart size={24} />,
+      icon: <Heart size={20} />,
       name: "Healthcare & Clinics",
       description: "Websites that fill appointment slots.",
-      href: "/industries/healthcare"
+      href: "/industries/healthcare",
+      img: "/industry_healthcare.jpg"
     },
     {
-      icon: <Home size={24} />,
+      icon: <Home size={20} />,
       name: "Real Estate & Builders",
       description: "Sites that turn projects into enquiries.",
-      href: "/industries/real-estate"
+      href: "/industries/real-estate",
+      img: "/industry_realestate.jpg"
     },
     {
-      icon: <Settings size={24} />,
+      icon: <Settings size={20} />,
       name: "Manufacturing & B2B",
       description: "Sites that win serious buyers and quote requests.",
-      href: "/industries/manufacturing"
+      href: "/industries/manufacturing",
+      img: "/industry_manufacturing.jpg"
     },
     {
-      icon: <GraduationCap size={24} />,
+      icon: <GraduationCap size={20} />,
       name: "Education & Coaching",
       description: "Sites that fill batches and demo classes.",
-      href: "/industries/education"
+      href: "/industries/education",
+      img: "/industry_education.jpg"
     },
     {
-      icon: <Coffee size={24} />,
+      icon: <Coffee size={20} />,
       name: "Hospitality & Restaurants",
       description: "Sites that drive bookings and footfall.",
-      href: "/industries/hospitality"
+      href: "/industries/hospitality",
+      img: "/industry_hospitality.jpg"
     },
     {
-      icon: <Briefcase size={24} />,
+      icon: <Briefcase size={20} />,
       name: "Professional Services (CA, Legal, Consultants)",
       description: "Sites that signal trust and win clients.",
-      href: "/industries/professional-services"
+      href: "/industries/professional-services",
+      img: "/industry_professional.jpg"
     },
     {
-      icon: <ShoppingBag size={24} />,
+      icon: <ShoppingBag size={20} />,
       name: "Retail & D2C / E-commerce",
       description: "Sites that turn browsers into buyers.",
-      href: "/industries/retail"
+      href: "/industries/retail",
+      img: "/industry_retail.jpg"
     }
   ];
 
@@ -164,17 +171,46 @@ export default function IndustriesHub() {
 
           <div className="services-grid-hub" style={{ marginTop: "40px" }}>
             {industriesList.map((ind, index) => (
-              <div key={index} className="service-card-hub" style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+              <div key={index} className="service-card-hub" style={{ 
+                display: "flex", 
+                flexDirection: "column", 
+                justifyContent: "space-between",
+                padding: "0",
+                overflow: "hidden"
+              }}>
                 <div>
-                  <div style={{ width: "40px", height: "40px", borderRadius: "50%", background: "rgba(43, 191, 191, 0.1)", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--teal)", marginBottom: "16px" }}>
-                    {ind.icon}
+                  {ind.img ? (
+                    <div style={{ width: "100%", height: "160px", position: "relative", overflow: "hidden" }}>
+                      <img 
+                        src={ind.img} 
+                        alt={ind.name} 
+                        style={{ width: "100%", height: "100%", objectFit: "cover" }} 
+                      />
+                      <div style={{ position: "absolute", left: "16px", bottom: "16px", background: "rgba(13, 31, 60, 0.85)", backdropFilter: "blur(4px)", width: "36px", height: "36px", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--teal)" }}>
+                        {ind.icon}
+                      </div>
+                    </div>
+                  ) : (
+                    <div style={{ width: "100%", height: "160px", background: "linear-gradient(135deg, #0D1F3C 0%, #1B3B6F 100%)", display: "flex", alignItems: "center", justifyContent: "center", position: "relative" }}>
+                      <div style={{ color: "rgba(43, 191, 191, 0.25)" }}>
+                        {ind.icon}
+                      </div>
+                      <div style={{ position: "absolute", left: "16px", bottom: "16px", background: "rgba(43, 191, 191, 0.15)", padding: "4px 12px", borderRadius: "20px", color: "var(--teal)", display: "flex", alignItems: "center", gap: "6px" }}>
+                        <span style={{ fontSize: "11px", fontWeight: "600" }}>Active Industry Support</span>
+                      </div>
+                    </div>
+                  )}
+
+                  <div style={{ padding: "24px 24px 12px 24px" }}>
+                    <h3 className="service-card-title" style={{ marginTop: "0", marginBottom: "8px" }}>{ind.name}</h3>
+                    <p className="service-card-desc" style={{ marginBottom: "0" }}>{ind.description}</p>
                   </div>
-                  <h3 className="service-card-title">{ind.name}</h3>
-                  <p className="service-card-desc" style={{ marginBottom: "20px" }}>{ind.description}</p>
                 </div>
-                <Link href={ind.href} className="btn btn-outline" style={{ width: "100%", justifyContent: "center" }}>
-                  Learn More →
-                </Link>
+                <div style={{ padding: "0 24px 24px 24px" }}>
+                  <Link href={ind.href} className="btn btn-outline" style={{ width: "100%", justifyContent: "center" }}>
+                    Learn More →
+                  </Link>
+                </div>
               </div>
             ))}
           </div>

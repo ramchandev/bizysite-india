@@ -137,7 +137,16 @@ export default function ManufacturingB2B() {
       <Header />
 
       {/* SECTION 1 — Hero */}
-      <section className="service-hero">
+      <section className="service-hero" style={{ 
+        position: "relative", 
+        overflow: "hidden", 
+        paddingTop: "120px",
+        paddingBottom: "120px",
+        backgroundImage: "linear-gradient(to bottom, rgba(13, 31, 60, 0.94), rgba(13, 31, 60, 0.82)), url('/industry_manufacturing.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat"
+      }}>
         <div className="container service-hero-content">
           <span className="section-tag light" style={{ color: "rgba(255,255,255,0.85)" }}>Manufacturing & B2B</span>
           <h1 className="service-hero-title">Win serious buyers and quote requests, not just website visits.</h1>
