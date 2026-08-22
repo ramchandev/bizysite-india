@@ -33,6 +33,7 @@ import {
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Script from "next/script";
 
 export default function HomeClient() {
   const router = useRouter();
@@ -54,12 +55,26 @@ export default function HomeClient() {
     setIsSubmittingGuide(true);
     setGuideFormError(null);
 
+    let gRecaptchaToken: string | undefined = undefined;
+    const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+    const isProd = process.env.NODE_ENV === "production";
+    
+    if (isProd && siteKey) {
+      gRecaptchaToken = (window as any).grecaptcha?.getResponse();
+      if (!gRecaptchaToken) {
+        setGuideFormError("Please complete the reCAPTCHA verification.");
+        setIsSubmittingGuide(false);
+        return;
+      }
+    }
+
     const payload = {
       name: guideName,
       email: guideEmail,
       phone: guidePhone || "not-provided",
       plan: "Free Guide Download",
-      notes: "Requested Website Conversion Cheat Sheet from Homepage magnet."
+      notes: "Requested Website Conversion Cheat Sheet from Homepage magnet.",
+      gRecaptchaToken
     };
 
     try {
@@ -941,6 +956,15 @@ export default function HomeClient() {
                   </div>
                 </div>
 
+                {process.env.NODE_ENV === "production" && process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && (
+                  <div style={{ marginBottom: "16px", display: "flex", justifyContent: "center" }}>
+                    <div 
+                      className="g-recaptcha" 
+                      data-sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+                    />
+                  </div>
+                )}
+
                 {guideFormError && (
                   <div role="alert" style={{ color: "#EF4444", fontSize: "13px", fontWeight: "600", marginTop: "4px" }}>
                     {guideFormError}
@@ -1057,6 +1081,15 @@ export default function HomeClient() {
 
       {/* Footer */}
       <Footer />
+
+      {process.env.NODE_ENV === "production" && process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && (
+        <Script 
+          src={`https://www.google.com/recaptcha/api.js`} 
+          async 
+          defer 
+          strategy="afterInteractive"
+        />
+      )}
     </>
   );
 }
