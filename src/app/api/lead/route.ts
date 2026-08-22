@@ -8,6 +8,7 @@ type LeadPayload = {
   email: string;
   phone: string;
   plan: string;
+  website?: string;
   notes?: string;
 };
 
@@ -47,7 +48,7 @@ function getRequestType(plan: string): "new_site" | "generic" {
 
 // 1. Admin Email Notification Template
 function buildAdminEmailHtml(data: LeadPayload & { submittedAt: string }) {
-  const { name, email, phone, plan, notes, submittedAt } = data;
+  const { name, email, phone, plan, website, notes, submittedAt } = data;
 
   let adminTitle = "New Lead Request";
   let adminDesc = "Someone just submitted details on the Bizy Site website.";
@@ -141,6 +142,7 @@ function buildAdminEmailHtml(data: LeadPayload & { submittedAt: string }) {
                 ${row("Name", escapeHtml(name))}
                 ${row("Email", escapeHtml(email), `mailto:${encodeURIComponent(email)}`)}
                 ${row("Phone/WhatsApp", escapeHtml(phone), `tel:${encodeURIComponent(phone.replace(/[^\d+]/g, ""))}`)}
+                ${website ? row("Website URL", escapeHtml(website), website.startsWith("http") ? website : `https://${website}`) : ""}
                 ${row("Submitted At", escapeHtml(submittedAt))}
               </table>
             </td>
@@ -198,15 +200,15 @@ function buildAdminEmailHtml(data: LeadPayload & { submittedAt: string }) {
 
 // 2. Customer Email Confirmation Template
 function buildCustomerEmailHtml(data: LeadPayload & { submittedAt: string }) {
-  const { name, plan, notes } = data;
+  const { name, plan, website, notes } = data;
 
   let businessName = "Your Business";
-  let websiteUrl = "Your Website";
+  let websiteUrl = website || "Your Website";
   if (notes) {
     const bizMatch = notes.match(/Business:\s*(.*?)\.\s*Website:/);
     const webMatch = notes.match(/Website:\s*(.*?)\.?$/);
     if (bizMatch) businessName = bizMatch[1];
-    if (webMatch) websiteUrl = webMatch[1];
+    if (!website && webMatch) websiteUrl = webMatch[1];
   }
 
   const reqType = getRequestType(plan);
@@ -331,7 +333,7 @@ function buildCustomerEmailHtml(data: LeadPayload & { submittedAt: string }) {
             <td style="padding:20px 32px;background:#f8fafc;border-top:1px solid #e2e8f0;text-align:center;color:#94a3b8;font-size:11px;line-height:1.5;">
               <strong>Bizy Site</strong><br />
               404 Jasmine A wing, Eden Park Phase 2, OMR, Siruseri, Chennai 603103<br />
-              <a href="mailto:info@bizysite.com" style="color:#2BBFBF;text-decoration:none;">info@bizysite.com</a> · <a href=siteUrl style="color:#2BBFBF;text-decoration:none;">bizysite.in</a>
+              <a href="mailto:info@bizysite.in" style="color:#2BBFBF;text-decoration:none;">info@bizysite.in</a> · <a href=siteUrl style="color:#2BBFBF;text-decoration:none;">bizysite.in</a>
             </td>
           </tr>
         </table>
@@ -359,6 +361,7 @@ function validate(payload: unknown): { ok: true; data: LeadPayload & { gRecaptch
       email: p.email.trim(),
       phone: p.phone.trim(),
       plan: p.plan.trim(),
+      website: typeof p.website === "string" ? p.website.trim() : undefined,
       notes: typeof p.notes === "string" ? p.notes.trim() : "",
       gRecaptchaToken: typeof p.gRecaptchaToken === "string" ? p.gRecaptchaToken.trim() : undefined,
     },
@@ -377,8 +380,8 @@ export async function POST(req: Request) {
     return Response.json({ ok: false, error: "Email service is not configured." }, { status: 500 });
   }
 
-  const to = sanitizeEnv(process.env.LEADS_TO_EMAIL, "info@bizysite.com");
-  const from = sanitizeEnv(process.env.RESEND_FROM, "Bizy Site <info@bizysite.com>");
+  const to = sanitizeEnv(process.env.LEADS_TO_EMAIL, "info@bizysite.in");
+  const from = sanitizeEnv(process.env.RESEND_FROM, "Bizy Site <info@bizysite.in>");
 
   let body: unknown;
   try {
@@ -392,7 +395,7 @@ export async function POST(req: Request) {
     return Response.json({ ok: false, error: validated.message }, { status: 400 });
   }
 
-  const { name, email, phone, plan, notes, gRecaptchaToken } = validated.data;
+  const { name, email, phone, plan, website, notes, gRecaptchaToken } = validated.data;
 
   // reCAPTCHA verification in production
   const secretKey = sanitizeEnv(process.env.RECAPTCHA_SECRET_KEY, "");
@@ -448,7 +451,7 @@ export async function POST(req: Request) {
 
   try {
     // 1. Send Lead Notification to Admin
-    const adminHtml = buildAdminEmailHtml({ name, email, phone, plan, notes, submittedAt });
+    const adminHtml = buildAdminEmailHtml({ name, email, phone, plan, website, notes, submittedAt });
 
     const adminResult = await resend.emails.send({
       from,
@@ -472,7 +475,7 @@ export async function POST(req: Request) {
         ? "We've received your website request - Bizy Site" 
         : "We've received your request - Bizy Site";
 
-      const customerHtml = buildCustomerEmailHtml({ name, email, phone, plan, notes, submittedAt });
+      const customerHtml = buildCustomerEmailHtml({ name, email, phone, plan, website, notes, submittedAt });
 
       const customerResult = await resend.emails.send({
         from,

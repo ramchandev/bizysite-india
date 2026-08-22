@@ -3,7 +3,7 @@
 India's first performance-driven AEO + GEO and Web Growth Agency. We build high-converting websites and optimize them for the future of AI search.
 
 ## Core Info
-- **Contact:** info@bizysite.com
+- **Contact:** info@bizysite.in
 - **Phone / WhatsApp:** +91 95007 28442
 - **Address:** 404 Jasmine A wing, Eden Park Phase 2, OMR, Siruseri, Chennai 603103
 - **GST:** 33AAPCM5658N1ZP
@@ -20,11 +20,11 @@ India's first performance-driven AEO + GEO and Web Growth Agency. We build high-
 - Google & Meta Ads: Targeted paid traffic campaigns.
 
 ## Key URLs
-- Home: https://bizysite.in
-- Services: https://bizysite.in/services
-- Work: https://bizysite.in/work
-- About: https://bizysite.in/about
-- Blog: https://bizysite.in/blog
-- Contact: https://bizysite.in/contact
-- Sitemap: https://bizysite.in/sitemap
-- AI Policy: https://bizysite.in/ai-policy
+- Home: https://www.bizysite.in
+- Services: https://www.bizysite.in/services
+- Work: https://www.bizysite.in/work
+- About: https://www.bizysite.in/about
+- Blog: https://www.bizysite.in/blog
+- Contact: https://www.bizysite.in/contact
+- Sitemap: https://www.bizysite.in/sitemap
+- AI Policy: https://www.bizysite.in/ai-policy

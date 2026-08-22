@@ -72,6 +72,16 @@ export default function SitemapHtml() {
       ]
     },
     {
+      title: "Case Studies / Portfolio Projects",
+      links: [
+        { name: "Dr. Sajan Hegde - Spine Surgery Clinic Rebuild", href: "/work/dr-sajan-hegde" },
+        { name: "Sound V Pro - Checkout Funnel Optimization", href: "/work/sound-v-pro" },
+        { name: "Miracle Members - Directory Speed Redesign", href: "/work/miracle-members" },
+        { name: "An Art By - Art Gallery Funnel Optimization", href: "/work/an-art-by" },
+        { name: "Idea Heavens - Paid Campaign Landing Optimization", href: "/work/idea-heavens" }
+      ]
+    },
+    {
       title: "Legal & Policies",
       links: [
         { name: "Privacy Policy", href: "/privacy" },

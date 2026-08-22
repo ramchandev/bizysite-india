@@ -1,24 +1,25 @@
 "use client";
-
+ 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Phone, MessageCircle, Mail, MapPin, CheckCircle2, User, Briefcase, FileText } from "lucide-react";
+import { Phone, MessageCircle, Mail, MapPin, CheckCircle2, User, Briefcase, FileText, Globe } from "lucide-react";
 import Link from "next/link";
 import Script from "next/script";
-
+ 
 export default function ContactClient() {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
-
+ 
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
     email: "",
-    need: "New website",
+    website: "",
+    need: "Website Design & Development",
     message: ""
   });
-
+ 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -26,23 +27,12 @@ export default function ContactClient() {
       [name]: value
     }));
   };
-
-  const handleSplitSelect = (needValue: string) => {
-    setFormData(prev => ({
-      ...prev,
-      need: needValue
-    }));
-    const element = document.getElementById("contact-form-section");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
+ 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setFormError(null);
-
+ 
     let gRecaptchaToken: string | undefined = undefined;
     const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
     const isProd = process.env.NODE_ENV === "production";
@@ -55,16 +45,17 @@ export default function ContactClient() {
         return;
       }
     }
-
+ 
     const payload = {
       name: formData.name,
       email: formData.email || "not-provided@bizysite.com",
       phone: formData.phone,
       plan: `Contact Form - Need: ${formData.need}`,
+      website: formData.website || undefined,
       notes: formData.message ? `Message: ${formData.message}` : "No message provided.",
       gRecaptchaToken
     };
-
+ 
     try {
       const res = await fetch("/api/lead", {
         method: "POST",
@@ -73,14 +64,14 @@ export default function ContactClient() {
         },
         body: JSON.stringify(payload)
       });
-
+ 
       const data = await res.json().catch(() => null);
-
+ 
       if (!res.ok || data?.ok === false) {
         setFormError(data?.error || "Submission failed. Please check details and try again.");
         return;
       }
-
+ 
       router.push(`/thank-you?name=${encodeURIComponent(formData.name)}`);
     } catch (err) {
       setFormError("A network error occurred. Please try again.");
@@ -88,58 +79,18 @@ export default function ContactClient() {
       setIsSubmitting(false);
     }
   };
-
+ 
   return (
     <>
-      {/* SECTION 2 — The Dual-Path Mini Split */}
-      <section className="section-padding" style={{ background: "var(--white)" }}>
-        <div className="container">
-          <div className="text-center" style={{ marginBottom: "40px" }}>
-            <span className="section-tag">Choose Your Path</span>
-            <h2 className="section-title">Which sounds like you?</h2>
-          </div>
-
-          <div className="services-grid-hub" style={{ maxWidth: "900px", margin: "0 auto" }}>
-            <div className="service-card-hub" style={{ textAlign: "center", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-              <div>
-                <h3 className="service-card-title">I need a new website</h3>
-                <p className="service-card-desc" style={{ marginBottom: "24px" }}>
-                  You do not have a website yet, or what you have barely counts. Let us build you one that brings customers.
-                </p>
-              </div>
-              <button onClick={() => handleSplitSelect("New website")} className="btn btn-primary" style={{ width: "100%", justifyContent: "center" }}>
-                Get My Free Quote →
-              </button>
-            </div>
-
-            <div className="service-card-hub" style={{ textAlign: "center", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-              <div>
-                <h3 className="service-card-title">I want to fix my current website</h3>
-                <p className="service-card-desc" style={{ marginBottom: "24px" }}>
-                  You have a site, but it is slow, dated, or not bringing business. Let us review it honestly first.
-                </p>
-              </div>
-              <button onClick={() => handleSplitSelect("Fix my website")} className="btn btn-primary" style={{ width: "100%", justifyContent: "center" }}>
-                Get My Free Website Audit →
-              </button>
-            </div>
-          </div>
-
-          <p className="text-center" style={{ marginTop: "32px", fontSize: "14px", color: "var(--text-mid)" }}>
-            Not sure which one you are? Just fill the form below and tell us. We will point you the right way, honestly.
-          </p>
-        </div>
-      </section>
-
       {/* SECTION 3 — The Contact Form */}
-      <section id="contact-form-section" className="section-padding" style={{ background: "var(--off-white)", borderTop: "1px solid var(--border)" }}>
+      <section id="contact-form-section" className="section-padding" style={{ background: "var(--off-white)" }}>
         <div className="container" style={{ maxWidth: "600px" }}>
           <div className="audit-form-card" style={{ background: "var(--white)", padding: "40px", borderRadius: "var(--radius-lg)", boxShadow: "var(--shadow-lg)", border: "1px solid var(--border)" }}>
             <h3 style={{ color: "var(--navy)", fontWeight: "800", fontSize: "24px", marginBottom: "6px", textAlign: "center" }}>Tell us about your business</h3>
             <p style={{ color: "var(--text-muted)", fontSize: "13px", marginBottom: "32px", textAlign: "center" }}>
               No spam, no repeated calls. Your details stay private.
             </p>
-
+ 
             <form onSubmit={handleSubmit} className="lead-form" style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
               {/* Field: Name */}
               <div className="form-group">
@@ -158,7 +109,7 @@ export default function ContactClient() {
                   />
                 </div>
               </div>
-
+ 
               {/* Field: Mobile Number */}
               <div className="form-group">
                 <label className="form-label" htmlFor="phone" style={{ fontWeight: "700" }}>Mobile Number</label>
@@ -176,7 +127,7 @@ export default function ContactClient() {
                   />
                 </div>
               </div>
-
+ 
               {/* Field: Email */}
               <div className="form-group">
                 <label className="form-label" htmlFor="email" style={{ fontWeight: "700" }}>Email Address <span style={{ color: "var(--text-muted)", fontSize: "11px", fontWeight: "normal" }}>(Optional)</span></label>
@@ -194,6 +145,23 @@ export default function ContactClient() {
                 </div>
               </div>
 
+              {/* Field: Website URL */}
+              <div className="form-group">
+                <label className="form-label" htmlFor="website" style={{ fontWeight: "700" }}>Website URL <span style={{ color: "var(--text-muted)", fontSize: "11px", fontWeight: "normal" }}>(Optional)</span></label>
+                <div className="form-input-wrapper">
+                  <Globe size={16} className="form-input-icon" />
+                  <input
+                    type="url"
+                    id="website"
+                    name="website"
+                    value={formData.website}
+                    onChange={handleInputChange}
+                    placeholder="https://mybusiness.com"
+                    className="form-input"
+                  />
+                </div>
+              </div>
+ 
               {/* Field: What do you need? */}
               <div className="form-group">
                 <label className="form-label" htmlFor="need" style={{ fontWeight: "700" }}>What do you need?</label>
@@ -207,16 +175,20 @@ export default function ContactClient() {
                     required
                     className="form-select"
                   >
-                    <option value="New website">New website</option>
-                    <option value="Fix my website">Fix my website</option>
-                    <option value="SEO & getting found">SEO & getting found</option>
-                    <option value="Ads">Ads</option>
-                    <option value="Social media">Social media</option>
+                    <option value="Website Design & Development">Website Design & Development</option>
+                    <option value="Conversion Rate Optimization (CRO)">Conversion Rate Optimization (CRO)</option>
+                    <option value="Search Engine Optimization (SEO)">Search Engine Optimization (SEO)</option>
+                    <option value="Google Business Profile Optimization">Google Business Profile Optimization</option>
+                    <option value="Answer Engine Optimization (AEO)">Answer Engine Optimization (AEO)</option>
+                    <option value="AI Optimization (AIO)">AI Optimization (AIO)</option>
+                    <option value="Generative Engine Optimization (GEO)">Generative Engine Optimization (GEO)</option>
+                    <option value="Google & Meta Ads Management">Google & Meta Ads Management</option>
+                    <option value="Social Media Management">Social Media Management</option>
                     <option value="Not sure yet">Not sure yet</option>
                   </select>
                 </div>
               </div>
-
+ 
               {/* Field: Your message */}
               <div className="form-group">
                 <label className="form-label" htmlFor="message" style={{ fontWeight: "700" }}>Your message <span style={{ color: "var(--text-muted)", fontSize: "11px", fontWeight: "normal" }}>(Optional)</span></label>
@@ -227,20 +199,20 @@ export default function ContactClient() {
                     name="message"
                     value={formData.message}
                     onChange={handleInputChange}
-                    placeholder="Tell us a bit about your project or current site..."
+                    placeholder="Tell us a bit about your project or goals..."
                     rows={4}
                     className="form-input"
                     style={{ paddingLeft: "42px", minHeight: "100px", paddingTop: "12px" }}
                   />
                 </div>
               </div>
-
+ 
               {formError && (
                 <div role="alert" style={{ background: "rgba(239, 68, 68, 0.1)", border: "1px solid rgba(239,68,68,0.2)", borderRadius: "8px", padding: "10px 12px", color: "#EF4444", fontSize: "13px" }}>
                   {formError}
                 </div>
               )}
-
+ 
               {process.env.NODE_ENV === "production" && process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && (
                 <div style={{ marginBottom: "20px", display: "flex", justifyContent: "center" }}>
                   <div 
@@ -249,7 +221,7 @@ export default function ContactClient() {
                   />
                 </div>
               )}
-
+ 
               <button 
                 type="submit" 
                 className="btn btn-primary" 
@@ -258,7 +230,7 @@ export default function ContactClient() {
               >
                 {isSubmitting ? "Sending Request..." : "Send My Request →"}
               </button>
-
+ 
               <p style={{ textAlign: "center", fontSize: "11px", color: "var(--text-muted)", margin: "0" }}>
                 We reply the same day. No spam, no repeated calls. Your details stay private.
               </p>
@@ -311,7 +283,7 @@ export default function ContactClient() {
 
           <div style={{ borderTop: "1px solid var(--border)", paddingTop: "32px", display: "flex", flexDirection: "column", gap: "16px", fontSize: "14px", color: "var(--text)" }}>
             <div>
-              <strong>Email:</strong> <a href="mailto:info@bizysite.com" style={{ color: "var(--teal)", fontWeight: "700" }}>info@bizysite.com</a>
+              <strong>Email:</strong> <a href="mailto:info@bizysite.in" style={{ color: "var(--teal)", fontWeight: "700" }}>info@bizysite.in</a>
             </div>
             <div>
               <strong>Office:</strong> 404 Jasmine A wing, Eden Park Phase 2, OMR, Siruseri, Chennai 603103

@@ -80,7 +80,7 @@ export default function TermsOfService() {
 
           <h3 style={{ fontSize: "20px", color: "var(--navy)", fontWeight: "800", marginTop: "24px", marginBottom: "12px" }}>8. Contact Information</h3>
           <p style={{ color: "var(--text-mid)", marginBottom: "20px" }}>
-            If you have questions about these terms, please contact us at <a href="mailto:info@bizysite.com" style={{ color: "var(--teal)", fontWeight: "700" }}>info@bizysite.com</a>.
+            If you have questions about these terms, please contact us at <a href="mailto:info@bizysite.in" style={{ color: "var(--teal)", fontWeight: "700" }}>info@bizysite.in</a>.
           </p>
 
         </div>

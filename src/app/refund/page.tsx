@@ -63,7 +63,7 @@ export default function RefundPolicy() {
 
           <h3 style={{ fontSize: "20px", color: "var(--navy)", fontWeight: "800", marginTop: "24px", marginBottom: "12px" }}>4. How to Request Cancellation</h3>
           <p style={{ color: "var(--text-mid)", marginBottom: "20px" }}>
-            To initiate a cancellation or refund inquiry, please email our support team at <a href="mailto:info@bizysite.com" style={{ color: "var(--teal)", fontWeight: "700" }}>info@bizysite.com</a> with details of your invoice and project reference. Our team will get back to you within 24 working hours.
+            To initiate a cancellation or refund inquiry, please email our support team at <a href="mailto:info@bizysite.in" style={{ color: "var(--teal)", fontWeight: "700" }}>info@bizysite.in</a> with details of your invoice and project reference. Our team will get back to you within 24 working hours.
           </p>
 
           <div style={{ background: "var(--off-white)", border: "1px solid var(--border)", borderRadius: "12px", padding: "24px", marginTop: "40px" }}>

@@ -76,7 +76,7 @@ export default function PrivacyPolicy() {
 
           <h3 style={{ fontSize: "20px", color: "var(--navy)", fontWeight: "800", marginTop: "24px", marginBottom: "12px" }}>5. Your Rights & How to Contact Us</h3>
           <p style={{ color: "var(--text-mid)", marginBottom: "20px" }}>
-            You have the right to request a copy of the information we hold about your business, ask us to correct details, or request that we delete your audit records and personal data. Please contact us at <a href="mailto:info@bizysite.com" style={{ color: "var(--teal)", fontWeight: "700" }}>info@bizysite.com</a> to submit your request.
+            You have the right to request a copy of the information we hold about your business, ask us to correct details, or request that we delete your audit records and personal data. Please contact us at <a href="mailto:info@bizysite.in" style={{ color: "var(--teal)", fontWeight: "700" }}>info@bizysite.in</a> to submit your request.
           </p>
 
           <h3 style={{ fontSize: "20px", color: "var(--navy)", fontWeight: "800", marginTop: "24px", marginBottom: "12px" }}>6. Updates to This Policy</h3>

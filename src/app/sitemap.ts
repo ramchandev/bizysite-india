@@ -53,6 +53,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const blogRoutes = blogPosts.map((post) => `/blog/${post.category.toLowerCase().replace(/ /g, "-")}/${post.slug}`);
 
+  const workRoutes = [
+    "/work/dr-sajan-hegde",
+    "/work/sound-v-pro",
+    "/work/miracle-members",
+    "/work/an-art-by",
+    "/work/idea-heavens"
+  ];
+
   const legalRoutes = [
     "/privacy",
     "/terms",
@@ -64,6 +72,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const allRoutes = [
     ...coreRoutes.map(route => ({ path: route, priority: route === "" ? 1.0 : 0.8 })),
     ...serviceRoutes.map(route => ({ path: route, priority: 0.8 })),
+    ...workRoutes.map(route => ({ path: route, priority: 0.7 })),
     ...industryRoutes.map(route => ({ path: route, priority: 0.7 })),
     ...locationRoutes.map(route => ({ path: route, priority: 0.8 })),
     ...blogRoutes.map(route => ({ path: route, priority: 0.6 })),

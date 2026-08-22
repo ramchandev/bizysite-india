@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { 
   Zap, 
   CheckCircle2, 
@@ -25,16 +26,60 @@ import {
   GraduationCap,
   Hotel,
   Briefcase,
-  ShoppingBag
+  ShoppingBag,
+  User,
+  Mail,
+  Phone
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export default function HomeClient() {
+  const router = useRouter();
+
   // Testimonial State
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   // FAQ State
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
+
+  // Guide Form State
+  const [guideName, setGuideName] = useState("");
+  const [guideEmail, setGuideEmail] = useState("");
+  const [guidePhone, setGuidePhone] = useState("");
+  const [isSubmittingGuide, setIsSubmittingGuide] = useState(false);
+  const [guideFormError, setGuideFormError] = useState<string | null>(null);
+
+  const handleGuideSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmittingGuide(true);
+    setGuideFormError(null);
+
+    const payload = {
+      name: guideName,
+      email: guideEmail,
+      phone: guidePhone || "not-provided",
+      plan: "Free Guide Download",
+      notes: "Requested Website Conversion Cheat Sheet from Homepage magnet."
+    };
+
+    try {
+      const res = await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      const data = await res.json().catch(() => null);
+      if (!res.ok || data?.ok === false) {
+        setGuideFormError(data?.error || "Submission failed. Please check details and try again.");
+        return;
+      }
+      router.push(`/thank-you?name=${encodeURIComponent(guideName)}&guide=true`);
+    } catch (err) {
+      setGuideFormError("A network error occurred. Please try again.");
+    } finally {
+      setIsSubmittingGuide(false);
+    }
+  };
 
   const testimonials = [
     {
@@ -388,28 +433,38 @@ export default function HomeClient() {
               
               <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
                 <div>
-                  <h4 style={{ fontSize: "14px", fontWeight: "700", color: "var(--navy)", marginBottom: "4px" }}>Search Engine Optimization (SEO)</h4>
+                  <h4 style={{ fontSize: "14px", fontWeight: "700", color: "var(--navy)", marginBottom: "4px" }}>
+                    <Link href="/services/seo" style={{ color: "var(--navy)", textDecoration: "none", transition: "color 0.2s" }} className="hover-teal">Search Engine Optimization (SEO)</Link>
+                  </h4>
                   <p style={{ fontSize: "13px", color: "var(--text-mid)", lineHeight: "1.5" }}>Show up on Google when people search.</p>
                 </div>
                 <div style={{ borderTop: "1px solid var(--border)", paddingTop: "16px" }}>
-                  <h4 style={{ fontSize: "14px", fontWeight: "700", color: "var(--navy)", marginBottom: "4px" }}>Google Business Profile</h4>
+                  <h4 style={{ fontSize: "14px", fontWeight: "700", color: "var(--navy)", marginBottom: "4px" }}>
+                    <Link href="/services/google-business-profile" style={{ color: "var(--navy)", textDecoration: "none", transition: "color 0.2s" }} className="hover-teal">Google Business Profile</Link>
+                  </h4>
                   <p style={{ fontSize: "13px", color: "var(--text-mid)", lineHeight: "1.5" }}>Appear on Google Maps and win the local "near me" searches.</p>
                 </div>
                 <div style={{ borderTop: "1px solid var(--border)", paddingTop: "16px" }}>
-                  <h4 style={{ fontSize: "14px", fontWeight: "700", color: "var(--navy)", marginBottom: "4px" }}>Answer Engine Optimization (AEO)</h4>
+                  <h4 style={{ fontSize: "14px", fontWeight: "700", color: "var(--navy)", marginBottom: "4px" }}>
+                    <Link href="/services/aeo" style={{ color: "var(--navy)", textDecoration: "none", transition: "color 0.2s" }} className="hover-teal">Answer Engine Optimization (AEO)</Link>
+                  </h4>
                   <p style={{ fontSize: "13px", color: "var(--text-mid)", lineHeight: "1.5" }}>Be the answer when people ask voice assistants and Google.</p>
                 </div>
                 <div style={{ borderTop: "1px solid var(--border)", paddingTop: "16px" }}>
-                  <h4 style={{ fontSize: "14px", fontWeight: "700", color: "var(--navy)", marginBottom: "4px" }}>AI Optimization (AIO)</h4>
+                  <h4 style={{ fontSize: "14px", fontWeight: "700", color: "var(--navy)", marginBottom: "4px" }}>
+                    <Link href="/services/aio" style={{ color: "var(--navy)", textDecoration: "none", transition: "color 0.2s" }} className="hover-teal">AI Optimization (AIO)</Link>
+                  </h4>
                   <p style={{ fontSize: "13px", color: "var(--text-mid)", lineHeight: "1.5" }}>Be visible inside AI tools people now use daily.</p>
                 </div>
                 <div style={{ borderTop: "1px solid var(--border)", paddingTop: "16px" }}>
-                  <h4 style={{ fontSize: "14px", fontWeight: "700", color: "var(--navy)", marginBottom: "4px" }}>Generative Engine Optimization (GEO)</h4>
+                  <h4 style={{ fontSize: "14px", fontWeight: "700", color: "var(--navy)", marginBottom: "4px" }}>
+                    <Link href="/services/geo" style={{ color: "var(--navy)", textDecoration: "none", transition: "color 0.2s" }} className="hover-teal">Generative Engine Optimization (GEO)</Link>
+                  </h4>
                   <p style={{ fontSize: "13px", color: "var(--text-mid)", lineHeight: "1.5" }}>Get recommended by ChatGPT and similar tools.</p>
                 </div>
               </div>
             </div>
-
+ 
             {/* Group 2: Get Chosen */}
             <div style={{ background: "var(--white)", border: "1px solid var(--border)", borderRadius: "var(--radius-lg)", padding: "32px", boxShadow: "var(--shadow-sm)" }} className="pain-card">
               <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "24px" }}>
@@ -421,23 +476,29 @@ export default function HomeClient() {
                   <p style={{ fontSize: "12px", color: "var(--text-muted)", fontWeight: "600" }}>So visitors become customers</p>
                 </div>
               </div>
-
+ 
               <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
                 <div>
-                  <h4 style={{ fontSize: "14px", fontWeight: "700", color: "var(--navy)", marginBottom: "4px" }}>Website Design & Development</h4>
+                  <h4 style={{ fontSize: "14px", fontWeight: "700", color: "var(--navy)", marginBottom: "4px" }}>
+                    <Link href="/services/web-design" style={{ color: "var(--navy)", textDecoration: "none", transition: "color 0.2s" }} className="hover-teal">Website Design & Development</Link>
+                  </h4>
                   <p style={{ fontSize: "13px", color: "var(--text-mid)", lineHeight: "1.5" }}>Fast, clear sites built to convert.</p>
                 </div>
                 <div style={{ borderTop: "1px solid var(--border)", paddingTop: "16px" }}>
-                  <h4 style={{ fontSize: "14px", fontWeight: "700", color: "var(--navy)", marginBottom: "4px" }}>Conversion Rate Optimization (CRO)</h4>
+                  <h4 style={{ fontSize: "14px", fontWeight: "700", color: "var(--navy)", marginBottom: "4px" }}>
+                    <Link href="/services/cro" style={{ color: "var(--navy)", textDecoration: "none", transition: "color 0.2s" }} className="hover-teal">Conversion Rate Optimization (CRO)</Link>
+                  </h4>
                   <p style={{ fontSize: "13px", color: "var(--text-mid)", lineHeight: "1.5" }}>Turn more of your existing visitors into leads.</p>
                 </div>
                 <div style={{ borderTop: "1px solid var(--border)", paddingTop: "16px" }}>
-                  <h4 style={{ fontSize: "14px", fontWeight: "700", color: "var(--navy)", marginBottom: "4px" }}>Social Media Management</h4>
+                  <h4 style={{ fontSize: "14px", fontWeight: "700", color: "var(--navy)", marginBottom: "4px" }}>
+                    <Link href="/services/social-media-management" style={{ color: "var(--navy)", textDecoration: "none", transition: "color 0.2s" }} className="hover-teal">Social Media Management</Link>
+                  </h4>
                   <p style={{ fontSize: "13px", color: "var(--text-mid)", lineHeight: "1.5" }}>Stay active and trusted, so customers feel confident choosing you.</p>
                 </div>
               </div>
             </div>
-
+ 
             {/* Group 3: Get Traffic Now */}
             <div style={{ background: "var(--white)", border: "1px solid var(--border)", borderRadius: "var(--radius-lg)", padding: "32px", boxShadow: "var(--shadow-sm)", display: "flex", flexDirection: "column" }} className="pain-card">
               <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "24px" }}>
@@ -449,14 +510,16 @@ export default function HomeClient() {
                   <p style={{ fontSize: "12px", color: "var(--text-muted)", fontWeight: "600" }}>So you do not have to wait</p>
                 </div>
               </div>
-
+ 
               <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
                 <div>
-                  <h4 style={{ fontSize: "14px", fontWeight: "700", color: "var(--navy)", marginBottom: "4px" }}>Meta & Google Ads</h4>
+                  <h4 style={{ fontSize: "14px", fontWeight: "700", color: "var(--navy)", marginBottom: "4px" }}>
+                    <Link href="/services/ads" style={{ color: "var(--navy)", textDecoration: "none", transition: "color 0.2s" }} className="hover-teal">Meta & Google Ads</Link>
+                  </h4>
                   <p style={{ fontSize: "13px", color: "var(--text-mid)", lineHeight: "1.5" }}>Bring ready-to-buy customers to your site today.</p>
                 </div>
               </div>
-
+ 
               <div style={{ marginTop: "auto", paddingTop: "40px" }}>
                 <Link href="/services" className="btn btn-navy" style={{ width: "100%", justifyContent: "center" }}>
                   See all services →
@@ -496,6 +559,82 @@ export default function HomeClient() {
           <div style={{ textAlign: "center" }}>
             <Link href="/work" className="btn btn-primary" style={{ padding: "14px 32px" }}>
               See our work →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 6.5 — Featured Portfolio */}
+      <section className="section-padding portfolio-snapshot-section" style={{ background: "var(--off-white)", borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)" }}>
+        <div className="container">
+          <div className="text-center" style={{ marginBottom: "40px" }}>
+            <span className="section-tag">Featured Work</span>
+            <h2 className="section-title">Case Studies & Results</h2>
+            <p className="section-sub">Websites built for business growth. Real work, real outcomes.</p>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "30px", marginBottom: "40px" }}>
+            {[
+              {
+                slug: "dr-sajan-hegde",
+                client: "Dr. Sajan Hegde",
+                industry: "Healthcare & Spine Care",
+                screenshot: "/screenshots/dr-sajan-hegde.png",
+                description: "Custom booking platform and clinical branding page for one of India's top spine surgeons, streamlining online patient appointments.",
+                result: "38% increase in patient bookings"
+              },
+              {
+                slug: "sound-v-pro",
+                client: "Sound V Pro",
+                industry: "E-commerce & Pro Audio",
+                screenshot: "/screenshots/sound-v-pro.png",
+                description: "High-performance online store for professional audio and studio equipment, optimized for mobile checkout transitions.",
+                result: "2.1× higher checkout conversion rate"
+              },
+              {
+                slug: "miracle-members",
+                client: "Miracle Members",
+                industry: "Professional Networking",
+                screenshot: "/screenshots/miracle-members.png",
+                description: "Speed-optimized custom portal and networking platform with dynamic member directories and lightning-fast search capabilities.",
+                result: "48% reduction in page load speed"
+              }
+            ].map((p, idx) => (
+              <div key={idx} className="work-card" style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", border: "1px solid var(--border)", borderRadius: "12px", overflow: "hidden", background: "var(--white)", boxShadow: "var(--shadow-sm)" }}>
+                <div style={{ width: "100%", height: "180px", overflow: "hidden", borderBottom: "1px solid var(--border)", background: "var(--off-white)" }}>
+                  <img 
+                    src={p.screenshot} 
+                    alt={`${p.client} website screenshot`} 
+                    style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }}
+                  />
+                </div>
+                <div style={{ padding: "24px", display: "flex", flexDirection: "column", flexGrow: 1, justifyContent: "space-between" }}>
+                  <div>
+                    <span className="section-tag" style={{ background: "rgba(43, 191, 191, 0.12)", color: "var(--teal-dark)", fontSize: "11px", display: "inline-block", marginBottom: "12px" }}>
+                      {p.industry}
+                    </span>
+                    <h3 style={{ fontSize: "18px", margin: "0 0 12px 0", color: "var(--navy)", fontWeight: "800" }}>{p.client}</h3>
+                    <p style={{ fontSize: "13px", color: "var(--text-mid)", lineHeight: "1.6", margin: "0 0 16px 0", minHeight: "60px" }}>
+                      {p.description}
+                    </p>
+                    <div style={{ background: "var(--teal-light)", color: "var(--teal-dark)", fontWeight: "800", padding: "10px 14px", borderRadius: "8px", fontSize: "13.5px", display: "inline-block", marginBottom: "16px" }}>
+                      {p.result}
+                    </div>
+                  </div>
+                  <div style={{ marginTop: "16px" }}>
+                    <Link href={`/work/${p.slug}`} style={{ fontSize: "13px", fontWeight: "700", color: "var(--navy)", display: "inline-flex", alignItems: "center", gap: "6px", textDecoration: "none" }} className="hover-teal">
+                      <span>View Case Study Details</span>
+                      <ArrowRight size={14} />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div style={{ textAlign: "center" }}>
+            <Link href="/work" className="btn btn-navy" style={{ padding: "14px 32px" }}>
+              See All Case Studies →
             </Link>
           </div>
         </div>
@@ -742,26 +881,85 @@ export default function HomeClient() {
 
       {/* SECTION 10 — Lead Magnet */}
       <section className="section-padding lead-magnet-section" style={{ background: "var(--white)" }}>
-        <div className="container" style={{ maxWidth: "800px" }}>
+        <div className="container" style={{ maxWidth: "600px" }}>
           <div style={{ background: "var(--off-white)", border: "1px solid var(--border)", borderRadius: "var(--radius-lg)", padding: "40px", boxShadow: "var(--shadow-md)", position: "relative", overflow: "hidden" }} className="pain-card">
             {/* Decorative gradient corner */}
             <div style={{ position: "absolute", top: 0, right: 0, width: "180px", height: "180px", background: "radial-gradient(circle, rgba(43, 191, 191, 0.1) 0%, transparent 70%)", pointerEvents: "none" }}></div>
             
             <div style={{ textAlign: "center", position: "relative", zIndex: 2 }}>
               <span className="section-tag" style={{ margin: "0 auto 12px" }}>Free Resource</span>
-              <h2 style={{ fontSize: "28px", color: "var(--navy)", fontWeight: "800", marginBottom: "16px" }}>Not ready for a quote? Start here.</h2>
-              <p style={{ fontSize: "15px", color: "var(--text-mid)", lineHeight: "1.7", marginBottom: "28px" }}>
-                Download our free Website Conversion Cheat Sheet: 10 proven tips to turn more visitors into leads, without spending more on ads.
+              <h2 style={{ fontSize: "26px", color: "var(--navy)", fontWeight: "800", marginBottom: "12px" }}>Not ready for a quote? Start here.</h2>
+              <p style={{ fontSize: "14px", color: "var(--text-mid)", lineHeight: "1.6", marginBottom: "24px" }}>
+                Download our free <strong style={{ fontWeight: "700" }}>Website Conversion Cheat Sheet</strong>: 10 proven tips to turn more visitors into leads, without spending more on ads.
               </p>
               
-              <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-                <Link href="/contact?download=cheatsheet" className="btn btn-primary" style={{ padding: "14px 32px" }}>
-                  Download the Free Guide →
-                </Link>
-                <p style={{ fontSize: "11px", color: "var(--text-muted)", marginTop: "8px" }}>
-                  10 fixes you can start using today. No cost.
+              <form onSubmit={handleGuideSubmit} style={{ display: "flex", flexDirection: "column", gap: "16px", textAlign: "left", zIndex: 5, position: "relative" }}>
+                <div>
+                  <label htmlFor="guideName" style={{ display: "block", fontSize: "13px", fontWeight: "700", color: "var(--navy)", marginBottom: "6px" }}>Name</label>
+                  <div className="form-input-wrapper">
+                    <User size={16} className="form-input-icon" />
+                    <input
+                      type="text"
+                      id="guideName"
+                      value={guideName}
+                      onChange={(e) => setGuideName(e.target.value)}
+                      placeholder="Rahul Sharma"
+                      required
+                      className="form-input"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="guideEmail" style={{ display: "block", fontSize: "13px", fontWeight: "700", color: "var(--navy)", marginBottom: "6px" }}>Email Address</label>
+                  <div className="form-input-wrapper">
+                    <Mail size={16} className="form-input-icon" />
+                    <input
+                      type="email"
+                      id="guideEmail"
+                      value={guideEmail}
+                      onChange={(e) => setGuideEmail(e.target.value)}
+                      placeholder="rahul@sharma.co"
+                      required
+                      className="form-input"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="guidePhone" style={{ display: "block", fontSize: "13px", fontWeight: "700", color: "var(--navy)", marginBottom: "6px" }}>Mobile Number <span style={{ fontWeight: "normal", color: "var(--text-muted)", fontSize: "11px" }}>(Optional)</span></label>
+                  <div className="form-input-wrapper">
+                    <Phone size={16} className="form-input-icon" />
+                    <input
+                      type="tel"
+                      id="guidePhone"
+                      value={guidePhone}
+                      onChange={(e) => setGuidePhone(e.target.value)}
+                      placeholder="98765 43210"
+                      className="form-input"
+                    />
+                  </div>
+                </div>
+
+                {guideFormError && (
+                  <div role="alert" style={{ color: "#EF4444", fontSize: "13px", fontWeight: "600", marginTop: "4px" }}>
+                    {guideFormError}
+                  </div>
+                )}
+
+                <button
+                  type="submit"
+                  className="btn btn-primary"
+                  style={{ width: "100%", padding: "12px", justifyContent: "center", marginTop: "8px" }}
+                  disabled={isSubmittingGuide}
+                >
+                  {isSubmittingGuide ? "Preparing Download..." : "Download the Free Guide →"}
+                </button>
+
+                <p style={{ fontSize: "11px", color: "var(--text-muted)", textAlign: "center", marginTop: "4px", margin: 0 }}>
+                  10 fixes you can start using today. No cost. Your details stay private.
                 </p>
-              </div>
+              </form>
             </div>
           </div>
         </div>

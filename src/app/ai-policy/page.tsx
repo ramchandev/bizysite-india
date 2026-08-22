@@ -68,7 +68,7 @@ export default function AiPolicy() {
 
           <h3 style={{ fontSize: "20px", color: "var(--navy)", fontWeight: "800", marginTop: "24px", marginBottom: "12px" }}>5. Contact Us</h3>
           <p style={{ color: "var(--text-mid)", marginBottom: "20px" }}>
-            If you have questions regarding our AI guidelines, please email us at <a href="mailto:info@bizysite.com" style={{ color: "var(--teal)", fontWeight: "700" }}>info@bizysite.com</a>.
+            If you have questions regarding our AI guidelines, please email us at <a href="mailto:info@bizysite.in" style={{ color: "var(--teal)", fontWeight: "700" }}>info@bizysite.in</a>.
           </p>
 
         </div>
