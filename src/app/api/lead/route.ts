@@ -202,6 +202,8 @@ function buildAdminEmailHtml(data: LeadPayload & { submittedAt: string }) {
 function buildCustomerEmailHtml(data: LeadPayload & { submittedAt: string }) {
   const { name, plan, website, notes } = data;
 
+  const isGuideDownload = plan.includes("Guide") || plan.includes("Cheat Sheet");
+
   let businessName = "Your Business";
   let websiteUrl = website || "Your Website";
   if (notes) {
@@ -214,32 +216,10 @@ function buildCustomerEmailHtml(data: LeadPayload & { submittedAt: string }) {
   const reqType = getRequestType(plan);
   const isNewSite = reqType === "new_site";
 
-  const headerTitle = isNewSite ? "Let's build your new website! 🚀" : "Request Confirmed! 🚀";
-  const headerSubtitle = isNewSite 
-    ? "We've received your request for a custom website quote." 
-    : "We've received your details and are on it.";
-  
-  const introText = isNewSite 
-    ? `Thank you for reaching out to Bizy Site. We're excited to help you design and build a high-performance website that actually brings you calls and customers. Here's a summary of your request:`
-    : `Thank you for contacting Bizy Site. Our team is currently reviewing your inquiry details and will get back to you with tailored recommendations. Here is a summary of what you submitted:`;
-
-  const cleanGoal = plan.replace("Contact Form - Need: ", "").replace("Free Audit - Goal: ", "");
-
-  const nextStepsHtml = isNewSite 
-    ? `
-      <ol style="margin:0;padding-left:20px;color:#475569;line-height:1.6;font-size:14px;">
-        <li style="margin-bottom:8px;">
-          <strong>Concept & Discovery Call:</strong> We will schedule a quick 10-15 minute discovery call to understand your business goals, target audience, and features.
-        </li>
-        <li style="margin-bottom:8px;">
-          <strong>Custom Proposal:</strong> We'll compile a tailored plan and fixed-price quote outlining the design structure and timeline.
-        </li>
-        <li style="margin-bottom:8px;">
-          <strong>Design & Launch:</strong> Once approved, our senior copywriters and conversion designers will get to work building your custom site.
-        </li>
-      </ol>
-    `
-    : `
+  let headerTitle = "Request Confirmed! 🚀";
+  let headerSubtitle = "We've received your details and are on it.";
+  let introText = `Thank you for contacting Bizy Site. Our team is currently reviewing your inquiry details and will get back to you with tailored recommendations. Here is a summary of what you submitted:`;
+  let nextStepsHtml = `
       <ol style="margin:0;padding-left:20px;color:#475569;line-height:1.6;font-size:14px;">
         <li style="margin-bottom:8px;">
           <strong>Information Review:</strong> Our team will look at your goals and message details.
@@ -251,7 +231,53 @@ function buildCustomerEmailHtml(data: LeadPayload & { submittedAt: string }) {
           <strong>WhatsApp Sync:</strong> We will also follow up on WhatsApp to ensure you have a direct point of contact.
         </li>
       </ol>
+  `;
+
+  if (isNewSite) {
+    headerTitle = "Let's build your new website! 🚀";
+    headerSubtitle = "We've received your request for a custom website quote.";
+    introText = `Thank you for reaching out to Bizy Site. We're excited to help you design and build a high-performance website that actually brings you calls and customers. Here's a summary of your request:`;
+    nextStepsHtml = `
+      <ol style="margin:0;padding-left:20px;color:#475569;line-height:1.6;font-size:14px;">
+        <li style="margin-bottom:8px;">
+          <strong>Concept & Discovery Call:</strong> We will schedule a quick 10-15 minute discovery call to understand your business goals, target audience, and features.
+        </li>
+        <li style="margin-bottom:8px;">
+          <strong>Custom Proposal:</strong> We'll compile a tailored plan and fixed-price quote outlining the design structure and timeline.
+        </li>
+        <li style="margin-bottom:8px;">
+          <strong>Design & Launch:</strong> Once approved, our senior copywriters and conversion designers will get to work building your custom site.
+        </li>
+      </ol>
     `;
+  } else if (isGuideDownload) {
+    headerTitle = "Your Cheat Sheet is here! 🎁";
+    headerSubtitle = "10 proven tips to turn more website visitors into leads.";
+    introText = `Thank you for requesting our Website Conversion Cheat Sheet! We've attached the PDF directly to this email so you can start reading immediately. Below is a quick summary of what is covered in this guide:`;
+    nextStepsHtml = `
+      <ul style="margin:0;padding-left:20px;color:#475569;line-height:1.6;font-size:14px;">
+        <li style="margin-bottom:8px;">
+          <strong>Above the Fold (Hero):</strong> Why the first 3 seconds determine whether visitors stay or bounce.
+        </li>
+        <li style="margin-bottom:8px;">
+          <strong>Headlines & Sub-headlines:</strong> Copywriting templates to grab customer attention instantly.
+        </li>
+        <li style="margin-bottom:8px;">
+          <strong>Trust Signals & Microcopy:</strong> Small tweaks that reduce customer uncertainty and increase form fills.
+        </li>
+        <li style="margin-bottom:8px;">
+          <strong>Mobile-First Thumb Reach:</strong> Essential size and tap limits for mobile call buttons.
+        </li>
+      </ul>
+      <div style="text-align:center;margin-top:28px;margin-bottom:12px;">
+        <a href="https://www.bizysite.in/website-conversion-cheat-sheet.pdf" download style="display:inline-block;background:#0d1f3c;color:#ffffff;text-decoration:none;font-size:14px;font-weight:700;padding:12px 24px;border-radius:10px;box-shadow:0 4px 12px rgba(13,31,60,0.15);">
+          Download Cheat Sheet PDF
+        </a>
+      </div>
+    `;
+  }
+
+  const cleanGoal = plan.replace("Contact Form - Need: ", "").replace("Free Audit - Goal: ", "").replace("Free Guide Download", "Website Conversion Cheat Sheet Download");
 
   return `
 <!DOCTYPE html>
@@ -289,6 +315,7 @@ function buildCustomerEmailHtml(data: LeadPayload & { submittedAt: string }) {
                 ${introText}
               </p>
               
+              ${!isGuideDownload ? `
               <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:20px;margin-bottom:24px;">
                 <h3 style="color:#0d1f3c;font-size:12px;margin-top:0;margin-bottom:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;">
                   Request Summary
@@ -312,9 +339,10 @@ function buildCustomerEmailHtml(data: LeadPayload & { submittedAt: string }) {
                   </tr>
                 </table>
               </div>
+              ` : ""}
 
               <h3 style="color:#0d1f3c;font-size:15px;margin-top:0;margin-bottom:12px;font-weight:700;">
-                What happens next?
+                ${isGuideDownload ? "What is in the guide?" : "What happens next?"}
               </h3>
               ${nextStepsHtml}
 
@@ -333,7 +361,7 @@ function buildCustomerEmailHtml(data: LeadPayload & { submittedAt: string }) {
             <td style="padding:20px 32px;background:#f8fafc;border-top:1px solid #e2e8f0;text-align:center;color:#94a3b8;font-size:11px;line-height:1.5;">
               <strong>Bizy Site</strong><br />
               404 Jasmine A wing, Eden Park Phase 2, OMR, Siruseri, Chennai 603103<br />
-              <a href="mailto:info@bizysite.in" style="color:#2BBFBF;text-decoration:none;">info@bizysite.in</a> · <a href=siteUrl style="color:#2BBFBF;text-decoration:none;">bizysite.in</a>
+              <a href="mailto:info@bizysite.in" style="color:#2BBFBF;text-decoration:none;">info@bizysite.in</a> · <a href="https://bizysite.in" style="color:#2BBFBF;text-decoration:none;">bizysite.in</a>
             </td>
           </tr>
         </table>
@@ -471,18 +499,46 @@ export async function POST(req: Request) {
 
     // 2. Send Welcome Confirmation to Customer
     try {
-      const customerSubject = plan.includes("Need: New website") 
-        ? "We've received your website request - Bizy Site" 
-        : "We've received your request - Bizy Site";
+      const isGuideDownload = plan.includes("Guide") || plan.includes("Cheat Sheet");
+
+      let customerSubject = "We've received your request - Bizy Site";
+      if (plan.includes("Need: New website")) {
+        customerSubject = "Let's build your new website! - Bizy Site";
+      } else if (isGuideDownload) {
+        customerSubject = "Your Website Conversion Cheat Sheet 🎁";
+      }
 
       const customerHtml = buildCustomerEmailHtml({ name, email, phone, plan, website, notes, submittedAt });
 
-      const customerResult = await resend.emails.send({
+      const emailPayload: any = {
         from,
         to: email,
         subject: customerSubject,
         html: customerHtml,
-      });
+      };
+
+      if (isGuideDownload) {
+        try {
+          const fs = require("fs");
+          const path = require("path");
+          const filePath = path.join(process.cwd(), "public", "website-conversion-cheat-sheet.pdf");
+          if (fs.existsSync(filePath)) {
+            const pdfBuffer = fs.readFileSync(filePath);
+            emailPayload.attachments = [
+              {
+                filename: "website-conversion-cheat-sheet.pdf",
+                content: pdfBuffer,
+              }
+            ];
+          } else {
+            console.error("[lead] Cheat Sheet PDF file not found at path:", filePath);
+          }
+        } catch (attachErr) {
+          console.error("[lead] Failed to read PDF file for attachment:", attachErr);
+        }
+      }
+
+      const customerResult = await resend.emails.send(emailPayload);
 
       if (customerResult.error) {
         console.warn("[lead] Resend Customer welcome warning:", customerResult.error);

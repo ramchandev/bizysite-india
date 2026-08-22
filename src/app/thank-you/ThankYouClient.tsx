@@ -23,6 +23,19 @@ function ThankYouContent() {
               <>Thank you, <strong>{name}</strong>. We have received your request and Vivek or Ram from our team will get back to you the same working day.</>
             )}
           </p>
+          {requestedGuide && (
+            <div style={{ marginTop: "32px", display: "flex", justifyContent: "center" }}>
+              <a 
+                href="/website-conversion-cheat-sheet.pdf" 
+                download="website-conversion-cheat-sheet.pdf"
+                className="btn btn-primary"
+                style={{ padding: "14px 32px", display: "inline-flex", alignItems: "center", gap: "8px", background: "var(--teal)", borderColor: "var(--teal)" }}
+              >
+                <FileText size={18} />
+                <span>Download Your Cheat Sheet PDF</span>
+              </a>
+            </div>
+          )}
         </div>
       </section>
 
