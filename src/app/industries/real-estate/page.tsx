@@ -1,3 +1,4 @@
+import { siteUrl } from "@/config";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2, ArrowRight } from "lucide-react";
@@ -5,7 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bizysite.in"),
+  metadataBase: new URL(siteUrl),
   title: "Website Design for Real Estate & Builders in India | Bizy Site",
   description: "Websites for builders, developers and real estate firms that turn projects into serious enquiries. Showcase properties, build trust, capture leads. Get a free quote.",
   keywords: "real estate website design India, builder website, property website design, digital marketing for real estate India",
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Website Design for Real Estate & Builders in India | Bizy Site",
     description: "Websites for builders, developers and real estate firms that turn projects into serious enquiries. Showcase properties, build trust, capture leads. Get a free quote.",
-    url: "https://bizysite.in/industries/real-estate",
+    url: `${siteUrl}/industries/real-estate`,
     siteName: "Bizy Site India",
     type: "website",
     locale: "en_IN",
@@ -33,12 +34,13 @@ export default function RealEstateBuilders() {
     "@graph": [
       {
         "@type": "Service",
-        "@id": "https://bizysite.in/industries/real-estate/#service",
+        "@id": `${siteUrl}/industries/real-estate/#service`,
         "name": "Website Design for Real Estate & Builders",
         "provider": {
           "@type": "LocalBusiness",
+          "@id": `${siteUrl}/#localbusiness`,
           "name": "Bizy Site India",
-          "url": "https://bizysite.in"
+          "url": siteUrl
         },
         "description": "Websites for builders, developers and real estate firms that turn projects into serious enquiries.",
         "areaServed": {
@@ -48,7 +50,7 @@ export default function RealEstateBuilders() {
       },
       {
         "@type": "FAQPage",
-        "@id": "https://bizysite.in/industries/real-estate/#faq",
+        "@id": `${siteUrl}/industries/real-estate/#faq`,
         "mainEntity": [
           {
             "@type": "Question",
@@ -102,25 +104,25 @@ export default function RealEstateBuilders() {
       },
       {
         "@type": "BreadcrumbList",
-        "@id": "https://bizysite.in/industries/real-estate/#breadcrumb",
+        "@id": `${siteUrl}/industries/real-estate/#breadcrumb`,
         "itemListElement": [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://bizysite.in"
+            "item": siteUrl
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Industries",
-            "item": "https://bizysite.in/industries"
+            "item": `${siteUrl}/industries`
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Real Estate & Builders",
-            "item": "https://bizysite.in/industries/real-estate"
+            "item": `${siteUrl}/industries/real-estate`
           }
         ]
       }

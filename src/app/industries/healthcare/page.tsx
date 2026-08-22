@@ -1,3 +1,4 @@
+import { siteUrl } from "@/config";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2, Heart, ArrowRight } from "lucide-react";
@@ -5,7 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bizysite.in"),
+  metadataBase: new URL(siteUrl),
   title: "Website Design for Clinics & Doctors in India | Bizy Site",
   description: "Websites for clinics, doctors and hospitals that fill appointment slots and build patient trust. Fast, mobile-first, easy to book. Get a free quote.",
   keywords: "website design for doctors India, clinic website design, hospital website, healthcare digital marketing India",
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Website Design for Clinics & Doctors in India | Bizy Site",
     description: "Websites for clinics, doctors and hospitals that fill appointment slots and build patient trust. Fast, mobile-first, easy to book. Get a free quote.",
-    url: "https://bizysite.in/industries/healthcare",
+    url: `${siteUrl}/industries/healthcare`,
     siteName: "Bizy Site India",
     type: "website",
     locale: "en_IN",
@@ -33,12 +34,13 @@ export default function HealthcareClinic() {
     "@graph": [
       {
         "@type": "Service",
-        "@id": "https://bizysite.in/industries/healthcare/#service",
+        "@id": `${siteUrl}/industries/healthcare/#service`,
         "name": "Website Design for Clinics & Doctors",
         "provider": {
           "@type": "LocalBusiness",
+          "@id": `${siteUrl}/#localbusiness`,
           "name": "Bizy Site India",
-          "url": "https://bizysite.in"
+          "url": siteUrl
         },
         "description": "Websites for clinics, doctors and hospitals that fill appointment slots and build patient trust.",
         "areaServed": {
@@ -48,7 +50,7 @@ export default function HealthcareClinic() {
       },
       {
         "@type": "FAQPage",
-        "@id": "https://bizysite.in/industries/healthcare/#faq",
+        "@id": `${siteUrl}/industries/healthcare/#faq`,
         "mainEntity": [
           {
             "@type": "Question",
@@ -102,25 +104,25 @@ export default function HealthcareClinic() {
       },
       {
         "@type": "BreadcrumbList",
-        "@id": "https://bizysite.in/industries/healthcare/#breadcrumb",
+        "@id": `${siteUrl}/industries/healthcare/#breadcrumb`,
         "itemListElement": [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://bizysite.in"
+            "item": siteUrl
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Industries",
-            "item": "https://bizysite.in/industries"
+            "item": `${siteUrl}/industries`
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Healthcare & Clinics",
-            "item": "https://bizysite.in/industries/healthcare"
+            "item": `${siteUrl}/industries/healthcare`
           }
         ]
       }

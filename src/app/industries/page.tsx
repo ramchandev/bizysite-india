@@ -1,3 +1,4 @@
+import { siteUrl } from "@/config";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { 
@@ -14,7 +15,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bizysite.in"),
+  metadataBase: new URL(siteUrl),
   title: "Website Design for Your Industry in India | Bizy Site",
   description: "Websites built for how your industry actually wins customers. Clinics, builders, coaching, restaurants, CA firms, manufacturers and retail. Get a free quote.",
   keywords: "website design India, web design for doctors India, real estate website design India, B2B website development, education website design",
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Website Design for Your Industry in India | Bizy Site",
     description: "Websites built for how your industry actually wins customers. Clinics, builders, coaching, restaurants, CA firms, manufacturers and retail. Get a free quote.",
-    url: "https://bizysite.in/industries",
+    url: `${siteUrl}/industries`,
     siteName: "Bizy Site India",
     type: "website",
     locale: "en_IN",
@@ -42,26 +43,26 @@ export default function IndustriesHub() {
     "@graph": [
       {
         "@type": "CollectionPage",
-        "@id": "https://bizysite.in/industries/#webpage",
-        "url": "https://bizysite.in/industries",
+        "@id": `${siteUrl}/industries/#webpage`,
+        "url": `${siteUrl}/industries`,
         "name": "Website Design for Your Industry in India",
         "description": "Websites built for how your industry actually wins customers. Clinics, builders, coaching, restaurants, CA firms, manufacturers and retail."
       },
       {
         "@type": "BreadcrumbList",
-        "@id": "https://bizysite.in/industries/#breadcrumb",
+        "@id": `${siteUrl}/industries/#breadcrumb`,
         "itemListElement": [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://bizysite.in"
+            "item": siteUrl
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Industries",
-            "item": "https://bizysite.in/industries"
+            "item": `${siteUrl}/industries`
           }
         ]
       }

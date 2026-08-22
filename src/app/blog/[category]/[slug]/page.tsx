@@ -1,3 +1,4 @@
+import { siteUrl } from "@/config";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -73,7 +74,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const imageUrl = getThumbnailForPost(post.slug);
 
   return {
-    metadataBase: new URL("https://bizysite.in"),
+    metadataBase: new URL(siteUrl),
     title: post.metaTitle || `${post.title} | Bizy Site`,
     description: post.metaDescription || post.excerpt,
     alternates: {
@@ -133,7 +134,7 @@ export default async function BlogDetail({ params }: PageProps) {
     },
     "headline": post.title,
     "description": post.metaDescription || post.excerpt,
-    "image": "https://bizysite.in/opengraph-image.png",
+    "image": `${siteUrl}/opengraph-image.png`,
     "author": {
       "@type": "Organization",
       "name": "Bizy Site India"
@@ -143,7 +144,7 @@ export default async function BlogDetail({ params }: PageProps) {
       "name": "Bizy Site India",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://bizysite.in/Bizy_Site_Logo.png"
+        "url": `${siteUrl}/Bizy_Site_Logo.png`
       }
     },
     "datePublished": post.publishDateIso || "2026-08-15"
@@ -158,13 +159,13 @@ export default async function BlogDetail({ params }: PageProps) {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://bizysite.in"
+        "item": siteUrl
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Blog",
-        "item": "https://bizysite.in/blog"
+        "item": `${siteUrl}/blog`
       },
       {
         "@type": "ListItem",

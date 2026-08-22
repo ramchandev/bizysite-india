@@ -1,3 +1,4 @@
+import { siteUrl } from "@/config";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2, ArrowRight } from "lucide-react";
@@ -5,7 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bizysite.in"),
+  metadataBase: new URL(siteUrl),
   title: "Website Design for Restaurants & Hotels in India | Bizy Site",
   description: "Websites for restaurants, cafes and hotels that drive bookings, orders and footfall. Menus, reservations, reviews and Google visibility. Get a free quote.",
   keywords: "restaurant website design India, hotel website, cafe website design, hospitality digital marketing India",
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Website Design for Restaurants & Hotels in India | Bizy Site",
     description: "Websites for restaurants, cafes and hotels that drive bookings, orders and footfall. Menus, reservations, reviews and Google visibility. Get a free quote.",
-    url: "https://bizysite.in/industries/hospitality",
+    url: `${siteUrl}/industries/hospitality`,
     siteName: "Bizy Site India",
     type: "website",
     locale: "en_IN",
@@ -33,12 +34,13 @@ export default function HospitalityRestaurants() {
     "@graph": [
       {
         "@type": "Service",
-        "@id": "https://bizysite.in/industries/hospitality/#service",
+        "@id": `${siteUrl}/industries/hospitality/#service`,
         "name": "Website Design for Restaurants & Hotels",
         "provider": {
           "@type": "LocalBusiness",
+          "@id": `${siteUrl}/#localbusiness`,
           "name": "Bizy Site India",
-          "url": "https://bizysite.in"
+          "url": siteUrl
         },
         "description": "Websites for restaurants, cafes and hotels that drive bookings, orders and footfall.",
         "areaServed": {
@@ -48,7 +50,7 @@ export default function HospitalityRestaurants() {
       },
       {
         "@type": "FAQPage",
-        "@id": "https://bizysite.in/industries/hospitality/#faq",
+        "@id": `${siteUrl}/industries/hospitality/#faq`,
         "mainEntity": [
           {
             "@type": "Question",
@@ -102,25 +104,25 @@ export default function HospitalityRestaurants() {
       },
       {
         "@type": "BreadcrumbList",
-        "@id": "https://bizysite.in/industries/hospitality/#breadcrumb",
+        "@id": `${siteUrl}/industries/hospitality/#breadcrumb`,
         "itemListElement": [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://bizysite.in"
+            "item": siteUrl
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Industries",
-            "item": "https://bizysite.in/industries"
+            "item": `${siteUrl}/industries`
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Hospitality & Restaurants",
-            "item": "https://bizysite.in/industries/hospitality"
+            "item": `${siteUrl}/industries/hospitality`
           }
         ]
       }

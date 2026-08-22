@@ -1,3 +1,4 @@
+import { siteUrl } from "@/config";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Check, CheckCircle2, Award, Search, TrendingUp, Sparkles, HelpCircle } from "lucide-react";
@@ -5,7 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bizysite.in"),
+  metadataBase: new URL(siteUrl),
   title: "Generative Engine Optimization (GEO) in India | Get Recommended by ChatGPT | Bizy Site",
   description: "When customers ask ChatGPT and other AI tools for a recommendation, GEO helps your business be the one they suggest. Get a free GEO visibility review.",
   keywords: "generative engine optimization India, get recommended by ChatGPT, GEO marketing services, AI search recommendation engine, Perplexity SEO India",
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Generative Engine Optimization (GEO) in India | Get Recommended by ChatGPT | Bizy Site",
     description: "When customers ask ChatGPT and other AI tools for a recommendation, GEO helps your business be the one they suggest. Get a free GEO visibility review.",
-    url: "https://bizysite.in/services/geo",
+    url: `${siteUrl}/services/geo`,
     siteName: "Bizy Site India",
     type: "website",
     locale: "en_IN",
@@ -33,12 +34,13 @@ export default function GEO() {
     "@graph": [
       {
         "@type": "Service",
-        "@id": "https://bizysite.in/services/geo/#service",
+        "@id": `${siteUrl}/services/geo/#service`,
         "name": "Generative Engine Optimization (GEO)",
         "provider": {
           "@type": "LocalBusiness",
+          "@id": `${siteUrl}/#localbusiness`,
           "name": "Bizy Site India",
-          "url": "https://bizysite.in"
+          "url": siteUrl
         },
         "description": "Helps your business be the one ChatGPT and other AI engines suggest.",
         "areaServed": {
@@ -48,7 +50,7 @@ export default function GEO() {
       },
       {
         "@type": "FAQPage",
-        "@id": "https://bizysite.in/services/geo/#faq",
+        "@id": `${siteUrl}/services/geo/#faq`,
         "mainEntity": [
           {
             "@type": "Question",
@@ -102,25 +104,25 @@ export default function GEO() {
       },
       {
         "@type": "BreadcrumbList",
-        "@id": "https://bizysite.in/services/geo/#breadcrumb",
+        "@id": `${siteUrl}/services/geo/#breadcrumb`,
         "itemListElement": [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://bizysite.in"
+            "item": siteUrl
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Services",
-            "item": "https://bizysite.in/services"
+            "item": `${siteUrl}/services`
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Generative Engine Optimization",
-            "item": "https://bizysite.in/services/geo"
+            "item": `${siteUrl}/services/geo`
           }
         ]
       }

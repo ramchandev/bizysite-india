@@ -1,3 +1,4 @@
+import { siteUrl } from "@/config";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Check, ArrowRight, Award, Search, CheckCircle2, TrendingUp, Sparkles } from "lucide-react";
@@ -5,7 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bizysite.in"),
+  metadataBase: new URL(siteUrl),
   title: "Website Design & Development in India | Conversion-Focused | Bizy Site",
   description: "Fast, mobile-first websites built to bring you calls and customers. New build or redesign, by a team with 500+ sites and 10 years of experience. Get a free quote.",
   keywords: "website design and development India, conversion focused website design, mobile first website India, custom website redesign, business website design India",
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Website Design & Development in India | Conversion-Focused | Bizy Site",
     description: "Fast, mobile-first websites built to bring you calls and customers. New build or redesign, by a team with 500+ sites and 10 years of experience. Get a free quote.",
-    url: "https://bizysite.in/services/web-design",
+    url: `${siteUrl}/services/web-design`,
     siteName: "Bizy Site India",
     type: "website",
     locale: "en_IN",
@@ -33,12 +34,13 @@ export default function WebDesign() {
     "@graph": [
       {
         "@type": "Service",
-        "@id": "https://bizysite.in/services/web-design/#service",
+        "@id": `${siteUrl}/services/web-design/#service`,
         "name": "Website Design & Development",
         "provider": {
           "@type": "LocalBusiness",
+          "@id": `${siteUrl}/#localbusiness`,
           "name": "Bizy Site India",
-          "url": "https://bizysite.in"
+          "url": siteUrl
         },
         "description": "Fast, mobile-first websites built to bring you calls and customers.",
         "areaServed": {
@@ -48,7 +50,7 @@ export default function WebDesign() {
       },
       {
         "@type": "FAQPage",
-        "@id": "https://bizysite.in/services/web-design/#faq",
+        "@id": `${siteUrl}/services/web-design/#faq`,
         "mainEntity": [
           {
             "@type": "Question",
@@ -118,25 +120,25 @@ export default function WebDesign() {
       },
       {
         "@type": "BreadcrumbList",
-        "@id": "https://bizysite.in/services/web-design/#breadcrumb",
+        "@id": `${siteUrl}/services/web-design/#breadcrumb`,
         "itemListElement": [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://bizysite.in"
+            "item": siteUrl
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Services",
-            "item": "https://bizysite.in/services"
+            "item": `${siteUrl}/services`
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Website Design & Development",
-            "item": "https://bizysite.in/services/web-design"
+            "item": `${siteUrl}/services/web-design`
           }
         ]
       }

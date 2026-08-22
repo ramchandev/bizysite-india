@@ -1,3 +1,4 @@
+import { siteUrl } from "@/config";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Check, CheckCircle2, Award, Search, TrendingUp, Sparkles, HelpCircle } from "lucide-react";
@@ -5,7 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bizysite.in"),
+  metadataBase: new URL(siteUrl),
   title: "Google & Meta Ads Management in India | Customers Today | Bizy Site",
   description: "Get ready-to-buy customers to your website now with Google and Meta Ads that are managed to bring real enquiries, not wasted clicks. Get a free ads review.",
   keywords: "Google Ads management India, Meta Ads agency India, Facebook advertising India, pay per click marketing, lead generation ads",
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Google & Meta Ads Management in India | Customers Today | Bizy Site",
     description: "Get ready-to-buy customers to your website now with Google and Meta Ads that are managed to bring real enquiries, not wasted clicks. Get a free ads review.",
-    url: "https://bizysite.in/services/ads",
+    url: `${siteUrl}/services/ads`,
     siteName: "Bizy Site India",
     type: "website",
     locale: "en_IN",
@@ -33,12 +34,13 @@ export default function Ads() {
     "@graph": [
       {
         "@type": "Service",
-        "@id": "https://bizysite.in/services/ads/#service",
+        "@id": `${siteUrl}/services/ads/#service`,
         "name": "Meta & Google Ads",
         "provider": {
           "@type": "LocalBusiness",
+          "@id": `${siteUrl}/#localbusiness`,
           "name": "Bizy Site India",
-          "url": "https://bizysite.in"
+          "url": siteUrl
         },
         "description": "Run Google and Meta ad campaigns engineered for lead generation.",
         "areaServed": {
@@ -48,7 +50,7 @@ export default function Ads() {
       },
       {
         "@type": "FAQPage",
-        "@id": "https://bizysite.in/services/ads/#faq",
+        "@id": `${siteUrl}/services/ads/#faq`,
         "mainEntity": [
           {
             "@type": "Question",
@@ -110,25 +112,25 @@ export default function Ads() {
       },
       {
         "@type": "BreadcrumbList",
-        "@id": "https://bizysite.in/services/ads/#breadcrumb",
+        "@id": `${siteUrl}/services/ads/#breadcrumb`,
         "itemListElement": [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://bizysite.in"
+            "item": siteUrl
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Services",
-            "item": "https://bizysite.in/services"
+            "item": `${siteUrl}/services`
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Meta & Google Ads",
-            "item": "https://bizysite.in/services/ads"
+            "item": `${siteUrl}/services/ads`
           }
         ]
       }

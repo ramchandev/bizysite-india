@@ -1,3 +1,4 @@
+import { siteUrl } from "@/config";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Check, CheckCircle2, Award, Percent, TrendingUp, Sparkles, AlertCircle, BarChart3, HelpCircle } from "lucide-react";
@@ -5,7 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bizysite.in"),
+  metadataBase: new URL(siteUrl),
   title: "Conversion Rate Optimization (CRO) in India | More Leads, Same Traffic | Bizy Site",
   description: "Turn more website visitors into calls and enquiries, without spending more on ads. CRO for new and existing sites. Get a free conversion review.",
   keywords: "conversion rate optimization India, increase website conversions, CRO services India, improve website leads, lead conversion rate optimization",
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Conversion Rate Optimization (CRO) in India | More Leads, Same Traffic | Bizy Site",
     description: "Turn more website visitors into calls and enquiries, without spending more on ads. CRO for new and existing sites. Get a free conversion review.",
-    url: "https://bizysite.in/services/cro",
+    url: `${siteUrl}/services/cro`,
     siteName: "Bizy Site India",
     type: "website",
     locale: "en_IN",
@@ -33,12 +34,13 @@ export default function CRO() {
     "@graph": [
       {
         "@type": "Service",
-        "@id": "https://bizysite.in/services/cro/#service",
+        "@id": `${siteUrl}/services/cro/#service`,
         "name": "Conversion Rate Optimization (CRO)",
         "provider": {
           "@type": "LocalBusiness",
+          "@id": `${siteUrl}/#localbusiness`,
           "name": "Bizy Site India",
-          "url": "https://bizysite.in"
+          "url": siteUrl
         },
         "description": "Turn more website visitors into calls and enquiries, without spending more on ads.",
         "areaServed": {
@@ -48,7 +50,7 @@ export default function CRO() {
       },
       {
         "@type": "FAQPage",
-        "@id": "https://bizysite.in/services/cro/#faq",
+        "@id": `${siteUrl}/services/cro/#faq`,
         "mainEntity": [
           {
             "@type": "Question",
@@ -110,25 +112,25 @@ export default function CRO() {
       },
       {
         "@type": "BreadcrumbList",
-        "@id": "https://bizysite.in/services/cro/#breadcrumb",
+        "@id": `${siteUrl}/services/cro/#breadcrumb`,
         "itemListElement": [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://bizysite.in"
+            "item": siteUrl
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Services",
-            "item": "https://bizysite.in/services"
+            "item": `${siteUrl}/services`
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Conversion Rate Optimization",
-            "item": "https://bizysite.in/services/cro"
+            "item": `${siteUrl}/services/cro`
           }
         ]
       }

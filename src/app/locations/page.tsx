@@ -1,3 +1,4 @@
+import { siteUrl } from "@/config";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { MapPin, ArrowRight } from "lucide-react";
@@ -5,7 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bizysite.in"),
+  metadataBase: new URL(siteUrl),
   title: "Website Design & Digital Marketing Across India | Bizy Site",
   description: "Serving businesses in Chennai, Coimbatore, Mumbai, Bangalore, Pune, Delhi and Hyderabad. Local know-how, best-in-class websites. Get a free quote.",
   keywords: "website design company Chennai, web development Coimbatore, SEO Mumbai, website design Bangalore, website development Pune, web design Delhi NCR, SEO Hyderabad",
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Website Design & Digital Marketing Across India | Bizy Site",
     description: "Serving businesses in Chennai, Coimbatore, Mumbai, Bangalore, Pune, Delhi and Hyderabad. Local know-how, best-in-class websites. Get a free quote.",
-    url: "https://bizysite.in/locations",
+    url: `${siteUrl}/locations`,
     siteName: "Bizy Site India",
     type: "website",
     locale: "en_IN",
@@ -33,26 +34,26 @@ export default function LocationsHub() {
     "@graph": [
       {
         "@type": "CollectionPage",
-        "@id": "https://bizysite.in/locations/#webpage",
-        "url": "https://bizysite.in/locations",
+        "@id": `${siteUrl}/locations/#webpage`,
+        "url": `${siteUrl}/locations`,
         "name": "Website Design & Digital Marketing Across India",
         "description": "Serving businesses in Chennai, Coimbatore, Mumbai, Bangalore, Pune, Delhi and Hyderabad. Local know-how, best-in-class websites."
       },
       {
         "@type": "BreadcrumbList",
-        "@id": "https://bizysite.in/locations/#breadcrumb",
+        "@id": `${siteUrl}/locations/#breadcrumb`,
         "itemListElement": [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://bizysite.in"
+            "item": siteUrl
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Locations",
-            "item": "https://bizysite.in/locations"
+            "item": `${siteUrl}/locations`
           }
         ]
       }

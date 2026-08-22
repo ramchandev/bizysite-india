@@ -1,3 +1,4 @@
+import { siteUrl } from "@/config";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2, ArrowRight } from "lucide-react";
@@ -5,7 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bizysite.in"),
+  metadataBase: new URL(siteUrl),
   title: "Website Design for CA, Legal & Consulting Firms in India | Bizy Site",
   description: "Websites for CA firms, lawyers and consultants that signal trust and win serious clients. Show expertise, build credibility, capture enquiries. Get a free quote.",
   keywords: "CA firm website design India, lawyer website, consultant website design, professional services web design India",
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Website Design for CA, Legal & Consulting Firms in India | Bizy Site",
     description: "Websites for CA firms, lawyers and consultants that signal trust and win serious clients. Show expertise, build credibility, capture enquiries. Get a free quote.",
-    url: "https://bizysite.in/industries/professional-services",
+    url: `${siteUrl}/industries/professional-services`,
     siteName: "Bizy Site India",
     type: "website",
     locale: "en_IN",
@@ -33,12 +34,13 @@ export default function ProfessionalServices() {
     "@graph": [
       {
         "@type": "Service",
-        "@id": "https://bizysite.in/industries/professional-services/#service",
+        "@id": `${siteUrl}/industries/professional-services/#service`,
         "name": "Website Design for CA, Legal & Consulting Firms",
         "provider": {
           "@type": "LocalBusiness",
+          "@id": `${siteUrl}/#localbusiness`,
           "name": "Bizy Site India",
-          "url": "https://bizysite.in"
+          "url": siteUrl
         },
         "description": "Websites for CA firms, lawyers and consultants that signal trust and win serious clients.",
         "areaServed": {
@@ -48,7 +50,7 @@ export default function ProfessionalServices() {
       },
       {
         "@type": "FAQPage",
-        "@id": "https://bizysite.in/industries/professional-services/#faq",
+        "@id": `${siteUrl}/industries/professional-services/#faq`,
         "mainEntity": [
           {
             "@type": "Question",
@@ -102,25 +104,25 @@ export default function ProfessionalServices() {
       },
       {
         "@type": "BreadcrumbList",
-        "@id": "https://bizysite.in/industries/professional-services/#breadcrumb",
+        "@id": `${siteUrl}/industries/professional-services/#breadcrumb`,
         "itemListElement": [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://bizysite.in"
+            "item": siteUrl
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Industries",
-            "item": "https://bizysite.in/industries"
+            "item": `${siteUrl}/industries`
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Professional Services",
-            "item": "https://bizysite.in/industries/professional-services"
+            "item": `${siteUrl}/industries/professional-services`
           }
         ]
       }

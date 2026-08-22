@@ -1,3 +1,4 @@
+import { siteUrl } from "@/config";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { 
@@ -17,7 +18,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bizysite.in"),
+  metadataBase: new URL(siteUrl),
   title: "Web Design, SEO & Digital Marketing Services in India | Bizy Site",
   description: "Everything your website needs to get found and get customers. Web design, CRO, SEO, AEO, AIO, GEO and Ads, by a team with 500+ sites. Get a free quote.",
   keywords: "website design services India, digital marketing agency India, SEO services India, local SEO Maps ranking, CRO agency India, AI optimization services",
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Web Design, SEO & Digital Marketing Services in India | Bizy Site",
     description: "Everything your website needs to get found and get customers. Web design, CRO, SEO, AEO, AIO, GEO and Ads, by a team with 500+ sites. Get a free quote.",
-    url: "https://bizysite.in/services",
+    url: `${siteUrl}/services`,
     siteName: "Bizy Site India",
     type: "website",
     locale: "en_IN",
@@ -45,12 +46,13 @@ export default function ServicesHub() {
     "@graph": [
       {
         "@type": "Service",
-        "@id": "https://bizysite.in/services/#service",
+        "@id": `${siteUrl}/services/#service`,
         "name": "Web Design & Digital Marketing Services",
         "provider": {
           "@type": "LocalBusiness",
+          "@id": `${siteUrl}/#localbusiness`,
           "name": "Bizy Site India",
-          "url": "https://bizysite.in"
+          "url": siteUrl
         },
         "description": "Everything your website needs to get found and get customers. Web design, CRO, SEO, AEO, AIO, GEO and Ads.",
         "areaServed": {
@@ -60,19 +62,19 @@ export default function ServicesHub() {
       },
       {
         "@type": "BreadcrumbList",
-        "@id": "https://bizysite.in/services/#breadcrumb",
+        "@id": `${siteUrl}/services/#breadcrumb`,
         "itemListElement": [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://bizysite.in"
+            "item": siteUrl
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Services",
-            "item": "https://bizysite.in/services"
+            "item": `${siteUrl}/services`
           }
         ]
       }

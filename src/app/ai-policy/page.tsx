@@ -1,9 +1,10 @@
+import { siteUrl } from "@/config";
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bizysite.in"),
+  metadataBase: new URL(siteUrl),
   title: "AI Policy | Bizy Site",
   description: "How Bizy Site uses artificial intelligence responsibly in design, development, and content creation.",
   alternates: {
@@ -15,8 +16,8 @@ export default function AiPolicy() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "@id": "https://bizysite.in/ai-policy/#webpage",
-    "url": "https://bizysite.in/ai-policy",
+    "@id": `${siteUrl}/ai-policy/#webpage`,
+    "url": `${siteUrl}/ai-policy`,
     "name": "AI Policy"
   };
 

@@ -1,3 +1,4 @@
+import { siteUrl } from "@/config";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2, ArrowRight } from "lucide-react";
@@ -5,7 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bizysite.in"),
+  metadataBase: new URL(siteUrl),
   title: "Website Design Company in Coimbatore | SEO & Digital Marketing | Bizy Site",
   description: "Website design, SEO and digital marketing for Coimbatore businesses, from manufacturing and textiles to clinics and services. Get a free quote today.",
   keywords: "website design company Coimbatore, web development Coimbatore, SEO Coimbatore, web designers in Coimbatore, digital marketing agency Coimbatore",
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Website Design Company in Coimbatore | SEO & Digital Marketing | Bizy Site",
     description: "Website design, SEO and digital marketing for Coimbatore businesses, from manufacturing and textiles to clinics and services. Get a free quote today.",
-    url: "https://bizysite.in/locations/coimbatore",
+    url: `${siteUrl}/locations/coimbatore`,
     siteName: "Bizy Site India",
     type: "website",
     locale: "en_IN",
@@ -33,9 +34,12 @@ export default function CoimbatoreLocation() {
     "@graph": [
       {
         "@type": "LocalBusiness",
-        "@id": "https://bizysite.in/locations/coimbatore/#localbusiness",
+        "@id": `${siteUrl}/locations/coimbatore/#localbusiness`,
         "name": "Bizy Site Coimbatore Service Area",
-        "url": "https://bizysite.in/locations/coimbatore",
+        "url": `${siteUrl}/locations/coimbatore`,
+        "parentOrganization": {
+          "@id": `${siteUrl}/#organization`
+        },
         "telephone": "+919500728442",
         "address": {
           "@type": "PostalAddress",
@@ -52,12 +56,13 @@ export default function CoimbatoreLocation() {
       },
       {
         "@type": "Service",
-        "@id": "https://bizysite.in/locations/coimbatore/#service",
+        "@id": `${siteUrl}/locations/coimbatore/#service`,
         "name": "Website Design & Digital Marketing Services",
         "provider": {
           "@type": "LocalBusiness",
+          "@id": `${siteUrl}/#localbusiness`,
           "name": "Bizy Site India",
-          "url": "https://bizysite.in"
+          "url": siteUrl
         },
         "description": "Website design, SEO and digital marketing for Coimbatore businesses.",
         "areaServed": {
@@ -67,7 +72,7 @@ export default function CoimbatoreLocation() {
       },
       {
         "@type": "FAQPage",
-        "@id": "https://bizysite.in/locations/coimbatore/#faq",
+        "@id": `${siteUrl}/locations/coimbatore/#faq`,
         "mainEntity": [
           {
             "@type": "Question",
@@ -121,25 +126,25 @@ export default function CoimbatoreLocation() {
       },
       {
         "@type": "BreadcrumbList",
-        "@id": "https://bizysite.in/locations/coimbatore/#breadcrumb",
+        "@id": `${siteUrl}/locations/coimbatore/#breadcrumb`,
         "itemListElement": [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://bizysite.in"
+            "item": siteUrl
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Locations",
-            "item": "https://bizysite.in/locations"
+            "item": `${siteUrl}/locations`
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Coimbatore",
-            "item": "https://bizysite.in/locations/coimbatore"
+            "item": `${siteUrl}/locations/coimbatore`
           }
         ]
       }

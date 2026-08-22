@@ -1,9 +1,10 @@
+import { siteUrl } from "@/config";
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bizysite.in"),
+  metadataBase: new URL(siteUrl),
   title: "Terms & Conditions | Bizy Site",
   description: "The terms that govern the use of the Bizy Site website and services.",
   alternates: {
@@ -15,8 +16,8 @@ export default function TermsOfService() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "@id": "https://bizysite.in/terms/#webpage",
-    "url": "https://bizysite.in/terms",
+    "@id": `${siteUrl}/terms/#webpage`,
+    "url": `${siteUrl}/terms`,
     "name": "Terms & Conditions"
   };
 

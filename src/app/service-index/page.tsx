@@ -1,10 +1,11 @@
+import { siteUrl } from "@/config";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bizysite.in"),
+  metadataBase: new URL(siteUrl),
   title: "Service Index | Bizy Site",
   description: "All website design, development, SEO, ads and social media management services in one place.",
   alternates: {
@@ -16,8 +17,8 @@ export default function ServiceIndex() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "@id": "https://bizysite.in/service-index/#webpage",
-    "url": "https://bizysite.in/service-index",
+    "@id": `${siteUrl}/service-index/#webpage`,
+    "url": `${siteUrl}/service-index`,
     "name": "Service Index"
   };
 

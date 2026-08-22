@@ -1,3 +1,4 @@
+import { siteUrl } from "@/config";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Check, Star, ArrowRight } from "lucide-react";
@@ -6,7 +7,7 @@ import Footer from "@/components/Footer";
 import WorkClient from "./WorkClient";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bizysite.in"),
+  metadataBase: new URL(siteUrl),
   title: "Our Work | Website Design Portfolio & Results | Bizy Site",
   description: "See websites we have built and the results they bring. 500+ projects across industries. Real work, real outcomes. Get a free quote for yours.",
   keywords: "web design portfolio, conversion design case studies, SEO results India, web design examples",
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Our Work | Website Design Portfolio & Results | Bizy Site",
     description: "See websites we have built and the results they bring. 500+ projects across industries. Real work, real outcomes. Get a free quote for yours.",
-    url: "https://bizysite.in/work",
+    url: `${siteUrl}/work`,
     siteName: "Bizy Site India",
     type: "website",
     locale: "en_IN",
@@ -34,25 +35,25 @@ export default function Work() {
     "@graph": [
       {
         "@type": "CollectionPage",
-        "@id": "https://bizysite.in/work/#webpage",
-        "url": "https://bizysite.in/work",
+        "@id": `${siteUrl}/work/#webpage`,
+        "url": `${siteUrl}/work`,
         "name": "Our Work & Case Studies"
       },
       {
         "@type": "BreadcrumbList",
-        "@id": "https://bizysite.in/work/#breadcrumb",
+        "@id": `${siteUrl}/work/#breadcrumb`,
         "itemListElement": [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://bizysite.in"
+            "item": siteUrl
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Work",
-            "item": "https://bizysite.in/work"
+            "item": `${siteUrl}/work`
           }
         ]
       }

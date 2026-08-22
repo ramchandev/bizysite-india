@@ -1,3 +1,4 @@
+import { siteUrl } from "@/config";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2, ArrowRight } from "lucide-react";
@@ -5,7 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bizysite.in"),
+  metadataBase: new URL(siteUrl),
   title: "Website Design Company in Delhi NCR | SEO & Digital Marketing | Bizy Site",
   description: "Website design, SEO and digital marketing for Delhi NCR businesses. Stand out in a crowded market with fast, conversion-focused sites. Get a free quote.",
   keywords: "website design company Delhi, web development Delhi NCR, SEO Delhi, web designers in Delhi, digital marketing agency Delhi NCR",
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Website Design Company in Delhi NCR | SEO & Digital Marketing | Bizy Site",
     description: "Website design, SEO and digital marketing for Delhi NCR businesses. Stand out in a crowded market with fast, conversion-focused sites. Get a free quote.",
-    url: "https://bizysite.in/locations/delhi",
+    url: `${siteUrl}/locations/delhi`,
     siteName: "Bizy Site India",
     type: "website",
     locale: "en_IN",
@@ -33,9 +34,12 @@ export default function DelhiLocation() {
     "@graph": [
       {
         "@type": "LocalBusiness",
-        "@id": "https://bizysite.in/locations/delhi/#localbusiness",
+        "@id": `${siteUrl}/locations/delhi/#localbusiness`,
         "name": "Bizy Site Delhi NCR Service Area",
-        "url": "https://bizysite.in/locations/delhi",
+        "url": `${siteUrl}/locations/delhi`,
+        "parentOrganization": {
+          "@id": `${siteUrl}/#organization`
+        },
         "telephone": "+919500728442",
         "address": {
           "@type": "PostalAddress",
@@ -60,12 +64,13 @@ export default function DelhiLocation() {
       },
       {
         "@type": "Service",
-        "@id": "https://bizysite.in/locations/delhi/#service",
+        "@id": `${siteUrl}/locations/delhi/#service`,
         "name": "Website Design & Digital Marketing Services",
         "provider": {
           "@type": "LocalBusiness",
+          "@id": `${siteUrl}/#localbusiness`,
           "name": "Bizy Site India",
-          "url": "https://bizysite.in"
+          "url": siteUrl
         },
         "description": "Website design, SEO and digital marketing for Delhi NCR businesses.",
         "areaServed": {
@@ -75,7 +80,7 @@ export default function DelhiLocation() {
       },
       {
         "@type": "FAQPage",
-        "@id": "https://bizysite.in/locations/delhi/#faq",
+        "@id": `${siteUrl}/locations/delhi/#faq`,
         "mainEntity": [
           {
             "@type": "Question",
@@ -129,25 +134,25 @@ export default function DelhiLocation() {
       },
       {
         "@type": "BreadcrumbList",
-        "@id": "https://bizysite.in/locations/delhi/#breadcrumb",
+        "@id": `${siteUrl}/locations/delhi/#breadcrumb`,
         "itemListElement": [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://bizysite.in"
+            "item": siteUrl
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Locations",
-            "item": "https://bizysite.in/locations"
+            "item": `${siteUrl}/locations`
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Delhi NCR",
-            "item": "https://bizysite.in/locations/delhi"
+            "item": `${siteUrl}/locations/delhi`
           }
         ]
       }

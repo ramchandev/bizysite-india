@@ -1,3 +1,4 @@
+import { siteUrl } from "@/config";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2, ArrowRight } from "lucide-react";
@@ -5,7 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bizysite.in"),
+  metadataBase: new URL(siteUrl),
   title: "Website Design Company in Bangalore | SEO & Digital Marketing | Bizy Site",
   description: "Website design, SEO and digital marketing for Bengaluru businesses, from startups to local services. Modern, conversion-focused sites. Get a free quote.",
   keywords: "website design company Bangalore, web development Bengaluru, SEO Bangalore, web designers in Bangalore, digital marketing agency Bangalore",
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Website Design Company in Bangalore | SEO & Digital Marketing | Bizy Site",
     description: "Website design, SEO and digital marketing for Bengaluru businesses, from startups to local services. Modern, conversion-focused sites. Get a free quote.",
-    url: "https://bizysite.in/locations/bangalore",
+    url: `${siteUrl}/locations/bangalore`,
     siteName: "Bizy Site India",
     type: "website",
     locale: "en_IN",
@@ -33,9 +34,12 @@ export default function BangaloreLocation() {
     "@graph": [
       {
         "@type": "LocalBusiness",
-        "@id": "https://bizysite.in/locations/bangalore/#localbusiness",
+        "@id": `${siteUrl}/locations/bangalore/#localbusiness`,
         "name": "Bizy Site Bangalore Service Area",
-        "url": "https://bizysite.in/locations/bangalore",
+        "url": `${siteUrl}/locations/bangalore`,
+        "parentOrganization": {
+          "@id": `${siteUrl}/#organization`
+        },
         "telephone": "+919500728442",
         "address": {
           "@type": "PostalAddress",
@@ -52,12 +56,13 @@ export default function BangaloreLocation() {
       },
       {
         "@type": "Service",
-        "@id": "https://bizysite.in/locations/bangalore/#service",
+        "@id": `${siteUrl}/locations/bangalore/#service`,
         "name": "Website Design & Digital Marketing Services",
         "provider": {
           "@type": "LocalBusiness",
+          "@id": `${siteUrl}/#localbusiness`,
           "name": "Bizy Site India",
-          "url": "https://bizysite.in"
+          "url": siteUrl
         },
         "description": "Website design, SEO and digital marketing for Bengaluru businesses.",
         "areaServed": {
@@ -67,7 +72,7 @@ export default function BangaloreLocation() {
       },
       {
         "@type": "FAQPage",
-        "@id": "https://bizysite.in/locations/bangalore/#faq",
+        "@id": `${siteUrl}/locations/bangalore/#faq`,
         "mainEntity": [
           {
             "@type": "Question",
@@ -121,25 +126,25 @@ export default function BangaloreLocation() {
       },
       {
         "@type": "BreadcrumbList",
-        "@id": "https://bizysite.in/locations/bangalore/#breadcrumb",
+        "@id": `${siteUrl}/locations/bangalore/#breadcrumb`,
         "itemListElement": [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://bizysite.in"
+            "item": siteUrl
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Locations",
-            "item": "https://bizysite.in/locations"
+            "item": `${siteUrl}/locations`
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Bangalore",
-            "item": "https://bizysite.in/locations/bangalore"
+            "item": `${siteUrl}/locations/bangalore`
           }
         ]
       }

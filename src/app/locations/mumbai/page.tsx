@@ -1,3 +1,4 @@
+import { siteUrl } from "@/config";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2, ArrowRight } from "lucide-react";
@@ -5,7 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bizysite.in"),
+  metadataBase: new URL(siteUrl),
   title: "Website Design Company in Mumbai | SEO & Digital Marketing | Bizy Site",
   description: "Website design, SEO and digital marketing for Mumbai businesses. Fast, conversion-focused sites that keep pace with the city. Get a free quote today.",
   keywords: "website design company Mumbai, web development Mumbai, SEO Mumbai, web designers in Mumbai, digital marketing agency Mumbai",
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Website Design Company in Mumbai | SEO & Digital Marketing | Bizy Site",
     description: "Website design, SEO and digital marketing for Mumbai businesses. Fast, conversion-focused sites that keep pace with the city. Get a free quote today.",
-    url: "https://bizysite.in/locations/mumbai",
+    url: `${siteUrl}/locations/mumbai`,
     siteName: "Bizy Site India",
     type: "website",
     locale: "en_IN",
@@ -33,9 +34,12 @@ export default function MumbaiLocation() {
     "@graph": [
       {
         "@type": "LocalBusiness",
-        "@id": "https://bizysite.in/locations/mumbai/#localbusiness",
+        "@id": `${siteUrl}/locations/mumbai/#localbusiness`,
         "name": "Bizy Site Mumbai Service Area",
-        "url": "https://bizysite.in/locations/mumbai",
+        "url": `${siteUrl}/locations/mumbai`,
+        "parentOrganization": {
+          "@id": `${siteUrl}/#organization`
+        },
         "telephone": "+919500728442",
         "address": {
           "@type": "PostalAddress",
@@ -52,12 +56,13 @@ export default function MumbaiLocation() {
       },
       {
         "@type": "Service",
-        "@id": "https://bizysite.in/locations/mumbai/#service",
+        "@id": `${siteUrl}/locations/mumbai/#service`,
         "name": "Website Design & Digital Marketing Services",
         "provider": {
           "@type": "LocalBusiness",
+          "@id": `${siteUrl}/#localbusiness`,
           "name": "Bizy Site India",
-          "url": "https://bizysite.in"
+          "url": siteUrl
         },
         "description": "Website design, SEO and digital marketing for Mumbai businesses.",
         "areaServed": {
@@ -67,7 +72,7 @@ export default function MumbaiLocation() {
       },
       {
         "@type": "FAQPage",
-        "@id": "https://bizysite.in/locations/mumbai/#faq",
+        "@id": `${siteUrl}/locations/mumbai/#faq`,
         "mainEntity": [
           {
             "@type": "Question",
@@ -121,25 +126,25 @@ export default function MumbaiLocation() {
       },
       {
         "@type": "BreadcrumbList",
-        "@id": "https://bizysite.in/locations/mumbai/#breadcrumb",
+        "@id": `${siteUrl}/locations/mumbai/#breadcrumb`,
         "itemListElement": [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://bizysite.in"
+            "item": siteUrl
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Locations",
-            "item": "https://bizysite.in/locations"
+            "item": `${siteUrl}/locations`
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Mumbai",
-            "item": "https://bizysite.in/locations/mumbai"
+            "item": `${siteUrl}/locations/mumbai`
           }
         ]
       }

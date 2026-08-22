@@ -1,3 +1,4 @@
+import { siteUrl } from "@/config";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/Header";
@@ -5,7 +6,7 @@ import Footer from "@/components/Footer";
 import { blogPosts } from "@/data/blogPosts";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bizysite.in"),
+  metadataBase: new URL(siteUrl),
   title: "Sitemap | Bizy Site",
   description: "All pages on the Bizy Site website, in one place.",
   alternates: {
@@ -17,8 +18,8 @@ export default function SitemapHtml() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "@id": "https://bizysite.in/sitemap/#webpage",
-    "url": "https://bizysite.in/sitemap",
+    "@id": `${siteUrl}/sitemap/#webpage`,
+    "url": `${siteUrl}/sitemap`,
     "name": "HTML Sitemap"
   };
 

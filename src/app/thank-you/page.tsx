@@ -1,3 +1,4 @@
+import { siteUrl } from "@/config";
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -16,8 +17,8 @@ export default function ThankYouPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "@id": "https://bizysite.in/thank-you/#webpage",
-    "url": "https://bizysite.in/thank-you",
+    "@id": `${siteUrl}/thank-you/#webpage`,
+    "url": `${siteUrl}/thank-you`,
     "name": "Thank You"
   };
 

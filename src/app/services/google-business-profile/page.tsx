@@ -1,3 +1,4 @@
+import { siteUrl } from "@/config";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2, MapPin, Search, Star, Phone } from "lucide-react";
@@ -5,7 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bizysite.in"),
+  metadataBase: new URL(siteUrl),
   title: "Google Business Profile Management in India | Rank on Google Maps | Bizy Site",
   description: "Win the local map and \"near me\" searches. We set up and optimise your Google Business Profile so nearby customers find, trust and call you. Get a free review.",
   keywords: "Google Business Profile management India, Google Maps ranking, Google My Business optimization, local map pack marketing",
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Google Business Profile Management in India | Rank on Google Maps | Bizy Site",
     description: "Win the local map and \"near me\" searches. We set up and optimise your Google Business Profile so nearby customers find, trust and call you. Get a free review.",
-    url: "https://bizysite.in/services/google-business-profile",
+    url: `${siteUrl}/services/google-business-profile`,
     siteName: "Bizy Site India",
     type: "website",
     locale: "en_IN",
@@ -33,12 +34,13 @@ export default function GoogleBusinessProfile() {
     "@graph": [
       {
         "@type": "Service",
-        "@id": "https://bizysite.in/services/google-business-profile/#service",
+        "@id": `${siteUrl}/services/google-business-profile/#service`,
         "name": "Google Business Profile Management",
         "provider": {
           "@type": "LocalBusiness",
+          "@id": `${siteUrl}/#localbusiness`,
           "name": "Bizy Site India",
-          "url": "https://bizysite.in"
+          "url": siteUrl
         },
         "description": "Win local Google Maps ranking and Google My Business optimization queries.",
         "areaServed": {
@@ -48,7 +50,7 @@ export default function GoogleBusinessProfile() {
       },
       {
         "@type": "FAQPage",
-        "@id": "https://bizysite.in/services/google-business-profile/#faq",
+        "@id": `${siteUrl}/services/google-business-profile/#faq`,
         "mainEntity": [
           {
             "@type": "Question",
@@ -110,25 +112,25 @@ export default function GoogleBusinessProfile() {
       },
       {
         "@type": "BreadcrumbList",
-        "@id": "https://bizysite.in/services/google-business-profile/#breadcrumb",
+        "@id": `${siteUrl}/services/google-business-profile/#breadcrumb`,
         "itemListElement": [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://bizysite.in"
+            "item": siteUrl
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Services",
-            "item": "https://bizysite.in/services"
+            "item": `${siteUrl}/services`
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Google Business Profile",
-            "item": "https://bizysite.in/services/google-business-profile"
+            "item": `${siteUrl}/services/google-business-profile`
           }
         ]
       }

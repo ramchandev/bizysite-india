@@ -1,3 +1,4 @@
+import { siteUrl } from "@/config";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2, ArrowRight } from "lucide-react";
@@ -5,7 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bizysite.in"),
+  metadataBase: new URL(siteUrl),
   title: "Website Design Company in Hyderabad | SEO & Digital Marketing | Bizy Site",
   description: "Website design, SEO and digital marketing for Hyderabad businesses ready to grow online. Fast, conversion-focused sites. Get a free quote today.",
   keywords: "website design company Hyderabad, web development Hyderabad, SEO Hyderabad, web designers in Hyderabad, digital marketing agency Hyderabad",
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Website Design Company in Hyderabad | SEO & Digital Marketing | Bizy Site",
     description: "Website design, SEO and digital marketing for Hyderabad businesses ready to grow online. Fast, conversion-focused sites. Get a free quote today.",
-    url: "https://bizysite.in/locations/hyderabad",
+    url: `${siteUrl}/locations/hyderabad`,
     siteName: "Bizy Site India",
     type: "website",
     locale: "en_IN",
@@ -33,9 +34,12 @@ export default function HyderabadLocation() {
     "@graph": [
       {
         "@type": "LocalBusiness",
-        "@id": "https://bizysite.in/locations/hyderabad/#localbusiness",
+        "@id": `${siteUrl}/locations/hyderabad/#localbusiness`,
         "name": "Bizy Site Hyderabad Service Area",
-        "url": "https://bizysite.in/locations/hyderabad",
+        "url": `${siteUrl}/locations/hyderabad`,
+        "parentOrganization": {
+          "@id": `${siteUrl}/#organization`
+        },
         "telephone": "+919500728442",
         "address": {
           "@type": "PostalAddress",
@@ -52,12 +56,13 @@ export default function HyderabadLocation() {
       },
       {
         "@type": "Service",
-        "@id": "https://bizysite.in/locations/hyderabad/#service",
+        "@id": `${siteUrl}/locations/hyderabad/#service`,
         "name": "Website Design & Digital Marketing Services",
         "provider": {
           "@type": "LocalBusiness",
+          "@id": `${siteUrl}/#localbusiness`,
           "name": "Bizy Site India",
-          "url": "https://bizysite.in"
+          "url": siteUrl
         },
         "description": "Website design, SEO and digital marketing for Hyderabad businesses.",
         "areaServed": {
@@ -67,7 +72,7 @@ export default function HyderabadLocation() {
       },
       {
         "@type": "FAQPage",
-        "@id": "https://bizysite.in/locations/hyderabad/#faq",
+        "@id": `${siteUrl}/locations/hyderabad/#faq`,
         "mainEntity": [
           {
             "@type": "Question",
@@ -121,25 +126,25 @@ export default function HyderabadLocation() {
       },
       {
         "@type": "BreadcrumbList",
-        "@id": "https://bizysite.in/locations/hyderabad/#breadcrumb",
+        "@id": `${siteUrl}/locations/hyderabad/#breadcrumb`,
         "itemListElement": [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://bizysite.in"
+            "item": siteUrl
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Locations",
-            "item": "https://bizysite.in/locations"
+            "item": `${siteUrl}/locations`
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Hyderabad",
-            "item": "https://bizysite.in/locations/hyderabad"
+            "item": `${siteUrl}/locations/hyderabad`
           }
         ]
       }

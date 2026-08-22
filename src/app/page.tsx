@@ -1,8 +1,10 @@
+import { siteUrl } from "@/config";
 import type { Metadata } from "next";
 import HomeClient from "./HomeClient";
+import { organizationSchema, localBusinessSchema } from "@/data/seoSchema";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bizysite.in"),
+  metadataBase: new URL(siteUrl),
   title: "Website Design & Digital Marketing in India | Bizy Site",
   description: "Best-in-class websites that bring you more calls and customers. 500+ sites built, 10 years of experience. New website or a fix for your current one. Get a free quote.",
   keywords: "website design India, conversion focused website, web design agency India, CRO agency India, SEO agency India, AEO optimization, GEO optimization India, ChatGPT optimization, Google Ads agency India, Meta Ads lead generation, conversion rate optimization India",
@@ -13,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Website Design & Digital Marketing in India | Bizy Site",
     description: "Best-in-class websites that bring you more calls and customers. 500+ sites built, 10 years of experience. New website or a fix for your current one. Get a free quote.",
-    url: "https://bizysite.in",
+    url: siteUrl,
     siteName: "Bizy Site India",
     type: "website",
     locale: "en_IN",
@@ -38,28 +40,11 @@ export default function Home() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
-      {
-        "@type": "Organization",
-        "@id": "https://bizysite.in/#organization",
-        "name": "Bizy Site",
-        "url": "https://bizysite.in",
-        "logo": "https://bizysite.in/logo.png"
-      },
-      {
-        "@type": "LocalBusiness",
-        "@id": "https://bizysite.in/#localbusiness",
-        "name": "Bizy Site India",
-        "description": "Best-in-class websites that bring you more calls and customers. 500+ sites built, 10 years of experience.",
-        "url": "https://bizysite.in",
-        "priceRange": "$$",
-        "address": {
-          "@type": "PostalAddress",
-          "addressCountry": "IN"
-        }
-      },
+      organizationSchema,
+      localBusinessSchema,
       {
         "@type": "FAQPage",
-        "@id": "https://bizysite.in/#faq",
+        "@id": `${siteUrl}/#faq`,
         "mainEntity": [
           {
             "@type": "Question",
@@ -129,13 +114,13 @@ export default function Home() {
       },
       {
         "@type": "BreadcrumbList",
-        "@id": "https://bizysite.in/#breadcrumb",
+        "@id": `${siteUrl}/#breadcrumb`,
         "itemListElement": [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://bizysite.in"
+            "item": siteUrl
           }
         ]
       }

@@ -1,3 +1,4 @@
+import { siteUrl } from "@/config";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2, ArrowRight } from "lucide-react";
@@ -5,7 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bizysite.in"),
+  metadataBase: new URL(siteUrl),
   title: "Website Design for Coaching Centres & Schools in India | Bizy Site",
   description: "Websites for coaching centres, institutes and schools that fill batches and demo classes. Show results, build trust, capture admissions. Get a free quote.",
   keywords: "coaching centre website design India, education website, institute website design, digital marketing for coaching centres India",
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Website Design for Coaching Centres & Schools in India | Bizy Site",
     description: "Websites for coaching centres, institutes and schools that fill batches and demo classes. Show results, build trust, capture admissions. Get a free quote.",
-    url: "https://bizysite.in/industries/education",
+    url: `${siteUrl}/industries/education`,
     siteName: "Bizy Site India",
     type: "website",
     locale: "en_IN",
@@ -33,12 +34,13 @@ export default function EducationCoaching() {
     "@graph": [
       {
         "@type": "Service",
-        "@id": "https://bizysite.in/industries/education/#service",
+        "@id": `${siteUrl}/industries/education/#service`,
         "name": "Website Design for Coaching Centres & Schools",
         "provider": {
           "@type": "LocalBusiness",
+          "@id": `${siteUrl}/#localbusiness`,
           "name": "Bizy Site India",
-          "url": "https://bizysite.in"
+          "url": siteUrl
         },
         "description": "Websites for coaching centres, institutes and schools that fill batches and demo classes.",
         "areaServed": {
@@ -48,7 +50,7 @@ export default function EducationCoaching() {
       },
       {
         "@type": "FAQPage",
-        "@id": "https://bizysite.in/industries/education/#faq",
+        "@id": `${siteUrl}/industries/education/#faq`,
         "mainEntity": [
           {
             "@type": "Question",
@@ -102,25 +104,25 @@ export default function EducationCoaching() {
       },
       {
         "@type": "BreadcrumbList",
-        "@id": "https://bizysite.in/industries/education/#breadcrumb",
+        "@id": `${siteUrl}/industries/education/#breadcrumb`,
         "itemListElement": [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://bizysite.in"
+            "item": siteUrl
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Industries",
-            "item": "https://bizysite.in/industries"
+            "item": `${siteUrl}/industries`
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Education & Coaching",
-            "item": "https://bizysite.in/industries/education"
+            "item": `${siteUrl}/industries/education`
           }
         ]
       }

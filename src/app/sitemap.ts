@@ -1,8 +1,9 @@
 import { MetadataRoute } from "next";
 import { blogPosts } from "@/data/blogPosts";
+import { siteUrl } from "@/config";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://bizysite.in";
+  const baseUrl = siteUrl;
 
   const coreRoutes = [
     "",

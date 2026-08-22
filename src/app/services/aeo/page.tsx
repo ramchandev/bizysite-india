@@ -1,3 +1,4 @@
+import { siteUrl } from "@/config";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Check, CheckCircle2, Award, Search, TrendingUp, Sparkles, HelpCircle } from "lucide-react";
@@ -5,7 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bizysite.in"),
+  metadataBase: new URL(siteUrl),
   title: "Answer Engine Optimization (AEO) in India | Win Voice & Instant Answers | Bizy Site",
   description: "Be the answer when people ask Google and voice assistants a question. AEO gets your business picked for instant answers and voice search. Get a free review.",
   keywords: "answer engine optimization India, voice search optimization, featured snippet ranking India, Google Featured Snippets, AEO services India",
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Answer Engine Optimization (AEO) in India | Win Voice & Instant Answers | Bizy Site",
     description: "Be the answer when people ask Google and voice assistants a question. AEO gets your business picked for instant answers and voice search. Get a free review.",
-    url: "https://bizysite.in/services/aeo",
+    url: `${siteUrl}/services/aeo`,
     siteName: "Bizy Site India",
     type: "website",
     locale: "en_IN",
@@ -33,12 +34,13 @@ export default function AEO() {
     "@graph": [
       {
         "@type": "Service",
-        "@id": "https://bizysite.in/services/aeo/#service",
+        "@id": `${siteUrl}/services/aeo/#service`,
         "name": "Answer Engine Optimization (AEO)",
         "provider": {
           "@type": "LocalBusiness",
+          "@id": `${siteUrl}/#localbusiness`,
           "name": "Bizy Site India",
-          "url": "https://bizysite.in"
+          "url": siteUrl
         },
         "description": "Win voice search and Google Featured Snippets listings.",
         "areaServed": {
@@ -48,7 +50,7 @@ export default function AEO() {
       },
       {
         "@type": "FAQPage",
-        "@id": "https://bizysite.in/services/aeo/#faq",
+        "@id": `${siteUrl}/services/aeo/#faq`,
         "mainEntity": [
           {
             "@type": "Question",
@@ -102,25 +104,25 @@ export default function AEO() {
       },
       {
         "@type": "BreadcrumbList",
-        "@id": "https://bizysite.in/services/aeo/#breadcrumb",
+        "@id": `${siteUrl}/services/aeo/#breadcrumb`,
         "itemListElement": [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://bizysite.in"
+            "item": siteUrl
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Services",
-            "item": "https://bizysite.in/services"
+            "item": `${siteUrl}/services`
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Answer Engine Optimization",
-            "item": "https://bizysite.in/services/aeo"
+            "item": `${siteUrl}/services/aeo`
           }
         ]
       }

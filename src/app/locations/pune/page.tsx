@@ -1,3 +1,4 @@
+import { siteUrl } from "@/config";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2, ArrowRight } from "lucide-react";
@@ -5,7 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bizysite.in"),
+  metadataBase: new URL(siteUrl),
   title: "Website Design Company in Pune | SEO & Digital Marketing | Bizy Site",
   description: "Website design, SEO and digital marketing for Pune businesses, across education, IT, manufacturing and services. Get a free quote today.",
   keywords: "website design company Pune, web development Pune, SEO Pune, web designers in Pune, digital marketing agency Pune",
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Website Design Company in Pune | SEO & Digital Marketing | Bizy Site",
     description: "Website design, SEO and digital marketing for Pune businesses, across education, IT, manufacturing and services. Get a free quote today.",
-    url: "https://bizysite.in/locations/pune",
+    url: `${siteUrl}/locations/pune`,
     siteName: "Bizy Site India",
     type: "website",
     locale: "en_IN",
@@ -33,9 +34,12 @@ export default function PuneLocation() {
     "@graph": [
       {
         "@type": "LocalBusiness",
-        "@id": "https://bizysite.in/locations/pune/#localbusiness",
+        "@id": `${siteUrl}/locations/pune/#localbusiness`,
         "name": "Bizy Site Pune Service Area",
-        "url": "https://bizysite.in/locations/pune",
+        "url": `${siteUrl}/locations/pune`,
+        "parentOrganization": {
+          "@id": `${siteUrl}/#organization`
+        },
         "telephone": "+919500728442",
         "address": {
           "@type": "PostalAddress",
@@ -52,12 +56,13 @@ export default function PuneLocation() {
       },
       {
         "@type": "Service",
-        "@id": "https://bizysite.in/locations/pune/#service",
+        "@id": `${siteUrl}/locations/pune/#service`,
         "name": "Website Design & Digital Marketing Services",
         "provider": {
           "@type": "LocalBusiness",
+          "@id": `${siteUrl}/#localbusiness`,
           "name": "Bizy Site India",
-          "url": "https://bizysite.in"
+          "url": siteUrl
         },
         "description": "Website design, SEO and digital marketing for Pune businesses.",
         "areaServed": {
@@ -67,7 +72,7 @@ export default function PuneLocation() {
       },
       {
         "@type": "FAQPage",
-        "@id": "https://bizysite.in/locations/pune/#faq",
+        "@id": `${siteUrl}/locations/pune/#faq`,
         "mainEntity": [
           {
             "@type": "Question",
@@ -121,25 +126,25 @@ export default function PuneLocation() {
       },
       {
         "@type": "BreadcrumbList",
-        "@id": "https://bizysite.in/locations/pune/#breadcrumb",
+        "@id": `${siteUrl}/locations/pune/#breadcrumb`,
         "itemListElement": [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://bizysite.in"
+            "item": siteUrl
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Locations",
-            "item": "https://bizysite.in/locations"
+            "item": `${siteUrl}/locations`
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Pune",
-            "item": "https://bizysite.in/locations/pune"
+            "item": `${siteUrl}/locations/pune`
           }
         ]
       }

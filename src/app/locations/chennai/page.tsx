@@ -1,3 +1,4 @@
+import { siteUrl } from "@/config";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2, ArrowRight } from "lucide-react";
@@ -5,7 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bizysite.in"),
+  metadataBase: new URL(siteUrl),
   title: "Website Design Company in Chennai | SEO & Digital Marketing | Bizy Site",
   description: "Website design, SEO and digital marketing for Chennai businesses. Fast, conversion-focused sites that bring calls and customers. Get a free quote today.",
   keywords: "website design company Chennai, web development Chennai, SEO Chennai, web designers in Chennai, digital marketing agency Chennai",
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Website Design Company in Chennai | SEO & Digital Marketing | Bizy Site",
     description: "Website design, SEO and digital marketing for Chennai businesses. Fast, conversion-focused sites that bring calls and customers. Get a free quote today.",
-    url: "https://bizysite.in/locations/chennai",
+    url: `${siteUrl}/locations/chennai`,
     siteName: "Bizy Site India",
     type: "website",
     locale: "en_IN",
@@ -33,9 +34,12 @@ export default function ChennaiLocation() {
     "@graph": [
       {
         "@type": "LocalBusiness",
-        "@id": "https://bizysite.in/locations/chennai/#localbusiness",
+        "@id": `${siteUrl}/locations/chennai/#localbusiness`,
         "name": "Bizy Site Chennai Service Area",
-        "url": "https://bizysite.in/locations/chennai",
+        "url": `${siteUrl}/locations/chennai`,
+        "parentOrganization": {
+          "@id": `${siteUrl}/#organization`
+        },
         "telephone": "+919500728442",
         "address": {
           "@type": "PostalAddress",
@@ -52,12 +56,13 @@ export default function ChennaiLocation() {
       },
       {
         "@type": "Service",
-        "@id": "https://bizysite.in/locations/chennai/#service",
+        "@id": `${siteUrl}/locations/chennai/#service`,
         "name": "Website Design & Digital Marketing Services",
         "provider": {
           "@type": "LocalBusiness",
+          "@id": `${siteUrl}/#localbusiness`,
           "name": "Bizy Site India",
-          "url": "https://bizysite.in"
+          "url": siteUrl
         },
         "description": "Website design, SEO and digital marketing for Chennai businesses.",
         "areaServed": {
@@ -67,7 +72,7 @@ export default function ChennaiLocation() {
       },
       {
         "@type": "FAQPage",
-        "@id": "https://bizysite.in/locations/chennai/#faq",
+        "@id": `${siteUrl}/locations/chennai/#faq`,
         "mainEntity": [
           {
             "@type": "Question",
@@ -121,25 +126,25 @@ export default function ChennaiLocation() {
       },
       {
         "@type": "BreadcrumbList",
-        "@id": "https://bizysite.in/locations/chennai/#breadcrumb",
+        "@id": `${siteUrl}/locations/chennai/#breadcrumb`,
         "itemListElement": [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://bizysite.in"
+            "item": siteUrl
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Locations",
-            "item": "https://bizysite.in/locations"
+            "item": `${siteUrl}/locations`
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Chennai",
-            "item": "https://bizysite.in/locations/chennai"
+            "item": `${siteUrl}/locations/chennai`
           }
         ]
       }

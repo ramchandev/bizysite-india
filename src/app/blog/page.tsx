@@ -1,3 +1,4 @@
+import { siteUrl } from "@/config";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/Header";
@@ -7,7 +8,7 @@ import { Suspense } from "react";
 import BlogClient from "./BlogClient";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bizysite.in"),
+  metadataBase: new URL(siteUrl),
   title: "Blog & Resources | Website, SEO & Growth Tips for Indian Businesses | Bizy Site",
   description: "Practical tips on websites, SEO, getting found on Google and AI, and winning more customers online. Written simply for Indian businesses.",
   keywords: "SEO tips India, AEO resources, conversion optimization blog, B2B lead generation guides",
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Blog & Resources | Website, SEO & Growth Tips for Indian Businesses | Bizy Site",
     description: "Practical tips on websites, SEO, getting found on Google and AI, and winning more customers online. Written simply for Indian businesses.",
-    url: "https://bizysite.in/blog",
+    url: `${siteUrl}/blog`,
     siteName: "Bizy Site India",
     type: "website",
     locale: "en_IN",
@@ -37,26 +38,26 @@ export default function Blog() {
     "@graph": [
       {
         "@type": "Blog",
-        "@id": "https://bizysite.in/blog/#blog",
-        "url": "https://bizysite.in/blog",
+        "@id": `${siteUrl}/blog/#blog`,
+        "url": `${siteUrl}/blog`,
         "name": "Bizy Site Growth Blog",
         "description": "Practical tips on websites, SEO, getting found on Google and AI, and winning more customers online."
       },
       {
         "@type": "BreadcrumbList",
-        "@id": "https://bizysite.in/blog/#breadcrumb",
+        "@id": `${siteUrl}/blog/#breadcrumb`,
         "itemListElement": [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://bizysite.in"
+            "item": siteUrl
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Blog",
-            "item": "https://bizysite.in/blog"
+            "item": `${siteUrl}/blog`
           }
         ]
       }

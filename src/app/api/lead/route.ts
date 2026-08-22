@@ -1,3 +1,4 @@
+import { siteUrl } from "@/config";
 import { Resend } from "resend";
 
 export const runtime = "nodejs";
@@ -330,7 +331,7 @@ function buildCustomerEmailHtml(data: LeadPayload & { submittedAt: string }) {
             <td style="padding:20px 32px;background:#f8fafc;border-top:1px solid #e2e8f0;text-align:center;color:#94a3b8;font-size:11px;line-height:1.5;">
               <strong>Bizy Site</strong><br />
               404 Jasmine A wing, Eden Park Phase 2, OMR, Siruseri, Chennai 603103<br />
-              <a href="mailto:info@bizysite.com" style="color:#2BBFBF;text-decoration:none;">info@bizysite.com</a> · <a href="https://bizysite.in" style="color:#2BBFBF;text-decoration:none;">bizysite.in</a>
+              <a href="mailto:info@bizysite.com" style="color:#2BBFBF;text-decoration:none;">info@bizysite.com</a> · <a href=siteUrl style="color:#2BBFBF;text-decoration:none;">bizysite.in</a>
             </td>
           </tr>
         </table>

@@ -1,9 +1,10 @@
+import { siteUrl } from "@/config";
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bizysite.in"),
+  metadataBase: new URL(siteUrl),
   title: "Cookie Policy | Bizy Site",
   description: "How Bizy Site uses cookies and tracking technologies.",
   alternates: {
@@ -15,8 +16,8 @@ export default function CookiePolicy() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "@id": "https://bizysite.in/cookie-policy/#webpage",
-    "url": "https://bizysite.in/cookie-policy",
+    "@id": `${siteUrl}/cookie-policy/#webpage`,
+    "url": `${siteUrl}/cookie-policy`,
     "name": "Cookie Policy"
   };
 

@@ -1,3 +1,4 @@
+import { siteUrl } from "@/config";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Check, CheckCircle2, Award, Search, TrendingUp, Sparkles, AlertCircle, BarChart3, HelpCircle } from "lucide-react";
@@ -5,7 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bizysite.in"),
+  metadataBase: new URL(siteUrl),
   title: "SEO Services in India | Get Found on Google | Bizy Site",
   description: "Show up when customers search for what you offer. Practical SEO that brings real enquiries, not just rankings. Get a free SEO review for your website.",
   keywords: "SEO services India, get found on Google, organic ranking India, local map pack optimization, technical SEO expert India",
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "SEO Services in India | Get Found on Google | Bizy Site",
     description: "Show up when customers search for what you offer. Practical SEO that brings real enquiries, not just rankings. Get a free SEO review for your website.",
-    url: "https://bizysite.in/services/seo",
+    url: `${siteUrl}/services/seo`,
     siteName: "Bizy Site India",
     type: "website",
     locale: "en_IN",
@@ -33,12 +34,13 @@ export default function SEO() {
     "@graph": [
       {
         "@type": "Service",
-        "@id": "https://bizysite.in/services/seo/#service",
+        "@id": `${siteUrl}/services/seo/#service`,
         "name": "Search Engine Optimization (SEO)",
         "provider": {
           "@type": "LocalBusiness",
+          "@id": `${siteUrl}/#localbusiness`,
           "name": "Bizy Site India",
-          "url": "https://bizysite.in"
+          "url": siteUrl
         },
         "description": "Gets your business to show up on Google when customers are looking.",
         "areaServed": {
@@ -48,7 +50,7 @@ export default function SEO() {
       },
       {
         "@type": "FAQPage",
-        "@id": "https://bizysite.in/services/seo/#faq",
+        "@id": `${siteUrl}/services/seo/#faq`,
         "mainEntity": [
           {
             "@type": "Question",
@@ -110,25 +112,25 @@ export default function SEO() {
       },
       {
         "@type": "BreadcrumbList",
-        "@id": "https://bizysite.in/services/seo/#breadcrumb",
+        "@id": `${siteUrl}/services/seo/#breadcrumb`,
         "itemListElement": [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://bizysite.in"
+            "item": siteUrl
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Services",
-            "item": "https://bizysite.in/services"
+            "item": `${siteUrl}/services`
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Search Engine Optimization",
-            "item": "https://bizysite.in/services/seo"
+            "item": `${siteUrl}/services/seo`
           }
         ]
       }

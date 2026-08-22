@@ -1,3 +1,4 @@
+import { siteUrl } from "@/config";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2, ArrowRight } from "lucide-react";
@@ -5,7 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bizysite.in"),
+  metadataBase: new URL(siteUrl),
   title: "Website Design for Manufacturers & B2B Companies in India | Bizy Site",
   description: "Websites for manufacturers, suppliers and B2B firms that win serious buyers and quote requests. Showcase capabilities, build credibility, capture leads. Get a free quote.",
   keywords: "manufacturing website design India, B2B website, industrial website design, B2B lead generation India",
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Website Design for Manufacturers & B2B Companies in India | Bizy Site",
     description: "Websites for manufacturers, suppliers and B2B firms that win serious buyers and quote requests. Showcase capabilities, build credibility, capture leads. Get a free quote.",
-    url: "https://bizysite.in/industries/manufacturing",
+    url: `${siteUrl}/industries/manufacturing`,
     siteName: "Bizy Site India",
     type: "website",
     locale: "en_IN",
@@ -33,12 +34,13 @@ export default function ManufacturingB2B() {
     "@graph": [
       {
         "@type": "Service",
-        "@id": "https://bizysite.in/industries/manufacturing/#service",
+        "@id": `${siteUrl}/industries/manufacturing/#service`,
         "name": "Website Design for Manufacturing & B2B",
         "provider": {
           "@type": "LocalBusiness",
+          "@id": `${siteUrl}/#localbusiness`,
           "name": "Bizy Site India",
-          "url": "https://bizysite.in"
+          "url": siteUrl
         },
         "description": "Websites for manufacturers, suppliers and B2B firms that win serious buyers and quote requests.",
         "areaServed": {
@@ -48,7 +50,7 @@ export default function ManufacturingB2B() {
       },
       {
         "@type": "FAQPage",
-        "@id": "https://bizysite.in/industries/manufacturing/#faq",
+        "@id": `${siteUrl}/industries/manufacturing/#faq`,
         "mainEntity": [
           {
             "@type": "Question",
@@ -102,25 +104,25 @@ export default function ManufacturingB2B() {
       },
       {
         "@type": "BreadcrumbList",
-        "@id": "https://bizysite.in/industries/manufacturing/#breadcrumb",
+        "@id": `${siteUrl}/industries/manufacturing/#breadcrumb`,
         "itemListElement": [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://bizysite.in"
+            "item": siteUrl
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Industries",
-            "item": "https://bizysite.in/industries"
+            "item": `${siteUrl}/industries`
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Manufacturing & B2B",
-            "item": "https://bizysite.in/industries/manufacturing"
+            "item": `${siteUrl}/industries/manufacturing`
           }
         ]
       }

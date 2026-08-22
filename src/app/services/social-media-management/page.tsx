@@ -1,3 +1,4 @@
+import { siteUrl } from "@/config";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Check, CheckCircle2, Award, Search, TrendingUp, Sparkles, HelpCircle, Share2 } from "lucide-react";
@@ -5,7 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bizysite.in"),
+  metadataBase: new URL(siteUrl),
   title: "Social Media Management in India | Instagram, Facebook & LinkedIn | Bizy Site",
   description: "Stay active, trusted and top-of-mind so customers choose you with confidence. We manage your Instagram, Facebook and LinkedIn. Get a free social media review.",
   keywords: "social media management India, Instagram Facebook management, social media agency, social media marketer India, business social page manager",
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Social Media Management in India | Instagram, Facebook & LinkedIn | Bizy Site",
     description: "Stay active, trusted and top-of-mind so customers choose you with confidence. We manage your Instagram, Facebook and LinkedIn. Get a free social media review.",
-    url: "https://bizysite.in/services/social-media-management",
+    url: `${siteUrl}/services/social-media-management`,
     siteName: "Bizy Site India",
     type: "website",
     locale: "en_IN",
@@ -33,12 +34,13 @@ export default function SocialMediaManagement() {
     "@graph": [
       {
         "@type": "Service",
-        "@id": "https://bizysite.in/services/social-media-management/#service",
+        "@id": `${siteUrl}/services/social-media-management/#service`,
         "name": "Social Media Management",
         "provider": {
           "@type": "LocalBusiness",
+          "@id": `${siteUrl}/#localbusiness`,
           "name": "Bizy Site India",
-          "url": "https://bizysite.in"
+          "url": siteUrl
         },
         "description": "Stay active, trusted and top-of-mind so customers choose you with confidence. We manage your Instagram, Facebook and LinkedIn.",
         "areaServed": {
@@ -48,7 +50,7 @@ export default function SocialMediaManagement() {
       },
       {
         "@type": "FAQPage",
-        "@id": "https://bizysite.in/services/social-media-management/#faq",
+        "@id": `${siteUrl}/services/social-media-management/#faq`,
         "mainEntity": [
           {
             "@type": "Question",
@@ -110,25 +112,25 @@ export default function SocialMediaManagement() {
       },
       {
         "@type": "BreadcrumbList",
-        "@id": "https://bizysite.in/services/social-media-management/#breadcrumb",
+        "@id": `${siteUrl}/services/social-media-management/#breadcrumb`,
         "itemListElement": [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://bizysite.in"
+            "item": siteUrl
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Services",
-            "item": "https://bizysite.in/services"
+            "item": `${siteUrl}/services`
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Social Media Management",
-            "item": "https://bizysite.in/services/social-media-management"
+            "item": `${siteUrl}/services/social-media-management`
           }
         ]
       }

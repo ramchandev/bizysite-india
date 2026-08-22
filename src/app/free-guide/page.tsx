@@ -1,3 +1,4 @@
+import { siteUrl } from "@/config";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
@@ -6,7 +7,7 @@ import Footer from "@/components/Footer";
 import FreeGuideClient from "./FreeGuideClient";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bizysite.in"),
+  metadataBase: new URL(siteUrl),
   title: "Free Website Conversion Cheat Sheet | 10 Tips to Get More Leads | Bizy Site",
   description: "Download the free Website Conversion Cheat Sheet. 10 proven tips to turn more visitors into leads, without spending more on ads. Made for Indian businesses.",
   keywords: "website conversion cheat sheet, get more leads, conversion rate optimization tips, grow website sales India",
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Free Website Conversion Cheat Sheet | 10 Tips to Get More Leads | Bizy Site",
     description: "Download the free Website Conversion Cheat Sheet. 10 proven tips to turn more visitors into leads, without spending more on ads. Made for Indian businesses.",
-    url: "https://bizysite.in/free-guide",
+    url: `${siteUrl}/free-guide`,
     siteName: "Bizy Site India",
     type: "website",
     locale: "en_IN",
@@ -34,25 +35,25 @@ export default function FreeGuide() {
     "@graph": [
       {
         "@type": "WebPage",
-        "@id": "https://bizysite.in/free-guide/#webpage",
-        "url": "https://bizysite.in/free-guide",
+        "@id": `${siteUrl}/free-guide/#webpage`,
+        "url": `${siteUrl}/free-guide`,
         "name": "Free Website Conversion Cheat Sheet"
       },
       {
         "@type": "BreadcrumbList",
-        "@id": "https://bizysite.in/free-guide/#breadcrumb",
+        "@id": `${siteUrl}/free-guide/#breadcrumb`,
         "itemListElement": [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://bizysite.in"
+            "item": siteUrl
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Free Guide",
-            "item": "https://bizysite.in/free-guide"
+            "item": `${siteUrl}/free-guide`
           }
         ]
       }

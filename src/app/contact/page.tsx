@@ -1,10 +1,12 @@
+import { siteUrl } from "@/config";
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ContactClient from "./ContactClient";
+import { localBusinessSchema } from "@/data/seoSchema";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bizysite.in"),
+  metadataBase: new URL(siteUrl),
   title: "Contact Bizy Site | Get a Free Quote or Website Audit",
   description: "Tell us where you are starting from, a new website or fixing an existing one. Quick reply, no pressure, no spam. Get a free quote or website audit today.",
   keywords: "contact Bizy Site, free website audit, web design quote, website redesign request India",
@@ -14,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Contact Bizy Site | Get a Free Quote or Website Audit",
     description: "Tell us where you are starting from, a new website or fixing an existing one. Quick reply, no pressure, no spam. Get a free quote or website audit today.",
-    url: "https://bizysite.in/contact",
+    url: `${siteUrl}/contact`,
     siteName: "Bizy Site India",
     type: "website",
     locale: "en_IN",
@@ -32,40 +34,26 @@ export default function Contact() {
     "@graph": [
       {
         "@type": "ContactPage",
-        "@id": "https://bizysite.in/contact/#webpage",
-        "url": "https://bizysite.in/contact",
+        "@id": `${siteUrl}/contact/#webpage`,
+        "url": `${siteUrl}/contact`,
         "name": "Contact Bizy Site"
       },
-      {
-        "@type": "LocalBusiness",
-        "@id": "https://bizysite.in/#organization",
-        "name": "Bizy Site India",
-        "url": "https://bizysite.in",
-        "telephone": "+919500728442",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "404 Jasmine A wing, Eden Park Phase 2, OMR, Siruseri",
-          "addressLocality": "Chennai",
-          "postalCode": "603103",
-          "addressRegion": "Tamil Nadu",
-          "addressCountry": "IN"
-        }
-      },
+      localBusinessSchema,
       {
         "@type": "BreadcrumbList",
-        "@id": "https://bizysite.in/contact/#breadcrumb",
+        "@id": `${siteUrl}/contact/#breadcrumb`,
         "itemListElement": [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://bizysite.in"
+            "item": siteUrl
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Contact",
-            "item": "https://bizysite.in/contact"
+            "item": `${siteUrl}/contact`
           }
         ]
       }

@@ -1,9 +1,10 @@
+import { siteUrl } from "@/config";
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bizysite.in"),
+  metadataBase: new URL(siteUrl),
   title: "Refund & Cancellation Policy | Bizy Site",
   description: "Our approach to refunds and cancellations, explained clearly and fairly.",
   alternates: {
@@ -15,8 +16,8 @@ export default function RefundPolicy() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "@id": "https://bizysite.in/refund/#webpage",
-    "url": "https://bizysite.in/refund",
+    "@id": `${siteUrl}/refund/#webpage`,
+    "url": `${siteUrl}/refund`,
     "name": "Refund & Cancellation Policy"
   };
 

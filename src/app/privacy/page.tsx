@@ -1,9 +1,10 @@
+import { siteUrl } from "@/config";
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bizysite.in"),
+  metadataBase: new URL(siteUrl),
   title: "Privacy Policy | Bizy Site",
   description: "How Bizy Site collects, uses and protects your information.",
   alternates: {
@@ -15,8 +16,8 @@ export default function PrivacyPolicy() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "@id": "https://bizysite.in/privacy/#webpage",
-    "url": "https://bizysite.in/privacy",
+    "@id": `${siteUrl}/privacy/#webpage`,
+    "url": `${siteUrl}/privacy`,
     "name": "Privacy Policy"
   };
 

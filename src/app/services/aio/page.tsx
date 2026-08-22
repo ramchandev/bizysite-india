@@ -1,3 +1,4 @@
+import { siteUrl } from "@/config";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Check, CheckCircle2, Award, Search, TrendingUp, Sparkles, HelpCircle } from "lucide-react";
@@ -5,7 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bizysite.in"),
+  metadataBase: new URL(siteUrl),
   title: "AI Optimization (AIO) in India | Be Visible Inside AI Tools | Bizy Site",
   description: "People now ask AI tools instead of searching. AIO keeps your business visible and recommended as customers shift to AI. Get a free AI visibility review.",
   keywords: "AI optimization India, AI search visibility, ChatGPT search optimization, Gemini SEO India, Large Language Model marketing",
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "AI Optimization (AIO) in India | Be Visible Inside AI Tools | Bizy Site",
     description: "People now ask AI tools instead of searching. AIO keeps your business visible and recommended as customers shift to AI. Get a free AI visibility review.",
-    url: "https://bizysite.in/services/aio",
+    url: `${siteUrl}/services/aio`,
     siteName: "Bizy Site India",
     type: "website",
     locale: "en_IN",
@@ -33,12 +34,13 @@ export default function AIO() {
     "@graph": [
       {
         "@type": "Service",
-        "@id": "https://bizysite.in/services/aio/#service",
+        "@id": `${siteUrl}/services/aio/#service`,
         "name": "AI Optimization (AIO)",
         "provider": {
           "@type": "LocalBusiness",
+          "@id": `${siteUrl}/#localbusiness`,
           "name": "Bizy Site India",
-          "url": "https://bizysite.in"
+          "url": siteUrl
         },
         "description": "Keeps your business visible and recommended inside AI tools.",
         "areaServed": {
@@ -48,7 +50,7 @@ export default function AIO() {
       },
       {
         "@type": "FAQPage",
-        "@id": "https://bizysite.in/services/aio/#faq",
+        "@id": `${siteUrl}/services/aio/#faq`,
         "mainEntity": [
           {
             "@type": "Question",
@@ -102,25 +104,25 @@ export default function AIO() {
       },
       {
         "@type": "BreadcrumbList",
-        "@id": "https://bizysite.in/services/aio/#breadcrumb",
+        "@id": `${siteUrl}/services/aio/#breadcrumb`,
         "itemListElement": [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://bizysite.in"
+            "item": siteUrl
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Services",
-            "item": "https://bizysite.in/services"
+            "item": `${siteUrl}/services`
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "AI Optimization",
-            "item": "https://bizysite.in/services/aio"
+            "item": `${siteUrl}/services/aio`
           }
         ]
       }

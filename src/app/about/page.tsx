@@ -1,3 +1,4 @@
+import { siteUrl } from "@/config";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2, Award, Users, ShieldCheck, Heart, UserCheck, Star } from "lucide-react";
@@ -5,7 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bizysite.in"),
+  metadataBase: new URL(siteUrl),
   title: "About Bizy Site | 500+ Websites, 10 Years, Now in India",
   description: "We spent 10 years building 500+ best-in-class websites for US businesses. Now we bring that same standard to India. Meet the team behind Bizy Site.",
   keywords: "about Bizy Site, web design company India, website developers India, conversion rate optimization company",
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "About Bizy Site | 500+ Websites, 10 Years, Now in India",
     description: "We spent 10 years building 500+ best-in-class websites for US businesses. Now we bring that same standard to India. Meet the team behind Bizy Site.",
-    url: "https://bizysite.in/about",
+    url: `${siteUrl}/about`,
     siteName: "Bizy Site India",
     type: "website",
     locale: "en_IN",
@@ -58,15 +59,15 @@ export default function About() {
     "@graph": [
       {
         "@type": "Organization",
-        "@id": "https://bizysite.in/#organization",
+        "@id": `${siteUrl}/#organization`,
         "name": "Bizy Site",
-        "url": "https://bizysite.in",
-        "logo": "https://bizysite.in/logo.png"
+        "url": siteUrl,
+        "logo": `${siteUrl}/logo.png`
       },
       {
         "@type": "AboutPage",
-        "@id": "https://bizysite.in/about/#webpage",
-        "url": "https://bizysite.in/about",
+        "@id": `${siteUrl}/about/#webpage`,
+        "url": `${siteUrl}/about`,
         "name": "About Bizy Site",
         "description": "We spent 10 years building 500+ best-in-class websites for US businesses. Now we bring that same standard to India."
       },

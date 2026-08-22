@@ -1,3 +1,4 @@
+import { siteUrl } from "@/config";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2, ArrowRight } from "lucide-react";
@@ -5,7 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bizysite.in"),
+  metadataBase: new URL(siteUrl),
   title: "E-commerce & D2C Website Design in India | Bizy Site",
   description: "Online stores and D2C websites that turn browsers into buyers. Fast, mobile-first, easy checkout, built to sell. Get a free quote.",
   keywords: "ecommerce website design India, D2C website, online store development, e-commerce digital marketing India",
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "E-commerce & D2C Website Design in India | Bizy Site",
     description: "Online stores and D2C websites that turn browsers into buyers. Fast, mobile-first, easy checkout, built to sell. Get a free quote.",
-    url: "https://bizysite.in/industries/retail",
+    url: `${siteUrl}/industries/retail`,
     siteName: "Bizy Site India",
     type: "website",
     locale: "en_IN",
@@ -33,12 +34,13 @@ export default function RetailD2C() {
     "@graph": [
       {
         "@type": "Service",
-        "@id": "https://bizysite.in/industries/retail/#service",
+        "@id": `${siteUrl}/industries/retail/#service`,
         "name": "E-commerce & D2C Website Design",
         "provider": {
           "@type": "LocalBusiness",
+          "@id": `${siteUrl}/#localbusiness`,
           "name": "Bizy Site India",
-          "url": "https://bizysite.in"
+          "url": siteUrl
         },
         "description": "Online stores and D2C websites that turn browsers into buyers.",
         "areaServed": {
@@ -48,7 +50,7 @@ export default function RetailD2C() {
       },
       {
         "@type": "FAQPage",
-        "@id": "https://bizysite.in/industries/retail/#faq",
+        "@id": `${siteUrl}/industries/retail/#faq`,
         "mainEntity": [
           {
             "@type": "Question",
@@ -102,25 +104,25 @@ export default function RetailD2C() {
       },
       {
         "@type": "BreadcrumbList",
-        "@id": "https://bizysite.in/industries/retail/#breadcrumb",
+        "@id": `${siteUrl}/industries/retail/#breadcrumb`,
         "itemListElement": [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://bizysite.in"
+            "item": siteUrl
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Industries",
-            "item": "https://bizysite.in/industries"
+            "item": `${siteUrl}/industries`
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Retail & D2C / E-commerce",
-            "item": "https://bizysite.in/industries/retail"
+            "item": `${siteUrl}/industries/retail`
           }
         ]
       }

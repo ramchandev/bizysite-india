@@ -4,9 +4,10 @@ import Script from "next/script";
 import FloatingCTA from "@/components/FloatingCTA";
 import BackToTop from "@/components/BackToTop";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import { siteUrl } from "@/config";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bizysite.in"),
+  metadataBase: new URL(siteUrl),
   title: "Bizy Site India | Performance-Driven Digital Agency",
   description: "India's first AEO + GEO & Web Growth Agency. We combine Website Design, SEO, CRO, Paid Ads, and AI Optimization to grow your business.",
   keywords: "web design agency India, CRO agency India, SEO agency India, AEO optimization, GEO optimization India, ChatGPT optimization, Google Ads agency India, Meta Ads lead generation, conversion rate optimization India",
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Bizy Site India | Performance-Driven Digital Agency",
     description: "Website Design, SEO, CRO, Paid Ads, and AI Optimization built into every project to generate more traffic, leads, and revenue.",
-    url: "https://bizysite.in",
+    url: siteUrl,
     siteName: "Bizy Site India",
     type: "website",
     locale: "en_IN",
