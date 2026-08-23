@@ -83,7 +83,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     openGraph: {
       title: post.metaTitle || post.title,
       description: post.metaDescription || post.excerpt,
-      url: `https://bizysite.in/blog/${category}/${post.slug}`,
+      url: `${siteUrl}/blog/${category}/${post.slug}`,
       siteName: "Bizy Site India",
       type: "article",
       locale: "en_IN",
@@ -130,7 +130,7 @@ export default async function BlogDetail({ params }: PageProps) {
     "@type": "BlogPosting",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://bizysite.in/blog/${category}/${post.slug}`
+      "@id": `${siteUrl}/blog/${category}/${post.slug}`
     },
     "headline": post.title,
     "description": post.metaDescription || post.excerpt,
@@ -171,7 +171,7 @@ export default async function BlogDetail({ params }: PageProps) {
         "@type": "ListItem",
         "position": 3,
         "name": post.title,
-        "item": `https://bizysite.in/blog/${category}/${post.slug}`
+        "item": `${siteUrl}/blog/${category}/${post.slug}`
       }
     ]
   };
@@ -203,7 +203,7 @@ export default async function BlogDetail({ params }: PageProps) {
     ? relatedArticles 
     : blogPosts.filter(p => p.slug !== post.slug).slice(0, 3);
 
-  const postUrl = `https://bizysite.in/blog/${category}/${post.slug}`;
+  const postUrl = `${siteUrl}/blog/${category}/${post.slug}`;
   const shareText = encodeURIComponent(post.title);
   const shareUrlEncoded = encodeURIComponent(postUrl);
 

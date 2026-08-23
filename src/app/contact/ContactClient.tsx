@@ -48,7 +48,7 @@ export default function ContactClient() {
  
     const payload = {
       name: formData.name,
-      email: formData.email || "not-provided@bizysite.com",
+      email: formData.email || "not-provided@bizysite.in",
       phone: formData.phone,
       plan: `Contact Form - Need: ${formData.need}`,
       website: formData.website || undefined,

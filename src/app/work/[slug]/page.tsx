@@ -1,11 +1,10 @@
-"use client";
-
-import { use } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Check, TrendingUp } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { siteUrl } from "@/config";
+import type { Metadata } from "next";
 
 const caseData = {
   "dr-sajan-hegde": {
@@ -107,8 +106,45 @@ const caseData = {
 
 type ParamsPromise = Promise<{ slug: string }>;
 
-export default function CaseStudyDetail({ params }: { params: ParamsPromise }) {
-  const { slug } = use(params);
+export async function generateStaticParams() {
+  return Object.keys(caseData).map((slug) => ({
+    slug,
+  }));
+}
+
+export async function generateMetadata({ params }: { params: ParamsPromise }): Promise<Metadata> {
+  const { slug } = await params;
+  const study = caseData[slug as keyof typeof caseData];
+
+  if (!study) {
+    return {
+      title: "Case Study Not Found",
+    };
+  }
+
+  const title = `${study.logo} Case Study | Bizy Site India`;
+  const description = study.title;
+
+  return {
+    metadataBase: new URL(siteUrl),
+    title,
+    description,
+    alternates: {
+      canonical: `/work/${slug}`,
+    },
+    openGraph: {
+      title,
+      description,
+      url: `${siteUrl}/work/${slug}`,
+      siteName: "Bizy Site India",
+      type: "website",
+      locale: "en_IN",
+    },
+  };
+}
+
+export default async function CaseStudyDetail({ params }: { params: ParamsPromise }) {
+  const { slug } = await params;
   const study = caseData[slug as keyof typeof caseData];
 
   if (!study) {
