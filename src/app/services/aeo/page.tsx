@@ -40,7 +40,15 @@ export default function AEO() {
           "@type": "LocalBusiness",
           "@id": `${siteUrl}/#localbusiness`,
           "name": "Bizy Site India",
-          "url": siteUrl
+          "url": siteUrl,
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "404 Jasmine A wing, Eden Park Phase 2, OMR, Siruseri",
+            "addressLocality": "Chennai",
+            "postalCode": "603103",
+            "addressRegion": "Tamil Nadu",
+            "addressCountry": "IN"
+          }
         },
         "description": "Win voice search and Google Featured Snippets listings.",
         "areaServed": {

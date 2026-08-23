@@ -40,7 +40,15 @@ export default function RealEstateBuilders() {
           "@type": "LocalBusiness",
           "@id": `${siteUrl}/#localbusiness`,
           "name": "Bizy Site India",
-          "url": siteUrl
+          "url": siteUrl,
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "404 Jasmine A wing, Eden Park Phase 2, OMR, Siruseri",
+            "addressLocality": "Chennai",
+            "postalCode": "603103",
+            "addressRegion": "Tamil Nadu",
+            "addressCountry": "IN"
+          }
         },
         "description": "Websites for builders, developers and real estate firms that turn projects into serious enquiries.",
         "areaServed": {

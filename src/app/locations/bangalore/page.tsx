@@ -43,7 +43,9 @@ export default function BangaloreLocation() {
         "telephone": "+919500728442",
         "address": {
           "@type": "PostalAddress",
+          "streetAddress": "404 Jasmine A wing, Eden Park Phase 2, OMR, Siruseri",
           "addressLocality": "Bengaluru",
+          "postalCode": "603103",
           "addressRegion": "Karnataka",
           "addressCountry": "IN"
         },
@@ -62,7 +64,15 @@ export default function BangaloreLocation() {
           "@type": "LocalBusiness",
           "@id": `${siteUrl}/#localbusiness`,
           "name": "Bizy Site India",
-          "url": siteUrl
+          "url": siteUrl,
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "404 Jasmine A wing, Eden Park Phase 2, OMR, Siruseri",
+            "addressLocality": "Chennai",
+            "postalCode": "603103",
+            "addressRegion": "Tamil Nadu",
+            "addressCountry": "IN"
+          }
         },
         "description": "Website design, SEO and digital marketing for Bengaluru businesses.",
         "areaServed": {

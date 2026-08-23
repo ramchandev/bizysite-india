@@ -254,7 +254,7 @@ export default function ContactClient() {
                 Often the fastest way to reach us.
               </p>
               <a 
-                href="https://wa.me/919500728442?text=Hi%20Bizy%20Site,%20I'd%20like%20to%20request%20a%20free%20quote."
+                href="https://wa.me/919500728442?text=Hi%20Bizy%20Site,%20I%20want%20to%20request%20a%20free%20quote."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-primary"
