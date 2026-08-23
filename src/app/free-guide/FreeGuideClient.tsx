@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { User, Mail, Phone } from "lucide-react";
 import Script from "next/script";
@@ -9,6 +9,38 @@ export default function FreeGuideClient() {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const renderRecaptcha = () => {
+      const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+      if (typeof window !== "undefined" && (window as any).grecaptcha && siteKey) {
+        const container = document.getElementById("recaptcha-free-guide");
+        if (container && container.innerHTML === "") {
+          try {
+            (window as any).grecaptcha.render("recaptcha-free-guide", {
+              sitekey: siteKey,
+            });
+          } catch (e) {
+            console.warn("reCAPTCHA render error:", e);
+          }
+        }
+      }
+    };
+
+    // If script is already loaded
+    if (typeof window !== "undefined" && (window as any).grecaptcha) {
+      renderRecaptcha();
+    } else {
+      // Check periodically
+      const interval = setInterval(() => {
+        if (typeof window !== "undefined" && (window as any).grecaptcha) {
+          renderRecaptcha();
+          clearInterval(interval);
+        }
+      }, 500);
+      return () => clearInterval(interval);
+    }
+  }, []);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -147,10 +179,7 @@ export default function FreeGuideClient() {
 
             {process.env.NODE_ENV === "production" && process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && (
               <div style={{ marginBottom: "20px", display: "flex", justifyContent: "center" }}>
-                <div 
-                  className="g-recaptcha" 
-                  data-sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
-                />
+                <div id="recaptcha-free-guide" style={{ minHeight: "78px" }}></div>
               </div>
             )}
 

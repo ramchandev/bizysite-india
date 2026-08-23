@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { 
@@ -42,6 +42,38 @@ export default function HomeClient() {
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   // FAQ State
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
+
+  useEffect(() => {
+    const renderRecaptcha = () => {
+      const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+      if (typeof window !== "undefined" && (window as any).grecaptcha && siteKey) {
+        const container = document.getElementById("recaptcha-home-guide");
+        if (container && container.innerHTML === "") {
+          try {
+            (window as any).grecaptcha.render("recaptcha-home-guide", {
+              sitekey: siteKey,
+            });
+          } catch (e) {
+            console.warn("reCAPTCHA render error:", e);
+          }
+        }
+      }
+    };
+
+    // If script is already loaded
+    if (typeof window !== "undefined" && (window as any).grecaptcha) {
+      renderRecaptcha();
+    } else {
+      // Check periodically
+      const interval = setInterval(() => {
+        if (typeof window !== "undefined" && (window as any).grecaptcha) {
+          renderRecaptcha();
+          clearInterval(interval);
+        }
+      }, 500);
+      return () => clearInterval(interval);
+    }
+  }, []);
 
   // Guide Form State
   const [guideName, setGuideName] = useState("");
@@ -958,10 +990,7 @@ export default function HomeClient() {
 
                 {process.env.NODE_ENV === "production" && process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && (
                   <div style={{ marginBottom: "16px", display: "flex", justifyContent: "center" }}>
-                    <div 
-                      className="g-recaptcha" 
-                      data-sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
-                    />
+                    <div id="recaptcha-home-guide" style={{ minHeight: "78px" }}></div>
                   </div>
                 )}
 

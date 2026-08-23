@@ -1,6 +1,6 @@
 "use client";
  
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Phone, MessageCircle, Mail, MapPin, CheckCircle2, User, Briefcase, FileText, Globe } from "lucide-react";
 import Link from "next/link";
@@ -10,6 +10,38 @@ export default function ContactClient() {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const renderRecaptcha = () => {
+      const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+      if (typeof window !== "undefined" && (window as any).grecaptcha && siteKey) {
+        const container = document.getElementById("recaptcha-contact-form");
+        if (container && container.innerHTML === "") {
+          try {
+            (window as any).grecaptcha.render("recaptcha-contact-form", {
+              sitekey: siteKey,
+            });
+          } catch (e) {
+            console.warn("reCAPTCHA render error:", e);
+          }
+        }
+      }
+    };
+
+    // If script is already loaded
+    if (typeof window !== "undefined" && (window as any).grecaptcha) {
+      renderRecaptcha();
+    } else {
+      // Check periodically
+      const interval = setInterval(() => {
+        if (typeof window !== "undefined" && (window as any).grecaptcha) {
+          renderRecaptcha();
+          clearInterval(interval);
+        }
+      }, 500);
+      return () => clearInterval(interval);
+    }
+  }, []);
  
   const [formData, setFormData] = useState({
     name: "",
@@ -215,10 +247,7 @@ export default function ContactClient() {
  
               {process.env.NODE_ENV === "production" && process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && (
                 <div style={{ marginBottom: "20px", display: "flex", justifyContent: "center" }}>
-                  <div 
-                    className="g-recaptcha" 
-                    data-sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
-                  />
+                  <div id="recaptcha-contact-form" style={{ minHeight: "78px" }}></div>
                 </div>
               )}
  

@@ -2780,6 +2780,7 @@ article li {
 
 /* Hover-teal interaction for linked elements */
 .hover-teal:hover {
+  color: var(--teal) !important;
   border-color: var(--teal) !important;
 }
 
