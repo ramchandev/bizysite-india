@@ -122,6 +122,40 @@ export default function Header({ currentPage }: HeaderProps) {
               </div>
             </li>
 
+            <li 
+              className="nav-link-item dropdown-trigger"
+              onMouseEnter={() => setIsIndustriesOpen(true)}
+              onMouseLeave={() => setIsIndustriesOpen(false)}
+            >
+              <Link href="/industries" className="nav-link-anchor">
+                Industries <ChevronDown size={14} className={`dropdown-icon ${isIndustriesOpen ? "open" : ""}`} />
+              </Link>
+              
+              {/* Industries Mega Dropdown Menu */}
+              <div className={`industries-dropdown ${isIndustriesOpen ? "active" : ""}`}>
+                <div className="mega-grid-2">
+                  {industriesData.map((col) => (
+                    <div key={col.category} className="mega-col">
+                      <span className="mega-col-title">{col.category}</span>
+                      <div className="mega-list">
+                        {col.items.map((item) => (
+                          <Link key={item.href} href={item.href} className="mega-item">
+                            <span className="mega-item-title">{item.name}</span>
+                            <span className="mega-item-desc">{item.desc}</span>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="mega-divider"></div>
+                <Link href="/industries" className="mega-help-link">
+                  <span>Explore all Industries</span>
+                  <ArrowRight size={14} />
+                </Link>
+              </div>
+            </li>
+
             <li className="nav-link-item">
               <Link href="/work">Work</Link>
             </li>
@@ -175,6 +209,29 @@ export default function Header({ currentPage }: HeaderProps) {
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Not sure? Get a Free Audit →
+              </Link>
+            </div>
+          </div>
+
+          <div className="mobile-nav-section" style={{ marginTop: "24px" }}>
+            <span className="mobile-section-title">Industries</span>
+            <div className="mobile-services-grid">
+              {industriesData.flatMap(c => c.items).map((ind) => (
+                <Link 
+                  key={ind.href} 
+                  href={ind.href} 
+                  className="mobile-nav-link sub-link" 
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {ind.name}
+                </Link>
+              ))}
+              <Link 
+                href="/industries" 
+                className="mobile-nav-link sub-link highlight" 
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Explore all Industries →
               </Link>
             </div>
           </div>

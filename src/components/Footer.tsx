@@ -3,45 +3,6 @@
 import Link from "next/link";
 import { MessageCircle } from "lucide-react";
 
-// Custom SVG Facebook Icon for reliability
-function FacebookIcon({ size = 18 }: { size?: number }) {
-  return (
-    <svg 
-      viewBox="0 0 24 24" 
-      width={size} 
-      height={size} 
-      stroke="currentColor" 
-      strokeWidth="2" 
-      fill="none" 
-      strokeLinecap="round" 
-      strokeLinejoin="round"
-      style={{ display: "inline-block", verticalAlign: "middle" }}
-    >
-      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-    </svg>
-  );
-}
-
-// Custom SVG X/Twitter Icon for accuracy
-function XIcon({ size = 18 }: { size?: number }) {
-  return (
-    <svg 
-      viewBox="0 0 24 24" 
-      width={size} 
-      height={size} 
-      stroke="currentColor" 
-      strokeWidth="2" 
-      fill="none" 
-      strokeLinecap="round" 
-      strokeLinejoin="round"
-      style={{ display: "inline-block", verticalAlign: "middle" }}
-    >
-      <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
-      <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
-    </svg>
-  );
-}
-
 // Custom SVG Instagram Icon for reliability
 function InstagramIcon({ size = 18 }: { size?: number }) {
   return (
@@ -59,27 +20,6 @@ function InstagramIcon({ size = 18 }: { size?: number }) {
       <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
       <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
       <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-    </svg>
-  );
-}
-
-// Custom SVG LinkedIn Icon for reliability
-function LinkedinIcon({ size = 18 }: { size?: number }) {
-  return (
-    <svg 
-      viewBox="0 0 24 24" 
-      width={size} 
-      height={size} 
-      stroke="currentColor" 
-      strokeWidth="2" 
-      fill="none" 
-      strokeLinecap="round" 
-      strokeLinejoin="round"
-      style={{ display: "inline-block", verticalAlign: "middle" }}
-    >
-      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-      <rect x="2" y="9" width="4" height="12" />
-      <circle cx="4" cy="4" r="2" />
     </svg>
   );
 }
@@ -131,6 +71,21 @@ export default function Footer() {
               </ul>
             </div>
 
+            {/* Column 3: Industries */}
+            <div className="footer-col">
+              <span className="footer-col-title">Industries</span>
+              <ul className="footer-list">
+                <li><Link href="/industries/real-estate">Real Estate & Builders</Link></li>
+                <li><Link href="/industries/manufacturing">Manufacturing & B2B</Link></li>
+                <li><Link href="/industries/retail">Retail & E-commerce</Link></li>
+                <li><Link href="/industries/healthcare">Healthcare & Clinics</Link></li>
+                <li><Link href="/industries/education">Education & Coaching</Link></li>
+                <li><Link href="/industries/professional-services">Professional Services</Link></li>
+                <li><Link href="/industries/hospitality">Hospitality & Restaurants</Link></li>
+                <li><Link href="/industries">All Industries Index</Link></li>
+              </ul>
+            </div>
+
             {/* Column 3: Company */}
             <div className="footer-col">
               <span className="footer-col-title">Company</span>
@@ -174,17 +129,8 @@ export default function Footer() {
           </div>
 
           <div className="social-links" style={{ display: "flex", gap: "16px", alignItems: "center" }}>
-            <a href="https://facebook.com/bizysite" target="_blank" rel="noopener noreferrer" className="social-link" style={{ color: "rgba(255,255,255,0.45)", transition: "color 0.2s" }}>
-              <FacebookIcon size={18} />
-            </a>
-            <a href="https://x.com/bizysite" target="_blank" rel="noopener noreferrer" className="social-link" style={{ color: "rgba(255,255,255,0.45)", transition: "color 0.2s" }}>
-              <XIcon size={18} />
-            </a>
             <a href="https://instagram.com/bizysite" target="_blank" rel="noopener noreferrer" className="social-link" style={{ color: "rgba(255,255,255,0.45)", transition: "color 0.2s" }}>
               <InstagramIcon size={18} />
-            </a>
-            <a href="https://linkedin.com/company/bizysite" target="_blank" rel="noopener noreferrer" className="social-link" style={{ color: "rgba(255,255,255,0.45)", transition: "color 0.2s" }}>
-              <LinkedinIcon size={18} />
             </a>
           </div>
         </div>

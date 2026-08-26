@@ -59,6 +59,19 @@ export default function SitemapHtml() {
       ]
     },
     {
+      title: "Industries",
+      links: [
+        { name: "Industries Overview (Pillar)", href: "/industries" },
+        { name: "Real Estate & Builders", href: "/industries/real-estate" },
+        { name: "Manufacturing & B2B", href: "/industries/manufacturing" },
+        { name: "Retail & E-commerce", href: "/industries/retail" },
+        { name: "Hospitality & Restaurants", href: "/industries/hospitality" },
+        { name: "Healthcare & Clinics", href: "/industries/healthcare" },
+        { name: "Education & Coaching", href: "/industries/education" },
+        { name: "Professional Services", href: "/industries/professional-services" }
+      ]
+    },
+    {
       title: "Locations",
       links: [
         { name: "Locations Overview", href: "/locations" },
