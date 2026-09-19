@@ -49,7 +49,8 @@ export default function ContactClient() {
     email: "",
     website: "",
     need: "Website Design & Development",
-    message: ""
+    message: "",
+    _gotcha: ""
   });
  
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -64,6 +65,12 @@ export default function ContactClient() {
     e.preventDefault();
     setIsSubmitting(true);
     setFormError(null);
+
+    // If bot caught by honeypot, silently redirect
+    if (formData._gotcha) {
+      router.push(`/thank-you?name=${encodeURIComponent(formData.name || "there")}`);
+      return;
+    }
  
     let gRecaptchaToken: string | undefined = undefined;
     const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
@@ -78,6 +85,27 @@ export default function ContactClient() {
       }
     }
  
+    // Sequence 1: Send form data to Cofolo URL (success or failure, continue to next sequence)
+    try {
+      const cofoloData = new FormData();
+      cofoloData.append("name", formData.name);
+      cofoloData.append("email", formData.email);
+      cofoloData.append("phone", formData.phone);
+      cofoloData.append("_gotcha", formData._gotcha || "");
+      if (formData.website) cofoloData.append("website", formData.website);
+      if (formData.need) cofoloData.append("need", formData.need);
+      if (formData.message) cofoloData.append("message", formData.message);
+      cofoloData.append("plan", `Contact Form - Need: ${formData.need}`);
+
+      await fetch("https://api.cofolo.in/public/v1/forms/k78WUoSrGGcHhuHb8dOVwtu2458V6uvU", {
+        method: "POST",
+        body: cofoloData,
+      });
+    } catch (err) {
+      console.warn("Cofolo form submission notice:", err);
+    }
+
+    // Sequence 2: Send email notification via /api/lead (irrespective of success/failure, move on to next)
     const payload = {
       name: formData.name,
       email: formData.email || "not-provided@bizysite.in",
@@ -89,27 +117,19 @@ export default function ContactClient() {
     };
  
     try {
-      const res = await fetch("/api/lead", {
+      await fetch("/api/lead", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
         body: JSON.stringify(payload)
       });
- 
-      const data = await res.json().catch(() => null);
- 
-      if (!res.ok || data?.ok === false) {
-        setFormError(data?.error || "Submission failed. Please check details and try again.");
-        return;
-      }
- 
-      router.push(`/thank-you?name=${encodeURIComponent(formData.name)}`);
     } catch (err) {
-      setFormError("A network error occurred. Please try again.");
-    } finally {
-      setIsSubmitting(false);
+      console.warn("Lead email notification notice:", err);
     }
+
+    // Sequence 3: Redirect to the URL as usual
+    router.push(`/thank-you?name=${encodeURIComponent(formData.name)}`);
   };
  
   return (
@@ -123,7 +143,24 @@ export default function ContactClient() {
               No spam, no repeated calls. Your details stay private.
             </p>
  
-            <form onSubmit={handleSubmit} className="lead-form" style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+            <form 
+              action="https://api.cofolo.in/public/v1/forms/k78WUoSrGGcHhuHb8dOVwtu2458V6uvU" 
+              method="POST" 
+              onSubmit={handleSubmit} 
+              className="lead-form" 
+              style={{ display: "flex", flexDirection: "column", gap: "20px" }}
+            >
+              {/* Spam prevention honeypot */}
+              <input 
+                type="text" 
+                name="_gotcha" 
+                value={formData._gotcha} 
+                onChange={handleInputChange} 
+                style={{ display: "none" }} 
+                tabIndex={-1} 
+                autoComplete="off" 
+              />
+
               {/* Field: Name */}
               <div className="form-group">
                 <label className="form-label" htmlFor="name" style={{ fontWeight: "700" }}>Name</label>
@@ -135,7 +172,7 @@ export default function ContactClient() {
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    placeholder="Rahul Sharma"
+                    placeholder="Your name"
                     required
                     className="form-input"
                   />
@@ -153,7 +190,7 @@ export default function ContactClient() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    placeholder="98765 43210"
+                    placeholder="Phone"
                     required
                     className="form-input"
                   />
@@ -171,7 +208,7 @@ export default function ContactClient() {
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    placeholder="rahul@sharma.co"
+                    placeholder="Email"
                     className="form-input"
                   />
                 </div>
