@@ -6,6 +6,8 @@ import BackToTop from "@/components/BackToTop";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import { siteUrl } from "@/config";
 
+const googleSiteVerification = process.env.GOOGLE_SITE_VERIFICATION?.trim();
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: "Bizy Site India | Performance-Driven Digital Agency",
@@ -51,6 +53,9 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  ...(googleSiteVerification
+    ? { verification: { google: googleSiteVerification } }
+    : {}),
 };
 
 export const viewport: Viewport = {
@@ -63,34 +68,25 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const googleSiteVerification = process.env.GOOGLE_SITE_VERIFICATION || "";
   const gaTrackingId = process.env.NEXT_PUBLIC_GA_TRACKING_ID || "";
 
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        {googleSiteVerification && (
-          <meta name="google-site-verification" content={googleSiteVerification} />
-        )}
-      </head>
+    <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
       <body suppressHydrationWarning>
-        {gaTrackingId && (
+        {gaTrackingId ? (
           <>
             <Script
               src={`https://www.googletagmanager.com/gtag/js?id=${gaTrackingId}`}
               strategy="afterInteractive"
             />
-            <Script id="google-analytics" strategy="afterInteractive">
-              {`
+            <Script id="google-analytics" strategy="afterInteractive">{`
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
-
                 gtag('config', '${gaTrackingId}');
-              `}
-            </Script>
+              `}</Script>
           </>
-        )}
+        ) : null}
         {children}
         <FloatingCTA />
         <BackToTop />
