@@ -54,28 +54,22 @@ export default function SearchModal({ open, onClose }: SearchModalProps) {
   const previouslyFocused = useRef<HTMLElement | null>(null);
 
   const [query, setQuery] = useState("");
-  const [debouncedQuery, setDebouncedQuery] = useState("");
   const [activeIndex, setActiveIndex] = useState(0);
 
-  useEffect(() => {
-    if (!open) return;
-    const timer = window.setTimeout(() => setDebouncedQuery(query), 150);
-    return () => window.clearTimeout(timer);
-  }, [query, open]);
+  const trimmedQuery = query.trim();
+  const isIdle = trimmedQuery.length === 0;
 
   const results = useMemo(
-    () => (open ? searchSite(debouncedQuery) : []),
-    [debouncedQuery, open]
+    () => (open ? searchSite(query) : []),
+    [query, open]
   );
 
-  const flatResults = results;
   const grouped = useMemo(() => groupByCategory(results), [results]);
-  const isIdle = debouncedQuery.trim().length === 0;
   const hasNoResults = !isIdle && results.length === 0;
 
   useEffect(() => {
     setActiveIndex(0);
-  }, [debouncedQuery, results.length]);
+  }, [query, results.length]);
 
   useEffect(() => {
     if (!open) return;
@@ -98,7 +92,6 @@ export default function SearchModal({ open, onClose }: SearchModalProps) {
   useEffect(() => {
     if (!open) {
       setQuery("");
-      setDebouncedQuery("");
       setActiveIndex(0);
     }
   }, [open]);
@@ -118,23 +111,23 @@ export default function SearchModal({ open, onClose }: SearchModalProps) {
       return;
     }
 
-    if (flatResults.length === 0) return;
+    if (results.length === 0) return;
 
     if (event.key === "ArrowDown") {
       event.preventDefault();
-      setActiveIndex((i) => (i + 1) % flatResults.length);
+      setActiveIndex((i) => (i + 1) % results.length);
       return;
     }
 
     if (event.key === "ArrowUp") {
       event.preventDefault();
-      setActiveIndex((i) => (i - 1 + flatResults.length) % flatResults.length);
+      setActiveIndex((i) => (i - 1 + results.length) % results.length);
       return;
     }
 
     if (event.key === "Enter") {
       event.preventDefault();
-      const selected = flatResults[activeIndex];
+      const selected = results[activeIndex];
       if (selected) {
         navigateTo(selected.href);
       }
@@ -224,7 +217,7 @@ export default function SearchModal({ open, onClose }: SearchModalProps) {
             aria-controls={listboxId}
             aria-autocomplete="list"
             aria-activedescendant={
-              flatResults[activeIndex]
+              results[activeIndex]
                 ? `${listboxId}-option-${activeIndex}`
                 : undefined
             }
@@ -252,7 +245,7 @@ export default function SearchModal({ open, onClose }: SearchModalProps) {
           {hasNoResults ? (
             <div className="search-modal-empty">
               <FileText size={28} aria-hidden />
-              <p>No results for &ldquo;{debouncedQuery.trim()}&rdquo;</p>
+              <p>No results for &ldquo;{trimmedQuery}&rdquo;</p>
               <Link
                 href="/contact"
                 className="btn btn-primary"

@@ -63,14 +63,22 @@ const workDocs: SearchDocument[] = caseStudies.map((study) => ({
   keywords: [study.industry, study.category, study.result, "case study", "portfolio"],
 }));
 
-const blogDocs: SearchDocument[] = blogPosts.map((post) => ({
-  id: `blog-${post.slug}`,
-  title: post.title,
-  description: post.excerpt,
-  href: `/blog/${blogCategorySlug(post.category)}/${post.slug}`,
-  category: "Blog" as const,
-  keywords: [post.category, "article", "guide"],
-}));
+const blogDocs: SearchDocument[] = blogPosts.map((post) => {
+  const bodyText = post.content
+    .replace(/<[^>]+>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .slice(0, 1200);
+
+  return {
+    id: `blog-${post.slug}`,
+    title: post.title,
+    description: post.excerpt,
+    href: `/blog/${blogCategorySlug(post.category)}/${post.slug}`,
+    category: "Blog" as const,
+    keywords: [post.category, "article", "guide", bodyText],
+  };
+});
 
 const pageDocs: SearchDocument[] = [
   {
