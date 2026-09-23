@@ -4,9 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node scripts/extract-search-bodies.mjs",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "index:search": "node scripts/extract-search-bodies.mjs"
   },
   "dependencies": {
     "fuse.js": "^7.5.0",

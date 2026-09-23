@@ -1,5 +1,6 @@
 import { blogPosts } from "@/data/blogPosts";
 import { caseStudies } from "@/data/caseStudies";
+import { generatedSearchBodies } from "@/data/generatedSearchBodies";
 import { industriesData, locationsData, servicesData } from "@/data/navCatalogs";
 
 export type SearchCategory =
@@ -17,10 +18,18 @@ export interface SearchDocument {
   href: string;
   category: SearchCategory;
   keywords?: string[];
+  /** Full-page / long-form text used for deep keyword matching */
+  body?: string;
 }
 
 function blogCategorySlug(category: string): string {
   return category.toLowerCase().replace(/ /g, "-");
+}
+
+function bodyFor(href: string, ...extra: string[]): string | undefined {
+  const parts = [generatedSearchBodies[href], ...extra].filter(Boolean);
+  if (parts.length === 0) return undefined;
+  return parts.join(" ").replace(/\s+/g, " ").trim();
 }
 
 const serviceDocs: SearchDocument[] = servicesData.flatMap((group) =>
@@ -31,6 +40,7 @@ const serviceDocs: SearchDocument[] = servicesData.flatMap((group) =>
     href: item.href,
     category: "Services" as const,
     keywords: [group.category, "service"],
+    body: bodyFor(item.href),
   }))
 );
 
@@ -42,6 +52,7 @@ const industryDocs: SearchDocument[] = industriesData.flatMap((group) =>
     href: item.href,
     category: "Industries" as const,
     keywords: [group.category, "industry"],
+    body: bodyFor(item.href),
   }))
 );
 
@@ -52,6 +63,7 @@ const locationDocs: SearchDocument[] = locationsData.map((loc) => ({
   href: loc.href,
   category: "Locations" as const,
   keywords: [loc.city, "local", "location"],
+  body: bodyFor(loc.href),
 }));
 
 const workDocs: SearchDocument[] = caseStudies.map((study) => ({
@@ -61,14 +73,20 @@ const workDocs: SearchDocument[] = caseStudies.map((study) => ({
   href: `/work/${study.slug}`,
   category: "Work" as const,
   keywords: [study.industry, study.category, study.result, "case study", "portfolio"],
+  body: bodyFor(
+    `/work/${study.slug}`,
+    study.description,
+    study.industry,
+    study.result,
+    study.client
+  ),
 }));
 
 const blogDocs: SearchDocument[] = blogPosts.map((post) => {
   const bodyText = post.content
     .replace(/<[^>]+>/g, " ")
     .replace(/\s+/g, " ")
-    .trim()
-    .slice(0, 1200);
+    .trim();
 
   return {
     id: `blog-${post.slug}`,
@@ -76,18 +94,31 @@ const blogDocs: SearchDocument[] = blogPosts.map((post) => {
     description: post.excerpt,
     href: `/blog/${blogCategorySlug(post.category)}/${post.slug}`,
     category: "Blog" as const,
-    keywords: [post.category, "article", "guide", bodyText],
+    keywords: [post.category, "article", "guide", post.metaDescription],
+    body: bodyText,
   };
 });
 
 const pageDocs: SearchDocument[] = [
   {
+    id: "page-home",
+    title: "Bizy Site — Home",
+    description:
+      "Best-in-class websites that bring you more calls and customers.",
+    href: "/",
+    category: "Pages",
+    keywords: ["home", "agency"],
+    body: bodyFor("/"),
+  },
+  {
     id: "page-about",
     title: "About Bizy Site",
-    description: "Learn who we are and how we help Indian businesses get found and get customers online.",
+    description:
+      "We spent 10 years building 500+ best-in-class websites for US businesses. Now we bring that same standard to India. Meet the team behind Bizy Site.",
     href: "/about",
     category: "Pages",
-    keywords: ["company", "team", "agency"],
+    keywords: ["company", "team", "agency", "Vivek", "Ram", "Kantha", "Clinton"],
+    body: bodyFor("/about"),
   },
   {
     id: "page-contact",
@@ -96,6 +127,7 @@ const pageDocs: SearchDocument[] = [
     href: "/contact",
     category: "Pages",
     keywords: ["audit", "enquiry", "lead", "free audit"],
+    body: bodyFor("/contact"),
   },
   {
     id: "page-free-guide",
@@ -104,6 +136,7 @@ const pageDocs: SearchDocument[] = [
     href: "/free-guide",
     category: "Pages",
     keywords: ["download", "resource", "ebook"],
+    body: bodyFor("/free-guide"),
   },
   {
     id: "page-work",
@@ -112,22 +145,27 @@ const pageDocs: SearchDocument[] = [
     href: "/work",
     category: "Pages",
     keywords: ["portfolio", "case studies", "results"],
+    body: bodyFor("/work"),
   },
   {
     id: "page-blog",
     title: "Blog & Resources",
-    description: "Practical guides on websites, SEO, and conversions for Indian businesses.",
+    description:
+      "Practical guides on websites, SEO, and conversions for Indian businesses.",
     href: "/blog",
     category: "Pages",
     keywords: ["articles", "resources", "insights"],
+    body: bodyFor("/blog"),
   },
   {
     id: "page-services",
     title: "All Services",
-    description: "Explore our full suite of web design, SEO, CRO, and growth services.",
+    description:
+      "Explore our full suite of web design, SEO, CRO, and growth services.",
     href: "/services",
     category: "Pages",
     keywords: ["services hub"],
+    body: bodyFor("/services"),
   },
   {
     id: "page-industries",
@@ -136,14 +174,17 @@ const pageDocs: SearchDocument[] = [
     href: "/industries",
     category: "Pages",
     keywords: ["industries hub"],
+    body: bodyFor("/industries"),
   },
   {
     id: "page-locations",
     title: "Locations",
-    description: "Web design and digital marketing for businesses across major Indian cities.",
+    description:
+      "Web design and digital marketing for businesses across major Indian cities.",
     href: "/locations",
     category: "Pages",
     keywords: ["cities", "local"],
+    body: bodyFor("/locations"),
   },
 ];
 
@@ -171,4 +212,3 @@ export const popularSuggestions: SearchDocument[] = [
     .filter((d): d is SearchDocument => Boolean(d)),
   ...blogDocs.slice(0, 3),
 ];
-
