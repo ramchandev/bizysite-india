@@ -314,6 +314,50 @@ button, input, select, textarea {
   border-radius: 10px;
 }
 
+.nav-search-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--navy);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.nav-search-btn:hover,
+.nav-search-btn:focus-visible {
+  background-color: var(--surface);
+  color: var(--teal-dark);
+  outline: none;
+}
+
+.mobile-search-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--white);
+  font: inherit;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: left;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+}
+
+.mobile-search-trigger:hover {
+  background: rgba(255, 255, 255, 0.18);
+  color: var(--teal);
+}
+
 /* Sticky Condensed Nav layout toggle overrides */
 .nav-header.condensed {
   background-color: var(--white);
@@ -1522,6 +1566,259 @@ button, input, select, textarea {
 .mobile-nav-cta {
   margin-top: auto;
   width: 100%;
+}
+
+/* SITE SEARCH MODAL */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.search-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 10vh 16px 24px;
+  background: rgba(13, 27, 53, 0.55);
+  backdrop-filter: blur(4px);
+}
+
+.search-modal {
+  width: 100%;
+  max-width: 640px;
+  max-height: min(80vh, 720px);
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.search-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 18px 0;
+}
+
+.search-modal-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 0;
+}
+
+.search-modal-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.search-modal-close:hover,
+.search-modal-close:focus-visible {
+  background: var(--surface);
+  color: var(--navy);
+  outline: none;
+}
+
+.search-modal-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 12px 18px 0;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--off-white);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-modal-input-wrap:focus-within {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(43, 191, 191, 0.18);
+  background: var(--white);
+}
+
+.search-modal-input-icon {
+  flex-shrink: 0;
+  margin-left: 14px;
+  color: var(--text-muted);
+}
+
+.search-modal-input {
+  flex: 1;
+  width: 100%;
+  border: none;
+  background: transparent;
+  padding: 14px 12px;
+  font-size: 16px;
+  color: var(--text);
+  outline: none;
+}
+
+.search-modal-input::-webkit-search-cancel-button {
+  display: none;
+}
+
+.search-modal-clear {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin-right: 8px;
+  border: none;
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.search-modal-clear:hover {
+  color: var(--navy);
+}
+
+.search-modal-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px 12px 18px;
+  margin-top: 8px;
+}
+
+.search-modal-hint {
+  margin: 0 6px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.search-modal-group + .search-modal-group {
+  margin-top: 14px;
+}
+
+.search-modal-group-title {
+  display: block;
+  margin: 0 6px 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--teal-dark);
+}
+
+.search-modal-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.search-modal-result {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.15s ease;
+}
+
+.search-modal-result:hover,
+.search-modal-result.active {
+  background: var(--surface);
+}
+
+.search-modal-result-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: var(--radius-sm);
+  background: var(--teal-light);
+  color: var(--teal-dark);
+}
+
+.search-modal-result-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.search-modal-result-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1.35;
+}
+
+.search-modal-result-desc {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.search-modal-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 36px 16px;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.search-modal-empty p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--text-mid);
+}
+
+.search-modal-empty .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+@media (max-width: 640px) {
+  .search-modal-overlay {
+    padding: 0;
+    align-items: stretch;
+  }
+
+  .search-modal {
+    max-width: none;
+    max-height: none;
+    height: 100%;
+    border-radius: 0;
+    border: none;
+  }
 }
 
 /* MODAL LEAD FORM STYLES */

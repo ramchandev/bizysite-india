@@ -2,7 +2,9 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Menu, X, ChevronDown, ArrowRight } from "lucide-react";
+import { Menu, X, ChevronDown, ArrowRight, Search } from "lucide-react";
+import { servicesData, industriesData } from "@/data/navCatalogs";
+import SearchModal from "@/components/SearchModal";
 
 interface HeaderProps {
   currentPage?: string;
@@ -13,6 +15,7 @@ export default function Header({ currentPage }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [isIndustriesOpen, setIsIndustriesOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,52 +32,12 @@ export default function Header({ currentPage }: HeaderProps) {
     };
   }, []);
 
-  const servicesData = [
-    {
-      category: "Get Chosen",
-      items: [
-        { name: "Website Design & Dev", href: "/services/web-design", desc: "Blazing fast, custom websites" },
-        { name: "Conversion Rate Optimization (CRO)", href: "/services/cro", desc: "Turn more traffic into leads" },
-        { name: "Social Media Management", href: "/services/social-media-management", desc: "Keep your pages active" }
-      ]
-    },
-    {
-      category: "Get Found",
-      items: [
-        { name: "SEO", href: "/services/seo", desc: "Rank high on Google search" },
-        { name: "Google Business Profile", href: "/services/google-business-profile", desc: "Win local map searches" },
-        { name: "Answer Engine Optimization (AEO)", href: "/services/aeo", desc: "Voice & snippet answers" }
-      ]
-    },
-    {
-      category: "AI & Paid Traffic",
-      items: [
-        { name: "AI Optimization (AIO)", href: "/services/aio", desc: "Be visible in AI search" },
-        { name: "Generative Engine Optimization (GEO)", href: "/services/geo", desc: "ChatGPT recommendations" },
-        { name: "Google & Meta Ads", href: "/services/ads", desc: "Get customers today" }
-      ]
-    }
-  ];
-
-  const industriesData = [
-    {
-      category: "Commercial & Retail",
-      items: [
-        { name: "Real Estate & Builders", href: "/industries/real-estate", desc: "Showcase properties cleanly" },
-        { name: "Manufacturing & B2B", href: "/industries/manufacturing", desc: "Win B2B quote requests" },
-        { name: "Retail & D2C / E-commerce", href: "/industries/retail", desc: "Turn browsers into buyers" },
-        { name: "Hospitality & Restaurants", href: "/industries/hospitality", desc: "Drive footfall and bookings" }
-      ]
-    },
-    {
-      category: "Services & Care",
-      items: [
-        { name: "Healthcare & Clinics", href: "/industries/healthcare", desc: "Fill appointment slots" },
-        { name: "Education & Coaching", href: "/industries/education", desc: "Fill batches & demo classes" },
-        { name: "Professional Services", href: "/industries/professional-services", desc: "Signal trust & win clients" }
-      ]
-    }
-  ];
+  const openSearch = () => {
+    setIsSearchOpen(true);
+    setIsMobileMenuOpen(false);
+    setIsServicesOpen(false);
+    setIsIndustriesOpen(false);
+  };
 
   return (
     <>
@@ -169,6 +132,15 @@ export default function Header({ currentPage }: HeaderProps) {
 
           {/* Right Action */}
           <div className="nav-actions">
+            <button
+              type="button"
+              className="nav-search-btn"
+              onClick={openSearch}
+              aria-label="Search site"
+            >
+              <Search size={20} />
+            </button>
+
             <Link href="/contact" className={`btn ${isCondensed ? "btn-primary" : "btn-navy"} nav-cta-btn`}>
               Get Free Audit →
             </Link>
@@ -181,6 +153,8 @@ export default function Header({ currentPage }: HeaderProps) {
         </div>
       </header>
 
+      <SearchModal open={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
+
       {/* Mobile navigation overlay */}
       <div className={`mobile-nav-overlay ${isMobileMenuOpen ? "open" : ""}`}>
         <div className="mobile-nav-header" style={{ justifyContent: "flex-end" }}>
@@ -191,6 +165,17 @@ export default function Header({ currentPage }: HeaderProps) {
         
         <div className="mobile-nav-body">
           <div className="mobile-nav-section">
+            <button
+              type="button"
+              className="mobile-nav-link mobile-search-trigger"
+              onClick={openSearch}
+            >
+              <Search size={18} aria-hidden />
+              Search
+            </button>
+          </div>
+
+          <div className="mobile-nav-section" style={{ marginTop: "24px" }}>
             <span className="mobile-section-title">Services</span>
             <div className="mobile-services-grid">
               {servicesData.flatMap(c => c.items).map((svc) => (
