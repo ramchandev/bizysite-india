@@ -623,28 +623,28 @@ export default function HomeClient() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "30px", marginBottom: "40px" }}>
             {[
               {
-                slug: "dr-sajan-hegde",
-                client: "Dr. Sajan Hegde",
-                industry: "Healthcare & Spine Care",
-                screenshot: "/screenshots/dr-sajan-hegde.png",
-                description: "Custom booking platform and clinical branding page for one of India's top spine surgeons, streamlining online patient appointments.",
-                result: "38% increase in patient bookings"
+                slug: "millet-bakes",
+                client: "Millet Bakes",
+                industry: "Food & Bakery",
+                screenshot: "/screenshots/millet-bakes.jpg",
+                description: "A WhatsApp-first product journey for an ancient-grain bakery — discover bakes, understand what makes each one special, and start an order conversation in seconds.",
+                result: "WhatsApp-ready cart & clearer product journey"
               },
               {
-                slug: "sound-v-pro",
-                client: "Sound V Pro",
-                industry: "E-commerce & Pro Audio",
-                screenshot: "/screenshots/sound-v-pro.png",
-                description: "High-performance online store for professional audio and studio equipment, optimized for mobile checkout transitions.",
-                result: "2.1× higher checkout conversion rate"
+                slug: "hitech-fluid-system",
+                client: "Hitech Fluid System",
+                industry: "Industrial Water Treatment",
+                screenshot: "/screenshots/hitech-fluid-system.jpg",
+                description: "An engineered digital experience for an industrial water & wastewater company — proof, process storytelling, and requirement-focused enquiries online.",
+                result: "Interactive proof + stronger enquiry flow"
               },
               {
-                slug: "miracle-members",
-                client: "Miracle Members",
-                industry: "Professional Networking",
-                screenshot: "/screenshots/miracle-members.png",
-                description: "Speed-optimized custom portal and networking platform with dynamic member directories and lightning-fast search capabilities.",
-                result: "48% reduction in page load speed"
+                slug: "dss-corp",
+                client: "DSS Dynamic Strategic Solutions",
+                industry: "Chartered Accountancy",
+                screenshot: "/screenshots/dss-corp.jpg",
+                description: "A trust-building website for a Chennai CA firm — calculators, blogs, consultation forms, and WhatsApp — so founders get clarity and book advice faster.",
+                result: "Tools + content that turn visitors into consultations"
               }
             ].map((p, idx) => (
               <div key={idx} className="work-card" style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", border: "1px solid var(--border)", borderRadius: "12px", overflow: "hidden", background: "var(--white)", boxShadow: "var(--shadow-sm)" }}>

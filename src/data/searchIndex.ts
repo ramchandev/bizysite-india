@@ -1,5 +1,6 @@
 import { blogPosts } from "@/data/blogPosts";
 import { caseStudies } from "@/data/caseStudies";
+import { caseStudyDetails } from "@/data/caseStudyDetails";
 import { generatedSearchBodies } from "@/data/generatedSearchBodies";
 import { industriesData, locationsData, servicesData } from "@/data/navCatalogs";
 
@@ -66,21 +67,37 @@ const locationDocs: SearchDocument[] = locationsData.map((loc) => ({
   body: bodyFor(loc.href),
 }));
 
-const workDocs: SearchDocument[] = caseStudies.map((study) => ({
-  id: `work-${study.slug}`,
-  title: study.client,
-  description: study.description,
-  href: `/work/${study.slug}`,
-  category: "Work" as const,
-  keywords: [study.industry, study.category, study.result, "case study", "portfolio"],
-  body: bodyFor(
-    `/work/${study.slug}`,
-    study.description,
-    study.industry,
-    study.result,
-    study.client
-  ),
-}));
+const workDocs: SearchDocument[] = caseStudies.map((study) => {
+  const detail = caseStudyDetails[study.slug];
+  const detailText = detail
+    ? [
+        detail.title,
+        detail.problem,
+        detail.approach,
+        detail.challenge,
+        ...detail.tactics,
+        ...(detail.benefits ?? []),
+        detail.quote,
+      ].join(" ")
+    : "";
+
+  return {
+    id: `work-${study.slug}`,
+    title: study.client,
+    description: study.description,
+    href: `/work/${study.slug}`,
+    category: "Work" as const,
+    keywords: [study.industry, study.category, study.result, "case study", "portfolio"],
+    body: bodyFor(
+      `/work/${study.slug}`,
+      study.description,
+      study.industry,
+      study.result,
+      study.client,
+      detailText
+    ),
+  };
+});
 
 const blogDocs: SearchDocument[] = blogPosts.map((post) => {
   const bodyText = post.content

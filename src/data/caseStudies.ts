@@ -11,6 +11,39 @@ export interface CaseStudy {
 
 export const caseStudies: CaseStudy[] = [
   {
+    slug: "millet-bakes",
+    client: "Millet Bakes",
+    url: "https://www.milletbakes.in/",
+    screenshot: "/screenshots/millet-bakes.jpg",
+    industry: "Food & Bakery",
+    description:
+      "A WhatsApp-first product journey for an ancient-grain bakery — discover bakes, understand what makes each one special, and start an order conversation in seconds.",
+    result: "WhatsApp-ready cart & clearer product journey",
+    category: "Food & Bakery",
+  },
+  {
+    slug: "hitech-fluid-system",
+    client: "Hitech Fluid System",
+    url: "https://www.hitechfluidsystem.com/",
+    screenshot: "/screenshots/hitech-fluid-system.jpg",
+    industry: "Industrial Water Treatment",
+    description:
+      "An engineered digital experience for an industrial water & wastewater company — proof, process storytelling, and requirement-focused enquiries online.",
+    result: "Interactive proof + stronger enquiry flow",
+    category: "Manufacturing",
+  },
+  {
+    slug: "dss-corp",
+    client: "DSS Dynamic Strategic Solutions",
+    url: "https://www.dsscorp.in/",
+    screenshot: "/screenshots/dss-corp.jpg",
+    industry: "Chartered Accountancy",
+    description:
+      "A trust-building website for a Chennai CA firm — calculators, blogs, consultation forms, and WhatsApp — so founders get clarity and book advice faster.",
+    result: "Tools + content that turn visitors into consultations",
+    category: "Professional Services",
+  },
+  {
     slug: "dr-sajan-hegde",
     client: "Dr. Sajan Hegde",
     url: "https://drsajankhegde.com",

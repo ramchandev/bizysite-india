@@ -54,6 +54,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const blogRoutes = blogPosts.map((post) => `/blog/${post.category.toLowerCase().replace(/ /g, "-")}/${post.slug}`);
 
   const workRoutes = [
+    "/work/millet-bakes",
+    "/work/hitech-fluid-system",
+    "/work/dss-corp",
     "/work/dr-sajan-hegde",
     "/work/sound-v-pro",
     "/work/miracle-members",

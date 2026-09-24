@@ -82,7 +82,7 @@ if (fs.existsSync(workSlugPage)) {
   let slugMatch;
   while ((slugMatch = slugRe.exec(source)) !== null) {
     const slug = slugMatch[1];
-    if (["dr-sajan-hegde", "sound-v-pro", "miracle-members", "an-art-by", "idea-heavens"].includes(slug)) {
+    if (["millet-bakes", "hitech-fluid-system", "dss-corp", "dr-sajan-hegde", "sound-v-pro", "miracle-members", "an-art-by", "idea-heavens"].includes(slug)) {
       bodies[`/work/${slug}`] = workText.slice(0, 20000);
     }
   }

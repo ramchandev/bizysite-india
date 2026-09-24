@@ -87,6 +87,9 @@ export default function SitemapHtml() {
     {
       title: "Case Studies / Portfolio Projects",
       links: [
+        { name: "Millet Bakes - WhatsApp-First Bakery Journey", href: "/work/millet-bakes" },
+        { name: "Hitech Fluid System - Industrial Water Experience", href: "/work/hitech-fluid-system" },
+        { name: "DSS Corp - CA Firm Trust & Consultations", href: "/work/dss-corp" },
         { name: "Dr. Sajan Hegde - Spine Surgery Clinic Rebuild", href: "/work/dr-sajan-hegde" },
         { name: "Sound V Pro - Checkout Funnel Optimization", href: "/work/sound-v-pro" },
         { name: "Miracle Members - Directory Speed Redesign", href: "/work/miracle-members" },
