@@ -73,9 +73,11 @@ export default async function CaseStudyDetail({ params }: { params: ParamsPromis
               href={listing.url}
               target="_blank"
               rel="noopener noreferrer"
-              style={{ color: "var(--teal)", display: "inline-flex", alignItems: "center", gap: "8px", marginTop: "16px", fontWeight: "700", fontSize: "14px" }}
+              className="btn btn-primary"
+              style={{ display: "inline-flex", alignItems: "center", gap: "8px", marginTop: "20px", padding: "12px 20px", fontSize: "14px" }}
             >
-              Visit live site <ExternalLink size={14} />
+              Visit {new URL(listing.url).hostname}
+              <ExternalLink size={15} />
             </a>
           ) : null}
         </div>

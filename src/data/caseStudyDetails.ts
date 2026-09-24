@@ -18,7 +18,7 @@ export interface CaseStudyDetail {
 export const caseStudyDetails: Record<string, CaseStudyDetail> = {
   "millet-bakes": {
     logo: "Millet Bakes",
-    title: "WhatsApp-First Bakery Site That Turns Product Discovery Into Orders",
+    title: "Millet Bakes: WhatsApp-First Bakery Site That Turns Product Discovery Into Orders",
     industry: "Food & Bakery · Ancient Grain Craft",
     size: "Growing D2C bakery · Chennai",
     challenge: "Sell wholesome millet bakes without forcing a heavy e-commerce checkout on customers who already order over WhatsApp.",
@@ -47,7 +47,7 @@ export const caseStudyDetails: Record<string, CaseStudyDetail> = {
   },
   "hitech-fluid-system": {
     logo: "Hitech Fluid System",
-    title: "Industrial Water Treatment Expertise Made Powerful Online",
+    title: "Hitech Fluid System: Industrial Water Treatment Expertise Made Powerful Online",
     industry: "Industrial Water & Wastewater Treatment",
     size: "Engineering firm · Serving India since 2009",
     challenge: "Turn deep engineering expertise, projects, and capabilities into an online experience as strong as the work on site.",
@@ -77,7 +77,7 @@ export const caseStudyDetails: Record<string, CaseStudyDetail> = {
   },
   "dss-corp": {
     logo: "DSS Dynamic Strategic Solutions",
-    title: "CA Firm Website That Builds Trust and Books Consultations",
+    title: "DSS Dynamic Strategic Solutions: CA Firm Website That Builds Trust and Books Consultations",
     industry: "Chartered Accountancy · Chennai",
     size: "Senior CA practice · Founders & growing businesses",
     challenge: "Help a CA firm look as capable online as it is offline — and turn serious founders into booked consultations.",
@@ -109,7 +109,7 @@ export const caseStudyDetails: Record<string, CaseStudyDetail> = {
   },
   "dr-sajan-hegde": {
     logo: "Dr. Sajan Hegde",
-    title: "Spine Surgery Clinic Rebuilds Authority & Increases Bookings by 38%",
+    title: "Dr. Sajan Hegde: Spine Surgery Clinic Rebuilds Authority & Increases Bookings by 38%",
     industry: "Healthcare & Spine Care Services",
     size: "10-20 staff",
     challenge: "Low online authority and friction in patient booking channels.",
@@ -131,7 +131,7 @@ export const caseStudyDetails: Record<string, CaseStudyDetail> = {
   },
   "sound-v-pro": {
     logo: "Sound V Pro",
-    title: "E-Commerce Audio Systems Platform Optimizes Checkout Funnel to Double Sales",
+    title: "Sound V Pro: E-Commerce Audio Systems Platform Optimizes Checkout Funnel to Double Sales",
     industry: "Audio Production Rentals",
     size: "5-10 staff",
     challenge: "High cart abandonment rate on checkout and payment options.",
@@ -153,7 +153,7 @@ export const caseStudyDetails: Record<string, CaseStudyDetail> = {
   },
   "miracle-members": {
     logo: "Miracle Members",
-    title: "BNI Miracles Member Networking Directory Mobile Speed Redesign",
+    title: "Miracle Members: BNI Miracles Member Networking Directory Mobile Speed Redesign",
     industry: "Business Networking Services",
     size: "100+ members",
     challenge: "Slow directory load speeds preventing member search on mobile networks.",
@@ -175,7 +175,7 @@ export const caseStudyDetails: Record<string, CaseStudyDetail> = {
   },
   "an-art-by": {
     logo: "An Art By",
-    title: "Art Portfolio & E-Commerce Gallery Visual Funnel Optimization",
+    title: "An Art By: Art Portfolio & E-Commerce Gallery Visual Funnel Optimization",
     industry: "Art & Creative Studio",
     size: "Self-employed artist",
     challenge: "Low visual engagement and high checkout drop-offs for custom paintings.",
@@ -197,7 +197,7 @@ export const caseStudyDetails: Record<string, CaseStudyDetail> = {
   },
   "idea-heavens": {
     logo: "Idea Heavens",
-    title: "Performance Marketing Agency Cuts Client Acquisiton Lead Costs by 3.4×",
+    title: "Idea Heavens: Performance Marketing Agency Cuts Client Acquisiton Lead Costs by 3.4×",
     industry: "Marketing & Design Agency",
     size: "20-50 employees",
     challenge: "High cost-per-lead (CPL) on agency acquisition campaigns.",
