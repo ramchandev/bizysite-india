@@ -63,7 +63,7 @@ export default async function CaseStudyDetail({ params }: { params: ParamsPromis
       {/* Hero */}
       <section className="service-hero">
         <div className="container service-hero-content" style={{ textAlign: "left" }}>
-          <Link href="/work" style={{ color: "var(--teal)", display: "inline-flex", alignItems: "center", gap: "8px", marginBottom: "20px", fontWeight: "700" }}>
+          <Link href="/work" style={{ color: "var(--teal)", display: "flex", alignItems: "center", gap: "8px", marginBottom: "20px", fontWeight: "700", width: "fit-content" }}>
             <ArrowLeft size={16} /> Back to All Work
           </Link>
           <span className="market-tag" style={{ marginLeft: 0, display: "inline-block", marginBottom: "16px" }}>{study.industry}</span>
