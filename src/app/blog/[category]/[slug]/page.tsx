@@ -16,7 +16,7 @@ interface PageProps {
 
 function getAuthorForPost(slug: string) {
   const clintonSlugs = ["rank-on-google-maps-india", "seo-vs-google-ads-india", "how-long-does-seo-take-india", "customers-asking-ai-not-google", "get-more-google-reviews", "aeo-guide", "generative-engine-optimization-india"];
-  const vivekSlugs = ["website-visitors-but-no-enquiries", "website-conversion-secrets"];
+  const vivekSlugs = ["website-visitors-but-no-enquiries", "website-conversion-secrets", "restaurant-cafe-website-india"];
   const ramSlugs = ["do-i-own-my-website"];
   
   if (clintonSlugs.includes(slug)) {
@@ -45,6 +45,7 @@ function getThumbnailForPost(slug: string): string {
     "why-your-website-is-slow": "/blog_website_slow.jpg",
     "get-more-google-reviews": "/blog_maps_india.jpg",
     "small-business-website-checklist-india": "/blog_checklist_india.jpg",
+    "restaurant-cafe-website-india": "/blog_restaurant_cafe_india.jpg",
   };
   return mapping[slug] || "/blog_hero.jpg";
 }
@@ -150,7 +151,7 @@ export default async function BlogDetail({ params }: PageProps) {
     "datePublished": post.publishDateIso || "2026-08-15"
   };
 
-  // Schema: BreadcrumbList
+  // Schema: BreadcrumbList (Home → Blog → Category → Article)
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -170,6 +171,12 @@ export default async function BlogDetail({ params }: PageProps) {
       {
         "@type": "ListItem",
         "position": 3,
+        "name": post.category,
+        "item": `${siteUrl}/blog?category=${category}`
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
         "name": post.title,
         "item": `${siteUrl}/blog/${category}/${post.slug}`
       }

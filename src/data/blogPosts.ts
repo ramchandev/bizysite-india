@@ -1169,5 +1169,156 @@ export const blogPosts: BlogPost[] = [
         answer: "Yes, at least the basics: proper page titles and descriptions, your city and services in your content, and a linked Google Business Profile. Without these, customers searching for your service will struggle to find you."
       }
     ]
+  },
+  {
+    slug: "restaurant-cafe-website-india",
+    title: "Websites for Restaurants, Cafes and Bakeries in India: Fill More Tables, Take More Orders",
+    excerpt: "A restaurant website should drive bookings and direct orders, not just show a menu. Here is what your restaurant, cafe or bakery website needs to win more customers.",
+    category: "Websites",
+    date: "October 29, 2026",
+    publishDateIso: "2026-10-29",
+    readTime: "6 min read",
+    metaTitle: "Websites for Restaurants & Cafes in India: Fill More Tables, Take More Orders | Bizy Site",
+    metaDescription: "A restaurant website should drive bookings and direct orders, not just show a menu. Here is what your restaurant, cafe or bakery website needs to win more customers.",
+    content: `
+      <div style="background: var(--off-white); border-left: 4px solid var(--teal); padding: 16px 20px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-bottom: 28px;">
+        <strong style="color: var(--navy); display: block; margin-bottom: 6px; font-size: 15px; text-transform: uppercase; letter-spacing: 0.5px;">TL;DR:</strong>
+        <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--text);">Hungry customers decide in seconds based on photos, reviews and how easy it is to book or order. Your restaurant website should show mouth-watering photos, make table booking and direct ordering effortless, display your menu clearly on mobile, and win "restaurants near me" searches. A direct-order website also helps you depend less on aggregator apps and their high commissions.</p>
+      </div>
+      <p>When someone is deciding where to eat, celebrate, or order from, they search "restaurants near me", "cafe near me" or "best cake shop near me", glance at a few options, and pick the one that looks most appetising and easiest to book or order from. This happens in seconds, mostly on a phone.</p>
+      <p>Your food may be excellent, but if your website does not make people hungry and make ordering effortless, they simply pick the next option. Here is how to build one that fills tables and takes orders for <a href="/industries/hospitality">restaurants, cafes and bakeries</a>.</p>
+
+      <h3>How customers choose where to eat</h3>
+      <p>Food searches usually fall into a few types:</p>
+      <ul>
+        <li><strong>Right now:</strong> "restaurants near me", "cafe open now". Ready to visit or order immediately.</li>
+        <li><strong>Planning ahead:</strong> "restaurants for birthday", "party hall", "cake for order". Booking or ordering for later.</li>
+        <li><strong>Craving something specific:</strong> "best biryani near me", "eggless cake shop". Looking for one dish or item.</li>
+      </ul>
+      <p>All of them share this: people decide with their eyes, and they want it easy. Everything below serves that.</p>
+
+      <h3>1. Show mouth-watering photos</h3>
+      <p>In food, photos do the selling. Nothing convinces a hungry customer like a great picture.</p>
+      <ul>
+        <li>Show high-quality photos of your best dishes, cakes and drinks</li>
+        <li>Include photos of your space and ambience</li>
+        <li>Keep them fresh, add new items and seasonal specials</li>
+      </ul>
+      <p>A menu in plain text is forgettable. A menu with beautiful photos makes people decide to come.</p>
+
+      <h3>2. Make booking and ordering effortless</h3>
+      <p>Once someone wants to visit or order, it should take one or two taps.</p>
+      <ul>
+        <li>A clear "Book a Table" button, and WhatsApp for quick booking</li>
+        <li><a href="/services/web-design">Direct online ordering</a> on your own site, for delivery or pickup</li>
+        <li>Call and WhatsApp buttons always in reach</li>
+      </ul>
+      <p>Here is the money point: direct ordering on your own website means you depend less on aggregator apps that take a big commission on every order. The customers you bring in yourself cost you far less.</p>
+
+      <h3>3. Make your menu easy to browse on a phone</h3>
+      <p>Most people look at your menu on a small screen, often while deciding quickly.</p>
+      <ul>
+        <li>Keep the menu easy to read and scroll on mobile</li>
+        <li>Show prices clearly</li>
+        <li>Mark veg, non-veg, eggless, and popular items</li>
+        <li>Make it easy to update, so it is never out of date</li>
+      </ul>
+      <p>A menu that is a slow, blurry PDF loses customers. A clean, fast, tappable menu keeps them.</p>
+
+      <h3>4. Show reviews and ratings</h3>
+      <p>People trust other diners. Reviews turn a maybe into a booking.</p>
+      <ul>
+        <li>Show your Google rating and reviews prominently</li>
+        <li>Feature a few genuine customer quotes</li>
+        <li>Place a strong review near your booking or order button</li>
+      </ul>
+      <p>A great rating shown at the right moment is often what wins the customer.</p>
+
+      <h3>5. Answer the practical questions</h3>
+      <p>Diners have simple questions. Answer them instantly.</p>
+      <ul>
+        <li>Timings, including whether you are open now</li>
+        <li>Location with a map and one-tap directions</li>
+        <li>Contact and WhatsApp</li>
+        <li>Delivery area if you deliver, and whether you take party or bulk orders</li>
+      </ul>
+      <p>Confusion loses customers. If someone cannot quickly see that you are open or that you deliver to them, they move on.</p>
+
+      <h3>6. Fast and built for mobile</h3>
+      <p>Hungry, hurried people are almost always on a phone. So your site must:</p>
+      <ul>
+        <li>Load <a href="/services/web-design">fast</a>, because nobody waits when they are hungry</li>
+        <li>Be effortless on a small screen</li>
+        <li>Keep book, order, call and WhatsApp buttons always in reach</li>
+      </ul>
+      <p>A slow site loses the customer before they even see your food.</p>
+
+      <h3>The restaurant website checklist</h3>
+      <p>Make sure yours has:</p>
+      <ul>
+        <li>Mouth-watering photos of food and space</li>
+        <li>Easy table booking and WhatsApp booking</li>
+        <li>Direct online ordering, to depend less on aggregators</li>
+        <li>A clean, fast, mobile-friendly menu with prices</li>
+        <li>Google reviews shown prominently</li>
+        <li>Timings, location, map and delivery area</li>
+        <li>Fast and flawless on mobile</li>
+      </ul>
+
+      <h3>The bottom line</h3>
+      <ul>
+        <li>Customers decide with their eyes and want booking or ordering to be effortless.</li>
+        <li>Show mouth-watering photos, make booking and direct ordering simple, and keep your menu clean on mobile.</li>
+        <li>Direct ordering on your own site helps you depend less on aggregator apps and their high commissions.</li>
+        <li>Show reviews, answer timings and location clearly, and stay fast on mobile.</li>
+      </ul>
+      <p>With <a href="/services/seo">local SEO</a> and your <a href="/services/google-business-profile">Google Business Profile</a> set up well, nearby hungry customers can find you first. Your food earns the loyalty. Your website just needs to make people hungry and make booking or ordering effortless. Do both, and the tables fill and the orders come in, more of them yours to keep.</p>
+
+      <div style="background: var(--off-white); border-left: 4px solid var(--teal); padding: 20px 22px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-top: 36px;">
+        <strong style="color: var(--navy); display: block; margin-bottom: 8px; font-size: 17px;">Want a website that fills tables and takes direct orders?</strong>
+        <p style="margin: 0 0 14px; font-size: 14.5px; line-height: 1.6; color: var(--text);">We build appetising restaurant, cafe and bakery websites that make booking and ordering effortless, and help you depend less on aggregator commissions. Tell us about your place and we will send a clear quote.</p>
+        <p style="margin: 0 0 6px;">
+          <a href="/contact?type=quote" style="display: inline-block; background: var(--teal); color: #fff; font-weight: 700; padding: 10px 16px; border-radius: var(--radius-md); text-decoration: none;">Get My Free Quote →</a>
+        </p>
+        <p style="margin: 0 0 12px; font-size: 13px; color: var(--text-muted, #666);">Same-day reply. No pressure. No hidden charges.</p>
+        <p style="margin: 0;">
+          <a href="/contact?type=audit" style="font-weight: 700; color: var(--teal); text-decoration: underline;">Get My Free Website Audit →</a>
+        </p>
+      </div>
+    `,
+    faqs: [
+      {
+        question: "Does my restaurant need a website if I am already on aggregator apps?",
+        answer: "Yes. Aggregator apps take a commission on every order and own the customer relationship. Your own website lets customers book tables and order directly, so you keep more of each sale and build your own loyal customer base, while still using apps for extra reach."
+      },
+      {
+        question: "Can customers order food directly from my website?",
+        answer: "Yes. You can set up direct online ordering for delivery or pickup on your own site. This reduces your dependence on aggregator apps and their high commissions, so more of what the customer pays stays with you."
+      },
+      {
+        question: "How much does a restaurant or cafe website cost in India?",
+        answer: "It depends on features like online ordering, table booking and the number of pages. A simple cafe site costs less than a multi-outlet restaurant with ordering. The best step is to share your needs and get a clear, no-obligation quote."
+      },
+      {
+        question: "Can customers book a table on the website?",
+        answer: "Yes. You can add simple table booking and WhatsApp booking, so customers reserve in a tap without calling. This is especially useful for busy evenings, weekends and special occasions."
+      },
+      {
+        question: "Will my restaurant show up on \"restaurants near me\" searches?",
+        answer: "With local SEO and your Google Business Profile set up well, yes. These help you appear in \"near me\" searches and on Google Maps, so hungry nearby customers find you first."
+      },
+      {
+        question: "Can I update my own menu and prices?",
+        answer: "Yes. Your site can be built so you easily update your menu, prices and offers yourself, or we can manage it for you. No being stuck with an outdated menu or old prices online."
+      },
+      {
+        question: "My food photos are on Instagram. Can the website use them?",
+        answer: "Yes. We can feature your best food photos on the site and link your Instagram feed, since great food images are what make people decide to visit or order."
+      },
+      {
+        question: "Do I own my restaurant website after it is built?",
+        answer: "You should, and it is worth confirming upfront. With the right provider, you own your website, content and customer data from day one, with no lock-in."
+      }
+    ]
   }
 ];

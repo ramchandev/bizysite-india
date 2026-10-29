@@ -31,7 +31,9 @@ export const metadata: Metadata = {
 };
 
 export default function Blog() {
-  const posts = blogPosts;
+  const posts = [...blogPosts].sort(
+    (a, b) => b.publishDateIso.localeCompare(a.publishDateIso)
+  );
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -97,7 +99,7 @@ export default function Blog() {
               Loading resources...
             </div>
           }>
-            <BlogClient posts={blogPosts} />
+            <BlogClient posts={posts} />
           </Suspense>
         </div>
       </section>
